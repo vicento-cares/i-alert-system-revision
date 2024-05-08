@@ -1,7 +1,7 @@
 <?php
-    $servername = '172.25.112.172';
-    // $username = 'root';
-    $username = 'server_112.172';
+    $servername = '172.25.112.131';
+    $username = 'vince';
+    // $username = 'server_112.172';
     // $pass = 'trspassword2022';
     $pass = 'SystemGroup@2024';
     // $pass = '';

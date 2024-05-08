@@ -1,11 +1,11 @@
 <?php
 
-    $servername = 'localhost';
-    $username = 'root';
+    $servername = '172.25.112.131';
+    $username = 'vince';
     // $username = 'server_112.172';
     // $pass = 'trspassword2022';
-    // $pass = 'SystemGroup@2024';
-    $pass = '';
+    $pass = 'SystemGroup@2024';
+    // $pass = '';
     date_default_timezone_set('Asia/Manila');
     $server_date_time = date('Y-m-d H:i:s');
     $server_date_only = date('Y-m-d');
