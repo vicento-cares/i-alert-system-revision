@@ -27,9 +27,10 @@
                       $audit_type = $line[10];
                       $remark = $line[11];
                       $section = $line[12];
+                      $falp_group = $line[13];
                      
                     // CHECK IF BLANK DATA
-                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == ''){
+                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '' || $line[13] == ''){
                         // IF BLANK DETECTED ERROR += 1
                         $error = $error + 1;
                     }else{
@@ -38,7 +39,7 @@
                         $date_auditeds = date_format($dates, "Y-m-d");
 
 
-                        $insert = "INSERT INTO ialert_line_audit (`batch`,`date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`) VALUES ('$lc','$date_auditeds','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_only','$section')";
+                        $insert = "INSERT INTO ialert_line_audit (`batch`,`date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) VALUES ('$lc','$date_auditeds','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_only','$section','$falp_group')";
                         $stmt = $conn->prepare($insert);
                         if($stmt->execute()){
                             $error = 0;
