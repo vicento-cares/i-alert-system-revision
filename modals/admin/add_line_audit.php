@@ -21,9 +21,9 @@
                     <input type="date" name="" id="date_line_audited" class="form-control">
                 </div>
                 <div class="col-3">
-                     <span>Group:</span>
+                     <span>Shift Group:</span>
                     <select class="form-control" id="group_line">
-                        <option value="">Select Group</option>
+                        <option value="">Select Shift Group</option>
                         <option value="a">A</option>
                         <option value="b">B</option>
                     </select>
@@ -128,6 +128,22 @@
                </div>
            </div>
          <div class="row">
+            <div class="col-3">
+                   <span>Group:</span>
+                   <select class="form-control" name="falp_group_line" id="falp_group_line">
+                      <option value="">Select Group</option>
+                              <?php
+                            require '../../process/conn.php';
+                            $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                            $stmt = $conn->prepare($get_curiculum);
+                            $stmt->execute();
+                            foreach($stmt->fetchALL() as $x){
+
+                                echo '<option value="'.$x['falp_group'].'">'.$x['falp_group'].'</option>';
+                            }
+                     ?>
+                   </select>
+            </div>
             <div class="col-3">
                    <span>Section:</span>
                    <select class="form-control" name="section_line" id="section_line">

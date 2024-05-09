@@ -38,6 +38,7 @@ UPDATE ialert_section SET falp_group='Production Innovation Team' WHERE section 
 UPDATE ialert_section SET falp_group='Production Innovation Team' WHERE section LIKE 'PIT%';
 UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-initial%';
+UPDATE ialert_section SET falp_group='Other Group' WHERE falp_group IS NULL;
 
 -- ialert_audit query for falp_group
 
