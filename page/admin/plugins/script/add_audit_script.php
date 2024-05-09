@@ -1,4 +1,22 @@
  <script type="text/javascript">
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group').value;
+
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section').html(response);
+        }
+    });
+}
 	
 const create_audit =()=> {
 
@@ -77,6 +95,7 @@ const save_request =()=> {
     var esection = '<?=$esection;?>';
     var username = '<?=$username;?>';
     var audit_code = document.querySelector('#auditCode').innerHTML;
+    var falp_group = document.querySelector('#falp_group').value;
     var section = document.querySelector('#section').value;
     if(employee_num == ''){      
         swal('Notification', 'Please Enter EMPLOYEE ID','info');
@@ -91,7 +110,7 @@ const save_request =()=> {
     }else if(shift == ''){
         swal('Notification', 'Please Select Shift','info');
     }else if(group == ''){
-        swal('Notification', 'Please Select Group','info');
+        swal('Notification', 'Please Select Shift Group','info');
     }else if(audit_type == ''){
         swal('Notification', 'Please Select Audit Type','info');
     }else if(date_audited == ''){
@@ -112,6 +131,8 @@ const save_request =()=> {
         swal('Notification', 'Please Select Audit Category','info');
     }else if(remarks == ''){
         swal('Notification', 'Please Enter Remarks','info');
+    }else if(falp_group == ''){
+        swal('Notification', 'Please Select Group','info');
     }else if(section == ''){
         swal('Notification', 'Please Select Section','info');
     }else{
@@ -140,6 +161,7 @@ const save_request =()=> {
             esection:esection,
             username:username,
             audit_code:audit_code,
+            falp_group:falp_group,
             section:section
         },success:function(x){
           

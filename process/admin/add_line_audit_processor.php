@@ -27,9 +27,10 @@ if ($method == 'insert_line_audit') {
 	$esection = $_POST['esection'];
 	$username = $_POST['username'];
 	$audit_code = trim($_POST['audit_code']);
+	$falp_group = $_POST['falp_group'];
 	$section = $_POST['section'];
 
-	$insert = "INSERT INTO ialert_line_audit (`batch`, `date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`) VALUES('$audit_code', '$date_audited','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audited_by','$audit_categ','$audit_type','$remarks','$server_date_time','$section')";
+	$insert = "INSERT INTO ialert_line_audit (`batch`, `date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) VALUES('$audit_code', '$date_audited','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audited_by','$audit_categ','$audit_type','$remarks','$server_date_time','$section','$falp_group')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 

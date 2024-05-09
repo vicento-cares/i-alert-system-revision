@@ -38,7 +38,7 @@ if ($method == 'fetch_user') {
 			$c++;
 			
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_accounts_user" onclick="get_user_details(&quot;'.$j['id'].'~!~'.$j['username'].'~!~'.$j['password'].'~!~'.$j['role'].'~!~'.$j['esection'].'~!~'.$j['car_maker'].'~!~'.$j['sections'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_accounts_user" onclick="get_user_details(&quot;'.$j['id'].'~!~'.$j['username'].'~!~'.$j['password'].'~!~'.$j['role'].'~!~'.$j['esection'].'~!~'.$j['car_maker'].'~!~'.$j['sections'].'~!~'.$j['falp_group'].'&quot;)">';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['username'].'</td>';
 				echo '<td>'.$j['role'].'</td>';

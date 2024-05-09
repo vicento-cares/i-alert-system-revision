@@ -1,4 +1,28 @@
 <script type="text/javascript">
+
+// Revisions (Vince)
+const fetch_section_dropdown = opt => {
+    let falp_group = '';
+    if (opt == 1) {
+        falp_group = document.getElementById('falp_group_accounts').value;
+    } else if (opt == 2) {
+        falp_group = document.getElementById('falp_group_update_accounts').value;
+    }
+
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_accounts').html(response);
+            $('#section_update_accounts').html(response);
+        }
+    });
+}
 	
 const load_users =()=>{
 	var username = document.getElementById('user_name_user_search').value;
@@ -84,14 +108,21 @@ const get_user_details =(param)=>{
     var esection = string[4];
 	var car_maker = string[5];
 	var sections = string[6];
+    var falp_group = string[7];
 
-document.getElementById('id_update_accounts').value = id;
-document.getElementById('username_update_accounts').value = username;
-document.getElementById('password_update_accounts').value = password;
-document.getElementById('role_update_accounts').value = role;
-document.getElementById('esection_update_accounts').value = esection;
-document.getElementById('carmaker_update_accounts').value = car_maker;
-document.getElementById('section_update_accounts').value = sections;
+    document.getElementById('id_update_accounts').value = id;
+    document.getElementById('username_update_accounts').value = username;
+    document.getElementById('password_update_accounts').value = password;
+    document.getElementById('role_update_accounts').value = role;
+    document.getElementById('esection_update_accounts').value = esection;
+    document.getElementById('carmaker_update_accounts').value = car_maker;
+    document.getElementById('falp_group_update_accounts').value = falp_group;
+
+    fetch_section_dropdown(2);
+
+    setTimeout(() => {
+        document.getElementById('section_update_accounts').value = sections;
+    }, 500);
 }
 
 const delete_user =()=>{

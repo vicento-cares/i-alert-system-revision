@@ -52,7 +52,25 @@
              <label>Carmaker:</label>
               <input type="text" name="carmaker_accounts" id="carmaker_accounts" class="form-control">
           </div>
-           <div class="col-4">
+          <div class="col-4">
+              <label>Group:</label>
+              <select class="form-control" name="falp_group_accounts" id="falp_group_accounts" onchange="fetch_section_dropdown(1)">
+                <option value="">Select Group</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                      $stmt = $conn->prepare($get_curiculum);
+                      $stmt->execute();
+                      foreach($stmt->fetchALL() as $x){
+
+                          echo '<option value="'.$x['falp_group'].'">'.$x['falp_group'].'</option>';
+                      }
+                ?>
+              </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
                 <label>Section:</label>
               <!-- <input type="text" name="section_accounts" id="section_accounts" class="form-control"> -->
                <select class="form-control" name="section_accounts" id="section_accounts">
