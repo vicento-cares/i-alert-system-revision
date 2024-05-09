@@ -78,3 +78,10 @@ UPDATE ialert_line_audit SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 UPDATE ialert_line_audit SET falp_group='First Process' WHERE line_no = 'initial' AND process LIKE '%';
 UPDATE ialert_line_audit SET falp_group='Secondary 1 Process' WHERE line_no = 'initial' AND process LIKE '%';
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no = 'initial' AND process LIKE '%';
+
+-- change repair to PIT
+
+DELETE FROM ialert_section WHERE section = 'repair';
+
+UPDATE ialert_audit SET section='PIT' WHERE section LIKE 'repair%';
+UPDATE ialert_line_audit SET section='PIT' WHERE section LIKE 'repair%';
