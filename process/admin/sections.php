@@ -3,6 +3,26 @@
 	include '../conn2.php';
 	$method = $_POST['method'];
 
+// Revisions (Vince)
+if ($method == 'fetch_section_dropdown') {
+	$falp_group = addslashes($_POST['falp_group']);
+	$sql = "SELECT DISTINCT section, name FROM ialert_section";
+	if (!empty($falp_group)) {
+		$sql = $sql . " WHERE falp_group = '$falp_group'";
+	}
+	$sql = $sql . " ORDER BY name ASC";
+	$stmt = $conn -> prepare($sql);
+	$stmt -> execute();
+	if ($stmt -> rowCount() > 0) {
+		echo '<option selected value="">Select Section</option>';
+		foreach($stmt -> fetchAll() as $row) {
+			echo '<option value="'.htmlspecialchars($row['section']).'">'.htmlspecialchars($row['name']).'</option>';
+		}
+	} else {
+		echo '<option disabled selected value="">Select Section</option>';
+	}
+}
+
 if ($method == 'fetch_section') {
 	$section = $_POST['section'];
 	$c = 0;

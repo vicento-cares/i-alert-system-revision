@@ -1,4 +1,22 @@
  <script type="text/javascript">
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group').value;
+
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section').html(response);
+        }
+    });
+}
 	
 const create_audit =()=> {
 

@@ -130,7 +130,7 @@
          <div class="row">
             <div class="col-3">
                    <span>Group:</span>
-                   <select class="form-control" name="falp_group_line" id="falp_group_line">
+                   <select class="form-control" name="falp_group_line" id="falp_group_line" onchange="fetch_section_dropdown()">
                       <option value="">Select Group</option>
                               <?php
                             require '../../process/conn.php';
