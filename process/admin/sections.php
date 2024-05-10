@@ -35,15 +35,16 @@ if ($method == 'fetch_section') {
 			$c++;
 			
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_section" onclick="get_sections_details(&quot;'.$j['id'].'~!~'.$j['section'].'~!~'.$j['name'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_section" onclick="get_sections_details(&quot;'.$j['id'].'~!~'.$j['section'].'~!~'.$j['name'].'~!~'.$j['falp_group'].'&quot;)">';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['section'].'</td>';
 				echo '<td>'.$j['name'].'</td>';
+				echo '<td>'.$j['falp_group'].'</td>';
 			echo '</tr>';
 		}
 	}else{
 			echo '<tr>';
-				echo '<td colspan="3" style="color:red;">No Result<td>';
+				echo '<td colspan="4" style="color:red;">No Result<td>';
 			echo '</tr>';
 	}
 }
@@ -52,14 +53,15 @@ if ($method == 'fetch_section') {
 if ($method == 'register_section') {
 	$section = $_POST['section'];
 	$name = $_POST['name'];
+	$falp_group = $_POST['falp_group'];
 	
-	$check = "SELECT id FROM ialert_section WHERE section = '$section' AND name = '$name'";
+	$check = "SELECT id FROM ialert_section WHERE section = '$section' AND name = '$name' AND falp_group = '$falp_group'";
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		echo 'Already Exist';
 	}else{
-		$query = "INSERT INTO ialert_section (`section`,`name`) VALUES ('$section', '$name')";
+		$query = "INSERT INTO ialert_section (`section`,`name`,`falp_group`) VALUES ('$section', '$name', '$falp_group')";
 		$stmt2 = $conn->prepare($query);
 		if ($stmt2->execute()) {
 			echo 'success';
@@ -86,6 +88,7 @@ if ($method == 'update_sections') {
 	$id = $_POST['id'];
 	$section = $_POST['section'];
 	$name = $_POST['name'];
+	$falp_group = $_POST['falp_group'];
 
 	$check = "SELECT id FROM ialert_section WHERE section = '$section' OR name = '$name'";
 	$stmt = $conn->prepare($check);
@@ -93,7 +96,7 @@ if ($method == 'update_sections') {
 	if ($stmt->rowCount() > 0) {
 		echo 'Already Exist';
 	}else{
-		$query = "UPDATE ialert_section SET section = '$section', name = '$name' WHERE id = '$id'";
+		$query = "UPDATE ialert_section SET section = '$section', name = '$name', falp_group = '$falp_group' WHERE id = '$id'";
 		$stmt2 = $conn->prepare($query);
 		if ($stmt2->execute()) {
 			echo 'success';

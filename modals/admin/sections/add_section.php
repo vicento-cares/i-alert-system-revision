@@ -10,18 +10,21 @@
       </div>
       <div class="modal-body">
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
               <label>Section Code:</label> <input type="text" name="sec_code" id="sec_code" class="form-control" autocomplete="off">
             </div>
-             <div class="col-6">
+             <div class="col-4">
               <label>Section Name:</label> <input type="text" name="sec_name" id="sec_name" class="form-control" autocomplete="off">
+            </div>
+            <div class="col-4">
+              <label>Group:</label> <input type="text" name="sec_falp_group" id="sec_falp_group" class="form-control" autocomplete="off">
             </div>
            </div>
            
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="#" class="btn btn-primary" onclick="register_section()">Register User</a>
+        <a href="#" class="btn btn-primary" onclick="register_section()">Register Section</a>
       </div>
     </div>
   </div>
