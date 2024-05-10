@@ -183,6 +183,7 @@ const save_request =()=> {
             $('#audit_type').val('');
             $('#audit_categ').val('');
             $('#remarks').val('');
+            $('#falp_group').val('');
             $('#section').val('');
            load_prev();     
          }

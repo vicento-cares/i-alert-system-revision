@@ -126,6 +126,7 @@ const save_request_line =()=> {
             $('#line_audit_findings').val('');
             $('#line_audited_by').val('');
             $('#remarks_line').val('');
+            $('#falp_group_line').val('');
            load_line_prev();     
          }else{
 

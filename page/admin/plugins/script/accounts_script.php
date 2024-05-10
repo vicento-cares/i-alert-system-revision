@@ -47,6 +47,7 @@ const register_user =()=>{
 	var esection = document.getElementById('esection_accounts').value;
 	var carmaker = document.getElementById('carmaker_accounts').value;
 	var section = document.getElementById('section_accounts').value;
+    var falp_group = document.getElementById('falp_group_accounts').value;
 
 	if (username == '') {
 		swal('Information', 'Please Input Username','info');
@@ -69,7 +70,8 @@ const register_user =()=>{
                     role:role,
                     esection:esection,
 					carmaker:carmaker,
-                    section:section
+                    section:section,
+                    falp_group:falp_group
                 },success:function(response){
 
                    if (response == 'Already Exist') {
@@ -80,6 +82,7 @@ const register_user =()=>{
                $('#esection_accounts').val('');
                $('#carmaker_accounts').val('');
                $('#section_accounts').val('');
+               $('#falp_group_accounts').val('');
                    }
                    else if (response == 'success') {
                     $('#username_accounts').val('');
@@ -88,6 +91,7 @@ const register_user =()=>{
                $('#esection_accounts').val('');
                $('#carmaker_accounts').val('');
                $('#section_accounts').val('');
+               $('#falp_group_accounts').val('');
                    	swal('Success','Successfully Registered!','success');
                     load_users();
 
@@ -155,6 +159,7 @@ const update_user =()=>{
 	var esection = document.getElementById('esection_update_accounts').value;
 	var carmaker = document.getElementById('carmaker_update_accounts').value;
 	var section = document.getElementById('section_update_accounts').value;
+    var falp_group = document.getElementById('falp_group_update_accounts').value;
 
 	if (username == '') {
 		swal('Information', 'Please Input Username','info');
@@ -178,7 +183,8 @@ const update_user =()=>{
                     role:role,
                     esection:esection,
 					carmaker:carmaker,
-                    section:section
+                    section:section,
+                    falp_group:falp_group
                 },success:function(response){
 
                    if (response == 'Already Exist') {
