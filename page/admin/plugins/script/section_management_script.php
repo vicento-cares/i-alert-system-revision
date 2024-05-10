@@ -45,10 +45,12 @@ const register_section =()=>{
                    	swal('Information','Section Already Exist!','info');
                    	 $('#sec_code').val('');
                $('#sec_name').val('');
+               $('#sec_falp_group').val('');
                    }
                    else if (response == 'success') {
                     $('#sec_code').val('');
                $('#sec_name').val('');
+               $('#sec_falp_group').val('');
                    	swal('Success','Successfully Registered!','success');
                     load_sections();
 
