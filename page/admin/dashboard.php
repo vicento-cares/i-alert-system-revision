@@ -37,7 +37,7 @@
                 <div class="row">
 <?php
   include '../../process/conn.php';
-  $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8') ORDER BY section ASC";
+  $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   if ($stmt->rowCount() > 0) {
@@ -82,7 +82,7 @@
 
 <?php 
 $stmt = NULL;
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('qa-initial','qa-final','battery','repair') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('PIT','battery') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -123,8 +123,51 @@ if ($stmt->rowCount() > 0) {
 ?>  
 
 <?php
+// Revisions (Vince)
+$qa_total = 0;
+$qa_grand_total = 0;
+
 $stmt = NULL;
-$query ="SELECT DISTINCT provider FROM ialert_audit where provider != 'fas'";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('qa-initial','qa-final') ORDER BY section ASC";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+if ($stmt->rowCount() > 0) {
+  foreach ($stmt->fetchALL() as $j) {
+    $section = $j['section'];
+    $stmt = NULL;
+
+    $query = "SELECT COUNT(*) as total FROM ialert_audit WHERE edit_count !=0  AND section = '$section' AND provider = 'fas' AND date_recieved IS NULL";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      foreach ($stmt->fetchALL() as $j) {
+        $qa_total += intval($j['total']);
+        $stmt = NULL;
+        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'FAS'";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        foreach ($stmt->fetchALL() as $j) {
+          $qa_grand_total += intval($j['grand_total']);
+        }
+      }
+    }
+  }
+  echo '<div class="col-lg-3">    
+              <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text"><b>QA</b></span>
+                        <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $qa_total . '</label></label></label>
+                        /  <label>Total: <label id="grand_total"></label>' . $qa_grand_total . '</label> </span>
+                    </div>
+              </div>
+        </div>';
+}
+?>  
+
+<?php
+$stmt = NULL;
+$query ="SELECT DISTINCT provider FROM ialert_audit where provider NOT IN ('fas','ipromote','natcorp')";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
