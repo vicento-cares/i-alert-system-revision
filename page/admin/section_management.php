@@ -62,6 +62,7 @@
                     <th>#</th>
                     <th>Section Code</th>
                     <th>Section Name</th>
+                    <th>Group</th>
             </thead>
             <tbody id="list_of_sections" style="text-align:center;"></tbody>
                 </table>
