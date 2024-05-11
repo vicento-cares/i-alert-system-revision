@@ -40,6 +40,39 @@ UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 UPDATE ialert_section SET falp_group='Other Group' WHERE falp_group IS NULL;
 
+INSERT INTO ialert_section (falp_group, section, name) VALUES
+('First Process', 'fpsection1', 'FP Section 1'),
+('First Process', 'fpsection2', 'FP Section 2'),
+('First Process', 'fpsection3', 'FP Section 3'),
+('First Process', 'fpsection4', 'FP Section 4'),
+('First Process', 'fpsection5', 'FP Section 5'),
+('First Process', 'fpsection6', 'FP Section 6'),
+('First Process', 'fpsection7', 'FP Section 7'),
+('First Process', 'fpsection8', 'FP Section 8'),
+('First Process', 'fpsection9', 'FP Section 9');
+
+INSERT INTO ialert_section (falp_group, section, name) VALUES
+('Secondary 1 Process', 'sp1section1', 'SP1 Section 1'),
+('Secondary 1 Process', 'sp1section2', 'SP1 Section 2'),
+('Secondary 1 Process', 'sp1section3', 'SP1 Section 3'),
+('Secondary 1 Process', 'sp1section4', 'SP1 Section 4'),
+('Secondary 1 Process', 'sp1section5', 'SP1 Section 5'),
+('Secondary 1 Process', 'sp1section6', 'SP1 Section 6'),
+('Secondary 1 Process', 'sp1section7', 'SP1 Section 7'),
+('Secondary 1 Process', 'sp1section8', 'SP1 Section 8'),
+('Secondary 1 Process', 'sp1section9', 'SP1 Section 9');
+
+INSERT INTO ialert_section (falp_group, section, name) VALUES
+('Secondary 2 Process', 'sp2section1', 'SP2 Section 1'),
+('Secondary 2 Process', 'sp2section2', 'SP2 Section 2'),
+('Secondary 2 Process', 'sp2section3', 'SP2 Section 3'),
+('Secondary 2 Process', 'sp2section4', 'SP2 Section 4'),
+('Secondary 2 Process', 'sp2section5', 'SP2 Section 5'),
+('Secondary 2 Process', 'sp2section6', 'SP2 Section 6'),
+('Secondary 2 Process', 'sp2section7', 'SP2 Section 7'),
+('Secondary 2 Process', 'sp2section8', 'SP2 Section 8'),
+('Secondary 2 Process', 'sp2section9', 'SP2 Section 9');
+
 -- ialert_audit query for falp_group
 
 UPDATE ialert_audit SET falp_group='FAP1' WHERE section LIKE 'section1%';
