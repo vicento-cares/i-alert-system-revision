@@ -348,6 +348,36 @@ UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial'
 UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding (insertion of cap)%';
 UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding joint%';
 
+UPDATE ialert_audit SET section='fpsection1' WHERE falp_group='First Process' AND section LIKE 'section1%';
+UPDATE ialert_audit SET section='fpsection2' WHERE falp_group='First Process' AND section LIKE 'section2%';
+UPDATE ialert_audit SET section='fpsection3' WHERE falp_group='First Process' AND section LIKE 'section3%';
+UPDATE ialert_audit SET section='fpsection4' WHERE falp_group='First Process' AND section LIKE 'section4%';
+UPDATE ialert_audit SET section='fpsection5' WHERE falp_group='First Process' AND section LIKE 'section5%';
+UPDATE ialert_audit SET section='fpsection6' WHERE falp_group='First Process' AND section LIKE 'section6%';
+UPDATE ialert_audit SET section='fpsection7' WHERE falp_group='First Process' AND section LIKE 'section7%';
+UPDATE ialert_audit SET section='fpsection8' WHERE falp_group='First Process' AND section LIKE 'section8%';
+UPDATE ialert_audit SET section='fpsection9' WHERE falp_group='First Process' AND section LIKE 'section9%';
+
+UPDATE ialert_audit SET section='sp1section1' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section1%';
+UPDATE ialert_audit SET section='sp1section2' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section2%';
+UPDATE ialert_audit SET section='sp1section3' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section3%';
+UPDATE ialert_audit SET section='sp1section4' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section4%';
+UPDATE ialert_audit SET section='sp1section5' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section5%';
+UPDATE ialert_audit SET section='sp1section6' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section6%';
+UPDATE ialert_audit SET section='sp1section7' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section7%';
+UPDATE ialert_audit SET section='sp1section8' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section8%';
+UPDATE ialert_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section9%';
+
+UPDATE ialert_audit SET section='sp2section1' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section1%';
+UPDATE ialert_audit SET section='sp2section2' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section2%';
+UPDATE ialert_audit SET section='sp2section3' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section3%';
+UPDATE ialert_audit SET section='sp2section4' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section4%';
+UPDATE ialert_audit SET section='sp2section5' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section5%';
+UPDATE ialert_audit SET section='sp2section6' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section6%';
+UPDATE ialert_audit SET section='sp2section7' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section7%';
+UPDATE ialert_audit SET section='sp2section8' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section8%';
+UPDATE ialert_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section9%';
+
 -- ialert_line_audit query for falp_group
 
 UPDATE ialert_line_audit SET falp_group='FAP1' WHERE section LIKE 'section1%';
@@ -614,6 +644,36 @@ UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no='ini
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial' AND car_maker LIKE 'Honda%' AND process LIKE 'Joint Crimping 3%';
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial' AND car_maker LIKE 'Honda%' AND process LIKE 'Jointc crimping%';
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no='initial' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding joint%';
+
+UPDATE ialert_line_audit SET section='fpsection1' WHERE falp_group='First Process' AND section LIKE 'section1%';
+UPDATE ialert_line_audit SET section='fpsection2' WHERE falp_group='First Process' AND section LIKE 'section2%';
+UPDATE ialert_line_audit SET section='fpsection3' WHERE falp_group='First Process' AND section LIKE 'section3%';
+UPDATE ialert_line_audit SET section='fpsection4' WHERE falp_group='First Process' AND section LIKE 'section4%';
+UPDATE ialert_line_audit SET section='fpsection5' WHERE falp_group='First Process' AND section LIKE 'section5%';
+UPDATE ialert_line_audit SET section='fpsection6' WHERE falp_group='First Process' AND section LIKE 'section6%';
+UPDATE ialert_line_audit SET section='fpsection7' WHERE falp_group='First Process' AND section LIKE 'section7%';
+UPDATE ialert_line_audit SET section='fpsection8' WHERE falp_group='First Process' AND section LIKE 'section8%';
+UPDATE ialert_line_audit SET section='fpsection9' WHERE falp_group='First Process' AND section LIKE 'section9%';
+
+UPDATE ialert_line_audit SET section='sp1section1' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section1%';
+UPDATE ialert_line_audit SET section='sp1section2' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section2%';
+UPDATE ialert_line_audit SET section='sp1section3' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section3%';
+UPDATE ialert_line_audit SET section='sp1section4' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section4%';
+UPDATE ialert_line_audit SET section='sp1section5' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section5%';
+UPDATE ialert_line_audit SET section='sp1section6' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section6%';
+UPDATE ialert_line_audit SET section='sp1section7' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section7%';
+UPDATE ialert_line_audit SET section='sp1section8' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section8%';
+UPDATE ialert_line_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND section LIKE 'section9%';
+
+UPDATE ialert_line_audit SET section='sp2section1' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section1%';
+UPDATE ialert_line_audit SET section='sp2section2' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section2%';
+UPDATE ialert_line_audit SET section='sp2section3' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section3%';
+UPDATE ialert_line_audit SET section='sp2section4' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section4%';
+UPDATE ialert_line_audit SET section='sp2section5' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section5%';
+UPDATE ialert_line_audit SET section='sp2section6' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section6%';
+UPDATE ialert_line_audit SET section='sp2section7' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section7%';
+UPDATE ialert_line_audit SET section='sp2section8' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section8%';
+UPDATE ialert_line_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section9%';
 
 -- change repair to PIT
 
