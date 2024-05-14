@@ -16,31 +16,28 @@
     // }
     else{
 
- 		$check = "SELECT id,role FROM ialert_account WHERE BINARY username = '$username' AND BINARY password = '$password' ";
+ 		$check = "SELECT id,role FROM ialert_account WHERE BINARY username = ? AND BINARY password = ?";
  		$stmt = $conn->prepare($check);
- 		$stmt->execute();
+		$params = array($username, $password);
+ 		$stmt->execute($params);
  		if ($stmt->rowCount() > 0) {
  			foreach($stmt->fetchALL() as $x){
  				$role = $x['role'];
  			}
- 			if($role == 'viewer'){
- 				$_SESSION['username'] = $username;
- 				header('location: page/viewer/dashboard.php');
- 			}else if($role == 'admin'){
-                $_SESSION['username'] = $username;
-                header('location: page/admin/dashboard.php');    
-            }else if($role == 'hr'){
-                $_SESSION['username'] = $username;
-                header('location: page/hr/dashboard.php');    
-            }
-            else if($role == 'fas'){
-                $_SESSION['username'] = $username;
-                header('location: page/fas/dashboard.php');    
-            }
-            else if($role == 'provider'){
-                $_SESSION['username'] = $username;
-                header('location: page/provider/dashboard.php');    
-            }
+
+			$_SESSION['username'] = $username;
+
+			if ($role == 'viewer') {
+				header('location: page/viewer/dashboard.php');
+			} else if ($role == 'admin') {
+				header('location: page/admin/dashboard.php');
+			} else if ($role == 'hr') {
+				header('location: page/hr/dashboard.php');
+			} else if ($role == 'fas') {
+				header('location: page/fas/dashboard.php');
+			} else if ($role == 'provider') {
+				header('location: page/provider/dashboard.php');
+			}
 
  		}else{
  			echo 'Wrong Username or Password';
@@ -52,6 +49,5 @@
  	session_destroy();
  	header('location: ../index.php');
  }
-
 
 ?>

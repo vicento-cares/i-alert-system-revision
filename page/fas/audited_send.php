@@ -93,6 +93,10 @@
 
                      <div class="row">
                       <div class="col-3">
+                        <span>Section:</span>
+                        <select id="section_send" class="form-control"></select>
+                      </div>
+                      <div class="col-3">
                          <span>Groups:</span>
                     <select id="groups_fas_sent" class="form-control">
                        <option value="">Select Group</option>

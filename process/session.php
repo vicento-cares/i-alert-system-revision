@@ -14,6 +14,7 @@
 				$esection = $i['esection'];
 				$car_maker = $i['car_maker'];
 				$section = $i['sections'];
+				$falp_group = $i['falp_group'];
 			}
 		}else{
 			session_unset();

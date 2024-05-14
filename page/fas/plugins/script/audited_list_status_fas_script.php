@@ -1,5 +1,27 @@
 <script type="text/javascript">
-	    
+
+$(document).ready(function(){
+    fetch_section_dropdown();
+});	
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = '<?=$falp_group;?>';
+    
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_status').html(response);
+        }
+    });
+}
+
 const load_list_of_audited_findings_fass_status =()=>{
     $('#spinner').css('display','block');
      var empid = document.getElementById('empid_audited_fass_status').value;
@@ -13,7 +35,8 @@ const load_list_of_audited_findings_fass_status =()=>{
      var audit_type = document.getElementById('audit_type_status').value;
      var esection = '<?=$esection;?>';
      var audit_categ = document.getElementById('audit_categ_status').value;
-     var section = '<?=$section;?>';
+     var section = document.getElementById('section_status').value;
+     var falp_group = '<?=$falp_group;?>';
      var group = document.getElementById('groups_fas_status').value;
      var shift = document.getElementById('shifts_fas_status').value;
      
@@ -35,6 +58,7 @@ const load_list_of_audited_findings_fass_status =()=>{
                     audit_type:audit_type,
                     audit_categ:audit_categ,
                     section:section,
+                    falp_group:falp_group,
                     group:group,
                     shift:shift
                     

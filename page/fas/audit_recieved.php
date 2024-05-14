@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List of Audited Recieved <input type="hidden" name="section" id="section_recieved" value="<?=$section;?>"></h1>
+            <h1 class="m-0">List of Audited Recieved <input type="hidden" name="falp_group" id="falp_group_recieved" value="<?=$falp_group;?>"></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -93,6 +93,10 @@
                   </div>
                   </div>
                   <div class="row">
+                      <div class="col-3">
+                        <span>Section:</span>
+                        <select id="section_recieved" class="form-control"></select>
+                      </div>
                       <div class="col-3">
                          <span>Groups:</span>
                     <select id="groups_fas_received" class="form-control">
