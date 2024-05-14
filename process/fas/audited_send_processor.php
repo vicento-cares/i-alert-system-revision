@@ -16,11 +16,18 @@ if ($method == 'fetch_audited_list_send') {
     $audit_type = $_POST['audit_type'];
     $audit_categ = $_POST['audit_categ'];
     $section = $_POST['section'];
+    $falp_group = $_POST['falp_group'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
 
-    $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE pd = 'IR' AND date_sent IS NOT NULL AND hr IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = '$esection' AND line_no LIKE '$lname%' AND position LIKE '$position%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND audited_categ LIKE '$audit_categ%' AND section = '$section' AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE pd = 'IR' AND date_sent IS NOT NULL AND hr IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = '$esection' AND line_no LIKE '$lname%' AND position LIKE '$position%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND audited_categ LIKE '$audit_categ%' AND falp_group = '$falp_group'";
+
+    if (!empty($section)) {
+        $query .= " AND section = '$section'";
+    }
+
+    $query .= " AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();

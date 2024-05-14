@@ -71,7 +71,7 @@
                     <div class="col-3">
                   <span>Car Model: </span>
                   <input type="text" name="carmodel" id="carmodel_status" class="form-control">
-                  <input type="hidden" name="count_section" id="count_section" value="<?=$section;?>">
+                  <!-- <input type="hidden" name="count_section" id="count_section" value=""> -->
                   </div>
                    <div class="col-3">
                   <span>Audit Type: </span>
@@ -91,6 +91,10 @@
                   </div>
                     </div>
                      <div class="row">
+                      <div class="col-3">
+                        <span>Section:</span>
+                        <select id="section_status" class="form-control"></select>
+                      </div>
                       <div class="col-3">
                          <span>Groups:</span>
                     <select id="groups_fas_status" class="form-control">

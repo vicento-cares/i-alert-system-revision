@@ -1,5 +1,27 @@
 <script type="text/javascript">
 	
+$(document).ready(function(){
+    fetch_section_dropdown();
+});
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group_closed').value;
+    
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_closed').html(response);
+        }
+    });
+}
+
 const closed =()=>{
      $('#spinner').css('display','block');
      var empid = document.getElementById('empid_audited_fas_closed').value;
@@ -11,6 +33,7 @@ const closed =()=>{
      var carmaker = document.getElementById('carmaker_closed').value;
      var carmodel = document.getElementById('carmodel_closed').value;
      var section = document.getElementById('section_closed').value;
+     var falp_group = document.getElementById('falp_group_closed').value;
      var audit_type = document.getElementById('audit_type_closed').value;
      var position = document.getElementById('position_closed').value;
      var audit_categ = document.getElementById('audit_categ_closed').value;
@@ -32,6 +55,7 @@ const closed =()=>{
         carmaker:carmaker,
         carmodel:carmodel,
         section:section,
+        falp_group:falp_group,
         audit_type:audit_type,
         position:position,
         audit_categ:audit_categ,

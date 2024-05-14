@@ -8,6 +8,7 @@ if ($method == 'count_for_update_fas') {
     $car_maker = $_POST['car_maker'];
     $esection = $_POST['esection'];
     $section = $_POST['section'];
+	$falp_group = $_POST['falp_group'];
     $audit_type = $_POST['audit_type'];
     $count = "SELECT *,count(*) as total FROM ialert_audit ";
   
@@ -20,14 +21,28 @@ if ($method == 'count_for_update_fas') {
         $agency = $x['agency'];
         $days_notif = date("Y-m-d", strtotime('+4 day',strtotime($date_audited)));
 
-        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE provider = 'FAS' AND section = '$section' AND date_recieved IS NULL AND pd = 'IR' AND edit_count = 0 AND audit_type LIKE '$audit_type%'";
-            $stmt2 = $conn->prepare($count_na);
+        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE provider = 'FAS' AND falp_group = '$falp_group'";
+
+		if (!empty($section)) {
+			$count_na .= " AND section = '$section'";
+		}
+
+		$count_na .= " AND date_recieved IS NULL AND pd = 'IR' AND edit_count = 0 AND audit_type LIKE '$audit_type%'";
+
+		$stmt2 = $conn->prepare($count_na);
             $stmt2->execute();
             foreach($stmt2->fetchALL() as $j){
             	$total_ir_pending = $j['total'];
 
-            	$count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section = '$section' AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
-            $stmt3 = $conn->prepare($count_pending);
+            	$count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND falp_group = '$falp_group'";
+            
+				if (!empty($section)) {
+					$count_pending .= " AND section = '$section'";
+				}
+
+				$count_pending .= " AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
+
+				$stmt3 = $conn->prepare($count_pending);
             if ($stmt3->execute()) {
                 foreach($stmt3->fetchALL() as $a){
                            echo '<tr>';
@@ -50,6 +65,7 @@ if ($method == 'fetch_audited_list_fas') {
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
     $section = $_POST['section'];
+	$falp_group = $_POST['falp_group'];
     $audit_type = $_POST['audit_type'];
     $position = $_POST['position'];
     $audit_categ = $_POST['audit_categ'];
@@ -58,8 +74,15 @@ if ($method == 'fetch_audited_list_fas') {
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND pd IS NULL AND hr IS NULL AND section = '$section' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' 
+    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND pd IS NULL AND hr IS NULL AND falp_group = '$falp_group'";
+	
+	if (!empty($section)) {
+		$query .= " AND section = '$section'";
+	}
+
+	$query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' 
      GROUP BY id ORDER BY date_audited ASC";
+
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {

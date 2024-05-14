@@ -1,15 +1,35 @@
 <script type="text/javascript">
  
 $(document).ready(function(){
-    counts();
-    load_list_of_audited_findings_fas();
+    fetch_section_dropdown();
+    // counts();
+    // load_list_of_audited_findings_fas();
 });	
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group').value;
+    
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section').html(response);
+        }
+    });
+}
 
 const counts =()=>{
         var server_date = document.getElementById('server_date').value;
         var car_maker = document.getElementById('carmakers').value;
         var esection = '<?$esection;?>';
-        var section = document.getElementById('count_section').value;
+        var section = document.getElementById('section').value;
+        var falp_group = document.getElementById('falp_group').value;
         var audit_type = document.getElementById('audit_type').value;
 
         console.log(audit_type);
@@ -23,6 +43,7 @@ const counts =()=>{
                     car_maker:car_maker,
                     esection:esection,
                     section:section,
+                    falp_group:falp_group,
                     audit_type:audit_type
                     
                 },success:function(response){
@@ -44,6 +65,7 @@ const load_list_of_audited_findings_fas =()=>{
      var carmaker = document.getElementById('carmaker').value;
      var carmodel = document.getElementById('carmodel').value;
      var section = document.getElementById('section').value;
+     var falp_group = document.getElementById('falp_group').value;
      var audit_type = document.getElementById('audit_type').value;
      var position = document.getElementById('position').value;
      var audit_categ = document.getElementById('audit_categ').value;
@@ -64,6 +86,7 @@ const load_list_of_audited_findings_fas =()=>{
                     carmaker:carmaker,
                     carmodel:carmodel,
                     section:section,
+                    falp_group:falp_group,
                     audit_type:audit_type,
                     position:position,
                     audit_categ:audit_categ,

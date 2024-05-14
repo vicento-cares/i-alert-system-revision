@@ -1,5 +1,27 @@
 <script type="text/javascript">
 
+$(document).ready(function(){
+    fetch_section_dropdown();
+});	
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group_recieved').value;
+    
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_recieved').html(response);
+        }
+    });
+}
+
 const recieved =()=>{
      $('#spinner').css('display','block');
      var empid = document.getElementById('empid_audited_fas_recieved').value;
@@ -11,12 +33,12 @@ const recieved =()=>{
      var carmaker = document.getElementById('carmaker_recieved').value;
      var carmodel = document.getElementById('carmodel_recieved').value;
      var section = document.getElementById('section_recieved').value;
+     var falp_group = document.getElementById('falp_group_recieved').value;
      var audit_type = document.getElementById('audit_type_recieved').value;
      var position = document.getElementById('position_recieved').value;
      var audit_categ = document.getElementById('audit_categ_recieved').value;
      var group = document.getElementById('groups_fas_received').value;
      var shift = document.getElementById('shifts_fas_received').value;
-     var section = document.getElementById('section_recieved').value;
 
      $.ajax({
      url: '../../process/fas/audited_recieved_processor.php',
@@ -33,6 +55,7 @@ const recieved =()=>{
         carmaker:carmaker,
         carmodel:carmodel,
         section:section,
+        falp_group:falp_group,
         audit_type:audit_type,
         position:position,
         audit_categ:audit_categ,
