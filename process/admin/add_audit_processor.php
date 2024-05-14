@@ -1,6 +1,7 @@
 <?php 
 	include '../conn.php';
 	include '../conn2.php';
+	// include '../conn3.php';
 	$method = $_POST['method'];
 
 if($method == 'AuditCode'){
@@ -11,17 +12,36 @@ if($method == 'AuditCode'){
 	}
 
 if($method == 'fetch_details_req'){
-        $employee_num = trim($_POST['employee_num']);
-        // CHECK
-        $sql = "SELECT idNumber, empName, empPosition, empAgency, lineNo FROM a_m_employee WHERE idNumber = '$employee_num'";
-        $stmt = $conn2->prepare($sql);
-        $stmt->execute();
-        if($stmt->rowCount() > 0){
-        	foreach($stmt->fetchALL() as $x){
-            echo $x['empName'].'~!~'.$x['empPosition'].'~!~'.$x['empAgency'].'~!~'.$x['lineNo'];
-        }
+	$employee_num = trim($_POST['employee_num']);
+	// CHECK
+	$sql = "SELECT idNumber, empName, empPosition, empAgency, lineNo FROM a_m_employee WHERE idNumber = '$employee_num'";
+	$stmt = $conn2->prepare($sql);
+	$stmt->execute();
+	if($stmt->rowCount() > 0){
+		foreach($stmt->fetchALL() as $x){
+			echo $x['empName'].'~!~'.$x['empPosition'].'~!~'.$x['empAgency'].'~!~'.$x['lineNo'];
+		}
     }else{
-    	echo '';
+		// Revisions (Vince)
+    	// CHECK (Employee Management System)
+		// $sql = "SELECT emp_no, full_name, position, provider, line_no FROM m_employees WHERE emp_no = '$employee_num'";
+		// $stmt = $conn3->prepare($sql);
+		// $stmt->execute();
+		// if($stmt->rowCount() > 0){
+		// 	foreach($stmt->fetchALL() as $x){
+		// 		$line_no = "";
+		// 		$is_initial = strpos($x['line_no'], "Initial");
+		// 		if ($is_initial === false) {
+		// 			$line_no = $x['line_no'];
+		// 		} else {
+		// 			$line_no = "Initial";
+		// 		}
+		// 		echo $x['full_name'].'~!~'.$x['position'].'~!~'.$x['provider'].'~!~'.$line_no;
+		// 	}
+		// }else{
+		// 	echo '';
+		// }
+		echo '';
     }
 }
 
