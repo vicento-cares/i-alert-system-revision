@@ -23,6 +23,21 @@ if ($method == 'fetch_section_dropdown') {
 	}
 }
 
+// Revisions (Vince)
+if ($method == 'fetch_other_group_dropdown') {
+	$sql = "SELECT DISTINCT section, name FROM ialert_section WHERE falp_group = 'Other Group' ORDER BY name ASC";
+	$stmt = $conn -> prepare($sql);
+	$stmt -> execute();
+	if ($stmt -> rowCount() > 0) {
+		echo '<option selected value="">Select Section</option>';
+		foreach($stmt -> fetchAll() as $row) {
+			echo '<option value="'.htmlspecialchars($row['section']).'">'.htmlspecialchars($row['name']).'</option>';
+		}
+	} else {
+		echo '<option disabled selected value="">Select Section</option>';
+	}
+}
+
 if ($method == 'fetch_section') {
 	$section = $_POST['section'];
 	$c = 0;
