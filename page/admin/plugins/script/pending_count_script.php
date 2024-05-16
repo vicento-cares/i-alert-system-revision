@@ -1,5 +1,59 @@
 <script type="text/javascript">
 
+$(document).ready(function(){
+    fetch_other_group_dropdown();
+    fetch_section_dropdown("First Process");
+    fetch_section_dropdown("Secondary 1 Process");
+    fetch_section_dropdown("Secondary 2 Process");
+    fetch_section_dropdown("QA");
+});
+
+// Revisions (Vince)
+const fetch_other_group_dropdown = () => {
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_other_group_dropdown'
+        },
+        success: function (response) {
+            $('#other_pending').html(response);
+        }
+    });
+}
+
+// Revisions (Vince)
+const fetch_section_dropdown = falp_group => {
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            switch (falp_group) {
+                case "First Process":
+                    $('#section_fp').html(response);
+                    break;
+                case "Secondary 1 Process":
+                    $('#section_sp1').html(response);
+                    break;
+                case "Secondary 2 Process":
+                    $('#section_sp2').html(response);
+                    break;
+                case "QA":
+                    $('#section_qa').html(response);
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+}
+
 const load_count =()=>{
 	sec1();
 	sec2();
@@ -9,6 +63,11 @@ const load_count =()=>{
     sec6();
     sec7();
     sec8();
+    sec9();
+    fp();
+    sp1();
+    sp2();
+    qa();
     other_group();
     providers();
 }
@@ -1404,6 +1463,796 @@ const sec8total =()=>{
                 }   
     });
 }
+
+// Revisions (Vince)
+
+const load_sec9  =()=>{
+    var dateFrom = document.getElementById('auditedsec9datefrom').value;
+    var dateTo = document.getElementById('auditedsec9dateto').value;
+    var empid = document.getElementById('empid_sec9').value;
+    var fname = document.getElementById('fname_sec9').value;
+    var line = document.getElementById('linen_sec9').value;
+    var carmaker = document.getElementById('carmaker_sec9').value;
+    var carmodel = document.getElementById('carmodel_sec9').value;
+    var position = document.getElementById('position_sec9').value;
+    var audit_type = document.getElementById('audit_type_sec9').value;
+
+    $.ajax({
+        url: '../../process/admin/sec9_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'fetch_sec9',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            empid:empid,
+            fname:fname,
+            line:line,
+            carmaker:carmaker,
+            carmodel:carmodel,
+            position:position,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('preview_sec9_data').innerHTML = response;               
+        }
+    });          
+}
+
+// check all and uncheck
+const uncheck_all_sec9 =()=>{
+    var select_all = document.getElementById('check_all_audit_sec9');
+    select_all.checked = false;
+    $('.singleCheck').each(function(){
+        this.checked=false;
+    });
+}
+const select_all_func_sec9 =()=>{
+    var select_all = document.getElementById('check_all_audit_sec9');
+    if(select_all.checked == true){
+        console.log('check');
+        $('.singleCheck').each(function(){
+            this.checked=true;
+        });
+    }else{
+        console.log('uncheck');
+        $('.singleCheck').each(function(){
+            this.checked=false;
+        }); 
+    }
+}
+
+function export_sec9_pending(table_id, separator = ',') {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'List_of_Audit_Findings_Section9'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+const delete_sec9 =()=>{
+   var arr = [];
+    $('input.singleCheck:checkbox:checked').each(function () {
+        arr.push($(this).val());
+    });
+    var numberOfChecked = arr.length;
+    if(numberOfChecked > 0){
+
+    $.ajax({
+        url: '../../process/admin/sec9_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'deletesec9',
+            id:arr    
+        },success:function(response) {
+            if (response == 'success') {
+             load_sec9();
+             uncheck_all_sec9();
+                swal('SUCCESS!', 'Success', 'success');
+               
+            }else{
+                swal('FAILED', 'FAILED', 'error');
+            }
+        }
+    });
+   }
+}
+
+const sec9 =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    var audit_type = document.getElementById('audit_type').value;
+    $.ajax({
+        url: '../../process/admin/sec9_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'count_section9',
+                dateFrom:dateFrom,
+            dateTo:dateTo,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('count_sec9').innerHTML = response;   
+        sec9total();
+        }   
+    });
+
+}
+
+const sec9total =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    $.ajax({
+        url: '../../process/admin/sec9_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'total_sec9',
+                dateFrom:dateFrom,
+            dateTo:dateTo
+            
+        },success:function(response){
+            // console.log(response);
+            document.getElementById('grand_total9').innerHTML = response; 
+        
+        }   
+    });
+}
+
+
+const load_fp  =()=>{
+    var dateFrom = document.getElementById('auditedfpdatefrom').value;
+    var dateTo = document.getElementById('auditedfpdateto').value;
+    var empid = document.getElementById('empid_fp').value;
+    var fname = document.getElementById('fname_fp').value;
+    var line = document.getElementById('linen_fp').value;
+    var carmaker = document.getElementById('carmaker_fp').value;
+    var carmodel = document.getElementById('carmodel_fp').value;
+    var position = document.getElementById('position_fp').value;
+    var audit_type = document.getElementById('audit_type_fp').value;
+    var section = document.getElementById('section_fp').value;
+
+    $.ajax({
+        url: '../../process/admin/fp_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'fetch_fp',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            empid:empid,
+            fname:fname,
+            line:line,
+            carmaker:carmaker,
+            carmodel:carmodel,
+            position:position,
+            audit_type:audit_type,
+            section:section
+            
+        },success:function(response){
+            document.getElementById('preview_fp_data').innerHTML = response;               
+        }
+    });          
+}
+
+// check all and uncheck
+const uncheck_all_fp =()=>{
+    var select_all = document.getElementById('check_all_audit_fp');
+    select_all.checked = false;
+    $('.singleCheck').each(function(){
+        this.checked=false;
+    });
+}
+const select_all_func_fp =()=>{
+    var select_all = document.getElementById('check_all_audit_fp');
+    if(select_all.checked == true){
+        console.log('check');
+        $('.singleCheck').each(function(){
+            this.checked=true;
+        });
+    }else{
+        console.log('uncheck');
+        $('.singleCheck').each(function(){
+            this.checked=false;
+        }); 
+    }
+}
+
+function export_fp_pending(table_id, separator = ',') {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'List_of_Audit_Findings_FirstProcess'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+const delete_fp =()=>{
+   var arr = [];
+    $('input.singleCheck:checkbox:checked').each(function () {
+        arr.push($(this).val());
+    });
+    var numberOfChecked = arr.length;
+    if(numberOfChecked > 0){
+
+    $.ajax({
+        url: '../../process/admin/fp_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'deletefp',
+            id:arr    
+        },success:function(response) {
+            if (response == 'success') {
+             load_fp();
+             uncheck_all_fp();
+                swal('SUCCESS!', 'Success', 'success');
+               
+            }else{
+                swal('FAILED', 'FAILED', 'error');
+            }
+        }
+    });
+   }
+}
+
+const fp =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    var audit_type = document.getElementById('audit_type').value;
+    $.ajax({
+        url: '../../process/admin/fp_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'count_fp',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('count_fp').innerHTML = response;   
+            fptotal();
+        }   
+    });
+
+}
+
+const fptotal =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    $.ajax({
+        url: '../../process/admin/fp_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'total_fp',
+            dateFrom:dateFrom,
+            dateTo:dateTo
+            
+        },success:function(response){
+            // console.log(response);
+            document.getElementById('grand_total_fp').innerHTML = response; 
+        
+        }   
+    });
+}
+
+
+const load_sp1  =()=>{
+    var dateFrom = document.getElementById('auditedsp1datefrom').value;
+    var dateTo = document.getElementById('auditedsp1dateto').value;
+    var empid = document.getElementById('empid_sp1').value;
+    var fname = document.getElementById('fname_sp1').value;
+    var line = document.getElementById('linen_sp1').value;
+    var carmaker = document.getElementById('carmaker_sp1').value;
+    var carmodel = document.getElementById('carmodel_sp1').value;
+    var position = document.getElementById('position_sp1').value;
+    var audit_type = document.getElementById('audit_type_sp1').value;
+    var section = document.getElementById('section_sp1').value;
+
+    $.ajax({
+        url: '../../process/admin/sp1_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'fetch_sp1',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            empid:empid,
+            fname:fname,
+            line:line,
+            carmaker:carmaker,
+            carmodel:carmodel,
+            position:position,
+            audit_type:audit_type,
+            section:section
+            
+        },success:function(response){
+            document.getElementById('preview_sp1_data').innerHTML = response;               
+        }
+    });          
+}
+
+// check all and uncheck
+const uncheck_all_sp1 =()=>{
+    var select_all = document.getElementById('check_all_audit_sp1');
+    select_all.checked = false;
+    $('.singleCheck').each(function(){
+        this.checked=false;
+    });
+}
+const select_all_func_sp1 =()=>{
+    var select_all = document.getElementById('check_all_audit_sp1');
+    if(select_all.checked == true){
+        console.log('check');
+        $('.singleCheck').each(function(){
+            this.checked=true;
+        });
+    }else{
+        console.log('uncheck');
+        $('.singleCheck').each(function(){
+            this.checked=false;
+        }); 
+    }
+}
+
+function export_sp1_pending(table_id, separator = ',') {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'List_of_Audit_Findings_Secondary1Process'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+const delete_sp1 =()=>{
+   var arr = [];
+    $('input.singleCheck:checkbox:checked').each(function () {
+        arr.push($(this).val());
+    });
+    var numberOfChecked = arr.length;
+    if(numberOfChecked > 0){
+
+    $.ajax({
+        url: '../../process/admin/sp1_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'deletesp1',
+            id:arr    
+        },success:function(response) {
+            if (response == 'success') {
+             load_sp1();
+             uncheck_all_sp1();
+                swal('SUCCESS!', 'Success', 'success');
+               
+            }else{
+                swal('FAILED', 'FAILED', 'error');
+            }
+        }
+    });
+   }
+}
+
+const sp1 =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    var audit_type = document.getElementById('audit_type').value;
+    $.ajax({
+        url: '../../process/admin/sp1_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'count_sp1',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('count_sp1').innerHTML = response;   
+            sp1total();
+        }   
+    });
+
+}
+
+const sp1total =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    $.ajax({
+        url: '../../process/admin/sp1_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'total_sp1',
+            dateFrom:dateFrom,
+            dateTo:dateTo
+            
+        },success:function(response){
+            // console.log(response);
+            document.getElementById('grand_total_sp1').innerHTML = response; 
+        
+        }   
+    });
+}
+
+
+const load_sp2  =()=>{
+    var dateFrom = document.getElementById('auditedsp2datefrom').value;
+    var dateTo = document.getElementById('auditedsp2dateto').value;
+    var empid = document.getElementById('empid_sp2').value;
+    var fname = document.getElementById('fname_sp2').value;
+    var line = document.getElementById('linen_sp2').value;
+    var carmaker = document.getElementById('carmaker_sp2').value;
+    var carmodel = document.getElementById('carmodel_sp2').value;
+    var position = document.getElementById('position_sp2').value;
+    var audit_type = document.getElementById('audit_type_sp2').value;
+    var section = document.getElementById('section_sp2').value;
+
+    $.ajax({
+        url: '../../process/admin/sp2_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'fetch_sp2',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            empid:empid,
+            fname:fname,
+            line:line,
+            carmaker:carmaker,
+            carmodel:carmodel,
+            position:position,
+            audit_type:audit_type,
+            section:section
+            
+        },success:function(response){
+            document.getElementById('preview_sp2_data').innerHTML = response;               
+        }
+    });          
+}
+
+// check all and uncheck
+const uncheck_all_sp2 =()=>{
+    var select_all = document.getElementById('check_all_audit_sp2');
+    select_all.checked = false;
+    $('.singleCheck').each(function(){
+        this.checked=false;
+    });
+}
+const select_all_func_sp2 =()=>{
+    var select_all = document.getElementById('check_all_audit_sp2');
+    if(select_all.checked == true){
+        console.log('check');
+        $('.singleCheck').each(function(){
+            this.checked=true;
+        });
+    }else{
+        console.log('uncheck');
+        $('.singleCheck').each(function(){
+            this.checked=false;
+        }); 
+    }
+}
+
+function export_sp2_pending(table_id, separator = ',') {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'List_of_Audit_Findings_Secondary2Process'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+const delete_sp2 =()=>{
+   var arr = [];
+    $('input.singleCheck:checkbox:checked').each(function () {
+        arr.push($(this).val());
+    });
+    var numberOfChecked = arr.length;
+    if(numberOfChecked > 0){
+
+    $.ajax({
+        url: '../../process/admin/sp2_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'deletesp2',
+            id:arr    
+        },success:function(response) {
+            if (response == 'success') {
+             load_sp2();
+             uncheck_all_sp2();
+                swal('SUCCESS!', 'Success', 'success');
+               
+            }else{
+                swal('FAILED', 'FAILED', 'error');
+            }
+        }
+    });
+   }
+}
+
+const sp2 =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    var audit_type = document.getElementById('audit_type').value;
+    $.ajax({
+        url: '../../process/admin/sp2_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'count_sp2',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('count_sp2').innerHTML = response;   
+            sp2total();
+        }   
+    });
+
+}
+
+const sp2total =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    $.ajax({
+        url: '../../process/admin/sp2_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'total_sp2',
+            dateFrom:dateFrom,
+            dateTo:dateTo
+            
+        },success:function(response){
+            // console.log(response);
+            document.getElementById('grand_total_sp2').innerHTML = response; 
+        
+        }   
+    });
+}
+
+
+const load_qa  =()=>{
+    var dateFrom = document.getElementById('auditedqadatefrom').value;
+    var dateTo = document.getElementById('auditedqadateto').value;
+    var empid = document.getElementById('empid_qa').value;
+    var fname = document.getElementById('fname_qa').value;
+    var line = document.getElementById('linen_qa').value;
+    var carmaker = document.getElementById('carmaker_qa').value;
+    var carmodel = document.getElementById('carmodel_qa').value;
+    var position = document.getElementById('position_qa').value;
+    var audit_type = document.getElementById('audit_type_qa').value;
+    var section = document.getElementById('section_qa').value;
+
+    $.ajax({
+        url: '../../process/admin/qa_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'fetch_qa',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            empid:empid,
+            fname:fname,
+            line:line,
+            carmaker:carmaker,
+            carmodel:carmodel,
+            position:position,
+            audit_type:audit_type,
+            section:section
+            
+        },success:function(response){
+            document.getElementById('preview_qa_data').innerHTML = response;               
+        }
+    });          
+}
+
+// check all and uncheck
+const uncheck_all_qa =()=>{
+    var select_all = document.getElementById('check_all_audit_qa');
+    select_all.checked = false;
+    $('.singleCheck').each(function(){
+        this.checked=false;
+    });
+}
+const select_all_func_qa =()=>{
+    var select_all = document.getElementById('check_all_audit_qa');
+    if(select_all.checked == true){
+        console.log('check');
+        $('.singleCheck').each(function(){
+            this.checked=true;
+        });
+    }else{
+        console.log('uncheck');
+        $('.singleCheck').each(function(){
+            this.checked=false;
+        }); 
+    }
+}
+
+function export_qa_pending(table_id, separator = ',') {
+    // Select rows from table_id
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    // Download it
+    var filename = 'List_of_Audit_Findings_QA'+ '_' + new Date().toLocaleDateString() + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+const delete_qa =()=>{
+   var arr = [];
+    $('input.singleCheck:checkbox:checked').each(function () {
+        arr.push($(this).val());
+    });
+    var numberOfChecked = arr.length;
+    if(numberOfChecked > 0){
+
+    $.ajax({
+        url: '../../process/admin/qa_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'deleteqa',
+            id:arr    
+        },success:function(response) {
+            if (response == 'success') {
+             load_qa();
+             uncheck_all_qa();
+                swal('SUCCESS!', 'Success', 'success');
+               
+            }else{
+                swal('FAILED', 'FAILED', 'error');
+            }
+        }
+    });
+   }
+}
+
+const qa =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    var audit_type = document.getElementById('audit_type').value;
+    $.ajax({
+        url: '../../process/admin/qa_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'count_qa',
+            dateFrom:dateFrom,
+            dateTo:dateTo,
+            audit_type:audit_type
+            
+        },success:function(response){
+            document.getElementById('count_qa').innerHTML = response;   
+            qatotal();
+        }   
+    });
+
+}
+
+const qatotal =()=>{
+    var dateFrom = document.getElementById('auditeddatefrom').value;
+    var dateTo = document.getElementById('auditeddateto').value;
+    $.ajax({
+        url: '../../process/admin/qa_processor.php',
+        type: 'POST',
+        cache: false,
+        data:{
+            method: 'total_qa',
+            dateFrom:dateFrom,
+            dateTo:dateTo
+            
+        },success:function(response){
+            // console.log(response);
+            document.getElementById('grand_total_qa').innerHTML = response; 
+        
+        }   
+    });
+}
+
 
 const load_other =()=>{
          var dateFrom = document.getElementById('otherdatefrom').value;

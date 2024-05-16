@@ -3,7 +3,7 @@ include '../conn.php';
 include '../conn2.php';
 $method = $_POST['method'];
 
-if ($method == 'fetch_sec8') {
+if ($method == 'fetch_sp2') {
 	$dateFrom = $_POST['dateFrom'];
 	$dateTo = $_POST['dateTo'];
 	$empid = $_POST['empid'];
@@ -13,13 +13,22 @@ if ($method == 'fetch_sec8') {
 	$carmodel = $_POST['carmodel'];
 	$position = $_POST['position'];
 	$audit_type = $_POST['audit_type'];
+	$section = $_POST['section'];
 	$c = 0;
 
-	// $sec8 = "SELECT * FROM ialert_audit WHERE section = 'Section8' AND edit_count != 0 AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL ";
-	$sec8 = "SELECT * FROM ialert_audit where section = 'Section8' AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
-            UNION ALL
-         SELECT * FROM ialert_audit where pd = 'IR' AND section = 'Section8' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
-	$stmt = $conn->prepare($sec8);
+	// $sp2 = "SELECT * FROM ialert_audit WHERE falp_group = 'Secondary 2 Process' AND section = '' AND edit_count != 0 AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL ";
+	$sp2 = "SELECT * FROM ialert_audit where falp_group = 'Secondary 2 Process'";
+	if (!empty($section)) {
+		$sp2 .= " AND section = '$section'";
+	}
+	$sp2 .= " AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
+	UNION ALL
+	SELECT * FROM ialert_audit where pd = 'IR' AND falp_group = 'Secondary 2 Process'";
+	if (!empty($section)) {
+		$sp2 .= " AND section = '$section'";
+	}
+	$sp2 .= " AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
+	$stmt = $conn->prepare($sp2);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		foreach ($stmt->fetchALL() as $x) {
@@ -63,7 +72,7 @@ if ($method == 'fetch_sec8') {
 	}
 }
 
-if ($method == 'deletesec8') {
+if ($method == 'deletesp2') {
 	$id = [];
 	$id = $_POST['id'];
 	//COUNT OF ITEM TO BE UPDATED
@@ -85,7 +94,7 @@ if ($method == 'deletesec8') {
 	}
 }
 
-if ($method == 'count_section8') {
+if ($method == 'count_sp2') {
 	$dateFrom = $_POST['dateFrom'];
 	$dateTo = $_POST['dateTo'];
 	$audit_type = $_POST['audit_type'];
@@ -99,12 +108,12 @@ if ($method == 'count_section8') {
 		$agency = $x['agency'];
 		$days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-		$count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'IR' AND section = 'Section8' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
+		$count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'IR' AND section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
 		$stmt2 = $conn->prepare($count_na);
 		$stmt2->execute();
 		foreach ($stmt2->fetchALL() as $j) {
 			$total_ir_pending = $j['total'];
-			$count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section = 'Section8' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
+			$count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
 			$stmt3 = $conn->prepare($count_pending);
 			if ($stmt3->execute()) {
 				foreach ($stmt3->fetchALL() as $a) {
@@ -121,17 +130,17 @@ if ($method == 'count_section8') {
 	}
 }
 
-if ($method == 'total_sec8') {
+if ($method == 'total_sp2') {
 	$dateFrom = $_POST['dateFrom'];
 	$dateTo = $_POST['dateTo'];
-	$count_total = "SELECT count(*) as grand_total8 from ialert_audit where section = 'Section8' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas'";
+	$count_total = "SELECT count(*) as grand_total9 from ialert_audit where section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas'";
 	$stmt = $conn->prepare($count_total);
 	$stmt->execute();
 
 	foreach ($stmt->fetchALL() as $x) {
 		echo '<tr>';
 
-		echo '<td ><h3><b>' . $x['grand_total8'] . '</b></h3></td>';
+		echo '<td ><h3><b>' . $x['grand_total9'] . '</b></h3></td>';
 
 		echo '</tr>';
 	}
