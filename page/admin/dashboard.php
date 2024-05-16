@@ -127,8 +127,8 @@ if ($stmt->rowCount() > 0) {
 $fp_total = 0;
 $fp_grand_total = 0;
 
-// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') ORDER BY section ASC";
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') ORDER BY section ASC";
+// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -171,8 +171,8 @@ if ($stmt->rowCount() > 0) {
 $sp1_total = 0;
 $sp1_grand_total = 0;
 
-// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp1section1','sp1section2','sp1section3','sp1section4','sp1section5','sp1section6','sp1section7','sp1section8','sp1section9') ORDER BY section ASC";
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp1section1','sp1section2','sp1section3','sp1section4','sp1section5','sp1section6','sp1section7','sp1section8','sp1section9') ORDER BY section ASC";
+// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -215,8 +215,8 @@ if ($stmt->rowCount() > 0) {
 $sp2_total = 0;
 $sp2_grand_total = 0;
 
-// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') ORDER BY section ASC";
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') ORDER BY section ASC";
+// $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
