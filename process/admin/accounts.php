@@ -10,13 +10,21 @@ if ($method == 'register_users') {
 	$esection = $_POST['esection'];
 	$carmaker = $_POST['carmaker'];
 	$section = $_POST['section'];
+	$falp_group = $_POST['falp_group'];
 	$check = "SELECT id FROM ialert_account WHERE username = '$username'";
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		echo 'Already Exist';
 	}else{
-		$query = "INSERT INTO ialert_account (`username`,`password`,`role`,`esection`,`car_maker`,`sections`) VALUES ('$username', '$password','$role','$esection','$carmaker','$section')";
+		$query = "INSERT INTO ialert_account (`username`,`password`,`role`,`esection`,`car_maker`,`sections`,`falp_group`) VALUES ('$username', '$password','$role','$esection','$carmaker','$section'";
+		if (!empty($falp_group)) {
+			$query .= ",'$falp_group'";
+		} else {
+			$query .= ",NULL";
+		}
+		$query .= ")";
+
 		$stmt2 = $conn->prepare($query);
 		if ($stmt2->execute()) {
 			echo 'success';
@@ -74,13 +82,21 @@ if ($method == 'update_user') {
 	$esection = $_POST['esection'];
 	$carmaker = $_POST['carmaker'];
 	$section = $_POST['section'];
+	$falp_group = $_POST['falp_group'];
 	$check = "SELECT id FROM ialert_account WHERE username = '$username' AND password = '$password' AND role = '$role' AND esection = '$esection' AND car_maker = '$carmaker' AND section = '$section'";
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		echo 'Already Exist';
 	}else{
-		$query = "UPDATE ialert_account SET username = '$username', password = '$password', role = '$role', esection = '$esection', car_maker = '$carmaker', sections = '$section' WHERE id = '$id'";
+		$query = "UPDATE ialert_account SET username = '$username', password = '$password', role = '$role', esection = '$esection', car_maker = '$carmaker', sections = '$section'";
+		if (!empty($falp_group)) {
+			$query .= ", falp_group = '$falp_group'";
+		} else {
+			$query .= ", falp_group = NULL";
+		}
+		$query .= " WHERE id = '$id'";
+
 		$stmt2 = $conn->prepare($query);
 		if ($stmt2->execute()) {
 			echo 'success';
