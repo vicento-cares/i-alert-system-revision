@@ -97,6 +97,8 @@ UPDATE ialert_audit SET falp_group='Production Innovation Team' WHERE section LI
 UPDATE ialert_audit SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_audit SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 
+UPDATE ialert_audit SET section='section9' WHERE car_maker LIKE 'Subaru%';
+
 UPDATE ialert_audit SET falp_group='First Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Cutting and Crimping%';
 UPDATE ialert_audit SET falp_group='First Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Cutting and rimping%';
 UPDATE ialert_audit SET falp_group='First Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Cutting and crimping%';
@@ -419,6 +421,10 @@ UPDATE ialert_audit SET section='sp2section7' WHERE falp_group='Secondary 2 Proc
 UPDATE ialert_audit SET section='sp2section8' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section8%';
 UPDATE ialert_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section9%';
 
+UPDATE ialert_audit SET section='fpsection9' WHERE falp_group='First Process' AND car_maker LIKE 'Subaru%';
+UPDATE ialert_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND car_maker LIKE 'Subaru%';
+UPDATE ialert_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND car_maker LIKE 'Subaru%';
+
 -- ialert_line_audit query for falp_group
 
 UPDATE ialert_line_audit SET falp_group='FAP1' WHERE section LIKE 'section1%';
@@ -434,6 +440,8 @@ UPDATE ialert_line_audit SET falp_group='Production Innovation Team' WHERE secti
 UPDATE ialert_line_audit SET falp_group='Production Innovation Team' WHERE section LIKE 'PIT%';
 UPDATE ialert_line_audit SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_line_audit SET falp_group='QA' WHERE section LIKE 'qa-initial%';
+
+UPDATE ialert_line_audit SET section='section9' WHERE car_maker LIKE 'Subaru%';
 
 UPDATE ialert_line_audit SET falp_group='First Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Cutting and Crimping%';
 UPDATE ialert_line_audit SET falp_group='First Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'SAM%';
@@ -715,6 +723,10 @@ UPDATE ialert_line_audit SET section='sp2section6' WHERE falp_group='Secondary 2
 UPDATE ialert_line_audit SET section='sp2section7' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section7%';
 UPDATE ialert_line_audit SET section='sp2section8' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section8%';
 UPDATE ialert_line_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND section LIKE 'section9%';
+
+UPDATE ialert_line_audit SET section='fpsection9' WHERE falp_group='First Process' AND car_maker LIKE 'Subaru%';
+UPDATE ialert_line_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND car_maker LIKE 'Subaru%';
+UPDATE ialert_line_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND car_maker LIKE 'Subaru%';
 
 -- change repair to PIT
 
