@@ -236,9 +236,6 @@ function check_csv($file, $conn) {
         if ($row_valid_arr[8] == 1) {
             $message = $message . 'Group doesn\'t exists on row/s ' . implode(", ", $notExistsFalpGroupArr) . '. ';
         }
-        if ($row_valid_arr[9] == 1) {
-            $message = $message . 'Shift doesn\'t exists on row/s ' . implode(", ", $notExistsShiftArr) . '. ';
-        }
 
         if ($hasBlankError >= 1) {
             $message = $message . 'Blank Cell/s Exists on row/s ' . implode(", ", $hasBlankErrorArr) . '. ';
@@ -286,7 +283,8 @@ if (isset($_POST['upload'])) {
                     $dates = new DateTime($date_audited);
                     $date_auditeds = date_format($dates, "Y-m-d");
 
-                    $insert = "INSERT INTO ialert_line_audit (`batch`,`date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) VALUES ('$lc','$date_auditeds','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_only','$section','$falp_group')";
+                    $insert = "INSERT INTO ialert_line_audit (`batch`,`date_audited`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) 
+                                VALUES ('$lc','$date_auditeds','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_only','$section','$falp_group')";
                     $stmt = $conn->prepare($insert);
                     if ($stmt->execute()) {
                         $error = 0;
@@ -320,16 +318,16 @@ if (isset($_POST['upload'])) {
                 echo '<script>
                     var x = confirm("WITH ERROR! ' . $chkCsvMsg . ' ");
                     if(x == true){
-                        location.replace("../../page/admin/add_audit.php");
+                        location.replace("../../page/admin/add_line_audit.php");
                     }else{
-                        location.replace("../../page/admin/add_audit.php");
+                        location.replace("../../page/admin/add_line_audit.php");
                     }
                 </script>';
             }
         }
     } else {
         echo '<script>
-                var x = confirm("CSV FILE NOT UPLOADED! # OF ERRORS ' . $error . ' ");
+                var x = confirm("CSV FILE NOT UPLOADED! ");
                 if(x == true){
                     location.replace("../../page/admin/add_line_audit.php");
                 }else{
@@ -339,7 +337,7 @@ if (isset($_POST['upload'])) {
     }
 } else {
     echo '<script>
-            var x = confirm("INVALID FILE FORMAT! # OF ERRORS ' . $error . ' ");
+            var x = confirm("INVALID FILE FORMAT! ");
             if(x == true){
                 location.replace("../../page/admin/add_line_audit.php");
             }else{

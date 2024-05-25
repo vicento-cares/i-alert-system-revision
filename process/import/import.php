@@ -314,7 +314,8 @@ if (isset($_POST['upload'])) {
                     $dates = new DateTime($date_audited);
                     $date_auditeds = date_format($dates, "Y-m-d");
 
-                    $insert = "INSERT INTO ialert_audit (`batch`,`date_audited`,`full_name`,`employee_num`,`provider`,`position`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) VALUES ('$ac','$date_auditeds','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_time','$section','$falp_group')";
+                    $insert = "INSERT INTO ialert_audit (`batch`,`date_audited`,`full_name`,`employee_num`,`provider`,`position`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) 
+                                VALUES ('$ac','$date_auditeds','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_time','$section','$falp_group')";
                     $stmt = $conn->prepare($insert);
                     if ($stmt->execute()) {
                         $error = 0;
@@ -357,7 +358,7 @@ if (isset($_POST['upload'])) {
         }
     } else {
         echo '<script>
-                var x = confirm("CSV FILE NOT UPLOADED! # OF ERRORS ' . $error . ' ");
+                var x = confirm("CSV FILE NOT UPLOADED! ");
                 if(x == true){
                     location.replace("../../page/admin/add_audit.php");
                 }else{
@@ -367,7 +368,7 @@ if (isset($_POST['upload'])) {
     }
 } else {
     echo '<script>
-            var x = confirm("INVALID FILE FORMAT! # OF ERRORS ' . $error . ' ");
+            var x = confirm("INVALID FILE FORMAT! ");
             if(x == true){
                 location.replace("../../page/admin/add_audit.php");
             }else{
