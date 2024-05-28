@@ -1,4 +1,22 @@
 <script type="text/javascript">
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group_update').value;
+
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_update').html(response);
+        }
+    });
+}
 	
 const load_list_of_audit_findings =()=>{
  
@@ -18,6 +36,7 @@ const load_list_of_audit_findings =()=>{
      var provider = document.getElementById('prov').value;
      var group = document.getElementById('groups').value;
      var shift = document.getElementById('shifts').value;
+     var falp_group = document.getElementById('falp_group').value;
            $.ajax({
                 url: '../../process/admin/list_of_audit_processor.php',
                 type: 'POST',
@@ -37,7 +56,8 @@ const load_list_of_audit_findings =()=>{
                     section:section,
                     provider:provider,
                     group:group,
-                    shift:shift
+                    shift:shift,
+                    falp_group:falp_group,
                 },success:function(response){
                     document.getElementById('audit_data').innerHTML = response;
                     $('#spinner').fadeOut(function(){                       
@@ -167,6 +187,7 @@ const get_set =(param)=>{
     var date_audited = data[15];
     var remarks = data[16];
     var section = data[17];
+    var falp_group = data[18];
 
     document.getElementById('id_update').value = id;
     document.getElementById('employee_num_update').value = employee_num;
@@ -185,7 +206,14 @@ const get_set =(param)=>{
     document.getElementById('audited_by_update').value = audited_by;
     document.getElementById('date_audited_update').value = date_audited;
     document.getElementById('remarks_update').value = remarks;
-     document.getElementById('section_update').value = section;
+    // document.getElementById('section_update').value = section;
+    document.getElementById('falp_group_update').value = falp_group;
+
+    fetch_section_dropdown();
+
+    setTimeout(() => {
+        document.getElementById('section_update').value = section;
+    } , 500);
 
 }
 
@@ -209,6 +237,7 @@ const update_audit_data =()=>{
    var date_audited = document.getElementById('date_audited_update').value;
    var remarks = document.getElementById('remarks_update').value;
    var section =  document.getElementById('section_update').value;
+   var group =  document.getElementById('falp_group_update').value;
    
     $.ajax({
         url: '../../process/admin/update_audit_processor.php',
@@ -233,7 +262,8 @@ const update_audit_data =()=>{
             audited_by:audited_by,
             date_audited:date_audited,
             remarks:remarks,
-            section:section
+            section:section,
+            group:group,
             
         },success:function(response) {
             console.log(response);

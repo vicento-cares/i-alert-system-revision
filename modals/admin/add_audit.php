@@ -251,7 +251,7 @@
               <th>Provider</th>
               <th>Position</th>
               <th>Shift</th>
-              <th>Group</th>
+              <th>Shift Group</th>
               <th>Car Maker</th>
               <th>Car Model</th>
               <th>Line No.</th>
@@ -260,6 +260,7 @@
               <th>Audited By</th>
               <th>Audit Category</th>
               <th>Remarks</th>
+              <th>Group</th>
               <th>Section</th>
             </thead>
             <tbody id="data_preview_audit"></tbody>

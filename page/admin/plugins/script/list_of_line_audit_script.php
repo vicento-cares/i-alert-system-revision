@@ -1,4 +1,22 @@
 <script type="text/javascript">
+
+// Revisions (Vince)
+const fetch_section_dropdown = () => {
+    let falp_group = document.getElementById('falp_group_line_update').value;
+
+    $.ajax({
+        url: '../../process/admin/sections.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            method: 'fetch_section_dropdown',
+            falp_group: falp_group
+        },
+        success: function (response) {
+            $('#section_line_update').html(response);
+        }
+    });
+}
 	
 const load_list_of_line_audit_findings =()=>{
     $('#spinner_line').css('display','block');
@@ -9,6 +27,7 @@ const load_list_of_line_audit_findings =()=>{
      var carmodel =document.getElementById('car_model').value;
      var audit_categ = document.getElementById('audit_cat').value;
      var section = document.getElementById('section').value;
+     var falp_group = document.getElementById('falp_group').value;
            $.ajax({
                 url: '../../process/admin/list_of_line_audit_processor.php',
                 type: 'POST',
@@ -21,7 +40,8 @@ const load_list_of_line_audit_findings =()=>{
                     carmaker:carmaker,
                     carmodel:carmodel,
                     audit_categ:audit_categ,
-                    section:section
+                    section:section,
+                    falp_group:falp_group
                     
                 },success:function(response){
                     // console.log(response);
@@ -136,6 +156,7 @@ const get_set_line =(param)=>{
      var remarks = data[11];
      var audit_type = data[12];
      var section = data[13];
+     var falp_group = data[14];
 
       document.getElementById('id_line_update').value = id;
       document.getElementById('shift_line_update').value = shift;
@@ -150,7 +171,14 @@ const get_set_line =(param)=>{
       document.getElementById('line_audit_categ_update').value = audited_categ;
       document.getElementById('remarks_line_update').value = remarks;
       document.getElementById('line_audit_type_update').value = audit_type;
-      document.getElementById('section_line_update').value = section;
+    //   document.getElementById('section_line_update').value = section;
+      document.getElementById('falp_group_line_update').value = falp_group;
+
+      fetch_section_dropdown();
+
+    setTimeout(() => {
+        document.getElementById('section_line_update').value = section;
+    } , 500);
 
 }
 
@@ -171,6 +199,7 @@ const update_lineaudit =()=>{
    var date_audited = document.getElementById('date_line_audited_update').value;
    var remarks = document.getElementById('remarks_line_update').value;
    var section = document.getElementById('section_line_update').value;
+   var falp_group = document.getElementById('falp_group_update').value;
 
     $.ajax({
         url: '../../process/admin/update_line_audit_processor.php',
@@ -192,7 +221,8 @@ const update_lineaudit =()=>{
             date_audited:date_audited,
             remarks:remarks,
             audit_type:audit_type,
-            section:section
+            section:section,
+            group:falp_group
             
         },success:function(response) {
             console.log(response);
