@@ -78,7 +78,7 @@
                     </select>
                       </div>
             <div class="col-3">
-                         <span>Groups:</span>
+                         <span>Shift Groups:</span>
                     <select id="groups_provider_status" class="form-control">
                        <option value="">Select Group</option>
                         <option value="a">A</option>
@@ -179,7 +179,7 @@
                     <th style="text-align:center;">Shift</th>
                     <th style="text-align:center;">Employee ID</th>
                     <th style="text-align:center;">Provider</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Line No.</th>
