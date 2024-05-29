@@ -2,6 +2,7 @@
 
     $(document).ready(function () {
         fetch_process_dropdown();
+        fetch_group_dropdown();
     });
 
     // Revisions (Vince)
@@ -19,6 +20,20 @@
         });
     }
 
+    const fetch_group_dropdown = () => {
+        $.ajax({
+            url: '../../process/viewer/list_of_line_audited_processor.php',
+            type: 'POST',
+            cache: false,
+            data: {
+                method: 'fetch_group_dropdown'
+            },
+            success: function (response) {
+                $('#falp_group_lineaudited').html(response);
+            }
+        });
+    }
+
     const load_list_of_line_audited_findings = () => {
         $('#spinner_line_audited').css('display', 'block');
         var line_n = document.getElementById('line_n_audited').value;
@@ -30,6 +45,7 @@
         var audit_categ = document.getElementById('audit_categ_lineaudited').value;
         var section = document.getElementById('section_lineaudited').value;
         var process = document.getElementById('process_lineaudited').value;
+        var falp_group = document.getElementById('falp_group_lineaudited').value;
 
         $.ajax({
             url: '../../process/viewer/list_of_line_audited_processor.php',
@@ -45,7 +61,8 @@
                 // audit_type:audit_type,
                 audit_categ: audit_categ,
                 section: section,
-                process: process
+                process: process,
+                falp_group: falp_group,
             }, success: function (response) {
                 document.getElementById('line_audited_data').innerHTML = response;
                 $('#spinner_line_audited').fadeOut(function () {
