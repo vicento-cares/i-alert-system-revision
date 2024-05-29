@@ -175,6 +175,22 @@
           </div>
         </div>
         <div class="row">
+        <div class="col-3">
+              <span>Group:</span>
+              <select class="form-control" name="falp_group_update" id="falp_group_update" onchange="fetch_section_dropdown()">
+                <option value="">Select Group</option>
+                <?php
+                require '../../process/conn.php';
+                $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                $stmt = $conn->prepare($get_curiculum);
+                $stmt->execute();
+                foreach ($stmt->fetchALL() as $x) {
+
+                  echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+                }
+                ?>
+              </select>
+            </div>
           <div class="col-3">
             <span>Section:</span>
             <select class="form-control" name="section_update" id="section_update">
@@ -210,22 +226,7 @@
 
             </div>
           </div>
-          <div class="col-3">
-              <span>Group:</span>
-              <select class="form-control" name="falp_group_update" id="falp_group_update" onchange="fetch_section_dropdown()">
-                <option value="">Select Group</option>
-                <?php
-                require '../../process/conn.php';
-                $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
-                $stmt = $conn->prepare($get_curiculum);
-                $stmt->execute();
-                foreach ($stmt->fetchALL() as $x) {
-
-                  echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
-                }
-                ?>
-              </select>
-            </div>
+         
 
             <br>
             <div class="row">

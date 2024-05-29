@@ -124,6 +124,22 @@
 
         <div class="row">
           <div class="col-3">
+            <span>Group:</span>
+            <select class="form-control" name="falp_group_line_update" id="falp_group_line_update" onchange="fetch_section_dropdown()">
+              <option value="">Select Group</option>
+              <?php
+              require '../../process/conn.php';
+              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+              $stmt = $conn->prepare($get_curiculum);
+              $stmt->execute();
+              foreach ($stmt->fetchALL() as $x) {
+                
+                echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+              }
+              ?>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Section:</span>
             <select class="form-control" name="section_line_update" id="section_line_update">
               <option value="">Select Section</option>
@@ -145,30 +161,14 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
+  
                 echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
               }
               ?>
             </select>
           </div>
-          <div class="col-3">
-            <span>Group:</span>
-            <select class="form-control" name="falp_group_line_update" id="falp_group_line_update" onchange="fetch_section_dropdown()">
-              <option value="">Select Group</option>
-              <?php
-              require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
-              $stmt = $conn->prepare($get_curiculum);
-              $stmt->execute();
-              foreach ($stmt->fetchALL() as $x) {
-
-                echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
-              }
-              ?>
-            </select>
-          </div>
         </div>
-
+        
         <br>
         <div class="row">
           <div class="col-12">
