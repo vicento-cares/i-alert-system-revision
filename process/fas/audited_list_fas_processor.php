@@ -115,6 +115,7 @@ if ($method == 'fetch_audited_list_fas') {
 			                echo '<td>'.$x['car_maker'].'</td>';
 			                echo '<td>'.$x['car_model'].'</td>';
 			                echo '<td>'.$x['section'].'</td>';
+			                echo '<td>'.$x['falp_group'].'</td>';
 			                echo '<td>'.$x['line_no'].'</td>';
 			                echo '<td>'.$x['process'].'</td>';
 			                echo '<td>'.$x['audit_findings'].'</td>';
@@ -123,6 +124,8 @@ if ($method == 'fetch_audited_list_fas') {
 			                echo '<td>'.$x['audited_categ'].'</td>';
 			                echo '<td>'.$x['remarks'].'</td>';
 			                echo '<td>'.$x['agency'].'</td>';
+			                echo '<td>'.$x['hr'].'</td>';
+			         
                  	echo '</tr>';
                } else{
                    	echo '<tr>';
@@ -146,6 +149,7 @@ if ($method == 'fetch_audited_list_fas') {
 			                echo '<td>'.$x['car_maker'].'</td>';
 			                echo '<td>'.$x['car_model'].'</td>';
 			                echo '<td>'.$x['section'].'</td>';
+			                echo '<td>'.$x['falp_group'].'</td>';
 			                echo '<td>'.$x['line_no'].'</td>';
 			                echo '<td>'.$x['process'].'</td>';
 			                echo '<td>'.$x['audit_findings'].'</td>';
@@ -154,6 +158,7 @@ if ($method == 'fetch_audited_list_fas') {
 			                echo '<td>'.$x['audited_categ'].'</td>';
 			                echo '<td>'.$x['remarks'].'</td>';
 			                echo '<td>'.$x['agency'].'</td>';
+			                echo '<td>'.$x['hr'].'</td>';
                 	echo '</tr>';
                }
                
