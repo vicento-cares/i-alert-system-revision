@@ -17,6 +17,19 @@ if ($method == 'fetch_process_dropdown') {
 		echo '<option disabled selected value="">Select Process</option>';
 	}
 }
+if ($method == 'fetch_group_dropdown') {
+	$sql = "SELECT DISTINCT falp_group FROM ialert_audit ORDER BY falp_group ASC";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+	if ($stmt->rowCount() > 0) {
+		echo '<option selected value="">Select Group</option>';
+		foreach ($stmt->fetchAll() as $row) {
+			echo '<option value="' . htmlspecialchars($row['falp_group']) . '">' . htmlspecialchars($row['falp_group']) . '</option>';
+		}
+	} else {
+		echo '<option disabled selected value="">Select Group</option>';
+	}
+}
 
 if ($method == 'fetch_audited_list') {
 	$dateFrom = $_POST['dateFrom'];
@@ -32,9 +45,10 @@ if ($method == 'fetch_audited_list') {
 	$section = $_POST['section'];
 	$provider = $_POST['provider'];
 	$process = $_POST['process'];
+	$falp_group = $_POST['falp_group'];
 	$c = 0;
 
-	$query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND process LIKE '$process%' AND(date_audited >='$dateFrom' AND date_audited <= '$dateTo') GROUP BY id ORDER BY date_audited ASC";
+	$query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND process LIKE '$process%' AND falp_group LIKE '$falp_group%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') GROUP BY id ORDER BY date_audited ASC";
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
@@ -59,6 +73,7 @@ if ($method == 'fetch_audited_list') {
 			echo '<td>' . $x['audited_categ'] . '</td>';
 			echo '<td>' . $x['remarks'] . '</td>';
 			echo '<td>' . $x['section'] . '</td>';
+			echo '<td>' . $x['falp_group'] . '</td>';
 			echo '</tr>';
 
 		}

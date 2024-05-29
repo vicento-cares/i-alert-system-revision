@@ -97,7 +97,12 @@
                         <select id="section_send" class="form-control"></select>
                       </div>
                       <div class="col-3">
-                         <span>Groups:</span>
+                        <span>Group:</span>
+                        <input type="text" class="form-control" name="" id="falp_group_send" value="<?= $falp_group; ?>" readonly>
+                        <!-- <select id="section_send" class="form-control"></select> -->
+                      </div>
+                      <div class="col-3">
+                         <span>Shift Groups:</span>
                     <select id="groups_fas_sent" class="form-control">
                        <option value="">Select Group</option>
                         <option value="a">A</option>
@@ -141,7 +146,7 @@
                     <th style="text-align:center;">Position</th>
                     <th style="text-align:center;">Shift</th>
                     <th style="text-align:center;">Provider</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Line No.</th>

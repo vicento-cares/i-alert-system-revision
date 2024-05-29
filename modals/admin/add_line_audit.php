@@ -209,7 +209,7 @@
               <th>#</th>
               <th>Date Audited</th>
               <th>Shift</th>
-              <th>Group</th>
+              <th>Shift Group</th>
               <th>Car Maker</th>
               <th>Car Model</th>
               <th>Line No</th>
@@ -218,6 +218,8 @@
               <th>Audited By</th>
               <th>Audit Category</th>
               <th>Audit Type</th>
+              <th>Group</th>
+              <th>Section</th>
               <th>Remarks</th>
 
             </thead>

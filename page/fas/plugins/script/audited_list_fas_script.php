@@ -71,6 +71,7 @@ const load_list_of_audited_findings_fas =()=>{
      var audit_categ = document.getElementById('audit_categ').value;
      var group = document.getElementById('groups_fas').value;
      var shift = document.getElementById('shifts_fas').value;
+     var falp_group = document.getElementById('falp_group').value;
                 $.ajax({
                 url: '../../process/fas/audited_list_fas_processor.php',
                 type: 'POST',
@@ -91,7 +92,8 @@ const load_list_of_audited_findings_fas =()=>{
                     position:position,
                     audit_categ:audit_categ,
                     group:group,
-                    shift:shift
+                    shift:shift,
+                    falp_group:falp_group
                     
                 },success:function(response){
                     // console.log(response);

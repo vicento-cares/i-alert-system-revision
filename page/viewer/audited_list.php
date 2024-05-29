@@ -105,6 +105,10 @@
                     <label>Process:</label>
                     <select class="form-control" name="process_audited" id="process_audited"></select>
                   </div>
+                  <div class="col-3">
+                    <label>Group:</label>
+                    <select class="form-control" name="falp_group_audited" id="falp_group_audited"></select>
+                  </div>
                 </div>
               </h3>
 
@@ -146,7 +150,7 @@
                     <th style="text-align:center;">Employee ID</th>
                     <th style="text-align:center;">Provider</th>
                     <th style="text-align:center;">Shift</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Line No.</th>
@@ -156,6 +160,7 @@
                     <th style="text-align:center;">Audit Category</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Group</th>
                     <!--  <th style="text-align:center;">PD Status</th>              
                     <th style="text-align:center;">AGENCY Status</th> 
                     <th style="text-align:center;">HR Status</th>  -->

@@ -15,6 +15,7 @@ const admin_closed =()=>{
      var group = document.getElementById('group_admin').value;
      var shift = document.getElementById('shift_admin').value;
      var section = document.getElementById('section_admin').value;
+     var falp_group = document.getElementById('falp_group').value;
      var provider = document.getElementById('provider_closed').value;
 
      $.ajax({
@@ -36,6 +37,7 @@ const admin_closed =()=>{
 		group:group,
 		shift:shift,
 		section:section,
+		falp_group:falp_group,
         provider:provider
    	 },success:function(response){
         document.getElementById('audited_closed_admin').innerHTML = response;

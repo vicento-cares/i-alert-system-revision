@@ -104,6 +104,7 @@ if ($method == 'prev_audit') {
 		echo '<td>'.$x['audited_by'].'</td>';	
 		echo '<td>'.$x['audited_categ'].'</td>';
 		echo '<td>'.$x['remarks'].'</td>';	
+		echo '<td>'.$x['falp_group'].'</td>';			
 		echo '<td>'.$x['section'].'</td>';			
 		echo '</tr>';
 	}

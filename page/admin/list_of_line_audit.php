@@ -76,6 +76,22 @@
                       <label>Section:</label>
                       <input type="text" name="section" id="section" class="form-control">
                     </div>
+                    <div class="col-2">
+                      <label>Group:</label>
+                      <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
+                        <option value="">Select Group</option>
+                        <?php
+                        require '../../process/conn.php';
+                        $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                        $stmt = $conn->prepare($get_curiculum);
+                        $stmt->execute();
+                        foreach ($stmt->fetchALL() as $x) {
+
+                          echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
                 </h3>
 
@@ -123,7 +139,7 @@
                     <th style="text-align:center; display: none;">Audit Code:</th>
                     <th style="text-align:center;">Date Audited</th>
                     <th style="text-align:center;">Shift</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Line No.</th>
@@ -134,6 +150,7 @@
                     <th style="text-align:center;">Audit Type</th>
                     <th style="text-align:center;">Remarks</th> 
                     <th style="text-align:center;">Section</th> 
+                    <th style="text-align:center;">Group</th> 
 
                 </thead>
                 <tbody id="line_audit_data" style="text-align:center;"></tbody>

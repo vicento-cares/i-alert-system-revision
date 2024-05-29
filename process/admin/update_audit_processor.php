@@ -22,8 +22,9 @@ if ($method == 'updateaudit') {
 	$date_audited = $_POST['date_audited'];
 	$remarks = $_POST['remarks'];
 	$section = $_POST['section'];
+	$falp_group = $_POST['falp_group'];
     
-    $update = "UPDATE ialert_audit SET employee_num = '$employee_num', full_name = '$full_name', position = '$position', provider = '$provider', shift = '$shift', audit_type = '$audit_type', groups = '$groups', audit_type = '$audit_type', audited_categ = '$audit_categ', car_maker = '$carmaker', car_model = '$carmodel', line_no = '$emline', process = '$process',audit_findings = '$audit_findings', audited_by = '$audited_by', date_audited = '$date_audited', remarks = '$remarks', date_updated = '$server_date_only', section = '$section' WHERE id = '$id'";
+    $update = "UPDATE ialert_audit SET employee_num = '$employee_num', full_name = '$full_name', position = '$position', provider = '$provider', shift = '$shift', audit_type = '$audit_type', groups = '$groups', audit_type = '$audit_type', audited_categ = '$audit_categ', car_maker = '$carmaker', car_model = '$carmodel', line_no = '$emline', process = '$process',audit_findings = '$audit_findings', audited_by = '$audited_by', date_audited = '$date_audited', remarks = '$remarks', date_updated = '$server_date_only', section = '$section', falp_group = '$falp_group' WHERE id = '$id'";
     $stmt = $conn->prepare($update);
     if ($stmt->execute()) {
     	echo 'success';

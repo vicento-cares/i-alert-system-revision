@@ -2,6 +2,7 @@
 
     $(document).ready(function () {
         fetch_process_dropdown();
+        fetch_group_dropdown();
     });
 
     // Revisions (Vince)
@@ -15,6 +16,20 @@
             },
             success: function (response) {
                 $('#process_audited').html(response);
+            }
+        });
+    }
+    
+    const fetch_group_dropdown = () => {
+        $.ajax({
+            url: '../../process/viewer/list_of_audited_processor.php',
+            type: 'POST',
+            cache: false,
+            data: {
+                method: 'fetch_group_dropdown'
+            },
+            success: function (response) {
+                $('#falp_group_audited').html(response);
             }
         });
     }
@@ -34,6 +49,7 @@
         var section = document.getElementById('section_audited').value;
         var provider = document.getElementById('provider_audited').value;
         var process = document.getElementById('process_audited').value;
+        var falp_group = document.getElementById('falp_group_audited').value;
 
         $.ajax({
             url: '../../process/viewer/list_of_audited_processor.php',
@@ -53,7 +69,8 @@
                 audit_categ: audit_categ,
                 section: section,
                 provider: provider,
-                process: process
+                process: process,
+                falp_group: falp_group,
 
             }, success: function (response) {
                 document.getElementById('audited_data').innerHTML = response;
