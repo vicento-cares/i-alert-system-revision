@@ -392,6 +392,8 @@ UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'ini
 UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding (insertion of cap)%';
 UPDATE ialert_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding joint%';
 
+UPDATE ialert_audit SET falp_group='Other Group' WHERE section IN ('pe-ame', 'eq-final', 'warehouse', 'it', 'dock-audit', 'tube-cutting', 'battery', 'eq-initial', 'hr-ga', 'QC-QC', 'PE', 'fabrication', 'safety', 'qm', 'me', 'mpd', 'pdcd', 'fgi');
+
 UPDATE ialert_audit SET section='fpsection1' WHERE falp_group='First Process' AND section LIKE 'section1%';
 UPDATE ialert_audit SET section='fpsection2' WHERE falp_group='First Process' AND section LIKE 'section2%';
 UPDATE ialert_audit SET section='fpsection3' WHERE falp_group='First Process' AND section LIKE 'section3%';
@@ -697,6 +699,8 @@ UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Joint Crimping 3%';
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Jointc crimping%';
 UPDATE ialert_line_audit SET falp_group='Secondary 2 Process' WHERE line_no LIKE 'initial%' AND car_maker LIKE 'Honda%' AND process LIKE 'Welding joint%';
+
+UPDATE ialert_line_audit SET falp_group='Other Group' WHERE section IN ('pe-ame', 'eq-final', 'warehouse', 'it', 'dock-audit', 'tube-cutting', 'battery', 'eq-initial', 'hr-ga', 'QC-QC', 'PE', 'fabrication', 'safety', 'qm', 'me', 'mpd', 'pdcd', 'fgi');
 
 UPDATE ialert_line_audit SET section='fpsection1' WHERE falp_group='First Process' AND section LIKE 'section1%';
 UPDATE ialert_line_audit SET section='fpsection2' WHERE falp_group='First Process' AND section LIKE 'section2%';
