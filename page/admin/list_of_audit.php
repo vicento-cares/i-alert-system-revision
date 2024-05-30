@@ -116,7 +116,18 @@
               <div class="row">
                   <div class="col-3">
                     <label>Section:</label>
-                    <input type="text" name="sect" id="sect" class="form-control">
+                    <select class="form-control" name="sect" id="sect">
+                      <option value="">Select Section</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                      $stmt = $conn->prepare($get_curiculum);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $x) {
+                        echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                      }
+                      ?>
+                    </select>
                   </div>
                   <div class="col-3">
                     <label>Provider:</label>
@@ -140,19 +151,19 @@
                   </div>
                   <div class="col-3">
                     <label>Group:</label>
-                    <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
-                        <option value="">Select Group</option>
-                        <?php
-                        require '../../process/conn.php';
-                        $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
-                        $stmt = $conn->prepare($get_curiculum);
-                        $stmt->execute();
-                        foreach ($stmt->fetchALL() as $x) {
+                    <select class="form-control" name="falp_group" id="falp_group">
+                      <option value="">Select Group</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                      $stmt = $conn->prepare($get_curiculum);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $x) {
 
-                          echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
-                        }
-                        ?>
-                      </select>
+                        echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+                      }
+                      ?>
+                    </select>
                   </div>
               </div>
  

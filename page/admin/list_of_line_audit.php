@@ -74,7 +74,18 @@
                     </div>
                     <div class="col-2">
                       <label>Section:</label>
-                      <input type="text" name="section" id="section" class="form-control">
+                      <select class="form-control" name="section" id="section">
+                        <option value="">Select Section</option>
+                        <?php
+                        require '../../process/conn.php';
+                        $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                        $stmt = $conn->prepare($get_curiculum);
+                        $stmt->execute();
+                        foreach ($stmt->fetchALL() as $x) {
+                          echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                        }
+                        ?>
+                      </select>
                     </div>
                     <div class="col-2">
                       <label>Group:</label>
