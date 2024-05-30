@@ -1,5 +1,4 @@
-<div class="modal fade bd-example-modal-xl" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,24 +6,20 @@
           <input type="hidden" name="id_update" id="id_update">
 
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-          onclick="javascript:window.location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:window.location.reload()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-3">
-            <span> Employee No: </span> <input type="text" id="employee_num_update" class="form-control-lg"
-              onchange="detect_part_info()" autocomplete="OFF">
+            <span> Employee No: </span> <input type="text" id="employee_num_update" class="form-control-lg" onchange="detect_part_info()" autocomplete="OFF">
           </div>
           <div class="col-3">
-            <span> Full Name: </span> <input type="text" id="full_name_update" class="form-control-lg"
-              autocomplete="OFF" class="noSpace">
+            <span> Full Name: </span> <input type="text" id="full_name_update" class="form-control-lg" autocomplete="OFF" class="noSpace">
           </div>
           <div class="col-3">
-            <span> Position: </span> <input type="text" id="position_update" class="form-control-lg" autocomplete="OFF"
-              class="noSpace">
+            <span> Position: </span> <input type="text" id="position_update" class="form-control-lg" autocomplete="OFF" class="noSpace">
           </div>
           <div class="col-3">
             <span> Provider: </span>
@@ -56,7 +51,7 @@
             </datalist>
           </div>
           <div class="col-3">
-            <span>Group:</span>
+            <span>Shift Group:</span>
             <input type="text" name="group_update" id="group_update" class="form-control">
 
           </div>
@@ -86,8 +81,7 @@
         </div>
         <div class="row">
           <div class="col-3">
-            <span> Car Maker: </span> <input type="text" list="list" id="carmaker_update" class="form-control-lg"
-              autocomplete="OFF" class="noSpace">
+            <span> Car Maker: </span> <input type="text" list="list" id="carmaker_update" class="form-control-lg" autocomplete="OFF" class="noSpace">
             <datalist id="list">
               <option value="Suzuki">
               <option value="Toyota">
@@ -100,8 +94,7 @@
             </datalist>
           </div>
           <div class="col-3">
-            <span> Car Model: </span> <input type="text" id="carmodel_update" class="form-control-lg" autocomplete="OFF"
-              class="noSpace">
+            <span> Car Model: </span> <input type="text" id="carmodel_update" class="form-control-lg" autocomplete="OFF" class="noSpace">
           </div>
           <div class="col-3">
             <span> Line No: </span>
@@ -119,7 +112,6 @@
               foreach ($stmt->fetchALL() as $j) {
 
                 echo '<option value="' . $j['line_no'] . '">';
-
               }
 
               ?>
@@ -160,7 +152,6 @@
               foreach ($stmt->fetchALL() as $j) {
 
                 echo '<option value="' . $j['audit_findings'] . '">';
-
               }
 
               ?>
@@ -184,6 +175,22 @@
           </div>
         </div>
         <div class="row">
+        <div class="col-3">
+              <span>Group:</span>
+              <select class="form-control" name="falp_group_update" id="falp_group_update" onchange="fetch_section_dropdown()">
+                <option value="">Select Group</option>
+                <?php
+                require '../../process/conn.php';
+                $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                $stmt = $conn->prepare($get_curiculum);
+                $stmt->execute();
+                foreach ($stmt->fetchALL() as $x) {
+
+                  echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+                }
+                ?>
+              </select>
+            </div>
           <div class="col-3">
             <span>Section:</span>
             <select class="form-control" name="section_update" id="section_update">
@@ -211,30 +218,27 @@
               }
               ?>
             </select>
+            
+            <div class="col-3">
+
+            </div>
+            <div class="col-4">
+
+            </div>
           </div>
-          <div class="col-3">
+         
 
-          </div>
-          <div class="col-4">
-
-
-
-
-
-          </div>
-        </div>
-
-        <br>
-        <div class="row">
-          <div class="col-12">
-            <p style="text-align:right;">
-              <button type="button" class="btn btn-primary" onclick="update_audit_data()"
-                id="planBtnCreate">Update</button>
-            </p>
+            <br>
+            <div class="row">
+            <div class="col-3 my-4 mx-3">
+              <p style="text-align:right;">
+                <button type="button" class="btn btn-primary" onclick="update_audit_data()" id="planBtnCreate">Update</button>
+              </p>
+            </div>
           </div>
         </div>
+
       </div>
-
     </div>
   </div>
 </div>

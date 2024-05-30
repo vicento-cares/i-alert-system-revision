@@ -123,7 +123,7 @@
                     <input type="text" name="prov" id="prov" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label>Groups:</label>
+                    <label>Shift Groups:</label>
                     <select id="groups" class="form-control">
                        <option value="">Select Group</option>
                         <option value="a">A</option>
@@ -137,6 +137,22 @@
                         <option value="ds">DS</option>
                         <option value="ns">NS</option>
                     </select>
+                  </div>
+                  <div class="col-3">
+                    <label>Group:</label>
+                    <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
+                        <option value="">Select Group</option>
+                        <?php
+                        require '../../process/conn.php';
+                        $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                        $stmt = $conn->prepare($get_curiculum);
+                        $stmt->execute();
+                        foreach ($stmt->fetchALL() as $x) {
+
+                          echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
+                        }
+                        ?>
+                      </select>
                   </div>
               </div>
  
@@ -185,7 +201,7 @@
                     <th style="text-align:center;">Employee ID</th>
                     <th style="text-align:center;">Provider</th>
                      <th style="text-align:center;">Shift</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Line No.</th>
@@ -200,6 +216,7 @@
                     <th style="text-align:center;">AGENCY Status</th> 
                     <th style="text-align:center;">HR Status</th> 
                     <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Group</th>
 
                 </thead>
                 <tbody id="audit_data" style="text-align:center;"></tbody>

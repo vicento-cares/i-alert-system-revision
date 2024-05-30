@@ -31,33 +31,33 @@
               <h3 class="card-title col-9">
                 <div class="row">
 
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span for="">Audited Date From:</span> <input type="date" id="line_auditeddatefrom"
                       class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span for="">Audited Date To:</span> <input type="date" id="line_auditeddateto" class="form-control"
                       value="<?= $server_date_only; ?>" autocomplete=off>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Line No:</span>
                     <input type="text" name="line_n_audited" id="line_n_audited" class="form-control">
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Car Maker: </span>
                     <input type="text" name="carmaker" id="carmaker_lineaudited" class="form-control">
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Car Model:</span>
                     <input type="text" name="carmodel" id="carmodel_lineaudited" class="form-control">
                   </div>
                 </div>
 
                 <div class="row">
-                  <!--  <div class="col-4">
+                  <!--  <div class="col-4 mb-2">
                        <span>Audit Type: </span>
                    <select class="form-control" id="audit_type_lineaudited">
                         <option value="">Select Audit Type</option>
@@ -65,7 +65,7 @@
                         <option value="final">Final</option>
                     </select>
                     </div> -->
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Audit Category:</span>
                     <select class="form-control" id="audit_categ_lineaudited">
                       <option value="">Select Audit Category</option>
@@ -73,13 +73,17 @@
                       <option value="major">Major</option>
                     </select>
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Section:</span>
                     <input type="text" name="section" id="section_lineaudited" class="form-control">
                   </div>
-                  <div class="col-4">
+                  <div class="col-4 mb-2">
                     <span>Process:</span>
                     <select class="form-control" name="process_lineaudited" id="process_lineaudited"></select>
+                  </div>
+                  <div class="col-4 mb-2">
+                    <span>Group:</span>
+                    <select class="form-control" name="falp_group_lineaudited" id="falp_group_lineaudited"></select>
                   </div>
                 </div>
 
@@ -109,7 +113,7 @@
                   <th style="text-align:center; display: none;">Audit Code:</th>
                   <th style="text-align:center;">Date Audited</th>
                   <th style="text-align:center;">Shift</th>
-                  <th style="text-align:center;">Group</th>
+                  <th style="text-align:center;">Shift Group</th>
                   <th style="text-align:center;">Car Maker</th>
                   <th style="text-align:center;">Car Model</th>
                   <th style="text-align:center;">Line No.</th>
@@ -119,6 +123,7 @@
                   <th style="text-align:center;">Audit Category</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">Section</th>
+                  <th style="text-align:center;">Group</th>
 
                 </thead>
                 <tbody id="line_audited_data" style="text-align:center;"></tbody>

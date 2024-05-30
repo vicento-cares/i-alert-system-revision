@@ -34,7 +34,7 @@ if($role == 'hr'){
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../../dist/img/TRS.png" alt="TRSlogo" height="60" width="60">
+    <img class="animation__shake" src="../../dist/img/i.png" alt="TRSlogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->

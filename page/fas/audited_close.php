@@ -97,8 +97,12 @@
                       <span>Section:</span>
                       <select id="section_closed" class="form-control"></select>
                     </div>
+                    <div class="col-3">
+                      <span>Group:</span>
+                      <input id="falp_group_closed" class="form-control" value="<?= $falp_group; ?>" readonly>
+                    </div>
                       <div class="col-3">
-                         <span>Groups:</span>
+                         <span>Shift Groups:</span>
                     <select id="groups_fas_closed" class="form-control">
                        <option value="">Select Group</option>
                         <option value="a">A</option>
@@ -142,10 +146,11 @@
                     <th style="text-align:center;">Position</th>
                     <th style="text-align:center;">Shift</th>
                     <th style="text-align:center;">Provider</th>
-                    <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
                     <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Group</th>
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
