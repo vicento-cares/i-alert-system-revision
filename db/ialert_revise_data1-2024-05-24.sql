@@ -134,3 +134,7 @@ UPDATE ialert_line_audit SET process='Manual Crimping', section='sp1section2', f
 UPDATE ialert_line_audit SET process='Joint Crimping ', section='sp1section1', falp_group='Secondary 1 Process' WHERE id='16047';
 UPDATE ialert_line_audit SET process='N/A', section='fpsection5', falp_group='First Process' WHERE id='16376';
 UPDATE ialert_line_audit SET process='Weld Taping', section='sp1section2', falp_group='Secondary 1 Process' WHERE id='17479';
+
+DELETE FROM ialert_line_audit WHERE id='5604' and section='';
+DELETE FROM ialert_line_audit WHERE id='5632' and section='';
+DELETE FROM ialert_line_audit WHERE id='5633' and section='';

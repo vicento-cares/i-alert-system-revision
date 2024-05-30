@@ -123,21 +123,18 @@
 
                       <div class="col-3">
                    <span>Section:</span>
-                   <select class="form-control" name="section_admin" id="section_admin">
+                    <select class="form-control" name="section_admin" id="section_admin">
                       <option value="">Select Section</option>
-                       <option value="section1">Section1</option>
-                       <option value="section2">Section2</option>
-                       <option value="section3">Section3</option>
-                       <option value="section4">Section4</option>
-                       <option value="section5">Section5</option>
-                       <option value="section6">Section6</option>
-                       <option value="section7">Section7</option>
-                       <option value="section8">Section8</option>
-                        <option value="battery">Battery</option>
-                         <option value="qa-initial">QA Initial</option>
-                          <option value="qa-final">QA Final</option>
-                           <option value="repair">Repair</option>
-                   </select>
+                      <?php
+                      require '../../process/conn.php';
+                      $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                      $stmt = $conn->prepare($get_curiculum);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $x) {
+                        echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                      }
+                      ?>
+                    </select>
                 </div>
                 <div class="col-3">
                       <span> Provider:   </span> 
@@ -157,7 +154,7 @@
                 </div>
                 <div class="col-3">
                       <span> Group:   </span> 
-                      <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
+                      <select class="form-control" name="falp_group" id="falp_group">
                         <option value="">Select Group</option>
                         <?php
                         require '../../process/conn.php';
