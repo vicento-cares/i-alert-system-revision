@@ -59,11 +59,35 @@
                   <input type="text" name="fname" id="fname_audited_provider" class="form-control">
           </div>
           <div class="col-3">
-              <span for="">Line No:</span>  <input type="text" id="linename_audited_prodivder" class="form-control" autocomplete=off>
+            <span for="">Line No:</span>
+            <input list="lines" id="linename_audited_prodivder" name="linename_audited_prodivder" class="form-control">
+            <datalist id="lines" name="">
+              <option value="">Select Line</option>
+              <?php
+              require '../../process/conn.php';
+              $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+              $stmt = $conn->prepare($line);
+              $stmt->execute();
+              foreach ($stmt->fetchALL() as $j) {
+                echo '<option value="' . $j['line_no'] . '">';
+              }
+              ?>
+            </datalist>
           </div>
            <div class="col-3">
               <span>Car Maker: </span>
-                  <input type="text" name="carmaker" id="carmaker" class="form-control">
+              <input type="text" list="list" name="carmaker" id="carmaker" class="form-control">
+              <datalist id="list">
+                <option value="Suzuki">
+                <option value="Toyota">
+                <option value="Mazda">
+                <option value="Daihatsu">
+                <option value="Marelli">
+                <option value="Subaru">
+                <option value="Honda">
+                <option value="Yamaha">
+              </datalist>
           </div>
       </div>
       <div class="row">

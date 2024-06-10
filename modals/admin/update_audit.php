@@ -98,11 +98,8 @@
           </div>
           <div class="col-3">
             <span> Line No: </span>
-
-            <input list="lines" id="emline_update" name="emline" class="form-control-lg">
-
-            <datalist id="lines" name="">
-              <option value="">Select Line</option>
+            <select class="form-control" name="emline" id="emline_update">
+              <option selected value="">Select Line</option>
               <?php
               require '../../process/conn.php';
               $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
@@ -110,13 +107,10 @@
               $stmt = $conn->prepare($line);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $j) {
-
-                echo '<option value="' . $j['line_no'] . '">';
+                echo '<option value="' . $j['line_no'] . '">' . $j['line_no'] . '</option>';
               }
-
               ?>
-
-            </datalist>
+            </select>
           </div>
           <div class="col-3">
             <span> Process: </span>
@@ -138,11 +132,8 @@
         <div class="row">
           <div class="col-3">
             <span>Audit Findings:</span>
-
-            <input list="audit_findingss" id="audit_findings_update" name="audit_findings" class="form-control">
-
-            <datalist id="audit_findingss" name="">
-              <option value="">Select Audit Findings</option>
+            <select class="form-control" name="audit_findings" id="audit_findings_update">
+              <option selected value="">Select Audit Findings</option>
               <?php
               require '../../process/conn.php';
               $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
@@ -150,14 +141,10 @@
               $stmt = $conn->prepare($audit_findingss);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $j) {
-
-                echo '<option value="' . $j['audit_findings'] . '">';
+                echo '<option value="' . $j['audit_findings'] . '">' . $j['audit_findings'] . '</option>';
               }
-
               ?>
-
-            </datalist>
-
+            </select>
           </div>
           <div class="col-3">
             <span>Audited By:</span>

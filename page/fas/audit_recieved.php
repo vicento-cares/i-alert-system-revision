@@ -47,8 +47,22 @@
                   <span>Full Name: </span>
                   <input type="text" name="fname" id="fname_audited_fas_recieved" class="form-control">
                   </div>
-                     <div class="col-3">
-                <span for="">Line no:</span>  <input type="text" id="linename_audited_fas_recieved" class="form-control" autocomplete=off> 
+                  <div class="col-3">
+                    <span for="">Line no:</span>
+                    <input list="lines" id="linename_audited_fas_recieved" name="linename_audited_fas_recieved" class="form-control">
+                    <datalist id="lines" name="">
+                      <option value="">Select Line</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+                      $stmt = $conn->prepare($line);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $j) {
+                        echo '<option value="' . $j['line_no'] . '">';
+                      }
+                      ?>
+                    </datalist>
                   </div>
                    <div class="col-3">
                 <span for="">Position:</span>  <select id="position_recieved" class="form-control" autocomplete=off> 
@@ -66,8 +80,18 @@
 
                      <div class="row">
                      <div class="col-3">
-                <span>Car Maker: </span>
-                  <input type="text" name="carmaker" id="carmaker_recieved" class="form-control">
+                      <span>Car Maker: </span>
+                      <input type="text" list="list" name="carmaker" id="carmaker_recieved" class="form-control">
+                      <datalist id="list">
+                        <option value="Suzuki">
+                        <option value="Toyota">
+                        <option value="Mazda">
+                        <option value="Daihatsu">
+                        <option value="Marelli">
+                        <option value="Subaru">
+                        <option value="Honda">
+                        <option value="Yamaha">
+                      </datalist>
                     </div>
                     <div class="col-3">
                   <span>Car Model: </span>

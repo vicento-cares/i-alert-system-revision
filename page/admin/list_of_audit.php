@@ -56,22 +56,34 @@
 
                    <div class="col-3">
                     <label>Line No: </label>
-                    <input type="text" name="linen" id="linen" class="form-control">
-                  </div>
+                    <input list="lines" id="linen" name="linen" class="form-control">
+                    <datalist id="lines" name="">
+                      <option value="">Select Line</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
-                      <div class="col-3">
-                    <label>Car Maker: </label>
+                      $stmt = $conn->prepare($line);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $j) {
+                        echo '<option value="' . $j['line_no'] . '">';
+                      }
+                      ?>
+                    </datalist>
+                  </div>
+                  <div class="col-3">
+                    <label>Car Maker:</label>
                     <input type="text" list="list" name="carmaker" id="carmaker" class="form-control">
-                     <datalist id="list">
-                  <option value="Suzuki">
-                  <option value="Toyota">
-                  <option value="Mazda">
-                  <option value="Daihatsu">
-                  <option value="Marelli">
-                  <option value="Subaru">
-                  <option value="Honda">
-                  <option value="Yamaha">
-                </datalist>
+                    <datalist id="list">
+                      <option value="Suzuki">
+                      <option value="Toyota">
+                      <option value="Mazda">
+                      <option value="Daihatsu">
+                      <option value="Marelli">
+                      <option value="Subaru">
+                      <option value="Honda">
+                      <option value="Yamaha">
+                    </datalist>
                   </div>
 
               </div>
