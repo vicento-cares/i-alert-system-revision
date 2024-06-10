@@ -30,7 +30,8 @@ if ($method == 'fetch_closed_admin') {
         foreach($stmt->fetchALL() as $x){
         $c++;
 
-            echo '<tr>';
+            // Revisions (Vince)
+            echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['audited_categ'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">';
               	echo '<td>'.$c.'</td>';
               	echo '<td style="display: none;">'.$x['batch'].'</td>';
               	echo '<td>'.$x['date_audited'].'</td>';
