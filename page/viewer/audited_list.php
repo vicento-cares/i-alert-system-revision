@@ -48,8 +48,21 @@
                     <input type="text" name="fname" id="fname_audited" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label for="">Line no:</label> <input type="text" id="lname_audited" class="form-control"
-                      autocomplete=off>
+                    <label for="">Line no:</label>
+                    <input list="lines" id="lname_audited" name="lname_audited" class="form-control">
+                    <datalist id="lines" name="">
+                      <option value="">Select Line</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+                      $stmt = $conn->prepare($line);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $j) {
+                        echo '<option value="' . $j['line_no'] . '">';
+                      }
+                      ?>
+                    </datalist>
                   </div>
                   <div class="col-3">
                     <label for="">Position:</label> <select id="position_audited" class="form-control" autocomplete=off>
@@ -68,7 +81,17 @@
                 <div class="row">
                   <div class="col-3">
                     <label>Car Maker: </label>
-                    <input type="text" name="carmaker" id="carmaker_audited" class="form-control">
+                    <input type="text" list="list" name="carmaker" id="carmaker_audited" class="form-control">
+                    <datalist id="list">
+                      <option value="Suzuki">
+                      <option value="Toyota">
+                      <option value="Mazda">
+                      <option value="Daihatsu">
+                      <option value="Marelli">
+                      <option value="Subaru">
+                      <option value="Honda">
+                      <option value="Yamaha">
+                    </datalist>
                   </div>
                   <div class="col-3">
                     <label>Car Model: </label>

@@ -56,7 +56,20 @@
 
                    <div class="col-4">
                     <label>Line No: </label>
-                    <input type="text" name="linen" id="linenhistory" class="form-control">
+                    <input list="lines" id="linenhistory" name="linenhistory" class="form-control">
+                    <datalist id="lines" name="">
+                      <option value="">Select Line</option>
+                      <?php
+                      require '../../process/conn.php';
+                      $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+                      $stmt = $conn->prepare($line);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $j) {
+                        echo '<option value="' . $j['line_no'] . '">';
+                      }
+                      ?>
+                    </datalist>
                   </div>
 
               </div>
@@ -64,7 +77,17 @@
               <div class="row">
                   <div class="col-4">
                     <label>Car Maker: </label>
-                    <input type="text" name="carmaker" id="carmakerhistory" class="form-control">
+                    <input type="text" list="list" name="carmaker" id="carmakerhistory" class="form-control">
+                    <datalist id="list">
+                      <option value="Suzuki">
+                      <option value="Toyota">
+                      <option value="Mazda">
+                      <option value="Daihatsu">
+                      <option value="Marelli">
+                      <option value="Subaru">
+                      <option value="Honda">
+                      <option value="Yamaha">
+                    </datalist>
                   </div>
 
                   <div class="col-4">

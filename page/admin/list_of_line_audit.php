@@ -62,7 +62,20 @@
 
                     <div class="col-2">
                       <label>Line No:</label>
-                      <input type="text" name="line_n" id="line_n" class="form-control">
+                      <input list="lines" id="line_n" name="line_n" class="form-control">
+                      <datalist id="lines" name="">
+                        <option value="">Select Line</option>
+                        <?php
+                        require '../../process/conn.php';
+                        $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+                        $stmt = $conn->prepare($line);
+                        $stmt->execute();
+                        foreach ($stmt->fetchALL() as $j) {
+                          echo '<option value="' . $j['line_no'] . '">';
+                        }
+                        ?>
+                      </datalist>
                     </div>
                     <div class="col-3">
                       <label>Audit Category</label>

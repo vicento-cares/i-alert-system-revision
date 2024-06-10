@@ -19,6 +19,7 @@ const fetch_other_group_dropdown = () => {
         },
         success: function (response) {
             $('#other_pending').html(response);
+            $('#other_prev').html(response);
         }
     });
 }

@@ -48,8 +48,22 @@
                   <input type="text" name="fname" id="fname_admin" class="form-control">
                   </div>
                      <div class="col-3">
-                <span for="">Line no:</span>  <input type="text" id="line_no_admin" class="form-control" autocomplete=off> 
-                  </div>
+                      <span for="line_no_admin">Line no:</span> 
+                      <input list="lines" id="line_no_admin" name="line_no_admin" class="form-control">
+                        <datalist id="lines" name="">
+                          <option value="">Select Line</option>
+                          <?php
+                          require '../../process/conn.php';
+                          $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
+
+                          $stmt = $conn->prepare($line);
+                          $stmt->execute();
+                          foreach ($stmt->fetchALL() as $j) {
+                            echo '<option value="' . $j['line_no'] . '">';
+                          }
+                          ?>
+                        </datalist>
+                      </div>
                    <div class="col-3">
                 <span for="">Position:</span>  <select id="position_admin" class="form-control" autocomplete=off> 
                    <option value="">Select Position</option>
