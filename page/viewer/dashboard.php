@@ -82,11 +82,11 @@
 
 <?php
 // Revisions (Vince)
-$pit_total = 0;
-$pit_grand_total = 0;
+$gc_total = 0;
+$gc_grand_total = 0;
 
 $stmt = NULL;
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'PIT' ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'GC' ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -99,13 +99,13 @@ if ($stmt->rowCount() > 0) {
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
-        $pit_total += intval($j['total']);
+        $gc_total += intval($j['total']);
         $stmt = NULL;
         $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'FAS'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
-          $pit_grand_total += intval($j['grand_total']);
+          $gc_grand_total += intval($j['grand_total']);
         }
       }
     }
@@ -114,9 +114,9 @@ if ($stmt->rowCount() > 0) {
               <div class="info-box">
               <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text"><b>PIT</b></span>
-                        <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $pit_total . '</label></label></label>
-                        /  <label>Total: <label id="grand_total"></label>' . $pit_grand_total . '</label> </span>
+                        <span class="info-box-text"><b>GC</b></span>
+                        <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $gc_total . '</label></label></label>
+                        /  <label>Total: <label id="grand_total"></label>' . $gc_grand_total . '</label> </span>
                     </div>
               </div>
         </div>';
