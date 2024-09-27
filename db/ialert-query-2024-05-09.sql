@@ -7,6 +7,10 @@ SELECT * FROM ialert_history WHERE provider IN ('ipromote', 'natcorp');
 
 DELETE FROM ialert_account WHERE esection IN ('ipromote', 'natcorp');
 
+-- ialert_account query for section
+
+UPDATE ialert_account SET sections='GC' WHERE sections LIKE 'PIT%';
+
 -- ialert_account query for falp_group
 
 UPDATE ialert_account SET falp_group='FAP1' WHERE sections LIKE 'section1%';
@@ -20,8 +24,13 @@ UPDATE ialert_account SET falp_group='FAP4' WHERE sections LIKE 'section7%';
 UPDATE ialert_account SET falp_group='Factory 2' WHERE sections LIKE 'section8%';
 UPDATE ialert_account SET falp_group='Gemba Compliance' WHERE sections LIKE 'repair%';
 UPDATE ialert_account SET falp_group='Gemba Compliance' WHERE sections LIKE 'PIT%';
+UPDATE ialert_account SET falp_group='Gemba Compliance' WHERE sections LIKE 'GC%';
 UPDATE ialert_account SET falp_group='QA' WHERE sections LIKE 'qa-final%';
 UPDATE ialert_account SET falp_group='QA' WHERE sections LIKE 'qa-initial%';
+
+-- ialert_section query for section
+
+UPDATE ialert_section SET section='GC' WHERE section LIKE 'PIT%';
 
 -- ialert_section query for falp_group
 
@@ -36,6 +45,7 @@ UPDATE ialert_section SET falp_group='FAP4' WHERE section LIKE 'section7%';
 UPDATE ialert_section SET falp_group='Factory 2' WHERE section LIKE 'section8%';
 UPDATE ialert_section SET falp_group='Gemba Compliance' WHERE section LIKE 'repair%';
 UPDATE ialert_section SET falp_group='Gemba Compliance' WHERE section LIKE 'PIT%';
+UPDATE ialert_section SET falp_group='Gemba Compliance' WHERE section LIKE 'GC%';
 UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_section SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 UPDATE ialert_section SET falp_group='Other Group' WHERE falp_group IS NULL;
@@ -84,6 +94,8 @@ INSERT INTO ialert_section (falp_group, section, name) VALUES
 
 -- ialert_audit query for falp_group
 
+UPDATE ialert_audit SET section='GC' WHERE section LIKE 'PIT%';
+
 UPDATE ialert_audit SET falp_group='FAP1' WHERE section LIKE 'section1%';
 UPDATE ialert_audit SET falp_group='FAP1' WHERE section LIKE 'section3%';
 UPDATE ialert_audit SET falp_group='FAP2' WHERE section LIKE 'section2%';
@@ -95,6 +107,7 @@ UPDATE ialert_audit SET falp_group='FAP4' WHERE section LIKE 'section7%';
 UPDATE ialert_audit SET falp_group='Factory 2' WHERE section LIKE 'section8%';
 UPDATE ialert_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'repair%';
 UPDATE ialert_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'PIT%';
+UPDATE ialert_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'GC%';
 UPDATE ialert_audit SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_audit SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 
@@ -428,10 +441,20 @@ UPDATE ialert_audit SET section='fpsection9' WHERE falp_group='First Process' AN
 UPDATE ialert_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND car_maker LIKE 'Subaru%';
 UPDATE ialert_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND car_maker LIKE 'Subaru%';
 
+
+
+
+
+
+
+
 -- execute query of ialert_revise_data1-2024-05-24.sql first
 -- need to execute ialert revise data on ialert_audit query
 
+
 -- ialert_line_audit query for falp_group
+
+UPDATE ialert_line_audit SET section='GC' WHERE section LIKE 'PIT%';
 
 UPDATE ialert_line_audit SET falp_group='FAP1' WHERE section LIKE 'section1%';
 UPDATE ialert_line_audit SET falp_group='FAP1' WHERE section LIKE 'section3%';
@@ -444,6 +467,7 @@ UPDATE ialert_line_audit SET falp_group='FAP4' WHERE section LIKE 'section7%';
 UPDATE ialert_line_audit SET falp_group='Factory 2' WHERE section LIKE 'section8%';
 UPDATE ialert_line_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'repair%';
 UPDATE ialert_line_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'PIT%';
+UPDATE ialert_line_audit SET falp_group='Gemba Compliance' WHERE section LIKE 'GC%';
 UPDATE ialert_line_audit SET falp_group='QA' WHERE section LIKE 'qa-final%';
 UPDATE ialert_line_audit SET falp_group='QA' WHERE section LIKE 'qa-initial%';
 
@@ -736,10 +760,17 @@ UPDATE ialert_line_audit SET section='fpsection9' WHERE falp_group='First Proces
 UPDATE ialert_line_audit SET section='sp1section9' WHERE falp_group='Secondary 1 Process' AND car_maker LIKE 'Subaru%';
 UPDATE ialert_line_audit SET section='sp2section9' WHERE falp_group='Secondary 2 Process' AND car_maker LIKE 'Subaru%';
 
+
+
+
+
+
+
 -- execute query of ialert_revise_data1-2024-05-24.sql first
 -- need to execute ialert revise data on ialert_line_audit query
 
--- change repair to PIT
+
+-- change repair to GC
 
 DELETE FROM ialert_section WHERE section='repair';
 
