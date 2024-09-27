@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2024 at 04:49 AM
+-- Generation Time: Sep 27, 2024 at 04:54 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -43,13 +43,13 @@ INSERT INTO `ialert_process` (`id`, `process`, `section`, `falp_group`) VALUES
 (2, 'SAM', '', 'First Process'),
 (3, 'JAM', '', 'First Process'),
 (4, 'UV', '', 'First Process'),
-(5, 'Battery Crimping ', '', 'First Process'),
+(5, 'Battery Crimping', '', 'First Process'),
 (6, 'NSC/NSE', '', 'First Process'),
 (7, 'Manual Crimping', '', 'Secondary Process'),
 (8, 'Mid-stripping', '', 'Secondary Process'),
 (9, 'Joint Crimping', '', 'Secondary Process'),
 (10, 'Joint Taping', '', 'Secondary Process'),
-(11, 'Casting ', '', 'Secondary Process'),
+(11, 'Casting', '', 'Secondary Process'),
 (12, 'Shieldwire Taping', '', 'Secondary Process'),
 (13, 'Quick-stripping', '', 'Secondary Process'),
 (14, 'Welding Process', '', 'Secondary Process'),
@@ -65,10 +65,10 @@ INSERT INTO `ialert_process` (`id`, `process`, `section`, `falp_group`) VALUES
 (24, 'Dip-Soldering', '', 'Secondary Process'),
 (25, 'N/A', '', 'Secondary Process'),
 (26, 'Wire Setting', '', 'Final Process'),
-(27, 'Sub-Assembly ', '', 'Final Process'),
+(27, 'Sub-Assembly', '', 'Final Process'),
 (28, 'Bukumi', '', 'Final Process'),
 (29, 'Shiage', '', 'Final Process'),
-(30, 'Lay-out ', '', 'Final Process'),
+(30, 'Lay-out', '', 'Final Process'),
 (31, 'Grommet Insertion', '', 'Final Process'),
 (32, 'Dimension', '', 'Final Process'),
 (33, 'ECT', '', 'Final Process'),
@@ -85,7 +85,15 @@ INSERT INTO `ialert_process` (`id`, `process`, `section`, `falp_group`) VALUES
 (44, 'QC-Tsumesen', '', 'Final Process'),
 (45, 'Tsumesen Insertion', '', 'Final Process'),
 (46, 'Dock Audit', '', 'Final Process'),
-(47, 'Finished Goods', '', 'Final Process');
+(47, 'Finished Goods', '', 'Final Process'),
+(48, 'Warehouse', '', 'Other Group'),
+(49, 'Fabrication', '', 'Other Group'),
+(50, 'Equipment', '', 'Other Group'),
+(51, 'IT', '', 'Other Group'),
+(52, 'AME', '', 'Other Group'),
+(53, 'ME', '', 'Other Group'),
+(54, 'FGI', '', 'Other Group'),
+(55, 'QC', '', 'Other Group');
 
 --
 -- Indexes for dumped tables
@@ -106,7 +114,7 @@ ALTER TABLE `ialert_process`
 -- AUTO_INCREMENT for table `ialert_process`
 --
 ALTER TABLE `ialert_process`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

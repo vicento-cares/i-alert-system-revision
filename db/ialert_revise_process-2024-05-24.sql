@@ -446,11 +446,12 @@ UPDATE ialert_audit SET process='QC Verification' WHERE process='QC-VERIFICATION
 UPDATE ialert_audit SET process='QC Verification' WHERE process='Qc.Verification	';
 UPDATE ialert_audit SET process='Assurance' WHERE process='Quality Assurance	';
 UPDATE ialert_audit SET process='Assurance' WHERE process='Quality Assurance ';
-UPDATE ialert_audit SET process='Quick-stripping	' WHERE process='Quick Stripping	';
-UPDATE ialert_audit SET process='Quick-stripping	' WHERE process='Quick stripping 	';
-UPDATE ialert_audit SET process='Quick-stripping	' WHERE process='Quick stripping ';
-UPDATE ialert_audit SET process='Quick-stripping	' WHERE process='Quick stripping (Machine 1)	';
-UPDATE ialert_audit SET process='Quick-stripping	' WHERE process='Quickstripping(3)	';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quick-stripping	';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quick Stripping	';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quick stripping 	';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quick stripping ';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quick stripping (Machine 1)	';
+UPDATE ialert_audit SET process='Quick-stripping' WHERE process='Quickstripping(3)	';
 UPDATE ialert_audit SET process='Re-Assy' WHERE process='Re Assy	';
 UPDATE ialert_audit SET process='Re-Assy' WHERE process='Re Assy';
 UPDATE ialert_audit SET process='Re-crimping' WHERE process='Re crimp	';
@@ -762,6 +763,7 @@ UPDATE ialert_line_audit SET process='Bukumi' WHERE process='Bukumi Assembly sub
 UPDATE ialert_line_audit SET process='Bukumi' WHERE process='Bukumi,Bandgun  Layout,Sub-Assembly';
 UPDATE ialert_line_audit SET process='Bukumi' WHERE process='Bukumi2';
 UPDATE ialert_line_audit SET process='Bukumi' WHERE process='Bukunmi';
+UPDATE ialert_line_audit SET process='Bukumi' WHERE process='initial/Bukumi ';
 UPDATE ialert_line_audit SET process='Clamp Checking' WHERE process='Calmp checking	';
 UPDATE ialert_line_audit SET process='Casting' WHERE process='Casting	';
 UPDATE ialert_line_audit SET process='Casting' WHERE process='Casting 	';
@@ -854,7 +856,8 @@ UPDATE ialert_line_audit SET process='Fuse Image' WHERE process='fuse Image ';
 UPDATE ialert_line_audit SET process='Gomusen Insertion' WHERE process='Gomusen	';
 UPDATE ialert_line_audit SET process='Gomusen Insertion' WHERE process='Gomusen insertion 	';
 UPDATE ialert_line_audit SET process='Gomusen Insertion' WHERE process='Gomusen Insertion ';
-UPDATE ialert_line_audit SET process='Grease' WHERE process='Grease	';
+UPDATE ialert_line_audit SET process='Grease Injection' WHERE process='Grease	';
+UPDATE ialert_line_audit SET process='Grease Injection' WHERE process='Grease';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Grommet	';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Grommet ';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Grommet Insertion	';
@@ -907,9 +910,11 @@ UPDATE ialert_line_audit SET process='Lay-out' WHERE process='LAyoyt';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Long Grommet Insertion	';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Long Grommet Insertion	';
 UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Long grommet Insertion';
-UPDATE ialert_line_audit SET process='Looping Process' WHERE process='Loopings	';
-UPDATE ialert_line_audit SET process='Looping Process' WHERE process='Loopings';
-UPDATE ialert_line_audit SET process='Looping Process' WHERE process='Loopings area	';
+UPDATE ialert_line_audit SET process='Grommet Insertion' WHERE process='Long grommet';
+UPDATE ialert_line_audit SET process='Loopings' WHERE process='Loopings	';
+UPDATE ialert_line_audit SET process='Loopings' WHERE process='Loopings';
+UPDATE ialert_line_audit SET process='Loopings' WHERE process='Loopings area	';
+UPDATE ialert_line_audit SET process='Loopings' WHERE process='Looping Process';
 UPDATE ialert_line_audit SET process='Manual Crimping' WHERE process='M.Ramos';
 UPDATE ialert_line_audit SET process='Manual Crimping' WHERE process='Manual crimping	';
 UPDATE ialert_line_audit SET process='Manual Crimping' WHERE process='Manual Crimping 	';
@@ -1589,11 +1594,12 @@ UPDATE ialert_history SET process='QC Verification' WHERE process='QC-VERIFICATI
 UPDATE ialert_history SET process='QC Verification' WHERE process='Qc.Verification	';
 UPDATE ialert_history SET process='Assurance' WHERE process='Quality Assurance	';
 UPDATE ialert_history SET process='Assurance' WHERE process='Quality Assurance ';
-UPDATE ialert_history SET process='Quick-stripping	' WHERE process='Quick Stripping	';
-UPDATE ialert_history SET process='Quick-stripping	' WHERE process='Quick stripping 	';
-UPDATE ialert_history SET process='Quick-stripping	' WHERE process='Quick stripping ';
-UPDATE ialert_history SET process='Quick-stripping	' WHERE process='Quick stripping (Machine 1)	';
-UPDATE ialert_history SET process='Quick-stripping	' WHERE process='Quickstripping(3)	';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quick-stripping	';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quick Stripping	';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quick stripping 	';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quick stripping ';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quick stripping (Machine 1)	';
+UPDATE ialert_history SET process='Quick-stripping' WHERE process='Quickstripping(3)	';
 UPDATE ialert_history SET process='Re-Assy' WHERE process='Re Assy	';
 UPDATE ialert_history SET process='Re-Assy' WHERE process='Re Assy';
 UPDATE ialert_history SET process='Re-crimping' WHERE process='Re crimp	';
@@ -2047,9 +2053,10 @@ UPDATE ialert_history SET process='Lay-out' WHERE process='LAyoyt';
 UPDATE ialert_history SET process='Grommet Insertion' WHERE process='Long Grommet Insertion	';
 UPDATE ialert_history SET process='Grommet Insertion' WHERE process='Long Grommet Insertion	';
 UPDATE ialert_history SET process='Grommet Insertion' WHERE process='Long grommet Insertion';
-UPDATE ialert_history SET process='Looping Process' WHERE process='Loopings	';
-UPDATE ialert_history SET process='Looping Process' WHERE process='Loopings';
-UPDATE ialert_history SET process='Looping Process' WHERE process='Loopings area	';
+UPDATE ialert_history SET process='Loopings' WHERE process='Loopings	';
+UPDATE ialert_history SET process='Loopings' WHERE process='Loopings';
+UPDATE ialert_history SET process='Loopings' WHERE process='Loopings area	';
+UPDATE ialert_history SET process='Loopings' WHERE process='Looping Process';
 UPDATE ialert_history SET process='Manual Crimping' WHERE process='M.Ramos';
 UPDATE ialert_history SET process='Manual Crimping' WHERE process='Manual crimping	';
 UPDATE ialert_history SET process='Manual Crimping' WHERE process='Manual Crimping 	';
@@ -2285,3 +2292,176 @@ UPDATE ialert_history SET process='N/A' WHERE process LIKE '%2130%';
 UPDATE ialert_history SET process='N/A' WHERE process LIKE '%2111%';
 UPDATE ialert_history SET process='N/A' WHERE process LIKE '%200%%';
 UPDATE ialert_history SET process='Cutting and Crimping' WHERE process LIKE '%TRD255&261%';
+
+-- Checking after revise process is done
+
+SELECT process, count(process) AS total FROM `ialert_audit` where process NOT IN ('Cutting and Crimping',
+'SAM',
+'JAM',
+'UV',
+'Battery Crimping',
+'NSC/NSE',
+'Manual Crimping',
+'Mid-stripping',
+'Joint Crimping',
+'Joint Taping',
+'Casting',
+'Shieldwire Taping',
+'Quick-stripping',
+'Welding Process',
+'Water Press Pad',
+'Heatshrink',
+'Twisting',
+'Gomusen Insertion',
+'Point Marking',
+'Loopings',
+'LA Molding',
+'Servo',
+'Silicon Injection',
+'Dip-Soldering',
+'N/A',
+'Wire Setting',
+'Sub-Assembly',
+'Bukumi',
+'Shiage',
+'Lay-out',
+'Grommet Insertion',
+'Dimension',
+'ECT',
+'Clamp Checking',
+'Fuse Image',
+'Grease Injection',
+'ITDD',
+'Appearance',
+'Assurance',
+'Option Taping',
+'Repair',
+'Re-Assy',
+'QC Verification',
+'QC-Tsumesen',
+'Tsumesen Insertion',
+'Dock Audit',
+'Finished Goods',
+'Warehouse',
+'Fabrication',
+'Equipment',
+'IT',
+'AME',
+'ME',
+'FGI',
+'QC')
+GROUP BY process;
+
+SELECT process, count(process) AS total FROM `ialert_line_audit` where process NOT IN ('Cutting and Crimping',
+'SAM',
+'JAM',
+'UV',
+'Battery Crimping',
+'NSC/NSE',
+'Manual Crimping',
+'Mid-stripping',
+'Joint Crimping',
+'Joint Taping',
+'Casting',
+'Shieldwire Taping',
+'Quick-stripping',
+'Welding Process',
+'Water Press Pad',
+'Heatshrink',
+'Twisting',
+'Gomusen Insertion',
+'Point Marking',
+'Loopings',
+'LA Molding',
+'Servo',
+'Silicon Injection',
+'Dip-Soldering',
+'N/A',
+'Wire Setting',
+'Sub-Assembly',
+'Bukumi',
+'Shiage',
+'Lay-out',
+'Grommet Insertion',
+'Dimension',
+'ECT',
+'Clamp Checking',
+'Fuse Image',
+'Grease Injection',
+'ITDD',
+'Appearance',
+'Assurance',
+'Option Taping',
+'Repair',
+'Re-Assy',
+'QC Verification',
+'QC-Tsumesen',
+'Tsumesen Insertion',
+'Dock Audit',
+'Finished Goods',
+'Warehouse',
+'Fabrication',
+'Equipment',
+'IT',
+'AME',
+'ME',
+'FGI',
+'QC')
+GROUP BY process;
+
+SELECT process, count(process) AS total FROM `ialert_history` where process NOT IN ('Cutting and Crimping',
+'SAM',
+'JAM',
+'UV',
+'Battery Crimping',
+'NSC/NSE',
+'Manual Crimping',
+'Mid-stripping',
+'Joint Crimping',
+'Joint Taping',
+'Casting',
+'Shieldwire Taping',
+'Quick-stripping',
+'Welding Process',
+'Water Press Pad',
+'Heatshrink',
+'Twisting',
+'Gomusen Insertion',
+'Point Marking',
+'Loopings',
+'LA Molding',
+'Servo',
+'Silicon Injection',
+'Dip-Soldering',
+'N/A',
+'Wire Setting',
+'Sub-Assembly',
+'Bukumi',
+'Shiage',
+'Lay-out',
+'Grommet Insertion',
+'Dimension',
+'ECT',
+'Clamp Checking',
+'Fuse Image',
+'Grease Injection',
+'ITDD',
+'Appearance',
+'Assurance',
+'Option Taping',
+'Repair',
+'Re-Assy',
+'QC Verification',
+'QC-Tsumesen',
+'Tsumesen Insertion',
+'Dock Audit',
+'Finished Goods',
+'Warehouse',
+'Fabrication',
+'Equipment',
+'IT',
+'AME',
+'ME',
+'FGI',
+'QC')
+GROUP BY process;
