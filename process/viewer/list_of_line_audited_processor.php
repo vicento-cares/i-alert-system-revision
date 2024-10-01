@@ -1,6 +1,6 @@
 <?php
 include '../conn.php';
-include '../conn2.php';
+
 $method = $_POST['method'];
 
 // Revisions (Vince)

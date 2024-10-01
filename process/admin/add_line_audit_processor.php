@@ -1,6 +1,5 @@
 <?php 
 	include '../conn.php';
-	include '../conn2.php';
 	$method = $_POST['method'];
 
 if($method == 'LineAuditCode'){

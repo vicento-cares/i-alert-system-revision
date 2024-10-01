@@ -1,7 +1,7 @@
 <?php 
 	include '../conn.php';
-	include '../conn2.php';
-	// include '../conn3.php';
+	// include '../conn2.php';
+	include '../conn3.php';
 	$method = $_POST['method'];
 
 if($method == 'AuditCode'){
@@ -12,24 +12,25 @@ if($method == 'AuditCode'){
 	}
 
 if($method == 'fetch_details_req'){
-	$employee_num = trim($_POST['employee_num']);
+	$employee_num = addslashes(trim($_POST['employee_num']));
 
 	// Revisions (Vince)
 	// CHECK (Employee Management System)
 	$sql = "SELECT emp_no, full_name, position, provider, line_no FROM m_employees WHERE emp_no = '$employee_num'";
 	$stmt = $conn3->prepare($sql);
 	$stmt->execute();
-	if($stmt->rowCount() > 0){
-		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-			$line_no = "";
-			$is_initial = strpos($row['line_no'], "Initial");
-			if ($is_initial === false) {
-				$line_no = $row['line_no'];
-			} else {
-				$line_no = "Initial";
-			}
-			echo $row['full_name'].'~!~'.$row['position'].'~!~'.$row['provider'].'~!~'.$line_no;
+
+	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	if($row){
+		$line_no = "";
+		$is_initial = strpos($row['line_no'], "Initial");
+		if ($is_initial === false) {
+			$line_no = $row['line_no'];
+		} else {
+			$line_no = "Initial";
 		}
+		echo $row['full_name'].'~!~'.$row['position'].'~!~'.$row['provider'].'~!~'.$line_no;
 	}else{
 		// CHECK (HR ARIS)
 		// $sql = "SELECT idNumber, empName, empPosition, empAgency, lineNo FROM a_m_employee WHERE idNumber = '$employee_num'";
@@ -111,4 +112,5 @@ if ($method == 'prev_audit') {
 	}
 }
 $conn = NULL;
-?>
+// $conn2 = NULL;
+$conn3 = NULL;
