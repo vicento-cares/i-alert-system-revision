@@ -1,6 +1,6 @@
 <?php 
     include '../conn.php';
-    include '../conn2.php';
+    
     $method = $_POST['method'];
 
 if ($method == 'fetch_audited_list_hr') {

@@ -1,6 +1,6 @@
 <?php 
     include '../conn.php';
-    include '../conn2.php';
+    
     $method = $_POST['method'];
 
 if ($method == 'count_for_update_provider') {
