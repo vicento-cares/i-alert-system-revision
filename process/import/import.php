@@ -67,6 +67,19 @@ function get_falp_groups($conn) {
     return $data;
 }
 
+function get_audit_findings_categ($conn) {
+    $data = array();
+
+    $sql = "SELECT audit_findings FROM ialert_audit_findings_categ ORDER BY audit_findings ASC";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> execute();
+    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+        array_push($data, $row['audit_findings']);
+    }
+
+    return $data;
+}
+
 // Remove UTF-8 BOM
 function removeBomUtf8($s){
     if (substr($s,0,3) == chr(hexdec('EF')).chr(hexdec('BB')).chr(hexdec('BF'))) {
@@ -97,13 +110,14 @@ function check_csv($file, $conn) {
     $audit_type_arr = array("initial", "final", "Line Audit");
     $sections_arr = get_sections($conn);
     $falp_groups_arr = get_falp_groups($conn);
+    $audit_findings_categ_arr = get_audit_findings_categ($conn);
 
     $hasError = 0; $hasBlankError = 0; $isDuplicateOnCsv = 0;
     $hasBlankErrorArr = array();
     $isDuplicateOnCsvArr = array();
     $dup_temp_arr = array();
 
-    $row_valid_arr = array(0,0,0,0,0,0,0,0,0,0);
+    $row_valid_arr = array(0,0,0,0,0,0,0,0,0,0,0);
 
     $notExistsProviderArr = array();
     $notExistsShiftArr = array();
@@ -115,6 +129,7 @@ function check_csv($file, $conn) {
     $notExistsAuditTypeArr = array();
     $notExistsSectionArr = array();
     $notExistsFalpGroupArr = array();
+    $notExistsAuditFindingsCategArr = array();
 
     $message = "";
     $check_csv_row = 0;
@@ -213,6 +228,11 @@ function check_csv($file, $conn) {
                 $row_valid_arr[9] = 1;
                 array_push($notExistsFalpGroupArr, $check_csv_row);
             }
+            if (!in_array($audit_findings, $audit_findings_categ_arr)) {
+                $hasError = 1;
+                $row_valid_arr[10] = 1;
+                array_push($notExistsAuditFindingsCategArr, $check_csv_row);
+            }
 
             // Joining all row values for checking duplicated rows
             $whole_line = join(',', $line);
@@ -263,6 +283,9 @@ function check_csv($file, $conn) {
         if ($row_valid_arr[9] == 1) {
             $message = $message . 'Group doesn\'t exists on row/s ' . implode(", ", $notExistsFalpGroupArr) . '. ';
         }
+        if ($row_valid_arr[10] == 1) {
+            $message = $message . 'Audit Findings doesn\'t exists on row/s ' . implode(", ", $notExistsAuditFindingsCategArr) . '. ';
+        }
         
         if ($hasBlankError >= 1) {
             $message = $message . 'Blank Cell/s Exists on row/s ' . implode(", ", $hasBlankErrorArr) . '. ';
@@ -303,7 +326,7 @@ if (isset($_POST['upload'])) {
                     $carmodel = $line[8];
                     $line_n = $line[9];
                     $emprocess = $line[10];
-                    $audit_findings = $line[11];
+                    $audit_findings = addslashes($line[11]);
                     $audited_by = $line[12];
                     $audited_categ = strtolower($line[13]);
                     $audit_type = strtolower($line[14]);
