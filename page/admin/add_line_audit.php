@@ -111,9 +111,9 @@
 
                   <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-primary" style="cursor:pointer;">
                       <div class="inner">
-                        <a style="color:white;" onclick="">
+                        <a style="color:white;" onclick="export_audit_findings_list()">
                           <h5>Download List <br> Audit Findings Masterlist</h5>
                           <p></p>
                       </div>
@@ -121,7 +121,41 @@
                         <i class="fas fa-download"></i>
                       </div>
                       </a>
-                      <a class="small-box-footer" onclick="">Proceed <i 
+                      <a class="small-box-footer" onclick="export_audit_findings_list()">Proceed <i 
+                          class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-primary" style="cursor:pointer;">
+                      <div class="inner">
+                        <a style="color:white;" onclick="export_process_list()">
+                          <h5>Download List <br> Process Masterlist</h5>
+                          <p></p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-download"></i>
+                      </div>
+                      </a>
+                      <a class="small-box-footer" onclick="export_process_list()">Proceed <i
+                          class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-primary" style="cursor:pointer;">
+                      <div class="inner">
+                        <a style="color:white;" onclick="export_line_no_list()">
+                          <h5>Download List <br> Line No. Masterlist</h5>
+                          <p></p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-download"></i>
+                      </div>
+                      </a>
+                      <a class="small-box-footer" onclick="export_line_no_list()">Proceed <i
                           class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>

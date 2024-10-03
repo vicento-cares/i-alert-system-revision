@@ -218,4 +218,16 @@ const load_prev =()=>{
         }
     });
 }
+
+const export_audit_findings_list = () => {
+    window.open('../../process/export/export_audit_findings_list.php', '_blank');
+}
+
+const export_process_list = () => {
+    window.open('../../process/export/export_process_list.php', '_blank');
+}
+
+const export_line_no_list = () => {
+    window.open('../../process/export/export_line_no_list.php', '_blank');
+}
 </script>
