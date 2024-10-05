@@ -60,7 +60,7 @@ if ($method == 'insert_audit') {
 	$carmodel = $_POST['carmodel'];
 	$emline = $_POST['emline'];
 	$emprocess = $_POST['emprocess'];
-	$audit_findings = $_POST['audit_findings'];
+	$audit_findings = addslashes($_POST['audit_findings']);
 	$audited_by = $_POST['audited_by'];
 	$audit_type = $_POST['audit_type'];
 	$audit_categ = $_POST['audit_categ'];

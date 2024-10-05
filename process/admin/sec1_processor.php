@@ -18,7 +18,7 @@ if ($method == 'fetch_sec1') {
 
     $sec1 = "SELECT * FROM ialert_audit where section = 'Section1' AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
             UNION ALL
-         SELECT * FROM ialert_audit where pd = 'IR' AND section = 'Section1' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
+         SELECT * FROM ialert_audit where pd = 'Written IR' AND section = 'Section1' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
     $stmt = $conn->prepare($sec1);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
@@ -98,7 +98,7 @@ if ($method == 'count_section1') {
         $agency = $x['agency'];
         $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'IR' AND section = 'Section1' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
+        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section = 'Section1' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
         $stmt2 = $conn->prepare($count_na);
         $stmt2->execute();
         foreach ($stmt2->fetchALL() as $j) {

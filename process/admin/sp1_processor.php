@@ -23,7 +23,7 @@ if ($method == 'fetch_sp1') {
 	}
 	$sp1 .= " AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
 	UNION ALL
-	SELECT * FROM ialert_audit where pd = 'IR' AND falp_group = 'Secondary 1 Process'";
+	SELECT * FROM ialert_audit where pd = 'Written IR' AND falp_group = 'Secondary 1 Process'";
 	if (!empty($section)) {
 		$sp1 .= " AND section = '$section'";
 	}
@@ -108,7 +108,7 @@ if ($method == 'count_sp1') {
 		$agency = $x['agency'];
 		$days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-		$count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'IR' AND section IN ('sp1section1','sp1section2','sp1section3','sp1section4','sp1section5','sp1section6','sp1section7','sp1section8','sp1section9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
+		$count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section IN ('sp1section1','sp1section2','sp1section3','sp1section4','sp1section5','sp1section6','sp1section7','sp1section8','sp1section9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
 		$stmt2 = $conn->prepare($count_na);
 		$stmt2->execute();
 		foreach ($stmt2->fetchALL() as $j) {

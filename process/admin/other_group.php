@@ -19,7 +19,7 @@ if ($method == 'fetch_og') {
     // $sec1 = "SELECT * FROM ialert_audit WHERE section = '$og' AND edit_count != 0 AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
     $sec1 = "SELECT * FROM ialert_audit where section = '$og' AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
             UNION ALL
-         SELECT * FROM ialert_audit where pd = 'IR' AND section = '$og' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
+         SELECT * FROM ialert_audit where pd = 'Written IR' AND section = '$og' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
     $stmt = $conn->prepare($sec1);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
