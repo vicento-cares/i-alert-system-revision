@@ -32,7 +32,7 @@ if ($method == 'fetch_audited_list_fass_status') {
     //        $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE section = 'esection' AND edit_count != 0 AND provider = 'esection' AND date_recieved IS NULL 
 // AND PD IS NOT NULL AND date_sent IS NULL
 // UNION ALL
-// SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE pd = 'IR' AND section = 'esection' AND edit_count = 0 AND date_recieved IS NULL  
+// SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE pd = 'Written IR' AND section = 'esection' AND edit_count = 0 AND date_recieved IS NULL  
 // AND provider = 'esection' and PD != '' AND date_sent IS NULL";
 
     $stmt = $conn->prepare($query);
@@ -43,7 +43,7 @@ if ($method == 'fetch_audited_list_fass_status') {
             $edit_count = $x['edit_count'];
             $c++;
 
-            if ($pd != 'IR' && $edit_count == 0) {
+            if ($pd != 'Written IR' && $edit_count == 0) {
                 //     //  echo '<tr">';
                 //     //     echo '<td>';
                 //     //     echo '<p>
@@ -160,7 +160,7 @@ if ($method == 'update_fass') {
                 $audit_findings = $j['audit_findings'];
                 $audited_categ = $j['audited_categ'];
 
-                if ($audited_categ == 'major' && $status != 'IR' && $status != 'awol' && $status != 'resigned') {
+                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'awol' && $status != 'resigned') {
                     echo 'select ir status';
                 } else {
                     $audit_counts = "SELECT count(audit_findings) as audit_count 
@@ -172,7 +172,7 @@ if ($method == 'update_fass') {
                         foreach ($stmt2->fetchALL() as $j) {
                             $audit_count = $j['audit_count'];
 
-                            if ($audit_count >= 3 && $status != 'IR') {
+                            if ($audit_count >= 3 && $status != 'Written IR') {
                                 echo 'invalid';
                             } else if ($status === 'awol') {
                                 $update = "UPDATE ialert_audit 
@@ -194,23 +194,23 @@ if ($method == 'update_fass') {
                                 } else {
                                     echo 'error';
                                 }
-                            // } else if ($status != 'IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Bringing of prohibited tool') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Bringing of prohibited tool') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Un Authorized person doing the process') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Un Authorized person doing the process') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Intentional Act of making defect') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Intentional Act of making defect') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Not following visual inspection rule') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Not following visual inspection rule') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Non Compliance on insert-pull method') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Non Compliance on insert-pull method') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Not following dimension inspection rule') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Not following dimension inspection rule') {
                             //     echo 'invalid';
-                            // } else if ($status != 'IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
+                            // } else if ($status != 'Written IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
                             //     echo 'invalid';
                             } else {
                                 $history = "INSERT INTO ialert_history 
@@ -250,7 +250,7 @@ if ($method == 'send') {
     $count = count($id);
     foreach ($id as $x) {
 
-        $update = "UPDATE ialert_audit SET date_sent = '$server_date_time' WHERE id = '$x' AND pd = 'IR'";
+        $update = "UPDATE ialert_audit SET date_sent = '$server_date_time' WHERE id = '$x' AND pd = 'Written IR'";
 
         $stmt = $conn->prepare($update);
         if ($stmt->execute()) {
@@ -280,7 +280,7 @@ if ($method == 'closed') {
         $stmt2 = $conn->prepare($history);
         if ($stmt2->execute()) {
 
-            $update = "UPDATE ialert_audit SET edit_count = 0, updated_by = '$update_by' WHERE id = '$x' AND pd != 'IR' OR agency != 'IR'";
+            $update = "UPDATE ialert_audit SET edit_count = 0, updated_by = '$update_by' WHERE id = '$x' AND pd != 'Written IR' OR agency != 'Written IR'";
             $stmt = $conn->prepare($update);
             if ($stmt->execute()) {
                 echo 'success';

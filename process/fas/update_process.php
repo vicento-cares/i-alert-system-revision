@@ -22,7 +22,7 @@ if ($method == 'update_fas') {
     		}
 
     		if ($audit_count >= 3) {
-    				if ($status != 'IR') {
+    				if ($status != 'Written IR') {
     					echo 'invalid';
     				}else{
     					$update = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -44,7 +44,7 @@ if ($method == 'update_fas') {
     					}
 
     					if ($audit_findings == 'Un Authorized Repair/Hidden Repair') {
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update2 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -57,7 +57,7 @@ if ($method == 'update_fas') {
     							}
     							
     						}else if($audit_findings == 'Bringing of prohibited tool'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update3 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -69,7 +69,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Un Authorized person doing the process'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update4 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -81,7 +81,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Intentional Act of making defect'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update5 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -93,7 +93,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Intentional Act of making defect'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update6 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -105,7 +105,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Pulling of inserted wire on connector to dis-insert'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update7 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -117,7 +117,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Non Compliance on insert-pull method'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update8 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -129,7 +129,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Not following dimension inspection rule'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update9 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";
@@ -141,7 +141,7 @@ if ($method == 'update_fas') {
     								 } 
     							}
     						}else if($audit_findings == 'Using of prohibited tool on prohibited act'){
-    							if ($status != 'IR') {
+    							if ($status != 'Written IR') {
     								echo 'invalid';
     							}else{
     								$update10 = "UPDATE ialert_audit SET pd = '$status' WHERE id = '$x' ";

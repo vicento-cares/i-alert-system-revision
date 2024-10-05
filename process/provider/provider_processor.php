@@ -173,25 +173,25 @@ if ($method == 'update_status') {
 //                         foreach($stmt2->fetchALL() as $j){
 //                              $audit_count = $j['audit_count'];
 
-//                              if ($audit_count >= 3 && $status != 'IR'){
+//                              if ($audit_count >= 3 && $status != 'Written IR'){
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Bringing of prohibited tool') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Bringing of prohibited tool') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Un Authorized person doing the process') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Un Authorized person doing the process') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Intentional Act of making defect') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Intentional Act of making defect') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Not following visual inspection rule') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Not following visual inspection rule') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Non Compliance on insert-pull method') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Non Compliance on insert-pull method') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Not following dimension inspection rule') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Not following dimension inspection rule') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
 //                                         echo 'invalid';
 //                              }else{
 //                                     $update = "UPDATE ialert_audit SET agency = '$status' WHERE id = '$x' ";
@@ -351,25 +351,25 @@ if ($method == 'update') {
 //                         foreach($stmt2->fetchALL() as $j){
 //                              $audit_count = $j['audit_count'];
 
-    //                              if ($audit_count >= 3 && $status != 'IR' || $status != ''){
+    //                              if ($audit_count >= 3 && $status != 'Written IR' || $status != ''){
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Un Authorized Repair/Hidden Repair') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Bringing of prohibited tool') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Bringing of prohibited tool') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Un Authorized person doing the process') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Un Authorized person doing the process') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Intentional Act of making defect') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Intentional Act of making defect') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Pulling of inserted wire on connector to dis-insert') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Not following visual inspection rule') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Not following visual inspection rule') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Non Compliance on insert-pull method') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Non Compliance on insert-pull method') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Not following dimension inspection rule') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Not following dimension inspection rule') {
 //                                         echo 'invalid';
-//                              }else if ($status != 'IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
+//                              }else if ($status != 'Written IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
 //                                         echo 'invalid';
 //                              }else{
 //                                      $history = "INSERT INTO ialert_history (`audit_id`,`batch`,`date_audited`,`full_name`,`employee_id`,`provider`,`groups`,`carmaker`,`carmodel`,`line_no`,`process`,`audit_findings`,`audited_by`,`audit_category`,`remarks`,`pd`,`agency`,`hr`,`updated_by`,`edit_count`,`position`,`date_edited`,`indicator_id`) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audited_categ, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id FROM ialert_audit WHERE id = '$x'";

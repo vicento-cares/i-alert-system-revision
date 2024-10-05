@@ -17,7 +17,7 @@ if ($method == 'fetch_audited_list_hr_checked') {
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = 'FAS'  AND pd = 'IR' AND hr != '' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND date_recieved != ''
+    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = 'FAS'  AND pd = 'Written IR' AND hr != '' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND date_recieved != ''
     GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
