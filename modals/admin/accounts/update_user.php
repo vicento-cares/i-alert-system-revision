@@ -45,11 +45,9 @@
               <option value="pkimt">PKIMT</option>
               <option value="addeven">ADD EVEN</option>
               <option value="goldenhand">GOLDENHAND</option>
-              <option value="ipromote">IPROMOTE</option>
               <option value="megatrend">MEGATREND</option>
               <option value="maxim">MAXIM</option>
               <option value="onesource">ONE SOURCE</option>
-              <option value="natcorp">NATCORP</option>
             </select>
           </div>
           <div class="col-4">
@@ -67,7 +65,6 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -80,25 +77,12 @@
             <!-- <input type="text" name="section_update_accounts" id="section_update_accounts" class="form-control"> -->
             <select class="form-control" name="section_update_accounts" id="section_update_accounts">
               <option value="">Select Section</option>
-              <!--     <option value="section1">Section1</option>
-                       <option value="section2">Section2</option>
-                       <option value="section3">Section3</option>
-                       <option value="section4">Section4</option>
-                       <option value="section5">Section5</option>
-                       <option value="section6">Section6</option>
-                       <option value="section7">Section7</option>
-                       <option value="section8">Section8</option>
-                        <option value="battery">Battery</option>
-                         <option value="qa-initial">QA Initial</option>
-                          <option value="qa-final">QA Final</option>
-                           <option value="repair">Repair</option> -->
               <?php
               require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT section,name FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
               }
               ?>

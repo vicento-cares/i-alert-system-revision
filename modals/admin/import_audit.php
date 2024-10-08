@@ -9,17 +9,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form action="../../process/import/import.php" enctype="multipart/form-data" method="POST">
-
-          <label>File:</label>
-          <input type="file" name="file" class="form-control-lg">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal"
-          onclick="javascript:window.location.reload()">Close</button>
-        <input type="submit" class="btn btn-primary" name="upload" value="Upload">
-      </div>
+      <form action="../../process/import/import.php" enctype="multipart/form-data" method="POST"></form>
+        <div class="modal-body">
+            <label>File:</label>
+            <input type="file" name="file" class="form-control-lg">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal"
+            onclick="javascript:window.location.reload()">Close</button>
+          <input type="submit" class="btn btn-primary" name="upload" value="Upload">
+        </div>
       </form>
     </div>
   </div>

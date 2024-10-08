@@ -4,10 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          <div id="auditCode">
-
-          </div>
-
+          <div id="auditCode"></div>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
           onclick="javascript:window.location.reload()">
@@ -38,7 +35,6 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['esection'] . '">' . $x['esection'] . '</option>';
               }
               ?>
@@ -94,7 +90,6 @@
               <option value="Honda">
               <option value="Yamaha">
             </datalist>
-
           </div>
           <div class="col-3">
             <span> Car Model: </span> <input type="text" id="carmodel" class="form-control-lg" autocomplete="OFF"
@@ -126,7 +121,6 @@
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['process'] . '">' . $x['process'] . '</option>';
               }
               ?>
@@ -164,12 +158,10 @@
             <span>Remarks</span>
             <!-- <input type="text" name="" id="remarks" class="form-control-lg" autocomplete="OFF"> -->
             <input list="remark" id="remarks" class="form-control-lg" autocomplete="OFF">
-
             <datalist id="remark">
               <option value="N/A">
               <option value="Support">
             </datalist>
-
           </div>
         </div>
         <div class="row">
@@ -183,7 +175,6 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -199,33 +190,24 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
               }
               ?>
             </select>
           </div>
-          <div class="col-4">
-
-
-
-
-
-          </div>
+          <div class="col-4"></div>
         </div>
         <br>
         <div class="row">
           <div class="col-12">
             <p style="text-align:right;">
               <button type="button" class="btn btn-primary" onclick="save_request()" id="planBtnCreate">Submit</button>
-
               <!--  <button class="btn blue darken-3  col s12" onclick="save_request()" id="planBtnCreate">submit</button> -->
             </p>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-
         <div class="card-body table-responsive p-0" style="height: 200px;">
           <table class="table table-head-fixed text-nowrap table-hover" style="">
             <thead style="text-align:center;">

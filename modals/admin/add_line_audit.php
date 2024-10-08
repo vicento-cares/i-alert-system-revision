@@ -4,10 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          <div id="lineauditCode">
-
-          </div>
-
+          <div id="lineauditCode"></div>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
           onclick="javascript:window.location.reload()">
@@ -44,7 +41,6 @@
               <option value="major">Major</option>
             </select>
           </div>
-
         </div>
         <div class="row">
           <div class="col-3">
@@ -91,7 +87,6 @@
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['process'] . '">' . $x['process'] . '</option>';
               }
               ?>
@@ -122,7 +117,6 @@
           <div class="col-3">
             <span>Audit Type:</span>
             <input type="text" name="" id="line_audit_type" class="form-control-lg" value="Line Audit" readonly>
-
           </div>
           <div class="col-3">
             <span>Remarks</span>
@@ -141,7 +135,6 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -151,25 +144,12 @@
             <span>Section:</span>
             <select class="form-control" name="section_line" id="section_line">
               <option value="">Select Section</option>
-              <!-- <option value="section1">Section1</option>
-                       <option value="section2">Section2</option>
-                       <option value="section3">Section3</option>
-                       <option value="section4">Section4</option>
-                       <option value="section5">Section5</option>
-                       <option value="section6">Section6</option>
-                       <option value="section7">Section7</option>
-                       <option value="section8">Section8</option>
-                        <option value="battery">Battery</option>
-                         <option value="qa-initial">QA Initial</option>
-                          <option value="qa-final">QA Final</option>
-                           <option value="repair">Repair</option> -->
               <?php
               require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT section,name FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
               }
               ?>
@@ -182,14 +162,12 @@
             <p style="text-align:right;">
               <button type="button" class="btn btn-primary" onclick="save_request_line()"
                 id="planBtnCreate">Submit</button>
-
               <!--  <button class="btn blue darken-3  col s12" onclick="save_request()" id="planBtnCreate">submit</button> -->
             </p>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-
         <div class="card-body table-responsive p-0" style="height: 200px;">
           <table class="table table-head-fixed text-nowrap table-hover" style="">
             <thead style="text-align:center;">
@@ -208,7 +186,6 @@
               <th>Group</th>
               <th>Section</th>
               <th>Remarks</th>
-
             </thead>
             <tbody id="data_preview_line_audit"></tbody>
           </table>
