@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/add_line_auditbar.php'; ?>
+<?php include 'plugins/sidebar/admin_bar.php'; ?>
 <!-- Main Sidebar Container -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -121,7 +121,7 @@
                         <i class="fas fa-download"></i>
                       </div>
                       </a>
-                      <a class="small-box-footer" onclick="export_audit_findings_list()">Proceed <i 
+                      <a class="small-box-footer" onclick="export_audit_findings_list()">Proceed <i
                           class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
@@ -177,8 +177,6 @@
 </div>
 </section>
 </div>
-
-
 
 <?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/script/add_line_audit_script.php'; ?>

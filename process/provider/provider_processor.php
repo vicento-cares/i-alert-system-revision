@@ -145,7 +145,7 @@ if ($method == 'update_status') {
             // echo 'error';
         }
     }
-    
+
     if ($count == 0) {
         echo 'success';
     } else {
@@ -489,4 +489,3 @@ if ($method == 'fetch_closed_provider') {
 }
 
 $conn = NULL;
-?>

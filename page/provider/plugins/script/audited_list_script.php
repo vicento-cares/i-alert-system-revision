@@ -29,7 +29,7 @@
         var lname = document.getElementById('linename_audited_prodivder').value;
         var dateFrom = document.getElementById('providerauditedlistdatefrom').value;
         var dateTo = document.getElementById('providerauditedlistdateto').value;
-        var esection = '<?= $esection; ?>';
+        var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var carmaker = document.getElementById('carmaker').value;
         var carmodel = document.getElementById('carmodel').value;
         var audit_categ = document.getElementById('audit_categ').value;

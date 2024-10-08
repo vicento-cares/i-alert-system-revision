@@ -136,5 +136,5 @@ if ($method == 'deletesec6') {
         echo 'fail';
     }
 }
+
 $conn = NULL;
-?>

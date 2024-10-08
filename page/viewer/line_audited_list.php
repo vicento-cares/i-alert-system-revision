@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/line_audited_listbar.php'; ?>
+<?php include 'plugins/sidebar/viewer_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">

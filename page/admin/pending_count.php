@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/pending_countbar.php'; ?>
+<?php include 'plugins/sidebar/admin_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">

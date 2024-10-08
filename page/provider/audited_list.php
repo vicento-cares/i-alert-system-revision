@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/audited_listbar.php'; ?>
+<?php include 'plugins/sidebar/provider_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">
@@ -44,7 +44,8 @@
 
                     <table>
                       <input type="hidden" name="server_date" id="server_date" value="<?= $server_date_only; ?>">
-                      <input type="hidden" name="esection" id="esection" value="<?= $esection; ?>">
+                      <input type="hidden" name="esection" id="esection"
+                        value="<?= htmlspecialchars($_SESSION['esection']); ?>">
                       <th style="color: red;"> <b>
                           <font size="5">Pending:</font>
                         </b> &nbsp;</th>

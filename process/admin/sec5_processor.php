@@ -138,4 +138,3 @@ if ($method == 'deletesec5') {
 }
 
 $conn = NULL;
-?>

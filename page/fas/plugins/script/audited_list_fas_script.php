@@ -27,7 +27,7 @@
     const counts = () => {
         var server_date = document.getElementById('server_date').value;
         var car_maker = document.getElementById('carmakers').value;
-        var esection = '<? $esection; ?>';
+        var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var section = document.getElementById('section').value;
         var falp_group = document.getElementById('falp_group').value;
         var audit_type = document.getElementById('audit_type').value;
@@ -61,7 +61,7 @@
         var lname = document.getElementById('linename_audited_fas').value;
         var dateFrom = document.getElementById('providerauditedlistfasdatefrom').value;
         var dateTo = document.getElementById('providerauditedlistfasdateto').value;
-        var esection = '<?= $esection; ?>';
+        var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var carmaker = document.getElementById('carmaker').value;
         var carmodel = document.getElementById('carmodel').value;
         var section = document.getElementById('section').value;

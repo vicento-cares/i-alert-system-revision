@@ -147,4 +147,3 @@ if ($method == 'total_qa') {
 }
 
 $conn = NULL;
-?>

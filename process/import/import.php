@@ -2,78 +2,84 @@
 // error_reporting(0);
 require '../conn.php';
 
-function get_lines($conn) {
+function get_lines($conn)
+{
     $data = array();
 
     $sql = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['line_no']);
     }
 
     return $data;
 }
 
-function get_providers($conn) {
+function get_providers($conn)
+{
     $data = array();
 
     $sql = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' OR role ='fas'";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['esection']);
     }
 
     return $data;
 }
 
-function get_processes($conn) {
+function get_processes($conn)
+{
     $data = array();
 
     $sql = "SELECT process FROM ialert_process ORDER BY process ASC";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['process']);
     }
 
     return $data;
 }
 
-function get_sections($conn) {
+function get_sections($conn)
+{
     $data = array();
 
     $sql = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['section']);
     }
 
     return $data;
 }
 
-function get_falp_groups($conn) {
+function get_falp_groups($conn)
+{
     $data = array();
 
     $sql = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['falp_group']);
     }
 
     return $data;
 }
 
-function get_audit_findings_categ($conn) {
+function get_audit_findings_categ($conn)
+{
     $data = array();
 
     $sql = "SELECT audit_findings FROM ialert_audit_findings_categ ORDER BY audit_findings ASC";
-    $stmt = $conn -> prepare($sql);
-    $stmt -> execute();
-    while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         array_push($data, $row['audit_findings']);
     }
 
@@ -81,18 +87,20 @@ function get_audit_findings_categ($conn) {
 }
 
 // Remove UTF-8 BOM
-function removeBomUtf8($s){
-    if (substr($s,0,3) == chr(hexdec('EF')).chr(hexdec('BB')).chr(hexdec('BF'))) {
-        return substr($s,3);
+function removeBomUtf8($s)
+{
+    if (substr($s, 0, 3) == chr(hexdec('EF')) . chr(hexdec('BB')) . chr(hexdec('BF'))) {
+        return substr($s, 3);
     } else {
         return $s;
     }
 }
 
-function check_csv($file, $conn) {
+function check_csv($file, $conn)
+{
 
     //READ FILE
-    $csv_file = fopen($file,'r');
+    $csv_file = fopen($file, 'r');
 
     // SKIP FIRST LINE
     $first_line = fgets($csv_file);
@@ -112,12 +120,14 @@ function check_csv($file, $conn) {
     $falp_groups_arr = get_falp_groups($conn);
     $audit_findings_categ_arr = get_audit_findings_categ($conn);
 
-    $hasError = 0; $hasBlankError = 0; $isDuplicateOnCsv = 0;
+    $hasError = 0;
+    $hasBlankError = 0;
+    $isDuplicateOnCsv = 0;
     $hasBlankErrorArr = array();
     $isDuplicateOnCsvArr = array();
     $dup_temp_arr = array();
 
-    $row_valid_arr = array(0,0,0,0,0,0,0,0,0,0,0);
+    $row_valid_arr = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     $notExistsProviderArr = array();
     $notExistsShiftArr = array();
@@ -165,12 +175,14 @@ function check_csv($file, $conn) {
             $remark = $line[15];
             $section = $line[16];
             $falp_group = $line[17];
-            
+
             // CHECK IF BLANK DATA
-            if ($date_audited == '' || $full_name == '' || $employee_num == '' || $provider == '' 
-                || $position == '' || $shift == '' || $group == '' || $carmaker == '' || $carmodel == '' 
-                || $line_n == '' || $emprocess == '' || $audit_findings == '' || $audited_by == '' || $audited_categ == '' 
-                || $audit_type == '' || $remark == '' || $section == '' || $falp_group == '') {
+            if (
+                $date_audited == '' || $full_name == '' || $employee_num == '' || $provider == ''
+                || $position == '' || $shift == '' || $group == '' || $carmaker == '' || $carmodel == ''
+                || $line_n == '' || $emprocess == '' || $audit_findings == '' || $audited_by == '' || $audited_categ == ''
+                || $audit_type == '' || $remark == '' || $section == '' || $falp_group == ''
+            ) {
                 // IF BLANK DETECTED ERROR += 1
                 $hasBlankError++;
                 $hasError = 1;
@@ -249,7 +261,7 @@ function check_csv($file, $conn) {
     } else {
         $message = $message . 'Invalid CSV Table Header. Maybe an incorrect CSV file or incorrect CSV header ';
     }
-    
+
     fclose($csv_file);
 
     if ($hasError == 1) {
@@ -286,7 +298,7 @@ function check_csv($file, $conn) {
         if ($row_valid_arr[10] == 1) {
             $message = $message . 'Audit Findings doesn\'t exists on row/s ' . implode(", ", $notExistsAuditFindingsCategArr) . '. ';
         }
-        
+
         if ($hasBlankError >= 1) {
             $message = $message . 'Blank Cell/s Exists on row/s ' . implode(", ", $hasBlankErrorArr) . '. ';
         }
@@ -301,7 +313,7 @@ if (isset($_POST['upload'])) {
     $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
 
     if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
-        
+
         if (is_uploaded_file($_FILES['file']['tmp_name'])) {
 
             $chkCsvMsg = check_csv($_FILES['file']['tmp_name'], $conn);
@@ -400,7 +412,5 @@ if (isset($_POST['upload'])) {
         </script>';
 }
 
-
 // KILL CONNECTION
 $conn = null;
-?>

@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/add_auditbar.php'; ?>
+<?php include 'plugins/sidebar/admin_bar.php'; ?>
 <!-- Main Sidebar Container -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -180,8 +180,6 @@
 </div>
 </section>
 </div>
-
-
 
 <?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/script/add_audit_script.php'; ?>
