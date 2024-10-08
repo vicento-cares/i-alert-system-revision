@@ -52,11 +52,7 @@
                     var str = response.split('~!~');
                     document.querySelector('#full_name').value = str[0];
                     document.querySelector('#position').value = str[1];
-                    if (str[2] != 'PKIMT') {
-                        document.querySelector('#provider').value = str[2].toLowerCase();
-                    } else {
-                        document.querySelector('#provider').value = str[2];
-                    }
+                    document.querySelector('#provider').value = str[2];
                     document.querySelector('#emline').value = str[3];
                 }
                 else {
