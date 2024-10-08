@@ -135,5 +135,5 @@ if ($method == 'total_sec2') {
 		echo '</tr>';
 	}
 }
+
 $conn = NULL;
-?>

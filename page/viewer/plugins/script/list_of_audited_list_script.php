@@ -19,7 +19,7 @@
             }
         });
     }
-    
+
     const fetch_group_dropdown = () => {
         $.ajax({
             url: '../../process/viewer/list_of_audited_processor.php',

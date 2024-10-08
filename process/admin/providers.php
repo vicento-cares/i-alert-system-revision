@@ -127,5 +127,5 @@ if ($method == 'total_provider') {
         echo '</tr>';
     }
 }
+
 $conn = NULL;
-?>

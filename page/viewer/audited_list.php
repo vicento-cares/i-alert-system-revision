@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/audited_listbar.php'; ?>
+<?php include 'plugins/sidebar/viewer_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">
@@ -96,7 +96,8 @@
                   <div class="col-3">
                     <label>Car Model: </label>
                     <input type="text" name="carmodel" id="carmodel_audited" class="form-control">
-                    <input type="hidden" name="count_section" id="count_section" value="<?= $section; ?>">
+                    <input type="hidden" name="count_section" id="count_section"
+                      value="<?= htmlspecialchars($_SESSION['sections']); ?>">
                   </div>
                   <div class="col-3">
                     <label>Audit Type: </label>

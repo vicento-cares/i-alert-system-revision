@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/audited_listbar.php'; ?>
+<?php include 'plugins/sidebar/fas_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">
@@ -11,7 +11,7 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0">List of Audited <input type="hidden" name="falp_group" id="falp_group"
-                  value="<?= $falp_group; ?>"></h1>
+                  value="<?= htmlspecialchars($_SESSION['falp_group']); ?>"></h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -127,8 +127,8 @@
                     </div>
                     <div class="col-3">
                       <span>Group:</span>
-                      <input type="text" class="form-control" value="<?= $falp_group; ?>" name="" id="falp_group"
-                        readonly>
+                      <input type="text" class="form-control" value="<?= htmlspecialchars($_SESSION['falp_group']); ?>"
+                        name="" id="falp_group" readonly>
                     </div>
                     <div class="col-3">
                       <span>Shift Groups:</span>
@@ -155,7 +155,8 @@
 
                     <table>
                       <input type="hidden" name="server_date" id="server_date" value="<?= $server_date_only; ?>">
-                      <input type="hidden" name="carmakers" id="carmakers" value="<?= $car_maker; ?>">
+                      <input type="hidden" name="carmakers" id="carmakers"
+                        value="<?= htmlspecialchars($_SESSION['car_maker']); ?>">
                       <th style="color: red;"> <b>
                           <font size="5">Pending:</font>
                         </b> &nbsp;</th>

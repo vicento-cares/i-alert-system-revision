@@ -1,13 +1,13 @@
-<?php 
-	include '../conn.php';
-	
-	$method = $_POST['method'];
+<?php
+include '../conn.php';
+
+$method = $_POST['method'];
 
 if ($method == 'fetch_audited_list_send') {
     $dateFrom = $_POST['dateFrom'];
     $dateTo = $_POST['dateTo'];
-    $empid =$_POST['empid'];
-    $fname =$_POST['fname'];
+    $empid = $_POST['empid'];
+    $fname = $_POST['fname'];
     $esection = $_POST['esection'];
     $lname = $_POST['lname'];
     $position = $_POST['position'];
@@ -32,36 +32,36 @@ if ($method == 'fetch_audited_list_send') {
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
-    foreach($stmt->fetchALL() as $x){
-    $c++;         
+        foreach ($stmt->fetchALL() as $x) {
+            $c++;
             echo '<tr>';
-                echo '<td>'.$c.'</td>';
-                echo '<td style="display: none;">'.$x['batch'].'</td>';
-                echo '<td>'.$x['date_audited'].'</td>';
-                echo '<td>'.$x['full_name'].'</td>';
-                echo '<td>'.$x['employee_num'].'</td>';
-                echo '<td>'.$x['position'].'</td>';
-                echo '<td>'.$x['shift'].'</td>';
-                echo '<td>'.$x['provider'].'</td>';
-                echo '<td>'.$x['groups'].'</td>';
-                echo '<td>'.$x['car_maker'].'</td>';
-                echo '<td>'.$x['car_model'].'</td>';
-                echo '<td>'.$x['line_no'].'</td>';
-                echo '<td>'.$x['process'].'</td>';
-                echo '<td>'.$x['audit_findings'].'</td>';
-                echo '<td>'.$x['audited_by'].'</td>';
-                echo '<td>'.$x['audited_categ'].'</td>';
-                echo '<td>'.$x['remarks'].'</td>';
-                echo '<td>'.$x['pd'].'</td>';
-                echo '<td>'.$x['date_sent'].'</td>';
+            echo '<td>' . $c . '</td>';
+            echo '<td style="display: none;">' . $x['batch'] . '</td>';
+            echo '<td>' . $x['date_audited'] . '</td>';
+            echo '<td>' . $x['full_name'] . '</td>';
+            echo '<td>' . $x['employee_num'] . '</td>';
+            echo '<td>' . $x['position'] . '</td>';
+            echo '<td>' . $x['shift'] . '</td>';
+            echo '<td>' . $x['provider'] . '</td>';
+            echo '<td>' . $x['groups'] . '</td>';
+            echo '<td>' . $x['car_maker'] . '</td>';
+            echo '<td>' . $x['car_model'] . '</td>';
+            echo '<td>' . $x['line_no'] . '</td>';
+            echo '<td>' . $x['process'] . '</td>';
+            echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['remarks'] . '</td>';
+            echo '<td>' . $x['pd'] . '</td>';
+            echo '<td>' . $x['date_sent'] . '</td>';
             echo '</tr>';
-          
-    }
-}else{
+
+        }
+    } else {
         echo '<tr>';
-            echo '<td colspan="14" style="text-align:center;">NO RESULT</td>';
-            echo '</tr>';
-            }
+        echo '<td colspan="14" style="text-align:center;">NO RESULT</td>';
+        echo '</tr>';
+    }
 }
+
 $conn = NULL;
-?>

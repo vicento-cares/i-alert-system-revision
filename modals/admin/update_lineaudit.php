@@ -1,4 +1,5 @@
-<div class="modal fade bd-example-modal-xl" id="updateline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="updateline" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,7 +7,8 @@
           <input type="hidden" name="id_line" id="id_line_update">
 
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:window.location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          onclick="javascript:window.location.reload()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -32,7 +34,8 @@
         </div>
         <div class="row">
           <div class="col-3">
-            <span> Car Maker: </span> <input type="text" id="carmaker_line_update" class="form-control" list="list" autocomplete="OFF" class="noSpace">
+            <span> Car Maker: </span> <input type="text" id="carmaker_line_update" class="form-control" list="list"
+              autocomplete="OFF" class="noSpace">
             <datalist id="list">
               <option value="Suzuki">
               <option value="Toyota">
@@ -45,7 +48,8 @@
             </datalist>
           </div>
           <div class="col-3">
-            <span> Car Model: </span> <input type="text" id="carmodel_line_update" class="form-control" autocomplete="OFF" class="noSpace">
+            <span> Car Model: </span> <input type="text" id="carmodel_line_update" class="form-control"
+              autocomplete="OFF" class="noSpace">
           </div>
           <div class="col-3">
             <span> Line No: </span>
@@ -115,7 +119,8 @@
         <div class="row">
           <div class="col-3">
             <span>Group:</span>
-            <select class="form-control" name="falp_group_line_update" id="falp_group_line_update" onchange="fetch_section_dropdown()">
+            <select class="form-control" name="falp_group_line_update" id="falp_group_line_update"
+              onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
               <?php
               require '../../process/conn.php';
@@ -123,7 +128,7 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-                
+
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -151,14 +156,14 @@
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-  
+
                 echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
               }
               ?>
             </select>
           </div>
         </div>
-        
+
         <br>
         <div class="row">
           <div class="col-12">

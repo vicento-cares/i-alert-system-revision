@@ -1,5 +1,5 @@
 <?php include 'plugins/navbar.php'; ?>
-<?php include 'plugins/sidebar/audited_list_status_fasbar.php'; ?>
+<?php include 'plugins/sidebar/fas_bar.php'; ?>
 
 <section class="content">
   <div class="container-fluid">
@@ -123,8 +123,8 @@
                     </div>
                     <div class="col-3">
                       <span>Group:</span>
-                      <input type="text" id="falp_group_status" class="form-control" value="<?= $falp_group; ?>"
-                        readonly>
+                      <input type="text" id="falp_group_status" class="form-control"
+                        value="<?= htmlspecialchars($_SESSION['falp_group']); ?>" readonly>
                       <!-- <select id="section_status" class="form-control"></select> -->
                     </div>
                     <div class="col-3">

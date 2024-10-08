@@ -6,7 +6,7 @@
         var fname = document.getElementById('fname_audited_provider_status').value;
         var dateFrom = document.getElementById('providerauditedliststatusdatefrom').value;
         var dateTo = document.getElementById('providerauditedliststatusdateto').value;
-        var esection = '<?= $esection; ?>';
+        var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var line_no = document.getElementById('lname_audited_provider_status').value;
         var carmaker = document.getElementById('carmaker_provider_status').value;
         var carmodel = document.getElementById('carmodel_provider_status').value;

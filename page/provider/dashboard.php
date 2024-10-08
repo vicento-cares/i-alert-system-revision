@@ -1,6 +1,6 @@
  
 <?php include 'plugins/navbar.php';?>
-<?php include 'plugins/sidebar/dashboardbar.php';?>
+<?php include 'plugins/sidebar/provider_bar.php';?>
 <section class="content">
       <div class="container-fluid">
 <!-- Content Wrapper. Contains page content -->

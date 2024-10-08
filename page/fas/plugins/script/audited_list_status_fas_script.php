@@ -6,7 +6,7 @@
 
     // Revisions (Vince)
     const fetch_section_dropdown = () => {
-        let falp_group = '<?= $falp_group; ?>';
+        let falp_group = '<?= htmlspecialchars($_SESSION['falp_group']); ?>';
 
         $.ajax({
             url: '../../process/admin/sections.php',
@@ -33,10 +33,10 @@
         var carmaker = document.getElementById('carmaker_status').value;
         var carmodel = document.getElementById('carmodel_status').value;
         var audit_type = document.getElementById('audit_type_status').value;
-        var esection = '<?= $esection; ?>';
+        var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var audit_categ = document.getElementById('audit_categ_status').value;
         var section = document.getElementById('section_status').value;
-        var falp_group = '<?= $falp_group; ?>';
+        var falp_group = '<?= htmlspecialchars($_SESSION['falp_group']); ?>';
         var group = document.getElementById('groups_fas_status').value;
         var shift = document.getElementById('shifts_fas_status').value;
 
@@ -132,7 +132,7 @@
         if (numberOfChecked > 0) {
 
             var status = $('#status_fass').val();
-            var update_by = '<?= $name; ?>';
+            var update_by = '<?= htmlspecialchars($_SESSION['username']); ?>';
             // console.log(update_by);
             if (status == 'update_by') {
                 swal('ALERT', 'Select Status!', 'info');
@@ -218,7 +218,7 @@
         });
         var numberOfChecked = arr.length;
         if (numberOfChecked > 0) {
-            var update_by = '<?= $name; ?>';
+            var update_by = '<?= htmlspecialchars($_SESSION['username']); ?>';
 
             $.ajax({
                 url: '../../process/fas/audited_list_status_fas_processor.php',

@@ -134,4 +134,3 @@ if ($method == 'total_sec4') {
 }
 
 $conn = NULL;
-?>

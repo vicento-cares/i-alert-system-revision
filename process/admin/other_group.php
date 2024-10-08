@@ -130,5 +130,5 @@ if ($method == 'total_other') {
         echo '</tr>';
     }
 }
+
 $conn = NULL;
-?>

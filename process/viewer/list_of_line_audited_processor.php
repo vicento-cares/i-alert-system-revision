@@ -77,5 +77,5 @@ if ($method == 'fetch_line_audited_list') {
         echo '</tr>';
     }
 }
+
 $conn = NULL;
-?>
