@@ -2,7 +2,7 @@
 session_name("i-alert");
 session_start();
 
-include 'conn.php';
+require 'conn.php';
 
 // Revisions (Vince)
 //Maintenance Mode

@@ -1,5 +1,5 @@
 <?php
-include '../conn.php';
+require '../conn.php';
 ini_set("memory_limit", "-1");
 
 $c = 0;

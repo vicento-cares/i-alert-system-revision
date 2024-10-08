@@ -1,7 +1,7 @@
 <?php
 // Revisions (Vince)
 
-include '../conn.php';
+require '../conn.php';
 
 $method = $_POST['method'];
 

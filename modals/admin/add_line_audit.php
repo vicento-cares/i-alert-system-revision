@@ -66,7 +66,6 @@
             <select class="form-control" name="emline_line" id="emline_line">
               <option selected value="">Select Line</option>
               <?php
-              require '../../process/conn.php';
               $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
               $stmt = $conn->prepare($line);
@@ -82,7 +81,6 @@
             <select class="form-control" id="process_line">
               <option>Select Process</option>
               <?php
-              require '../../process/conn.php';
               $get_process = "SELECT process FROM ialert_process";
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
@@ -99,7 +97,6 @@
             <select class="form-control" name="line_audit_findings" id="line_audit_findings">
               <option selected value="">Select Audit Findings</option>
               <?php
-              require '../../process/conn.php';
               $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
 
               $stmt = $conn->prepare($audit_findingss);
@@ -130,7 +127,6 @@
               onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
@@ -145,7 +141,6 @@
             <select class="form-control" name="section_line" id="section_line">
               <option value="">Select Section</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();

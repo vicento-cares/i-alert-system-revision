@@ -60,7 +60,6 @@
               onchange="fetch_section_dropdown(2)">
               <option value="">Select Group</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
@@ -78,7 +77,6 @@
             <select class="form-control" name="section_update_accounts" id="section_update_accounts">
               <option value="">Select Section</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();

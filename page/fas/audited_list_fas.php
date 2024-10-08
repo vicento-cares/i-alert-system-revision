@@ -56,7 +56,6 @@
                       <datalist id="lines" name="">
                         <option value="">Select Line</option>
                         <?php
-                        require '../../process/conn.php';
                         $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
                         $stmt = $conn->prepare($line);

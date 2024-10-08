@@ -85,7 +85,6 @@
             <select class="form-control" name="provider_prev" id="provider_prev">
               <option>Select Provider</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' OR role ='fas'";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();

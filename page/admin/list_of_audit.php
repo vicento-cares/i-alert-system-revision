@@ -62,7 +62,6 @@
                     <datalist id="lines" name="">
                       <option value="">Select Line</option>
                       <?php
-                      require '../../process/conn.php';
                       $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
                       $stmt = $conn->prepare($line);
@@ -133,7 +132,6 @@
                     <select class="form-control" name="sect" id="sect">
                       <option value="">Select Section</option>
                       <?php
-                      require '../../process/conn.php';
                       $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();
@@ -168,7 +166,6 @@
                     <select class="form-control" name="falp_group" id="falp_group">
                       <option value="">Select Group</option>
                       <?php
-                      require '../../process/conn.php';
                       $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();

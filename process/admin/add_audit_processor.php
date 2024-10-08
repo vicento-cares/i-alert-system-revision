@@ -1,7 +1,7 @@
 <?php
-include '../conn.php';
-// include '../conn2.php';
-include '../conn3.php';
+require '../conn.php';
+// require '../conn2.php';
+require '../conn3.php';
 $method = $_POST['method'];
 
 if ($method == 'AuditCode') {

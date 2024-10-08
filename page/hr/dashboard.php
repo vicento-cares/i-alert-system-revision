@@ -36,7 +36,6 @@
               <div class="card-body">
                 <div class="row">
 <?php
-  include '../../process/conn.php';
   $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
   $stmt = $conn->prepare($query);
   $stmt->execute();

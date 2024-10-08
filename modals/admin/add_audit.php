@@ -30,7 +30,6 @@
             <select class="form-control" id="provider">
               <option>Select Provider</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' OR role ='fas'";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
@@ -100,7 +99,6 @@
             <select class="form-control" name="emline" id="emline">
               <option selected value="">Select Line</option>
               <?php
-              require '../../process/conn.php';
               $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
               $stmt = $conn->prepare($line);
@@ -116,7 +114,6 @@
             <select class="form-control" id="process">
               <option>Select Process</option>
               <?php
-              require '../../process/conn.php';
               $get_process = "SELECT process FROM ialert_process";
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
@@ -133,7 +130,6 @@
             <select class="form-control" name="audit_findings" id="audit_findings">
               <option selected value="">Select Audit Findings</option>
               <?php
-              require '../../process/conn.php';
               $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
 
               $stmt = $conn->prepare($audit_findingss);
@@ -170,7 +166,6 @@
             <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
@@ -185,7 +180,6 @@
             <select class="form-control" name="section" id="section">
               <option value="">Select Section</option>
               <?php
-              require '../../process/conn.php';
               $get_curiculum = "SELECT DISTINCT section,name FROM ialert_section";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
