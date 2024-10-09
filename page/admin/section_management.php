@@ -55,12 +55,16 @@
                       <i class="fa fa-search"></i>
                     </button>
                   </div>
+                  <div class="col-1">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-secondary btn-block" onclick="export_sections('sections_table')">Export <i class="fa fa-download"></i></button>
+                  </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-12">
                     <div class="card-body table-responsive p-0" style="height: 420px;">
-                      <table class="table table-head-fixed text-nowrap table-hover" id="">
+                      <table class="table table-head-fixed text-nowrap table-hover" id="sections_table">
                         <thead style="text-align:center;">
                           <th>#</th>
                           <th>Section Code</th>

@@ -15,15 +15,15 @@
         <div class="row">
           <div class="col-3">
             <span> Employee No: </span> <input type="text" id="employee_num_update" class="form-control-lg"
-              onchange="detect_part_info()" autocomplete="OFF">
+              onchange="detect_part_info()" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span> Full Name: </span> <input type="text" id="full_name_update" class="form-control-lg"
-              autocomplete="OFF" class="noSpace">
+              autocomplete="OFF" class="noSpace" maxlength="255">
           </div>
           <div class="col-3">
             <span> Position: </span> <input type="text" id="position_update" class="form-control-lg" autocomplete="OFF"
-              class="noSpace">
+              class="noSpace" maxlength="255">
           </div>
           <div class="col-3">
             <span> Provider: </span>
@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-3">
             <span>Shift:</span>
-            <input list="shifts" id="shift_update" name="shift_update" class="form-control-lg">
+            <input list="shifts" id="shift_update" name="shift_update" class="form-control-lg" maxlength="255">
             <datalist id="shifts" name="">
               <option value="DS">
               <option value="NS">
@@ -51,11 +51,11 @@
           </div>
           <div class="col-3">
             <span>Shift Group:</span>
-            <input type="text" name="group_update" id="group_update" class="form-control">
+            <input type="text" name="group_update" id="group_update" class="form-control" maxlength="255">
           </div>
           <div class="col-3">
             <span>Audit Type:</span>
-            <input list="audit_typee" id="audit_type_update" name="audit_type_update" class="form-control-lg">
+            <input list="audit_typee" id="audit_type_update" name="audit_type_update" class="form-control-lg" maxlength="255">
             <datalist id="audit_typee" name="">
               <option value="Initial">
               <option value="Final">
@@ -64,7 +64,7 @@
           </div>
           <div class="col-3">
             <span>Audit Category:</span>
-            <input list="audit_categ" id="audit_categ_update" name="audit_categ_update" class="form-control-lg">
+            <input list="audit_categ" id="audit_categ_update" name="audit_categ_update" class="form-control-lg" maxlength="255">
             <datalist id="audit_categ" name="">
               <option value="Minor">
               <option value="Major">
@@ -74,7 +74,7 @@
         <div class="row">
           <div class="col-3">
             <span> Car Maker: </span> <input type="text" list="list" id="carmaker_update" class="form-control-lg"
-              autocomplete="OFF" class="noSpace">
+              autocomplete="OFF" class="noSpace" maxlength="255">
             <datalist id="list">
               <option value="Suzuki">
               <option value="Toyota">
@@ -88,7 +88,7 @@
           </div>
           <div class="col-3">
             <span> Car Model: </span> <input type="text" id="carmodel_update" class="form-control-lg" autocomplete="OFF"
-              class="noSpace">
+              class="noSpace" maxlength="255">
           </div>
           <div class="col-3">
             <span> Line No: </span>
@@ -138,7 +138,7 @@
           </div>
           <div class="col-3">
             <span>Audited By:</span>
-            <input type="text" name="" id="audited_by_update" class="form-control-lg" autocomplete="OFF">
+            <input type="text" name="" id="audited_by_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span>Date Audited:</span>
@@ -146,7 +146,7 @@
           </div>
           <div class="col-3">
             <span>Remarks</span>
-            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF">
+            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
         </div>
         <div class="row">
@@ -156,7 +156,7 @@
               onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
               <?php
-              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
@@ -170,11 +170,11 @@
             <select class="form-control" name="section_update" id="section_update">
               <option value="">Select Section</option>
               <?php
-              $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-                echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
               }
               ?>
             </select>

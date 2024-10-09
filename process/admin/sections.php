@@ -4,6 +4,26 @@ require '../conn.php';
 $method = $_POST['method'];
 
 // Revisions (Vince)
+if ($method == 'fetch_falp_group_dropdown') {
+    $dept = addslashes($_POST['dept']);
+    $sql = "SELECT DISTINCT falp_group FROM ialert_section";
+    if (!empty($dept)) {
+        $sql = $sql . " WHERE dept = '$dept'";
+    }
+    $sql = $sql . " ORDER BY falp_group ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+        echo '<option selected value="">Select Group</option>';
+        foreach ($stmt->fetchAll() as $row) {
+            echo '<option value="' . htmlspecialchars($row['falp_group']) . '">' . htmlspecialchars($row['falp_group']) . '</option>';
+        }
+    } else {
+        echo '<option disabled selected value="">Select Group</option>';
+    }
+}
+
+// Revisions (Vince)
 if ($method == 'fetch_section_dropdown') {
     $falp_group = addslashes($_POST['falp_group']);
     $sql = "SELECT DISTINCT section FROM ialert_section";

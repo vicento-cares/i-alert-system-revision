@@ -53,12 +53,16 @@
                     <label>&nbsp;</label>
                     <button class="btn btn-primary btn-block" onclick="load_users()">Search <i class="fa fa-search"></i></button>
                   </div>
+                  <div class="col-1">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-secondary btn-block" onclick="export_users('accounts_table')">Export <i class="fa fa-download"></i></button>
+                  </div>
                 </div>
                 <br>
                 <div class="row">
                   <div class="col-12">
                     <div class="card-body table-responsive p-0" style="height: 420px;">
-                      <table class="table table-head-fixed text-nowrap table-hover" id="">
+                      <table class="table table-head-fixed text-nowrap table-hover" id="accounts_table">
                         <thead style="text-align:center;">
                           <th>#</th>
                           <th>Username</th>

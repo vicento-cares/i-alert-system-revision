@@ -41,7 +41,7 @@
               <option value="hr">HR</option>
               <option value="fas">FAS</option>
               <option value="pkimt">PKIMT</option>
-              <option value="addeven">ADD EVEN</option>
+              <option value="add even">ADD EVEN</option>
               <option value="goldenhand">GOLDENHAND</option>
               <option value="megatrend">MEGATREND</option>
               <option value="maxim">MAXIM</option>

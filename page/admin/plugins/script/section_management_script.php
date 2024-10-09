@@ -12,6 +12,7 @@
                 section: section
             }, success: function (response) {
                 document.getElementById('list_of_sections').innerHTML = response;
+                sessionStorage.setItem('ialert_sections_section_search', section);
             }
         });
     }
@@ -141,5 +142,42 @@
                 }
             });
         }
+    }
+
+    const export_sections = (table_id, separator = ',') => {
+		let section = sessionStorage.getItem('ialert_sections_section_search');
+
+        // Select rows from table_id
+        var rows = document.querySelectorAll('table#' + table_id + ' tr');
+
+        // Construct csv
+        var csv = [];
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll('td, th');
+            for (var j = 0; j < cols.length; j++) {
+                var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+                data = data.replace(/"/g, '""');
+                // Push escaped string
+                row.push('"' + data + '"');
+            }
+            csv.push(row.join(separator));
+        }
+
+        var csv_string = csv.join('\n');
+
+        // Download it
+        var filename = 'I-Alert_Sections_';
+		if (section) {
+			filename += '_' + section;
+		}
+		filename += '_' + new Date().toJSON().slice(0, 10) + '.csv';
+        var link = document.createElement('a');
+        link.style.display = 'none';
+        link.setAttribute('target', '_blank');
+        link.setAttribute('href', 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv_string));
+        link.setAttribute('download', filename);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 </script>
