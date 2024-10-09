@@ -6,17 +6,17 @@ $method = $_POST['method'];
 // Revisions (Vince)
 if ($method == 'fetch_section_dropdown') {
     $falp_group = addslashes($_POST['falp_group']);
-    $sql = "SELECT DISTINCT section, name FROM ialert_section";
+    $sql = "SELECT DISTINCT section FROM ialert_section";
     if (!empty($falp_group)) {
         $sql = $sql . " WHERE falp_group = '$falp_group'";
     }
-    $sql = $sql . " ORDER BY name ASC";
+    $sql = $sql . " ORDER BY section ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         echo '<option selected value="">Select Section</option>';
         foreach ($stmt->fetchAll() as $row) {
-            echo '<option value="' . htmlspecialchars($row['section']) . '">' . htmlspecialchars($row['name']) . '</option>';
+            echo '<option value="' . htmlspecialchars($row['section']) . '">' . htmlspecialchars($row['section']) . '</option>';
         }
     } else {
         echo '<option disabled selected value="">Select Section</option>';
@@ -25,13 +25,13 @@ if ($method == 'fetch_section_dropdown') {
 
 // Revisions (Vince)
 if ($method == 'fetch_other_group_dropdown') {
-    $sql = "SELECT DISTINCT section, name FROM ialert_section WHERE falp_group = 'Other Group' ORDER BY name ASC";
+    $sql = "SELECT DISTINCT section FROM ialert_section WHERE falp_group = 'Other Group' ORDER BY section ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
         echo '<option selected value="">Select Section</option>';
         foreach ($stmt->fetchAll() as $row) {
-            echo '<option value="' . htmlspecialchars($row['section']) . '">' . htmlspecialchars($row['name']) . '</option>';
+            echo '<option value="' . htmlspecialchars($row['section']) . '">' . htmlspecialchars($row['section']) . '</option>';
         }
     } else {
         echo '<option disabled selected value="">Select Section</option>';

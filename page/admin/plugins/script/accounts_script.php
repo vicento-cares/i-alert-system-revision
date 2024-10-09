@@ -111,7 +111,7 @@
         var role = string[3];
         var esection = string[4];
         var car_maker = string[5];
-        var sections = string[6];
+        var section = string[6];
         var falp_group = string[7];
 
         document.getElementById('id_update_accounts').value = id;
@@ -125,7 +125,7 @@
         fetch_section_dropdown(2);
 
         setTimeout(() => {
-            document.getElementById('section_update_accounts').value = sections;
+            document.getElementById('section_update_accounts').value = section;
         }, 500);
     }
 

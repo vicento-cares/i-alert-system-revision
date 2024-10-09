@@ -42,17 +42,16 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form>
+            <form action="javascript:void(0)">
               <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <label>User Name:</label> <input type="text" name="user_name_user_search" id="user_name_user_search"
-                      class="form-control">
+                    <label>User Name:</label>
+                    <input type="text" name="user_name_user_search" id="user_name_user_search" class="form-control">
                   </div>
-                  <div class="col-9">
-                    <span style="visibility:hidden;">.</span>
-                    <p style="text-align:right;"><a href="#" class="btn btn-primary" onclick="load_users()">Search <i
-                          class="fa fa-search"></a></i></p>
+                  <div class="col-1">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary btn-block" onclick="load_users()">Search <i class="fa fa-search"></i></button>
                   </div>
                 </div>
                 <br>
@@ -75,14 +74,10 @@
                 </div>
               </div>
               <!-- /.card-body -->
-
-              <div class="card-footer">
-
-              </div>
+              <div class="card-footer"></div>
             </form>
           </div>
           <!-- /.card -->
-
         </div>
       </div>
     </div>
