@@ -22,8 +22,17 @@
               class="noSpace" maxlength="255">
           </div>
           <div class="col-3">
-            <span> Position: </span> <input type="text" id="position" class="form-control-lg" autocomplete="OFF"
-              class="noSpace" maxlength="255">
+            <span> Position: </span>
+            <select id="position" class="form-control">
+              <option value="">Select Position</option>
+              <option value="Associate">Associate</option>
+              <option value="Expert">Expert</option>
+              <option value="Jr. Staff">Jr. Staff</option>
+              <option value="Staff">Staff</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Assistant Manager">Assistant Manager</option>
+              <option value="Manager">Manager</option>
+            </select>
           </div>
           <div class="col-3">
             <span> Provider: </span>
@@ -221,8 +230,10 @@
               <th>Audited By</th>
               <th>Audit Category</th>
               <th>Remarks</th>
+              <th>Department</th>
               <th>Group</th>
               <th>Section</th>
+              <th>Section Code</th>
             </thead>
             <tbody id="data_preview_audit"></tbody>
           </table>

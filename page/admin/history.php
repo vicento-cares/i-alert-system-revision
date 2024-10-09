@@ -100,13 +100,13 @@
                     <label>Position: </label>
                     <select id="positionhistory" class="form-control" autocomplete=off>
                       <option value="">Select Position</option>
-                      <option value="associate">Associate</option>
-                      <option value="expert">Expert</option>
-                      <option value="jr.staff">Jr. Staff</option>
-                      <option value="staff">Staff</option>
-                      <option value="supervisor">Supervisor</option>
-                      <option value="assistant manager">Assistant Manager</option>
-                      <option value="manager">Manager</option>
+                      <option value="Associate">Associate</option>
+                      <option value="Expert">Expert</option>
+                      <option value="Jr. Staff">Jr. Staff</option>
+                      <option value="Staff">Staff</option>
+                      <option value="Supervisor">Supervisor</option>
+                      <option value="Assistant Manager">Assistant Manager</option>
+                      <option value="Manager">Manager</option>
                     </select>
                   </div>
                 </div>

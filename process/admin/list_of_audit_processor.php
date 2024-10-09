@@ -66,8 +66,10 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $x['pd'] . '</td>';
                 echo '<td>' . $x['agency'] . '</td>';
                 echo '<td>' . $x['hr'] . '</td>';
-                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['dept'] . '</td>';
                 echo '<td>' . $x['falp_group'] . '</td>';
+                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['section_code'] . '</td>';
                 echo '</tr>';
             } else {
                 echo '<tr>';
@@ -100,8 +102,10 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $x['pd'] . '</td>';
                 echo '<td>' . $x['agency'] . '</td>';
                 echo '<td>' . $x['hr'] . '</td>';
-                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['dept'] . '</td>';
                 echo '<td>' . $x['falp_group'] . '</td>';
+                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['section_code'] . '</td>';
                 echo '</tr>';
             }
         }

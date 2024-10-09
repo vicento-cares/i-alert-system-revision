@@ -142,11 +142,11 @@
                       <select class="form-control" name="section_admin" id="section_admin">
                         <option value="">Select Section</option>
                         <?php
-                        $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                        $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
                         $stmt = $conn->prepare($get_curiculum);
                         $stmt->execute();
                         foreach ($stmt->fetchALL() as $x) {
-                          echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                          echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
                         }
                         ?>
                       </select>
@@ -160,7 +160,6 @@
                         $stmt = $conn->prepare($get_curiculum);
                         $stmt->execute();
                         foreach ($stmt->fetchALL() as $x) {
-
                           echo '<option value="' . $x['esection'] . '">' . $x['esection'] . '</option>';
                         }
                         ?>
@@ -171,11 +170,10 @@
                       <select class="form-control" name="falp_group" id="falp_group">
                         <option value="">Select Group</option>
                         <?php
-                        $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                        $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
                         $stmt = $conn->prepare($get_curiculum);
                         $stmt->execute();
                         foreach ($stmt->fetchALL() as $x) {
-
                           echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
                         }
                         ?>
@@ -220,8 +218,10 @@
                     <th style="text-align:center;">Audit Type</th>
                     <th style="text-align:center;">Audited By</th>
                     <th style="text-align:center;">Audit Category</th>
-                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Section Code</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Concerned Group</th>
                     <th style="text-align:center;">Updated By</th>

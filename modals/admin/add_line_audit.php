@@ -178,8 +178,10 @@
               <th>Audited By</th>
               <th>Audit Category</th>
               <th>Audit Type</th>
+              <th>Department</th>
               <th>Group</th>
               <th>Section</th>
+              <th>Section Code</th>
               <th>Remarks</th>
             </thead>
             <tbody id="data_preview_line_audit"></tbody>

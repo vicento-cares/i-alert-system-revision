@@ -51,24 +51,17 @@
                     $stmt = $conn->prepare($get_curiculum);
                     $stmt->execute();
                     foreach ($stmt->fetchALL() as $x) {
-
                       echo '<option value="' . $x['esection'] . '">' . $x['esection'] . '</option>';
                     }
                     ?>
                   </select>
                 </div>
-                <div class="col-1">
-                  <span style="visibility: hidden;">.</span>
-                  <div class="input-group input-group-sm" style="width: 100px;">
-                    <button class="btn btn-primary" id="searchReqBtn" onclick="load_count()">Search <i
-                        class="fas fa-search"></i></button>
-
-                  </div>
+                <div class="col-4">
+                  <label>&nbsp;</label>
+                  <button class="btn btn-primary btn-block" id="searchReqBtn" onclick="load_count()">Search <i class="fas fa-search"></i></button>
                 </div>
               </div>
-
             </div>
-
             <!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->

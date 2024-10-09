@@ -132,11 +132,11 @@
                     <select class="form-control" name="sect" id="sect">
                       <option value="">Select Section</option>
                       <?php
-                      $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                      $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();
                       foreach ($stmt->fetchALL() as $x) {
-                        echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                        echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
                       }
                       ?>
                     </select>
@@ -166,7 +166,7 @@
                     <select class="form-control" name="falp_group" id="falp_group">
                       <option value="">Select Group</option>
                       <?php
-                      $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+                      $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();
                       foreach ($stmt->fetchALL() as $x) {
@@ -238,8 +238,10 @@
                   <th style="text-align:center;">Concerned Group</th>
                   <th style="text-align:center;">AGENCY Status</th>
                   <th style="text-align:center;">HR Status</th>
-                  <th style="text-align:center;">Section</th>
+                  <th style="text-align:center;">Department</th>
                   <th style="text-align:center;">Group</th>
+                  <th style="text-align:center;">Section</th>
+                  <th style="text-align:center;">Section Code</th>
 
                 </thead>
                 <tbody id="audit_data" style="text-align:center;"></tbody>
