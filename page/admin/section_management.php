@@ -42,17 +42,18 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form>
+            <form action="javascript:void(0)">
               <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <label>Section Name:</label> <input type="text" name="section_name" id="section_name"
-                      class="form-control">
+                    <label>Section Name:</label>
+                    <input type="text" name="section_name" id="section_name" class="form-control">
                   </div>
-                  <div class="col-9">
-                    <span style="visibility:hidden;">.</span>
-                    <p style="text-align:right;"><a href="#" class="btn btn-primary" onclick="load_sections()">Search <i
-                          class="fa fa-search"></a></i></p>
+                  <div class="col-1">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary btn-block" onclick="load_sections()">Search
+                      <i class="fa fa-search"></i>
+                    </button>
                   </div>
                 </div>
                 <br>
@@ -63,8 +64,9 @@
                         <thead style="text-align:center;">
                           <th>#</th>
                           <th>Section Code</th>
-                          <th>Section Name</th>
+                          <th>Department</th>
                           <th>Group</th>
+                          <th>Section</th>
                         </thead>
                         <tbody id="list_of_sections" style="text-align:center;"></tbody>
                       </table>
@@ -73,14 +75,10 @@
                 </div>
               </div>
               <!-- /.card-body -->
-
-              <div class="card-footer">
-
-              </div>
+              <div class="card-footer"></div>
             </form>
           </div>
           <!-- /.card -->
-
         </div>
       </div>
     </div>
