@@ -39,7 +39,7 @@
             <select class="form-control" id="provider_update">
               <option>Select Provider</option>
               <?php
-              $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' OR role ='fas'";
+              $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' OR role ='fas' ORDER BY esection ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
@@ -119,7 +119,7 @@
             <select class="form-control" id="process_update">
               <option>Select Process</option>
               <?php
-              $get_process = "SELECT DISTINCT process FROM ialert_audit";
+              $get_process = "SELECT DISTINCT process FROM ialert_audit ORDER BY process ASC";
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
@@ -135,7 +135,7 @@
             <select class="form-control" name="audit_findings" id="audit_findings_update">
               <option selected value="">Select Audit Findings</option>
               <?php
-              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
+              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ ORDER BY audit_findings ASC";
 
               $stmt = $conn->prepare($audit_findingss);
               $stmt->execute();

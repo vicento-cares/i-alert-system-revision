@@ -121,11 +121,11 @@
                     <select class="form-control" name="section_audited" id="section_audited">
                       <option value="">Select Section</option>
                       <?php
-                      $get_curiculum = "SELECT DISTINCT section, name FROM ialert_section";
+                      $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();
                       foreach ($stmt->fetchALL() as $x) {
-                        echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                        echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
                       }
                       ?>
                     </select>
@@ -192,8 +192,10 @@
                     <th style="text-align:center;">Audited By</th>
                     <th style="text-align:center;">Audit Category</th>
                     <th style="text-align:center;">Remarks</th>
-                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Section Code</th>
                     <!--  <th style="text-align:center;">PD Status</th>              
                     <th style="text-align:center;">AGENCY Status</th> 
                     <th style="text-align:center;">HR Status</th>  -->

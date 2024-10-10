@@ -160,7 +160,7 @@ if ($method == 'update_fass') {
                 $audit_findings = $j['audit_findings'];
                 $audited_categ = $j['audited_categ'];
 
-                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'awol' && $status != 'resigned') {
+                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'AWOL' && $status != 'Resigned') {
                     echo 'select ir status';
                 } else {
                     $audit_counts = "SELECT count(audit_findings) as audit_count 
@@ -174,7 +174,7 @@ if ($method == 'update_fass') {
 
                             if ($audit_count >= 3 && $status != 'Written IR') {
                                 echo 'invalid';
-                            } else if ($status === 'awol') {
+                            } else if ($status === 'AWOL') {
                                 $update = "UPDATE ialert_audit 
                                             SET edit_count = 0, pd = '$status', updated_by = '$update_by' 
                                             WHERE id = '$x'";
@@ -184,7 +184,7 @@ if ($method == 'update_fass') {
                                 } else {
                                     echo 'error';
                                 }
-                            } else if ($status === 'resigned') {
+                            } else if ($status === 'Resigned') {
                                 $updates = "UPDATE ialert_audit 
                                             SET edit_count = 0, pd = '$status', updated_by = '$update_by' 
                                             WHERE id = '$x'";

@@ -43,9 +43,9 @@
     foreach($stmt->fetchALL() as $j){
       $section = $j['section'];
       $stmt = NULL;
-      $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no != 'initial' AND section = '$section'AND provider = 'FAS' AND edit_count = 0 AND date_recieved IS NULL
+      $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no != 'initial' AND section = '$section'AND provider = 'fas' AND edit_count = 0 AND date_recieved IS NULL
         UNION ALL
-        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no != 'initial' AND section = '$section'  AND provider = 'FAS' AND date_recieved IS NULL) AS J";
+        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no != 'initial' AND section = '$section'  AND provider = 'fas' AND date_recieved IS NULL) AS J";
       $stmt = $conn->prepare($query);
       $stmt->execute();
       if ($stmt->rowCount() > 0) {
@@ -60,7 +60,7 @@
 ?>
  <?php
  $stmt = NULL;
- $query = "SELECT count(*) as grand_total from ialert_audit where line_no != 'initial' AND section = '$section' AND provider = 'FAS'";
+ $query = "SELECT count(*) as grand_total from ialert_audit where line_no != 'initial' AND section = '$section' AND provider = 'fas'";
  $stmt = $conn->prepare($query);
  $stmt->execute();
  foreach($stmt->fetchALL() as $j){
@@ -100,7 +100,7 @@ if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $gc_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
@@ -135,16 +135,16 @@ if ($stmt->rowCount() > 0) {
   foreach ($stmt->fetchALL() as $j) {
     $section = $j['section'];
     $stmt = NULL;
-    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'FAS' AND edit_count = 0 AND date_recieved IS NULL
+    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'fas' AND edit_count = 0 AND date_recieved IS NULL
         UNION ALL
-        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'FAS' AND date_recieved IS NULL) AS J";
+        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'fas' AND date_recieved IS NULL) AS J";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $fp_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
@@ -179,16 +179,16 @@ if ($stmt->rowCount() > 0) {
   foreach ($stmt->fetchALL() as $j) {
     $section = $j['section'];
     $stmt = NULL;
-    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'FAS' AND edit_count = 0 AND date_recieved IS NULL
+    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'fas' AND edit_count = 0 AND date_recieved IS NULL
         UNION ALL
-        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'FAS' AND date_recieved IS NULL) AS J";
+        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'fas' AND date_recieved IS NULL) AS J";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $sp1_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
@@ -223,16 +223,16 @@ if ($stmt->rowCount() > 0) {
   foreach ($stmt->fetchALL() as $j) {
     $section = $j['section'];
     $stmt = NULL;
-    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'FAS' AND edit_count = 0 AND date_recieved IS NULL
+    $query = "SELECT COUNT(total) AS total FROM (SELECT id as total FROM ialert_audit WHERE pd = 'Written IR' AND line_no = 'initial' AND section = '$section'AND provider = 'fas' AND edit_count = 0 AND date_recieved IS NULL
         UNION ALL
-        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'FAS' AND date_recieved IS NULL) AS J";
+        SELECT id as total FROM ialert_audit WHERE edit_count != 0 AND line_no = 'initial' AND section = '$section'  AND provider = 'fas' AND date_recieved IS NULL) AS J";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $sp2_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where line_no = 'initial' AND section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
@@ -275,7 +275,7 @@ if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $qa_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {
@@ -320,7 +320,7 @@ if ($stmt->rowCount() > 0) {
       foreach ($stmt->fetchALL() as $j) {
         $other_group_total += intval($j['total']);
         $stmt = NULL;
-        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'FAS'";
+        $query = "SELECT count(*) as grand_total from ialert_audit where section = '$section' AND provider = 'fas'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
         foreach ($stmt->fetchALL() as $j) {

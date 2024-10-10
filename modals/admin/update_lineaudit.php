@@ -69,7 +69,7 @@
             <select class="form-control" id="process_line_update">
               <option>Select Process</option>
               <?php
-              $get_process = "SELECT DISTINCT process FROM ialert_line_audit";
+              $get_process = "SELECT DISTINCT process FROM ialert_line_audit ORDER BY process ASC";
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
@@ -85,7 +85,7 @@
             <select class="form-control" name="line_audit_findings" id="line_audit_findings_update">
               <option selected value="">Select Audit Findings</option>
               <?php
-              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
+              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ ORDER BY audit_findings ASC";
 
               $stmt = $conn->prepare($audit_findingss);
               $stmt->execute();

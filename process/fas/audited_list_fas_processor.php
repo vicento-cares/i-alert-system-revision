@@ -21,7 +21,7 @@ if ($method == 'count_for_update_fas') {
         $agency = $x['agency'];
         $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE provider = 'FAS' AND falp_group = '$falp_group'";
+        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE provider = 'fas' AND falp_group = '$falp_group'";
 
         if (!empty($section)) {
             $count_na .= " AND section = '$section'";
@@ -40,7 +40,7 @@ if ($method == 'count_for_update_fas') {
                 $count_pending .= " AND section = '$section'";
             }
 
-            $count_pending .= " AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
+            $count_pending .= " AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
 
             $stmt3 = $conn->prepare($count_pending);
             if ($stmt3->execute()) {
@@ -114,8 +114,10 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<td>' . $x['groups'] . '</td>';
                 echo '<td>' . $x['car_maker'] . '</td>';
                 echo '<td>' . $x['car_model'] . '</td>';
-                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['dept'] . '</td>';
                 echo '<td>' . $x['falp_group'] . '</td>';
+                echo '<td>' . $x['section'] . '</td>';
+                echo '<td>' . $x['section_code'] . '</td>';
                 echo '<td>' . $x['line_no'] . '</td>';
                 echo '<td>' . $x['process'] . '</td>';
                 echo '<td>' . $x['audit_findings'] . '</td>';
@@ -219,7 +221,7 @@ if ($method == 'update_fas') {
                 $audit_findings = $j['audit_findings'];
                 $audited_categ = $j['audited_categ'];
 
-                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'awol' && $status != 'resigned') {
+                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'AWOL' && $status != 'Resigned') {
                     echo 'select ir status';
                 } else {
                     $audit_counts = "SELECT count(audit_findings) as audit_count 
@@ -233,7 +235,7 @@ if ($method == 'update_fas') {
 
                             if ($audit_count >= 3 && $status != 'Written IR') {
                                 echo 'invalid';
-                            } else if ($status === 'awol') {
+                            } else if ($status === 'AWOL') {
                                 $update = "UPDATE ialert_audit SET edit_count = 0, pd = '$status' WHERE id = '$x'";
                                 $stmt4 = $conn->prepare($update);
 
@@ -242,7 +244,7 @@ if ($method == 'update_fas') {
                                 } else {
                                     echo 'error';
                                 }
-                            } else if ($status === 'resigned') {
+                            } else if ($status === 'Resigned') {
                                 $updates = "UPDATE ialert_audit SET edit_count = 0, pd = '$status' WHERE id = '$x'";
                                 $stmt5 = $conn->prepare($updates);
 

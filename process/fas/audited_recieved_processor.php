@@ -47,8 +47,10 @@ if ($method == 'fetch_recieve_fas') {
             echo '<td>' . $x['groups'] . '</td>';
             echo '<td>' . $x['car_maker'] . '</td>';
             echo '<td>' . $x['car_model'] . '</td>';
-            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';
+            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['section_code'] . '</td>';
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';

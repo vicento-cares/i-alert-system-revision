@@ -47,7 +47,7 @@
                   <select class="form-control" id="provider_pending">
                     <option>Select Provider</option>
                     <?php
-                    $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider'";
+                    $get_curiculum = "SELECT DISTINCT esection FROM ialert_account WHERE role = 'provider' ORDER BY esection ASC";
                     $stmt = $conn->prepare($get_curiculum);
                     $stmt->execute();
                     foreach ($stmt->fetchALL() as $x) {

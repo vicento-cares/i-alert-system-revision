@@ -179,8 +179,10 @@
                     <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
-                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>
+                    <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Section Code</th>
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
