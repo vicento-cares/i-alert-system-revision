@@ -347,7 +347,7 @@ if ($stmt->rowCount() > 0) {
 
 <?php
 $stmt = NULL;
-$query ="SELECT DISTINCT provider FROM ialert_audit where provider NOT IN ('fas','ipromote','natcorp')";
+$query ="SELECT DISTINCT provider FROM ialert_audit where provider != 'fas'";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
