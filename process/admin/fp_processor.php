@@ -1,7 +1,7 @@
 <?php
 // Revisions (Vince)
 
-include '../conn.php';
+require '../conn.php';
 
 $method = $_POST['method'];
 
@@ -23,13 +23,13 @@ if ($method == 'fetch_fp') {
     if (!empty($section)) {
         $fp .= " AND section = '$section'";
     }
-    $fp .= " AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
+    $fp .= " AND edit_count != 0 AND provider = 'fas' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
 	UNION ALL
 	SELECT * FROM ialert_audit where pd = 'Written IR' AND falp_group = 'First Process'";
     if (!empty($section)) {
         $fp .= " AND section = '$section'";
     }
-    $fp .= " AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
+    $fp .= " AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'fas' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
 
     $stmt = $conn->prepare($fp);
     $stmt->execute();
@@ -111,12 +111,12 @@ if ($method == 'count_fp') {
         $agency = $x['agency'];
         $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
+        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
         $stmt2 = $conn->prepare($count_na);
         $stmt2->execute();
         foreach ($stmt2->fetchALL() as $j) {
             $total_ir_pending = $j['total'];
-            $count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
+            $count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
             $stmt3 = $conn->prepare($count_pending);
             if ($stmt3->execute()) {
                 foreach ($stmt3->fetchALL() as $a) {

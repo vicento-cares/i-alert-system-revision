@@ -57,7 +57,6 @@
                       <datalist id="lines" name="">
                         <option value="">Select Line</option>
                         <?php
-                        require '../../process/conn.php';
                         $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
                         $stmt = $conn->prepare($line);
@@ -168,7 +167,10 @@
                     <th style="text-align:center;">Shift Group</th>
                     <th style="text-align:center;">Car Maker</th>
                     <th style="text-align:center;">Car Model</th>
+                    <th style="text-align:center;">Department</th>
+                    <th style="text-align:center;">Group</th>
                     <th style="text-align:center;">Section</th>
+                    <th style="text-align:center;">Section Code</th>
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>

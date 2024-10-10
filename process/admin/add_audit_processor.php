@@ -1,7 +1,7 @@
 <?php
-include '../conn.php';
-// include '../conn2.php';
-include '../conn3.php';
+require '../conn.php';
+// require '../conn2.php';
+require '../conn3.php';
 $method = $_POST['method'];
 
 if ($method == 'AuditCode') {
@@ -16,7 +16,7 @@ if ($method == 'fetch_details_req') {
 
     // Revisions (Vince)
     // CHECK (Employee Management System)
-    $sql = "SELECT emp_no, full_name, position, provider, line_no FROM m_employees WHERE emp_no = '$employee_num'";
+    $sql = "SELECT emp_no, full_name, position, provider, dept, section, line_no, shift_group FROM m_employees WHERE emp_no = '$employee_num'";
     $stmt = $conn3->prepare($sql);
     $stmt->execute();
 
@@ -30,7 +30,7 @@ if ($method == 'fetch_details_req') {
         } else {
             $line_no = "Initial";
         }
-        echo $row['full_name'] . '~!~' . $row['position'] . '~!~' . $row['provider'] . '~!~' . $line_no;
+        echo $row['full_name'] . '~!~' . $row['position'] . '~!~' . strtolower($row['provider']) . '~!~' . $line_no  . '~!~' . $row['section'] . '~!~' . $row['dept'] . '~!~' . strtolower($row['shift_group']);
     } else {
         // CHECK (HR ARIS)
         // $sql = "SELECT idNumber, empName, empPosition, empAgency, lineNo FROM a_m_employee WHERE idNumber = '$employee_num'";
@@ -49,29 +49,44 @@ if ($method == 'fetch_details_req') {
 
 if ($method == 'insert_audit') {
 
-    $employee_num = trim($_POST['employee_num']);
-    $full_name = $_POST['full_name'];
-    $position = $_POST['position'];
-    $provider = $_POST['provider'];
-    $shift = $_POST['shift'];
-    $group = $_POST['group'];
-    $date_audited = $_POST['date_audited'];
-    $carmaker = $_POST['carmaker'];
-    $carmodel = $_POST['carmodel'];
-    $emline = $_POST['emline'];
-    $emprocess = $_POST['emprocess'];
+    $employee_num = addslashes(trim($_POST['employee_num']));
+    $full_name = addslashes($_POST['full_name']);
+    $position = addslashes($_POST['position']);
+    $provider = addslashes($_POST['provider']);
+    $shift = addslashes($_POST['shift']);
+    $group = addslashes($_POST['group']);
+    $date_audited = addslashes($_POST['date_audited']);
+    $carmaker = addslashes($_POST['carmaker']);
+    $carmodel = addslashes($_POST['carmodel']);
+    $emline = addslashes($_POST['emline']);
+    $emprocess = addslashes($_POST['emprocess']);
     $audit_findings = addslashes($_POST['audit_findings']);
-    $audited_by = $_POST['audited_by'];
-    $audit_type = $_POST['audit_type'];
-    $audit_categ = $_POST['audit_categ'];
-    $remarks = $_POST['remarks'];
-    $esection = $_POST['esection'];
-    $username = $_POST['username'];
-    $audit_code = trim($_POST['audit_code']);
-    $falp_group = $_POST['falp_group'];
-    $section = $_POST['section'];
+    $audited_by = addslashes($_POST['audited_by']);
+    $audit_type = addslashes($_POST['audit_type']);
+    $audit_categ = addslashes($_POST['audit_categ']);
+    $remarks = addslashes($_POST['remarks']);
+    $esection = addslashes($_POST['esection']);
+    $username = addslashes($_POST['username']);
+    $audit_code = addslashes(trim($_POST['audit_code']));
+    $falp_group = addslashes($_POST['falp_group']);
+    $section = addslashes($_POST['section']);
+    $dept = "";
+    $section_code = "";
 
-    $insert = "INSERT INTO ialert_audit (`batch`, `date_audited`, `full_name`,`employee_num`,`provider`,`position`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`pd`,`hr`,`agency`,`date_created`,`section`,`falp_group`) VALUES('$audit_code', '$date_audited','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audited_by','$audit_categ','$audit_type','$remarks',NULL,NULL,NULL,'$server_date_time','$section','$falp_group')";
+    $sql = "SELECT dept, section_code FROM ialert_section WHERE falp_group = '$falp_group' AND section = '$section'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+
+    $row = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $dept = $row['dept'];
+        $section_code = $row['section_code'];
+    }
+
+    $insert = "INSERT INTO ialert_audit 
+                (batch,date_audited,full_name,employee_num,provider,position,shift,groups,car_maker,car_model,line_no,process,audit_findings,audited_by,audited_categ,audit_type,remarks,pd,hr,agency,date_created,section_code,section,falp_group,dept) 
+                VALUES ('$audit_code','$date_audited','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audited_by','$audit_categ','$audit_type','$remarks',NULL,NULL,NULL,'$server_date_time','$section_code','$section','$falp_group','$dept')";
     $stmt = $conn->prepare($insert);
     if ($stmt->execute()) {
         echo 'Successfully Saved';
@@ -82,7 +97,7 @@ if ($method == 'insert_audit') {
 
 if ($method == 'prev_audit') {
     $c = 0;
-    $audit_code = trim($_POST['audit_code']);
+    $audit_code = addslashes(trim($_POST['audit_code']));
     $query = "SELECT * FROM ialert_audit WHERE batch LIKE '$audit_code%' ORDER BY id ASC";
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -106,8 +121,10 @@ if ($method == 'prev_audit') {
         echo '<td>' . $x['audited_by'] . '</td>';
         echo '<td>' . $x['audited_categ'] . '</td>';
         echo '<td>' . $x['remarks'] . '</td>';
+        echo '<td>' . $x['dept'] . '</td>';
         echo '<td>' . $x['falp_group'] . '</td>';
         echo '<td>' . $x['section'] . '</td>';
+        echo '<td>' . $x['section_code'] . '</td>';
         echo '</tr>';
     }
 }

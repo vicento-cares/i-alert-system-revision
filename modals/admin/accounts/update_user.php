@@ -14,11 +14,11 @@
           <input type="hidden" name="id_update_accounts" id="id_update_accounts">
           <div class="col-4">
             <label>Username:</label> <input type="text" name="username_update_accounts" id="username_update_accounts"
-              class="form-control" autocomplete="off">
+              class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-4">
             <label>Password:</label> <input type="password" name="password_update_accounts"
-              id="password_update_accounts" class="form-control" autocomplete="off">
+              id="password_update_accounts" class="form-control" autocomplete="off" maxlength="255">
           </div>
 
           <div class="col-4">
@@ -43,18 +43,16 @@
               <option value="hr">HR</option>
               <option value="fas">FAS</option>
               <option value="pkimt">PKIMT</option>
-              <option value="addeven">ADD EVEN</option>
+              <option value="add even">ADD EVEN</option>
               <option value="goldenhand">GOLDENHAND</option>
-              <option value="ipromote">IPROMOTE</option>
               <option value="megatrend">MEGATREND</option>
               <option value="maxim">MAXIM</option>
               <option value="onesource">ONE SOURCE</option>
-              <option value="natcorp">NATCORP</option>
             </select>
           </div>
           <div class="col-4">
             <label>Carmaker:</label>
-            <input type="text" name="carmaker_update_accounts" id="carmaker_update_accounts" class="form-control">
+            <input type="text" name="carmaker_update_accounts" id="carmaker_update_accounts" class="form-control" maxlength="255">
           </div>
           <div class="col-4">
             <label>Group:</label>
@@ -62,12 +60,10 @@
               onchange="fetch_section_dropdown(2)">
               <option value="">Select Group</option>
               <?php
-              require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -80,26 +76,12 @@
             <!-- <input type="text" name="section_update_accounts" id="section_update_accounts" class="form-control"> -->
             <select class="form-control" name="section_update_accounts" id="section_update_accounts">
               <option value="">Select Section</option>
-              <!--     <option value="section1">Section1</option>
-                       <option value="section2">Section2</option>
-                       <option value="section3">Section3</option>
-                       <option value="section4">Section4</option>
-                       <option value="section5">Section5</option>
-                       <option value="section6">Section6</option>
-                       <option value="section7">Section7</option>
-                       <option value="section8">Section8</option>
-                        <option value="battery">Battery</option>
-                         <option value="qa-initial">QA Initial</option>
-                          <option value="qa-final">QA Final</option>
-                           <option value="repair">Repair</option> -->
               <?php
-              require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT section,name FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
-                echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
               }
               ?>
             </select>

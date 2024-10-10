@@ -52,12 +52,13 @@
                     var str = response.split('~!~');
                     document.querySelector('#full_name').value = str[0];
                     document.querySelector('#position').value = str[1];
-                    if (str[2] != 'PKIMT') {
-                        document.querySelector('#provider').value = str[2].toLowerCase();
-                    } else {
-                        document.querySelector('#provider').value = str[2];
-                    }
+                    document.querySelector('#provider').value = str[2];
                     document.querySelector('#emline').value = str[3];
+                    document.querySelector('#falp_group').value = str[4];
+                    document.querySelector('#group').value = str[6];
+                    setTimeout(() => {
+                        fetch_section_dropdown();
+                    }, 500)
                 }
                 else {
                     $('#full_name').val('');
@@ -73,6 +74,7 @@
                     $('#audited_by').val('');
                     $('#audit_categ').val('');
                     $('#remarks').val('');
+                    $('#falp_group').val('').change();
                 }
             }
         });

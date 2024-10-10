@@ -327,30 +327,44 @@ if (isset($_POST['upload'])) {
                 $error = 0;
                 while (($line = fgetcsv($csvFile)) !== false) {
 
-                    $date_audited = $line[0];
-                    $full_name = $line[1];
-                    $employee_num = $line[2];
-                    $provider = $line[3];
-                    $position = $line[4];
-                    $shift = strtolower($line[5]);
-                    $group = strtolower($line[6]);
-                    $carmaker = $line[7];
-                    $carmodel = $line[8];
-                    $line_n = $line[9];
-                    $emprocess = $line[10];
+                    $date_audited = addslashes($line[0]);
+                    $full_name = addslashes($line[1]);
+                    $employee_num = addslashes($line[2]);
+                    $provider = addslashes($line[3]);
+                    $position = addslashes($line[4]);
+                    $shift = addslashes(strtolower($line[5]));
+                    $group = addslashes(strtolower($line[6]));
+                    $carmaker = addslashes($line[7]);
+                    $carmodel = addslashes($line[8]);
+                    $line_n = addslashes($line[9]);
+                    $emprocess = addslashes($line[10]);
                     $audit_findings = addslashes($line[11]);
-                    $audited_by = $line[12];
-                    $audited_categ = strtolower($line[13]);
-                    $audit_type = strtolower($line[14]);
-                    $remark = $line[15];
-                    $section = $line[16];
-                    $falp_group = $line[17];
+                    $audited_by = addslashes($line[12]);
+                    $audited_categ = addslashes(strtolower($line[13]));
+                    $audit_type = addslashes(strtolower($line[14]));
+                    $remark = addslashes($line[15]);
+                    $section = addslashes($line[16]);
+                    $falp_group = addslashes($line[17]);
 
                     $dates = new DateTime($date_audited);
                     $date_auditeds = date_format($dates, "Y-m-d");
 
-                    $insert = "INSERT INTO ialert_audit (`batch`,`date_audited`,`full_name`,`employee_num`,`provider`,`position`,`shift`,`groups`,`car_maker`,`car_model`,`line_no`,`process`,`audit_findings`,`audited_by`,`audited_categ`,`audit_type`,`remarks`,`date_created`,`section`,`falp_group`) 
-                                VALUES ('$ac','$date_auditeds','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_time','$section','$falp_group')";
+                    $dept = "";
+                    $section_code = "";
+
+                    $sql = "SELECT dept, section_code FROM ialert_section WHERE falp_group = '$falp_group' AND section = '$section'";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+
+                    $row = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+                    if ($row) {
+                        $dept = $row['dept'];
+                        $section_code = $row['section_code'];
+                    }
+
+                    $insert = "INSERT INTO ialert_audit (batch,date_audited,full_name,employee_num,provider,position,shift,groups,car_maker,car_model,line_no,process,audit_findings,audited_by,audited_categ,audit_type,remarks,date_created,section_code,section,falp_group,dept) 
+                                VALUES ('$ac','$date_auditeds','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_time','$section_code','$section','$falp_group','$dept')";
                     $stmt = $conn->prepare($insert);
                     if ($stmt->execute()) {
                         $error = 0;

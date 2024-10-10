@@ -1,5 +1,5 @@
 <?php
-include '../conn.php';
+require '../conn.php';
 
 $method = $_POST['method'];
 
@@ -16,9 +16,9 @@ if ($method == 'fetch_sec4') {
     $c = 0;
 
     // $sec4 = "SELECT * FROM ialert_audit WHERE section = 'Section4' AND edit_count != 0 AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
-    $sec4 = "SELECT * FROM ialert_audit where section = 'Section4' AND edit_count != 0 AND provider = 'FAS' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
+    $sec4 = "SELECT * FROM ialert_audit where section = 'Section 4' AND edit_count != 0 AND provider = 'fas' AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')
             UNION ALL
-         SELECT * FROM ialert_audit where pd = 'Written IR' AND section = 'Section4' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'FAS' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
+         SELECT * FROM ialert_audit where pd = 'Written IR' AND section = 'Section 4' AND edit_count = 0 AND date_recieved IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$line%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND position LIKE '$position%' AND audit_type LIKE '$audit_type%' AND provider = 'fas' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')";
     $stmt = $conn->prepare($sec4);
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
@@ -98,12 +98,12 @@ if ($method == 'count_section4') {
         $agency = $x['agency'];
         $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section = 'Section4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
+        $count_na = "SELECT COUNT(*) as total FROM ialert_audit WHERE pd = 'Written IR' AND section = 'Section 4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND edit_count = 0 AND date_recieved IS NULL";
         $stmt2 = $conn->prepare($count_na);
         $stmt2->execute();
         foreach ($stmt2->fetchALL() as $j) {
             $total_ir_pending = $j['total'];
-            $count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section = 'Section4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'FAS' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
+            $count_pending = "SELECT (COUNT(*) + $total_ir_pending) as totals FROM ialert_audit WHERE edit_count != 0 AND section = 'Section 4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas' AND audit_type LIKE '$audit_type%' AND date_recieved IS NULL";
             $stmt3 = $conn->prepare($count_pending);
             if ($stmt3->execute()) {
                 foreach ($stmt3->fetchALL() as $a) {
@@ -122,7 +122,7 @@ if ($method == 'count_section4') {
 if ($method == 'total_sec4') {
     $dateFrom = $_POST['dateFrom'];
     $dateTo = $_POST['dateTo'];
-    $count_total = "SELECT count(*) as grand_total4 from ialert_audit where section = 'Section4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas'";
+    $count_total = "SELECT count(*) as grand_total4 from ialert_audit where section = 'Section 4' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = 'fas'";
     $stmt = $conn->prepare($count_total);
     $stmt->execute();
 

@@ -12,17 +12,21 @@
       <div class="modal-body">
         <div class="row">
           <input type="hidden" name="id_update_sec" id="id_update_sec">
-          <div class="col-4">
+          <div class="col-3">
             <label>Section Code:</label> <input type="text" name="sec_code_update" id="sec_code_update"
-              class="form-control" autocomplete="off">
+              class="form-control" autocomplete="off" maxlength="255">
           </div>
-          <div class="col-4">
-            <label>Section Name:</label> <input type="text" name="sec_name_update" id="sec_name_update"
-              class="form-control" autocomplete="off">
+          <div class="col-3">
+            <label>Department:</label> <input type="text" name="sec_dept_update" id="sec_dept_update" class="form-control"
+              autocomplete="off" maxlength="255">
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <label>Group:</label> <input type="text" name="sec_falp_group_update" id="sec_falp_group_update"
-              class="form-control" autocomplete="off">
+              class="form-control" autocomplete="off" maxlength="255">
+          </div>
+          <div class="col-3">
+            <label>Section Name:</label> <input type="text" name="sec_name_update" id="sec_name_update"
+              class="form-control" autocomplete="off" maxlength="255">
           </div>
         </div>
       </div>

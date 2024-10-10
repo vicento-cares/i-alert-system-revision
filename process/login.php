@@ -2,7 +2,7 @@
 session_name("i-alert");
 session_start();
 
-include 'conn.php';
+require 'conn.php';
 
 // Revisions (Vince)
 //Maintenance Mode
@@ -27,7 +27,7 @@ if (isset($_POST['login_btn'])) {
     } else if (empty($password)) {
         echo 'Please Enter Password';
     } else {
-        $check = "SELECT username, role, esection, car_maker, sections, falp_group 
+        $check = "SELECT username, role, esection, car_maker, section, falp_group 
                     FROM ialert_account 
                     WHERE BINARY username = ? AND BINARY password = ?";
         $stmt = $conn->prepare($check);
@@ -38,7 +38,7 @@ if (isset($_POST['login_btn'])) {
                 $role = $row['role'];
                 $esection = $row['esection'];
                 $car_maker = $row['car_maker'];
-                $sections = $row['sections'];
+                $sections = $row['section'];
                 $falp_group = $row['falp_group'];
             }
 

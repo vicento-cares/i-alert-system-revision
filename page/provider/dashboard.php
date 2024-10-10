@@ -36,8 +36,7 @@
               <div class="card-body">
                 <div class="row">
 <?php
-  include '../../process/conn.php';
-  $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
+  $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('Section 1','Section 2','Section 3','Section 4','Section 5','Section 6','Section 7','Section 8','Section 9') ORDER BY section ASC";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   if ($stmt->rowCount() > 0) {
@@ -86,7 +85,7 @@ $gc_total = 0;
 $gc_grand_total = 0;
 
 $stmt = NULL;
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'GC' ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('Repair Process', 'Tsumesen Insertion') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -128,7 +127,7 @@ if ($stmt->rowCount() > 0) {
 $fp_total = 0;
 $fp_grand_total = 0;
 
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('fpsection1','fpsection2','fpsection3','fpsection4','fpsection5','fpsection6','fpsection7','fpsection8','fpsection9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'First Process' ORDER BY section ASC";
 // $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
@@ -172,7 +171,7 @@ if ($stmt->rowCount() > 0) {
 $sp1_total = 0;
 $sp1_grand_total = 0;
 
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp1section1','sp1section2','sp1section3','sp1section4','sp1section5','sp1section6','sp1section7','sp1section8','sp1section9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'Secondary 1 Process' ORDER BY section ASC";
 // $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
@@ -216,7 +215,7 @@ if ($stmt->rowCount() > 0) {
 $sp2_total = 0;
 $sp2_grand_total = 0;
 
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('sp2section1','sp2section2','sp2section3','sp2section4','sp2section5','sp2section6','sp2section7','sp2section8','sp2section9') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section = 'Secondary 2 Process' ORDER BY section ASC";
 // $query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('section1','section2','section3','section4','section5','section6','section7','section8','section9') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
@@ -261,7 +260,7 @@ $qa_total = 0;
 $qa_grand_total = 0;
 
 $stmt = NULL;
-$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('qa-initial','qa-final') ORDER BY section ASC";
+$query = "SELECT DISTINCT section FROM ialert_section WHERE section IN ('QC','QAE','CQA') ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
@@ -305,7 +304,7 @@ $other_group_grand_total = 0;
 
 $stmt = NULL;
 $query = "SELECT DISTINCT section FROM ialert_section WHERE 
-          section IN ('battery', 'pe-ame', 'eq-final', 'warehouse', 'it', 'dock-audit', 'tube-cutting', 'hr-ga', 'QC-QC', 'PE', 'fabrication', 'safety', 'qm', 'me', 'mpd', 'pdcd', 'fgi') 
+          falp_group = 'Other Group' 
           ORDER BY section ASC";
 $stmt = $conn->prepare($query);
 $stmt->execute();
@@ -345,7 +344,7 @@ if ($stmt->rowCount() > 0) {
 
 <?php
 $stmt = NULL;
-$query ="SELECT DISTINCT provider FROM ialert_audit where provider NOT IN ('fas','ipromote','natcorp')";
+$query ="SELECT DISTINCT provider FROM ialert_audit where provider != 'fas'";
 $stmt = $conn->prepare($query);
 $stmt->execute();
 if ($stmt->rowCount() > 0) {

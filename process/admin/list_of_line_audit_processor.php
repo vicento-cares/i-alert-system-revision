@@ -1,5 +1,5 @@
 <?php
-include '../conn.php';
+require '../conn.php';
 
 $method = $_POST['method'];
 
@@ -44,8 +44,10 @@ if ($method == 'fetch_line_audit_list') {
             echo '<td>' . $x['audited_categ'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
-            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';
+            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['section_code'] . '</td>';
             echo '</tr>';
         }
     } else {

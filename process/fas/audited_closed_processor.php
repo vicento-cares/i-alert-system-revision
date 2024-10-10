@@ -1,5 +1,5 @@
 <?php
-include '../conn.php';
+require '../conn.php';
 
 $method = $_POST['method'];
 
@@ -23,7 +23,7 @@ if ($method == 'fetch_closed_fas') {
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE pd IN ('Written','Verbal','awol','resigned') AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND falp_group = '$falp_group'";
+    WHERE pd IN ('Written IR','Verbal warning','AWOL','Resigned') AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
@@ -49,8 +49,10 @@ if ($method == 'fetch_closed_fas') {
             echo '<td>' . $x['groups'] . '</td>';
             echo '<td>' . $x['car_maker'] . '</td>';
             echo '<td>' . $x['car_model'] . '</td>';
-            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';
+            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['section_code'] . '</td>';
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';

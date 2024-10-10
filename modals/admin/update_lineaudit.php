@@ -5,7 +5,6 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           <input type="hidden" name="id_line" id="id_line_update">
-
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
           onclick="javascript:window.location.reload()">
@@ -20,22 +19,21 @@
           </div>
           <div class="col-3">
             <span>Group:</span>
-            <input type="text" name="group_line_update" id="group_line_update" class="form-control">
+            <input type="text" name="group_line_update" id="group_line_update" class="form-control" maxlength="255">
           </div>
           <div class="col-3">
             <span>Shift:</span>
-            <input type="text" name="shift_line_update" id="shift_line_update" class="form-control">
+            <input type="text" name="shift_line_update" id="shift_line_update" class="form-control" maxlength="255">
           </div>
           <div class="col-3">
             <span>Audit Category:</span>
-            <input type="text" name="line_audit_categ_update" id="line_audit_categ_update" class="form-control">
+            <input type="text" name="line_audit_categ_update" id="line_audit_categ_update" class="form-control" maxlength="255">
           </div>
-
         </div>
         <div class="row">
           <div class="col-3">
             <span> Car Maker: </span> <input type="text" id="carmaker_line_update" class="form-control" list="list"
-              autocomplete="OFF" class="noSpace">
+              autocomplete="OFF" class="noSpace" maxlength="255">
             <datalist id="list">
               <option value="Suzuki">
               <option value="Toyota">
@@ -49,14 +47,13 @@
           </div>
           <div class="col-3">
             <span> Car Model: </span> <input type="text" id="carmodel_line_update" class="form-control"
-              autocomplete="OFF" class="noSpace">
+              autocomplete="OFF" class="noSpace" maxlength="255">
           </div>
           <div class="col-3">
             <span> Line No: </span>
             <select class="form-control" name="emline_line_update" id="emline_line_update">
               <option selected value="">Select Line</option>
               <?php
-              require '../../process/conn.php';
               $line = "SELECT DISTINCT line_no FROM ialert_lines ORDER BY line_no ASC";
 
               $stmt = $conn->prepare($line);
@@ -72,12 +69,10 @@
             <select class="form-control" id="process_line_update">
               <option>Select Process</option>
               <?php
-              require '../../process/conn.php';
-              $get_process = "SELECT DISTINCT process FROM ialert_line_audit";
+              $get_process = "SELECT DISTINCT process FROM ialert_line_audit ORDER BY process ASC";
               $stmt = $conn->prepare($get_process);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['process'] . '">' . $x['process'] . '</option>';
               }
               ?>
@@ -90,8 +85,7 @@
             <select class="form-control" name="line_audit_findings" id="line_audit_findings_update">
               <option selected value="">Select Audit Findings</option>
               <?php
-              require '../../process/conn.php';
-              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ";
+              $audit_findingss = "SELECT DISTINCT audit_findings FROM ialert_audit_findings_categ ORDER BY audit_findings ASC";
 
               $stmt = $conn->prepare($audit_findingss);
               $stmt->execute();
@@ -103,19 +97,17 @@
           </div>
           <div class="col-3">
             <span>Audited By:</span>
-            <input type="text" name="" id="line_audited_by_update" class="form-control" autocomplete="OFF">
+            <input type="text" name="" id="line_audited_by_update" class="form-control" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span>Audit Type:</span>
             <input type="text" name="" id="line_audit_type_update" class="form-control" value="Line Audit" readonly>
-
           </div>
           <div class="col-3">
             <span>Remarks</span>
-            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF">
+            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF" maxlength="255">
           </div>
         </div>
-
         <div class="row">
           <div class="col-3">
             <span>Group:</span>
@@ -123,12 +115,10 @@
               onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
               <?php
-              require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
                 echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
               }
               ?>
@@ -138,32 +128,17 @@
             <span>Section:</span>
             <select class="form-control" name="section_line_update" id="section_line_update">
               <option value="">Select Section</option>
-              <!--   <option value="section1">Section1</option>
-                       <option value="section2">Section2</option>
-                       <option value="section3">Section3</option>
-                       <option value="section4">Section4</option>
-                       <option value="section5">Section5</option>
-                       <option value="section6">Section6</option>
-                       <option value="section7">Section7</option>
-                       <option value="section8">Section8</option>
-                        <option value="battery">Battery</option>
-                         <option value="qa-initial">QA Initial</option>
-                          <option value="qa-final">QA Final</option>
-                           <option value="repair">Repair</option> -->
               <?php
-              require '../../process/conn.php';
-              $get_curiculum = "SELECT DISTINCT section,name FROM ialert_section";
+              $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
               $stmt = $conn->prepare($get_curiculum);
               $stmt->execute();
               foreach ($stmt->fetchALL() as $x) {
-
-                echo '<option value="' . $x['section'] . '">' . $x['name'] . '</option>';
+                echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
               }
               ?>
             </select>
           </div>
         </div>
-
         <br>
         <div class="row">
           <div class="col-12">
