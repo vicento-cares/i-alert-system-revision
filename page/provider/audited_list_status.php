@@ -87,11 +87,12 @@
                       <input type="text" name="carmodel" id="carmodel_provider_status" class="form-control">
                     </div>
                     <div class="col-3">
-                      <span>Audit Category: </span>
-                      <select class="form-control" id="audit_categ_provider_status" name="audit_categ">
-                        <option value=""> Select Audit Category</option>
-                        <option value="minor">Minor </option>
-                        <option value="major">Major </option>
+                      <span>Criticality Level:</span>
+                      <select class="form-control" id="criticality_level_provider_status" name="criticality_level">
+                        <option value="">Select Criticality Level</optio>
+                        <option value="Low Impact">Low Impact</option>
+                        <option value="Medium Impact">Medium Impact</option>
+                        <option value="High Impact">High Impact</option>
                       </select>
                     </div>
                     <div class="col-3">
@@ -223,7 +224,7 @@
                 <th style="text-align:center;">Process</th>
                 <th style="text-align:center;">Audit Findings</th>
                 <th style="text-align:center;">Audited By</th>
-                <th style="text-align:center;">Audit Category</th>
+                <th style="text-align:center;">Criticality Level</th>
                 <th style="text-align:center;">Remarks</th>
                 <th style="text-align:center;">AGENCY Status</th>
 

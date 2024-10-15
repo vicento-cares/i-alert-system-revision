@@ -35,7 +35,7 @@ if ($method == 'fetch_provider') {
             echo '<td>' . $c . '</td>';
             echo '<td style="display: none;">' . $x['batch'] . '</td>';
             echo '<td>' . $x['date_audited'] . '</td>';
-            echo '<td   style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['audited_categ'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '&quot;)">' . $x['full_name'] . '</td>';
+            echo '<td   style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '&quot;)">' . $x['full_name'] . '</td>';
             echo '<td>' . $x['position'] . '</td>';
             echo '<td>' . $x['employee_num'] . '</td>';
             echo '<td>' . $x['provider'] . '</td>';
@@ -46,7 +46,7 @@ if ($method == 'fetch_provider') {
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['agency'] . '</td>';

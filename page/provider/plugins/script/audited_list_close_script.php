@@ -11,7 +11,7 @@
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var carmaker = document.getElementById('carmaker_closed').value;
         var carmodel = document.getElementById('carmodel_closed').value;
-        var audit_categ = document.getElementById('audit_categ_closed').value;
+        var criticality_level = document.getElementById('criticality_level_closed').value;
         var audit_type = document.getElementById('audit_type_closed').value;
         var group = document.getElementById('groups_provider_closed').value;
         var shift = document.getElementById('shifts_provider_closed').value;
@@ -31,7 +31,7 @@
                 esection: esection,
                 carmaker: carmaker,
                 carmodel: carmodel,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 audit_type: audit_type,
                 group: group,
                 shift: shift

@@ -12,7 +12,7 @@ if ($method == 'fetch_audit_list') {
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
     $position = $_POST['position'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $audit_type = $_POST['audit_type'];
     $section = $_POST['section'];
     $provider = $_POST['provider'];
@@ -21,7 +21,7 @@ if ($method == 'fetch_audit_list') {
     $falp_group = $_POST['falp_group'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND line_no LIKE '$line%' AND position LIKE '$position%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND audited_categ LIKE '$audit_categ%' AND audit_type LIKE '$audit_type%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND edit_count != '0' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND line_no LIKE '$line%' AND position LIKE '$position%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND criticality_level LIKE '$criticality_level%' AND audit_type LIKE '$audit_type%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND edit_count != '0' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -46,7 +46,7 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $c . '</td>';
                 echo '<td style="display: none;">' . $x['batch'] . '</td>';
                 echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td  style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['audited_categ'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['full_name'] . '</td>';
+                echo '<td  style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['full_name'] . '</td>';
                 echo '<td>' . $x['position'] . '</td>';
 
                 echo '<td>' . $x['employee_num'] . '</td>';
@@ -60,7 +60,7 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $x['process'] . '</td>';
                 echo '<td>' . $x['audit_findings'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
+                echo '<td>' . $x['criticality_level'] . '</td>';
                 echo '<td>' . $x['audit_type'] . '</td>';
                 echo '<td>' . $x['remarks'] . '</td>';
                 echo '<td>' . $x['pd'] . '</td>';
@@ -84,7 +84,7 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $c . '</td>';
                 echo '<td style="display: none;">' . $x['batch'] . '</td>';
                 echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td  style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['audited_categ'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['full_name'] . '</td>';
+                echo '<td  style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['full_name'] . '</td>';
                 echo '<td>' . $x['position'] . '</td>';
                 echo '<td>' . $x['employee_num'] . '</td>';
                 echo '<td>' . $x['provider'] . '</td>';
@@ -96,7 +96,7 @@ if ($method == 'fetch_audit_list') {
                 echo '<td>' . $x['process'] . '</td>';
                 echo '<td>' . $x['audit_findings'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
+                echo '<td>' . $x['criticality_level'] . '</td>';
                 echo '<td>' . $x['audit_type'] . '</td>';
                 echo '<td>' . $x['remarks'] . '</td>';
                 echo '<td>' . $x['pd'] . '</td>';

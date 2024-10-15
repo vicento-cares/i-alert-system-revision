@@ -13,7 +13,7 @@ if ($method == 'fetch_closed_admin') {
     $carmodel = $_POST['carmodel'];
     $audit_type = $_POST['audit_type'];
     $position = $_POST['position'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $section = $_POST['section'];
@@ -22,7 +22,7 @@ if ($method == 'fetch_closed_admin') {
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider LIKE '$provider%' AND section LIKE '$section%' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND edit_count = 0 AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
+    WHERE employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider LIKE '$provider%' AND section LIKE '$section%' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND edit_count = 0 AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -31,7 +31,7 @@ if ($method == 'fetch_closed_admin') {
             $c++;
 
             // Revisions (Vince)
-            echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['audited_categ'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">';
+            echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">';
             echo '<td>' . $c . '</td>';
             echo '<td style="display: none;">' . $x['batch'] . '</td>';
             echo '<td>' . $x['date_audited'] . '</td>';
@@ -48,7 +48,7 @@ if ($method == 'fetch_closed_admin') {
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';
             echo '<td>' . $x['section'] . '</td>';

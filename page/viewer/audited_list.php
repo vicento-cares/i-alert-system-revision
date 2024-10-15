@@ -107,11 +107,12 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Audit Category:</label>
-                    <select class="form-control" id="audit_categ_audited">
-                      <option value="">Select Audit Category</option>
-                      <option value="minor">Minor</option>
-                      <option value="major">Major</option>
+                    <label>Criticality Level:</label>
+                    <select class="form-control" id="criticality_level_audited">
+                      <option value="">Select Criticality Level</optio>
+                      <option value="Low Impact">Low Impact</option>
+                      <option value="Medium Impact">Medium Impact</option>
+                      <option value="High Impact">High Impact</option>
                     </select>
                   </div>
                 </div>
@@ -190,7 +191,7 @@
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
                     <th style="text-align:center;">Audited By</th>
-                    <th style="text-align:center;">Audit Category</th>
+                    <th style="text-align:center;">Criticality Level</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>

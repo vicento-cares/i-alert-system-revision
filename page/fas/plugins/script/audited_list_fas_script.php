@@ -68,7 +68,7 @@
         var falp_group = document.getElementById('falp_group').value;
         var audit_type = document.getElementById('audit_type').value;
         var position = document.getElementById('position').value;
-        var audit_categ = document.getElementById('audit_categ').value;
+        var criticality_level = document.getElementById('criticality_level').value;
         var group = document.getElementById('groups_fas').value;
         var shift = document.getElementById('shifts_fas').value;
         var falp_group = document.getElementById('falp_group').value;
@@ -90,7 +90,7 @@
                 falp_group: falp_group,
                 audit_type: audit_type,
                 position: position,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 group: group,
                 shift: shift,
                 falp_group: falp_group
@@ -167,7 +167,7 @@
                             load_list_of_audited_findings_fas();
                             counts();
                             uncheck_all();
-                            swal('Information!', 'Select IR for Major Audit Category', 'info');
+                            swal('Information!', 'Select IR for High Impact Criticality Level', 'info');
                             $('#status_fas').val('');
                         }
                         else {

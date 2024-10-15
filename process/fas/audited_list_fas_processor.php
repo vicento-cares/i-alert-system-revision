@@ -68,7 +68,7 @@ if ($method == 'fetch_audited_list_fas') {
     $falp_group = $_POST['falp_group'];
     $audit_type = $_POST['audit_type'];
     $position = $_POST['position'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
@@ -80,7 +80,7 @@ if ($method == 'fetch_audited_list_fas') {
         $query .= " AND section = '$section'";
     }
 
-    $query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' 
+    $query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' 
      GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
@@ -123,7 +123,7 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<td>' . $x['audit_findings'] . '</td>';
                 echo '<td>' . $x['audit_type'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
+                echo '<td>' . $x['criticality_level'] . '</td>';
                 echo '<td>' . $x['remarks'] . '</td>';
                 echo '<td>' . $x['agency'] . '</td>';
                 echo '<td>' . $x['hr'] . '</td>';
@@ -157,7 +157,7 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<td>' . $x['audit_findings'] . '</td>';
                 echo '<td>' . $x['audit_type'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
+                echo '<td>' . $x['criticality_level'] . '</td>';
                 echo '<td>' . $x['remarks'] . '</td>';
                 echo '<td>' . $x['agency'] . '</td>';
                 echo '<td>' . $x['hr'] . '</td>';
@@ -212,16 +212,16 @@ if ($method == 'update_fas') {
     $count = count($id);
 
     foreach ($id as $x) {
-        $get_emp = "SELECT employee_num, audit_findings, audited_categ FROM ialert_audit WHERE id ='$x'";
+        $get_emp = "SELECT employee_num, audit_findings, criticality_level FROM ialert_audit WHERE id ='$x'";
         $stmt = $conn->prepare($get_emp);
 
         if ($stmt->execute()) {
             foreach ($stmt->fetchALL() as $j) {
                 $employee_num = $j['employee_num'];
                 $audit_findings = $j['audit_findings'];
-                $audited_categ = $j['audited_categ'];
+                $criticality_level = $j['criticality_level'];
 
-                if ($audited_categ == 'major' && $status != 'Written IR' && $status != 'AWOL' && $status != 'Resigned') {
+                if ($criticality_level == 'High Impact' && $status != 'Written IR' && $status != 'AWOL' && $status != 'Resigned') {
                     echo 'select ir status';
                 } else {
                     $audit_counts = "SELECT count(audit_findings) as audit_count 

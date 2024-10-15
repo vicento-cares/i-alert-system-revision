@@ -47,7 +47,7 @@ if ($method == 'fetch_audited_list_hr_checked') {
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['hr'] . '</td>';

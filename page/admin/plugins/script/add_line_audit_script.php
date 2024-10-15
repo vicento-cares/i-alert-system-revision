@@ -42,7 +42,7 @@
         var date_audited = document.querySelector('#date_line_audited').value;
         var group = document.querySelector('#group_line').value;
         var shift = document.querySelector('#shift_line').value;
-        var audit_categ = document.querySelector('#line_audit_categ').value;
+        var criticality_level = document.querySelector('#line_criticality_level').value;
         var carmaker = document.querySelector('#carmaker_line').value;
         var carmodel = document.querySelector('#carmodel_line').value;
         var emline = document.querySelector('#emline_line').value;
@@ -79,8 +79,8 @@
             swal('Notification', 'Please Enter Audit Findings', 'info');
         } else if (audited_by == '') {
             swal('Notification', 'Please Enter Audited By', 'info');
-        } else if (audit_categ == '') {
-            swal('Notification', 'Please Select Audit Category', 'info');
+        } else if (criticality_level == '') {
+            swal('Notification', 'Please Select Criticality Level', 'info');
         } else if (remarks == '') {
             swal('Notification', 'Please Enter Remarks', 'info');
         } else if (falp_group == '') {
@@ -97,7 +97,7 @@
                     date_audited: date_audited,
                     group: group,
                     shift: shift,
-                    audit_categ: audit_categ,
+                    criticality_level: criticality_level,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,
@@ -118,7 +118,7 @@
                         $('#date_line_audited').val('');
                         $('#group_line').val('');
                         $('#shift_line').val('');
-                        $('#line_audit_categ').val('');
+                        $('#line_criticality_level').val('');
                         $('#carmaker_line').val('');
                         $('#carmodel_line').val('');
                         $('#emline_line').val('');

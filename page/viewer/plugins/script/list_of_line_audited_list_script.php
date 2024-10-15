@@ -42,7 +42,7 @@
         var carmaker = document.getElementById('carmaker_lineaudited').value;
         var carmodel = document.getElementById('carmodel_lineaudited').value;
         // var audit_type = document.getElementById('audit_type_lineaudited').value;
-        var audit_categ = document.getElementById('audit_categ_lineaudited').value;
+        var criticality_level = document.getElementById('criticality_level_lineaudited').value;
         var section = document.getElementById('section_lineaudited').value;
         var process = document.getElementById('process_lineaudited').value;
         var falp_group = document.getElementById('falp_group_lineaudited').value;
@@ -59,7 +59,7 @@
                 carmaker: carmaker,
                 carmodel: carmodel,
                 // audit_type:audit_type,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 section: section,
                 process: process,
                 falp_group: falp_group,

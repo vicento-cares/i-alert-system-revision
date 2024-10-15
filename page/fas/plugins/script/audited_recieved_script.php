@@ -36,7 +36,7 @@
         var falp_group = document.getElementById('falp_group_recieved').value;
         var audit_type = document.getElementById('audit_type_recieved').value;
         var position = document.getElementById('position_recieved').value;
-        var audit_categ = document.getElementById('audit_categ_recieved').value;
+        var criticality_level = document.getElementById('criticality_level_recieved').value;
         var group = document.getElementById('groups_fas_received').value;
         var shift = document.getElementById('shifts_fas_received').value;
 
@@ -58,7 +58,7 @@
                 falp_group: falp_group,
                 audit_type: audit_type,
                 position: position,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 group: group,
                 shift: shift,
                 section: section

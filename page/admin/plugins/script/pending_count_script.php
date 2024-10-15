@@ -99,7 +99,7 @@ const get_set =(param)=>{
     var shift = data[5];
     var group = data[6];
     var audit_type = data[7];
-    var audited_categ = data[8];
+    var criticality_level = data[8];
     var car_maker = data[9];
     var car_model = data[10];
     var line_no = data[11];
@@ -117,7 +117,7 @@ const get_set =(param)=>{
     document.getElementById('shift_update').value = shift;
     document.getElementById('group_update').value = group;
     document.getElementById('audit_type_update').value = audit_type;
-    document.getElementById('audit_categ_update').value = audited_categ;
+    document.getElementById('criticality_level_update').value = criticality_level;
     document.getElementById('carmaker_update').value = car_maker;
     document.getElementById('carmodel_update').value = car_model;
     document.getElementById('emline_update').value = line_no;
@@ -139,7 +139,7 @@ const update_audit_data =()=>{
    var shift = document.getElementById('shift_update').value;
    var groups = document.getElementById('group_update').value;
    var audit_type = document.getElementById('audit_type_update').value;
-   var audit_categ = document.getElementById('audit_categ_update').value;
+   var criticality_level = document.getElementById('criticality_level_update').value;
    var carmaker = document.getElementById('carmaker_update').value;
    var carmodel = document.getElementById('carmodel_update').value;
    var emline = document.getElementById('emline_update').value;
@@ -163,7 +163,7 @@ const update_audit_data =()=>{
             shift:shift,
             groups:groups,
             audit_type:audit_type,
-            audit_categ:audit_categ,
+            criticality_level:criticality_level,
             carmaker:carmaker,
             carmodel:carmodel,
             emline:emline,

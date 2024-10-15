@@ -196,7 +196,7 @@
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
                   <th style="text-align:center;">Audited By</th>
-                  <th style="text-align:center;">Audit Category</th>
+                  <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">PD Status</th>
                   <th style="text-align:center;">HR Status</th>

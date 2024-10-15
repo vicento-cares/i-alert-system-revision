@@ -16,12 +16,12 @@ if ($method == 'fetch_recieve_fas') {
     $falp_group = $_POST['falp_group'];
     $audit_type = $_POST['audit_type'];
     $position = $_POST['position'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit WHERE date_sent != '' AND hr != '' AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group = '$falp_group'";
+    $query = "SELECT * FROM ialert_audit WHERE date_sent != '' AND hr != '' AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
@@ -56,7 +56,7 @@ if ($method == 'fetch_recieve_fas') {
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['date_sent'] . '</td>';

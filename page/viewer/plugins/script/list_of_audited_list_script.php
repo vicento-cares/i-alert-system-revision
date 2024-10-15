@@ -45,7 +45,7 @@
         var carmaker = document.getElementById('carmaker_audited').value;
         var carmodel = document.getElementById('carmodel_audited').value;
         var audit_type = document.getElementById('audit_type_audited').value;
-        var audit_categ = document.getElementById('audit_categ_audited').value;
+        var criticality_level = document.getElementById('criticality_level_audited').value;
         var section = document.getElementById('section_audited').value;
         var provider = document.getElementById('provider_audited').value;
         var process = document.getElementById('process_audited').value;
@@ -66,7 +66,7 @@
                 carmaker: carmaker,
                 carmodel: carmodel,
                 audit_type: audit_type,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 section: section,
                 provider: provider,
                 process: process,

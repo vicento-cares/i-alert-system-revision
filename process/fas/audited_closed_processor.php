@@ -17,7 +17,7 @@ if ($method == 'fetch_closed_fas') {
     $falp_group = $_POST['falp_group'];
     $audit_type = $_POST['audit_type'];
     $position = $_POST['position'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
@@ -29,7 +29,7 @@ if ($method == 'fetch_closed_fas') {
         $query .= " AND section = '$section'";
     }
 
-    $query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND edit_count = 0 AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
+    $query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND edit_count = 0 AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -58,7 +58,7 @@ if ($method == 'fetch_closed_fas') {
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['updated_by'] . '</td>';

@@ -72,12 +72,13 @@
             </datalist>
           </div>
           <div class="col-3">
-            <span>Audit Category:</span>
-            <input list="audit_categ" id="audit_categ_update" name="audit_categ_update" class="form-control-lg" maxlength="255">
-            <datalist id="audit_categ" name="">
-              <option value="Minor">
-              <option value="Major">
-            </datalist>
+            <span>Criticality Level:</span>
+            <select class="form-control" id="criticality_level_update">
+              <option value="">Select Criticality Level</option>
+              <option value="Low Impact">Low Impact</option>
+              <option value="Medium Impact">Medium Impact</option>
+              <option value="High Impact">High Impact</option>
+            </select>
           </div>
         </div>
         <div class="row">

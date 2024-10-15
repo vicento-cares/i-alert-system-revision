@@ -12,7 +12,7 @@ if ($method == 'updateaudit') {
     $shift = addslashes($_POST['shift']);
     $groups = addslashes($_POST['groups']);
     $audit_type = addslashes($_POST['audit_type']);
-    $audit_categ = addslashes($_POST['audit_categ']);
+    $criticality_level = addslashes($_POST['criticality_level']);
     $carmaker = addslashes($_POST['carmaker']);
     $carmodel = addslashes($_POST['carmodel']);
     $emline = addslashes($_POST['emline']);
@@ -40,7 +40,7 @@ if ($method == 'updateaudit') {
     $update = "UPDATE ialert_audit 
                 SET employee_num = '$employee_num', full_name = '$full_name', position = '$position', 
                 provider = '$provider', shift = '$shift', audit_type = '$audit_type', groups = '$groups', 
-                audit_type = '$audit_type', audited_categ = '$audit_categ', car_maker = '$carmaker', 
+                audit_type = '$audit_type', criticality_level = '$criticality_level', car_maker = '$carmaker', 
                 car_model = '$carmodel', line_no = '$emline', process = '$process',audit_findings = '$audit_findings', 
                 audited_by = '$audited_by', date_audited = '$date_audited', remarks = '$remarks', date_updated = '$server_date_only', 
                 section = '$section', falp_group = '$falp_group', dept = '$dept', section_code = '$section_code' 

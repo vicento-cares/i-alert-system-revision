@@ -26,8 +26,13 @@
             <input type="text" name="shift_line_update" id="shift_line_update" class="form-control" maxlength="255">
           </div>
           <div class="col-3">
-            <span>Audit Category:</span>
-            <input type="text" name="line_audit_categ_update" id="line_audit_categ_update" class="form-control" maxlength="255">
+            <span>Criticality Level:</span>
+            <select class="form-control" id="line_criticality_level_update">
+              <option value="">Select Criticality Level</option>
+              <option value="Low Impact">Low Impact</option>
+              <option value="Medium Impact">Medium Impact</option>
+              <option value="High Impact">High Impact</option>
+            </select>
           </div>
         </div>
         <div class="row">

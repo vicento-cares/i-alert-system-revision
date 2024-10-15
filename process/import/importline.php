@@ -99,7 +99,7 @@ function check_csv($file, $conn)
     $carmaker_arr = array("Suzuki", "Toyota", "Mazda", "Daihatsu", "Marelli", "Subaru", "Honda", "Yamaha");
     $lines_arr = get_lines($conn);
     $processes_arr = get_processes($conn);
-    $audit_category_arr = array("major", "minor");
+    $criticality_level_arr = array("High Impact", "Medium Impact", "Low Impact");
     $audit_type_arr = array("initial", "final", "Line Audit");
     $sections_arr = get_sections($conn);
     $falp_groups_arr = get_falp_groups($conn);
@@ -129,8 +129,8 @@ function check_csv($file, $conn)
     $check_csv_row = 0;
 
     $first_line = preg_replace('/[\t\n\r]+/', '', $first_line);
-    $valid_first_line1 = '"Date Audited",Shift,"Shift Group","Car Maker","Car Model","Line No",Process,"Audit Findings","Audited By","Audit Category","Audit Type",Remarks,Section,Group';
-    $valid_first_line2 = "Date Audited,Shift,Shift Group,Car Maker,Car Model,Line No,Process,Audit Findings,Audited By,Audit Category,Audit Type,Remarks,Section,Group";
+    $valid_first_line1 = '"Date Audited",Shift,"Shift Group","Car Maker","Car Model","Line No",Process,"Audit Findings","Audited By","Criticality Level","Audit Type",Remarks,Section,Group';
+    $valid_first_line2 = "Date Audited,Shift,Shift Group,Car Maker,Car Model,Line No,Process,Audit Findings,Audited By,Criticality Level,Audit Type,Remarks,Section,Group";
     if ($first_line == $valid_first_line1 || $first_line == $valid_first_line2) {
         while (($line = fgetcsv($csv_file)) !== false) {
             // Check if the row is blank or consists only of whitespace
@@ -150,7 +150,7 @@ function check_csv($file, $conn)
             $emprocess = $line[6];
             $audit_findings = $line[7];
             $audited_by = $line[8];
-            $audited_categ = strtolower($line[9]);
+            $criticality_level = strtolower($line[9]);
             $audit_type = $line[10];
             $remark = $line[11];
             $section = $line[12];
@@ -160,7 +160,7 @@ function check_csv($file, $conn)
             if (
                 $date_audited == '' || $shift == '' || $group == '' || $carmaker == ''
                 || $carmodel == '' || $line_n == '' || $emprocess == '' || $audit_findings == ''
-                || $audited_by == '' || $audited_categ == '' || $audit_type == '' || $remark == ''
+                || $audited_by == '' || $criticality_level == '' || $audit_type == '' || $remark == ''
                 || $section == '' || $falp_group == ''
             ) {
                 // IF BLANK DETECTED ERROR += 1
@@ -195,7 +195,7 @@ function check_csv($file, $conn)
                 $row_valid_arr[4] = 1;
                 array_push($notExistsProcessArr, $check_csv_row);
             }
-            if (!in_array($audited_categ, $audit_category_arr)) {
+            if (!in_array($criticality_level, $criticality_level_arr)) {
                 $hasError = 1;
                 $row_valid_arr[5] = 1;
                 array_push($notExistsAuditCategoryArr, $check_csv_row);
@@ -256,7 +256,7 @@ function check_csv($file, $conn)
             $message = $message . 'Process doesn\'t exists on row/s ' . implode(", ", $notExistsProcessArr) . '. ';
         }
         if ($row_valid_arr[5] == 1) {
-            $message = $message . 'Audit Category doesn\'t exists on row/s ' . implode(", ", $notExistsAuditCategoryArr) . '. ';
+            $message = $message . 'Criticality Level doesn\'t exists on row/s ' . implode(", ", $notExistsAuditCategoryArr) . '. ';
         }
         if ($row_valid_arr[6] == 1) {
             $message = $message . 'Audit Type doesn\'t exists on row/s ' . implode(", ", $notExistsAuditTypeArr) . '. ';
@@ -309,7 +309,7 @@ if (isset($_POST['upload'])) {
 
                     $sql_insert = "INSERT INTO ialert_line_audit 
                                     (batch, date_audited, shift, groups, car_maker, car_model, line_no, process, 
-                                    audit_findings, audited_by, audited_categ, audit_type, remarks, date_created, 
+                                    audit_findings, audited_by, criticality_level, audit_type, remarks, date_created, 
                                     section_code, section, falp_group, dept) VALUES ";
                     $values = [];
                     $placeholders = [];
@@ -330,7 +330,7 @@ if (isset($_POST['upload'])) {
                         $emprocess = $line[6];
                         $audit_findings = $line[7];
                         $audited_by = $line[8];
-                        $audited_categ = strtolower($line[9]);
+                        $criticality_level = strtolower($line[9]);
                         $audit_type = $line[10];
                         $remark = $line[11];
                         $section = $line[12];
@@ -366,7 +366,7 @@ if (isset($_POST['upload'])) {
                             $emprocess,
                             $audit_findings,
                             $audited_by,
-                            $audited_categ,
+                            $criticality_level,
                             $audit_type,
                             $remark,
                             $server_date_only,
@@ -401,7 +401,7 @@ if (isset($_POST['upload'])) {
                             $values = [];
                             $sql_insert = "INSERT INTO ialert_line_audit 
                                             (batch, date_audited, shift, groups, car_maker, car_model, line_no, process, 
-                                            audit_findings, audited_by, audited_categ, audit_type, remarks, date_created, 
+                                            audit_findings, audited_by, criticality_level, audit_type, remarks, date_created, 
                                             section_code, section, falp_group, dept) VALUES ";
                         }
                     }

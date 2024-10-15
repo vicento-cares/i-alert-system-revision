@@ -9,12 +9,12 @@ if ($method == 'fetch_line_audit_list') {
     $line_n = $_POST['line_n'];
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $section = $_POST['section'];
     $falp_group = $_POST['falp_group'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_line_audit WHERE  line_no LIKE '$line_n%' AND car_model LIKE '$carmodel%' AND car_maker LIKE '$carmaker%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND audited_categ LIKE '$audit_categ%' AND section LIKE '$section%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT * FROM ialert_line_audit WHERE  line_no LIKE '$line_n%' AND car_model LIKE '$carmodel%' AND car_maker LIKE '$carmaker%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND criticality_level LIKE '$criticality_level%' AND section LIKE '$section%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -39,9 +39,9 @@ if ($method == 'fetch_line_audit_list') {
             echo '<td>' . $x['car_model'] . '</td>';
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
-            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['audited_categ'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['audit_findings'] . '</td>';
+            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['criticality_level'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['dept'] . '</td>';

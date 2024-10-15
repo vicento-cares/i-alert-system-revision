@@ -24,7 +24,7 @@
         var dateTo = document.getElementById('lineauditeddateto').value;
         var carmaker = document.getElementById('car_maker').value;
         var carmodel = document.getElementById('car_model').value;
-        var audit_categ = document.getElementById('audit_cat').value;
+        var criticality_level = document.getElementById('crit_level').value;
         var section = document.getElementById('section').value;
         var falp_group = document.getElementById('falp_group').value;
         $.ajax({
@@ -38,7 +38,7 @@
                 line_n: line_n,
                 carmaker: carmaker,
                 carmodel: carmodel,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 section: section,
                 falp_group: falp_group
 
@@ -154,7 +154,7 @@
         var process = data[7];
         var audit_findings = data[8];
         var audited_by = data[9];
-        var audited_categ = data[10];
+        var criticality_level = data[10];
         var remarks = data[11];
         var audit_type = data[12];
         var section = data[13];
@@ -170,7 +170,7 @@
         document.getElementById('process_line_update').value = process;
         document.getElementById('line_audit_findings_update').value = audit_findings;
         document.getElementById('line_audited_by_update').value = audited_by;
-        document.getElementById('line_audit_categ_update').value = audited_categ;
+        document.getElementById('line_criticality_level_update').value = criticality_level;
         document.getElementById('remarks_line_update').value = remarks;
         document.getElementById('line_audit_type_update').value = audit_type;
         //   document.getElementById('section_line_update').value = section;
@@ -190,7 +190,7 @@
         var shift = document.getElementById('shift_line_update').value;
         var groups = document.getElementById('group_line_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
-        var audit_categ = document.getElementById('line_audit_categ_update').value;
+        var criticality_level = document.getElementById('line_criticality_level_update').value;
         var carmaker = document.getElementById('carmaker_line_update').value;
         var carmodel = document.getElementById('carmodel_line_update').value;
         var emline = document.getElementById('emline_line_update').value;
@@ -216,7 +216,7 @@
                     shift: shift,
                     groups: groups,
                     audit_type: audit_type,
-                    audit_categ: audit_categ,
+                    criticality_level: criticality_level,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,
