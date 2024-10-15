@@ -317,7 +317,6 @@ if (isset($_POST['upload'])) {
                     while (($line = fgetcsv($csvFile)) !== false) {
                         // Check if the row is blank or consists only of whitespace
                         if (empty(implode('', $line))) {
-                            $check_csv_row++;
                             continue; // Skip blank lines
                         }
     
@@ -356,25 +355,26 @@ if (isset($_POST['upload'])) {
                         }
 
                         // Create a temporary array for the current row
-                        $currentValues = [];
-                        $currentValues[] = $lc;
-                        $currentValues[] = $date_auditeds;
-                        $currentValues[] = $shift;
-                        $currentValues[] = $group;
-                        $currentValues[] = $carmaker;
-                        $currentValues[] = $carmodel;
-                        $currentValues[] = $line_n;
-                        $currentValues[] = $emprocess;
-                        $currentValues[] = $audit_findings;
-                        $currentValues[] = $audited_by;
-                        $currentValues[] = $audited_categ;
-                        $currentValues[] = $audit_type;
-                        $currentValues[] = $remark;
-                        $currentValues[] = $server_date_only;
-                        $currentValues[] = $section_code;
-                        $currentValues[] = $section;
-                        $currentValues[] = $falp_group;
-                        $currentValues[] = $dept;
+                        $currentValues = [
+                            $lc,
+                            $date_auditeds,
+                            $shift,
+                            $group,
+                            $carmaker,
+                            $carmodel,
+                            $line_n,
+                            $emprocess,
+                            $audit_findings,
+                            $audited_by,
+                            $audited_categ,
+                            $audit_type,
+                            $remark,
+                            $server_date_only,
+                            $section_code,
+                            $section,
+                            $falp_group,
+                            $dept
+                        ];
 
                         // Create placeholders for each row
                         $generated_placeholders = implode(',', array_fill(0, count($currentValues), '?'));
