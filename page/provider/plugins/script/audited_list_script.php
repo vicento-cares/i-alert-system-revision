@@ -30,8 +30,8 @@
         var dateFrom = document.getElementById('providerauditedlistdatefrom').value;
         var dateTo = document.getElementById('providerauditedlistdateto').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
-        var carmaker = document.getElementById('carmaker').value;
-        var carmodel = document.getElementById('carmodel').value;
+        var carmaker = document.getElementById('carmaker_search').value;
+        var carmodel = document.getElementById('carmodel_search').value;
         var criticality_level = document.getElementById('criticality_level').value;
         var group = document.getElementById('groups_provider').value;
         var shift = document.getElementById('shifts_provider').value;

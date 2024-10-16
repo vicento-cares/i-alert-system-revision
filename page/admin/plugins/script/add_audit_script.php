@@ -71,6 +71,7 @@
                     $('#emline').val('');
                     $('#process').val('');
                     $('#audit_findings').val('');
+                    $('#audit_details').val('');
                     $('#audited_by').val('');
                     $('#criticality_level').val('');
                     $('#remarks').val('');
@@ -94,6 +95,7 @@
         var emline = document.querySelector('#emline').value;
         var emprocess = document.querySelector('#process').value;
         var audit_findings = document.querySelector('#audit_findings').value;
+        var audit_details = document.querySelector('#audit_details').value;
         var audited_by = document.querySelector('#audited_by').value;
         var audit_type = document.querySelector('#audit_type').value;
         var criticality_level = document.querySelector('#criticality_level').value;
@@ -160,6 +162,7 @@
                     emline: emline,
                     emprocess: emprocess,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
@@ -185,6 +188,7 @@
                         $('#emline').val('');
                         $('#emprocess').val('');
                         $('#audit_findings').val('');
+                        $('#audit_details').val('');
                         $('#audited_by').val('');
                         $('#audit_type').val('');
                         $('#criticality_level').val('');

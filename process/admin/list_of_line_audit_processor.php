@@ -24,8 +24,8 @@ if ($method == 'fetch_line_audit_list') {
             echo '<tr>';
             echo '<td>';
             echo '<p>
-                        <label>
-                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+                        <label for="row_' . $x['id'] . '">
+                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
                             <span></span>
                         </label>
                     	</p>';
@@ -39,7 +39,8 @@ if ($method == 'fetch_line_audit_list') {
             echo '<td>' . $x['car_model'] . '</td>';
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
-            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['criticality_level'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['audit_findings'] . '</td>';
+            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audit_details'] . '~!~' . $x['audited_by'] . '~!~' . $x['criticality_level'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';

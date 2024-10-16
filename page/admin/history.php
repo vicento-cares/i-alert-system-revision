@@ -21,11 +21,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-4">
-                  <label for="">Audited Date From:</label> <input type="date" id="auditedhistorydatefrom"
+                  <label for="auditedhistorydatefrom">Audited Date From:</label> <input type="date" id="auditedhistorydatefrom"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-4">
-                  <label for="">Audited Date To:</label> <input type="date" id="auditedhistorydateto"
+                  <label for="auditedhistorydateto">Audited Date To:</label> <input type="date" id="auditedhistorydateto"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -47,17 +47,17 @@
 
                 <div class="row">
                   <div class="col-4">
-                    <label>Employee ID: </label>
+                    <label for="empidhistory">Employee ID: </label>
                     <input type="text" name="empid" id="empidhistory" class="form-control">
                   </div>
 
                   <div class="col-4">
-                    <label>Full Name: </label>
+                    <label for="fnamehistory">Full Name: </label>
                     <input type="text" name="fname" id="fnamehistory" class="form-control">
                   </div>
 
                   <div class="col-4">
-                    <label>Line No: </label>
+                    <label for="linenhistory">Line No: </label>
                     <input list="lines" id="linenhistory" name="linenhistory" class="form-control">
                     <datalist id="lines" name="">
                       <option value="">Select Line</option>
@@ -77,7 +77,7 @@
                 <br>
                 <div class="row">
                   <div class="col-4">
-                    <label>Car Maker: </label>
+                    <label for="carmakerhistory">Car Maker: </label>
                     <input type="text" list="list" name="carmaker" id="carmakerhistory" class="form-control">
                     <datalist id="list">
                       <option value="Suzuki">
@@ -92,12 +92,12 @@
                   </div>
 
                   <div class="col-4">
-                    <label>Car Model: </label>
+                    <label for="carmodelhistory">Car Model: </label>
                     <input type="text" name="carmodel" id="carmodelhistory" class="form-control">
                   </div>
 
                   <div class="col-4">
-                    <label>Position: </label>
+                    <label for="positionhistory">Position: </label>
                     <select id="positionhistory" class="form-control" autocomplete=off>
                       <option value="">Select Position</option>
                       <option value="Associate">Associate</option>
@@ -157,6 +157,7 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>

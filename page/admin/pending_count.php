@@ -21,15 +21,15 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-4">
-                  <label for="">Audited Date From:</label> <input type="date" id="auditeddatefrom" class="form-control"
+                  <label for="auditeddatefrom">Audited Date From:</label> <input type="date" id="auditeddatefrom" class="form-control"
                     value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-4">
-                  <label for="">Audited Date To:</label> <input type="date" id="auditeddateto" class="form-control"
+                  <label for="auditeddateto">Audited Date To:</label> <input type="date" id="auditeddateto" class="form-control"
                     value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
                 <div class="col-4">
-                  <label>Audit Type:</label>
+                  <label for="audit_type">Audit Type:</label>
                   <select id="audit_type" class="form-control">
                     <option value="">Select Audit Type</option>
                     <option value="initial">Initial</option>
@@ -39,11 +39,11 @@
               </div>
               <div class="row">
                 <div class="col-4">
-                  <label>Other Group:</label>
+                  <label for="other_pending">Other Group:</label>
                   <select class="form-control" name="other_pending" id="other_pending"></select>
                 </div>
                 <div class="col-4">
-                  <label> Provider: </label>
+                  <label for="provider_pending"> Provider: </label>
                   <select class="form-control" id="provider_pending">
                     <option>Select Provider</option>
                     <?php
@@ -57,7 +57,7 @@
                   </select>
                 </div>
                 <div class="col-4">
-                  <label>&nbsp;</label>
+                  <label for="searchReqBtn">&nbsp;</label>
                   <button class="btn btn-primary btn-block" id="searchReqBtn" onclick="load_count()">Search <i class="fas fa-search"></i></button>
                 </div>
               </div>
@@ -88,7 +88,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 1</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec1"></label></label></label> / <label>Total: <label
+                              id="count_sec1"></label></label></label> / <label for="">Total: <label
                               id="grand_total"></label></label> </span>
                       </div>
                     </div>
@@ -103,7 +103,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 2</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec2"></label></label> / <label>Total: <label
+                              id="count_sec2"></label></label> / <label for="">Total: <label
                               id="grand_total2"></label></label></span>
                       </div>
 
@@ -119,7 +119,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 3</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec3"></label></label> / <label>Total: <label
+                              id="count_sec3"></label></label> / <label for="">Total: <label
                               id="grand_total3"></label></label></span>
                       </div>
 
@@ -135,7 +135,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 4</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec4"></label></label> / <label>Total: <label
+                              id="count_sec4"></label></label> / <label for="">Total: <label
                               id="grand_total4"></label></label></span>
                       </div>
                     </div>
@@ -152,7 +152,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 5</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec5"></label></label></label> / <label>Total: <label
+                              id="count_sec5"></label></label></label> / <label for="">Total: <label
                               id="grand_total5"></label></label> </span>
                       </div>
                     </div>
@@ -167,7 +167,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 6</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec6"></label></label> / <label>Total: <label
+                              id="count_sec6"></label></label> / <label for="">Total: <label
                               id="grand_total6"></label></label></span>
                       </div>
                     </div>
@@ -182,7 +182,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 7</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec7"></label></label> / <label>Total: <label
+                              id="count_sec7"></label></label> / <label for="">Total: <label
                               id="grand_total7"></label></label></span>
                       </div>
                     </div>
@@ -197,7 +197,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 8</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec8"></label></label> / <label>Total: <label
+                              id="count_sec8"></label></label> / <label for="">Total: <label
                               id="grand_total8"></label></label></span>
                       </div>
                     </div>
@@ -214,7 +214,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Section 9</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sec9"></label></label> / <label>Total: <label
+                              id="count_sec9"></label></label> / <label for="">Total: <label
                               id="grand_total9"></label></label></span>
                       </div>
                     </div>
@@ -229,7 +229,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>First Process</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_fp"></label></label> / <label>Total: <label
+                              id="count_fp"></label></label> / <label for="">Total: <label
                               id="grand_total_fp"></label></label></span>
                       </div>
                     </div>
@@ -244,7 +244,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Secondary 1 Process</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sp1"></label></label> / <label>Total: <label
+                              id="count_sp1"></label></label> / <label for="">Total: <label
                               id="grand_total_sp1"></label></label></span>
                       </div>
                     </div>
@@ -259,7 +259,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Secondary 2 Process</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_sp2"></label></label> / <label>Total: <label
+                              id="count_sp2"></label></label> / <label for="">Total: <label
                               id="grand_total_sp2"></label></label></span>
                       </div>
                     </div>
@@ -274,7 +274,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>QA</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_qa"></label></label> / <label>Total: <label
+                              id="count_qa"></label></label> / <label for="">Total: <label
                               id="grand_total_qa"></label></label></span>
                       </div>
                     </div>
@@ -289,7 +289,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Other Group</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_group"></label></label> / <label>Total: <label
+                              id="count_group"></label></label> / <label for="">Total: <label
                               id="grand_total_group"></label></label></span>
                       </div>
                     </div>
@@ -303,7 +303,7 @@
                       <div class="info-box-content">
                         <span class="info-box-text"><b>Provider</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label
-                              id="count_provider"></label></label> / <label>Total: <label
+                              id="count_provider"></label></label> / <label for="">Total: <label
                               id="grand_total_provider"></label></label></span>
                       </div>
                     </div>

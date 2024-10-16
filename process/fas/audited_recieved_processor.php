@@ -54,6 +54,7 @@ if ($method == 'fetch_recieve_fas') {
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';

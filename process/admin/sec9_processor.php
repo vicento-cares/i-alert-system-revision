@@ -30,8 +30,8 @@ if ($method == 'fetch_sec9') {
             echo '<tr>';
             echo '<td>';
             echo '<p>
-                        <label>
-                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+                        <label for="row_' . $x['id'] . '">
+                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
                             <span></span>
                         </label>
                     </p>';
@@ -39,7 +39,7 @@ if ($method == 'fetch_sec9') {
             echo '<td>' . $c . '</td>';
             echo '<td style="display: none;">' . $x['batch'] . '</td>';
             echo '<td>' . $x['date_audited'] . '</td>';
-            echo '<td   style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '&quot;)">' . $x['full_name'] . '</td>';
+            echo '<td   style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audit_details'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '&quot;)">' . $x['full_name'] . '</td>';
             echo '<td>' . $x['position'] . '</td>';
             echo '<td>' . $x['employee_num'] . '</td>';
             echo '<td>' . $x['provider'] . '</td>';
@@ -49,6 +49,7 @@ if ($method == 'fetch_sec9') {
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';

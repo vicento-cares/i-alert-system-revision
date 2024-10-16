@@ -20,11 +20,11 @@
             </div><!-- /.col -->
             <div class="row">
               <div class="col-6">
-                <label for="">Audited Date From:</label> <input type="date" id="fasauditedliststatussenddatefrom"
+                <label for="fasauditedliststatussenddatefrom">Audited Date From:</label> <input type="date" id="fasauditedliststatussenddatefrom"
                   class="form-control" value="<?= $server_month; ?>" autocomplete=off>
               </div>
               <div class="col-6">
-                <label for="">Audited Date To:</label> <input type="date" id="fasauditedliststatussenddateto"
+                <label for="fasauditedliststatussenddateto">Audited Date To:</label> <input type="date" id="fasauditedliststatussenddateto"
                   class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
               </div>
             </div><!-- /.row -->
@@ -182,6 +182,7 @@
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
+                    <th style="text-align:center;">Audit Details</th>
                     <th style="text-align:center;">Audited By</th>
                     <th style="text-align:center;">Criticality Level</th>
                     <th style="text-align:center;">Remarks</th>

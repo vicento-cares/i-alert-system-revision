@@ -11,11 +11,11 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-6">
-            <label>Employee ID:</label> <input type="text" id="employee_num_count" name="employee_num_count"
+            <label for="employee_num_count">Employee ID:</label> <input type="text" id="employee_num_count" name="employee_num_count"
               class="form-control">
           </div>
           <div class="col-sm-6">
-            <label>Full Name:</label> <input type="text" id="full_name_count" name="full_name_count"
+            <label for="full_name_count">Full Name:</label> <input type="text" id="full_name_count" name="full_name_count"
               class="form-control">
           </div>
         </div>
@@ -29,7 +29,7 @@
               </h5>
               <div class="row">
                 <div class="col-3">
-                  <label> No of Audit:</label>
+                  <label for="count_data"> No of Audit:</label>
                 </div>
                 <div class="col-6 float-sm-left" id="count_data">
 

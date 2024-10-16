@@ -101,16 +101,16 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="line_audit_details_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="line_audited_by_update" class="form-control" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span>Audit Type:</span>
             <input type="text" name="" id="line_audit_type_update" class="form-control" value="Line Audit" readonly>
-          </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF" maxlength="255">
           </div>
         </div>
         <div class="row">
@@ -143,13 +143,15 @@
               ?>
             </select>
           </div>
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF" maxlength="255">
+          </div>
         </div>
-        <br>
+        <hr>
         <div class="row">
-          <div class="col-12">
-            <p style="text-align:right;">
-              <button type="button" class="btn btn-primary" onclick="update_lineaudit()">Update</button>
-            </p>
+          <div class="col-3 offset-9">
+            <button type="button" class="btn btn-primary btn-block" onclick="update_lineaudit()">Update</button>
           </div>
         </div>
       </div>

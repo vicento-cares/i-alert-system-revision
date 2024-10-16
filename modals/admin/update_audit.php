@@ -147,16 +147,16 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="audit_details_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="audited_by_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span>Date Audited:</span>
             <input type="date" name="" id="date_audited_update" class="form-control">
-          </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
         </div>
         <div class="row">
@@ -188,18 +188,17 @@
               }
               ?>
             </select>
-
-            <div class="col-3"></div>
-            <div class="col-4"></div>
           </div>
-          <br>
-          <div class="row">
-            <div class="col-3 my-4 mx-3">
-              <p style="text-align:right;">
-                <button type="button" class="btn btn-primary" onclick="update_audit_data()"
-                  id="planBtnCreate">Update</button>
-              </p>
-            </div>
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-3 offset-9">
+            <button type="button" class="btn btn-primary btn-block" onclick="update_audit_data()"
+                id="planBtnCreate">Update</button>
           </div>
         </div>
       </div>

@@ -46,16 +46,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <label>User Name:</label>
+                    <label for="user_name_user_search">User Name:</label>
                     <input type="text" name="user_name_user_search" id="user_name_user_search" class="form-control">
                   </div>
                   <div class="col-1">
-                    <label>&nbsp;</label>
-                    <button class="btn btn-primary btn-block" onclick="load_users()">Search <i class="fa fa-search"></i></button>
+                    <label for="btnLoadUsersSearch">&nbsp;</label>
+                    <button class="btn btn-primary btn-block" id="btnLoadUsersSearch" onclick="load_users()">Search <i class="fa fa-search"></i></button>
                   </div>
                   <div class="col-1">
-                    <label>&nbsp;</label>
-                    <button class="btn btn-secondary btn-block" onclick="export_users('accounts_table')">Export <i class="fa fa-download"></i></button>
+                    <label for="btnExportUsersSearch">&nbsp;</label>
+                    <button class="btn btn-secondary btn-block" id="btnExportUsersSearch" onclick="export_users('accounts_table')">Export <i class="fa fa-download"></i></button>
                   </div>
                 </div>
                 <br>

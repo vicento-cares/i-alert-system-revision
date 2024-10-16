@@ -12,15 +12,15 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-4">
-            <label>Username:</label> <input type="text" name="username_accounts" id="username_accounts"
+            <label for="username_accounts">Username:</label> <input type="text" name="username_accounts" id="username_accounts"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-4">
-            <label>Password:</label> <input type="password" name="password_accounts" id="password_accounts"
+            <label for="password_accounts">Password:</label> <input type="password" name="password_accounts" id="password_accounts"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-4">
-            <label>Role:</label>
+            <label for="role_accounts">Role:</label>
             <select id="role_accounts" class="form-control">
               <option value="">Select Role</option>
               <option value="viewer">Viewer</option>
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <label>Type:</label>
+            <label for="esection_accounts">Type:</label>
             <select id="esection_accounts" class="form-control">
               <option value="">Select Type</option>
               <option value="viewer">Viewer</option>
@@ -49,11 +49,11 @@
             </select>
           </div>
           <div class="col-4">
-            <label>Carmaker:</label>
+            <label for="carmaker_accounts">Carmaker:</label>
             <input type="text" name="carmaker_accounts" id="carmaker_accounts" class="form-control" maxlength="255">
           </div>
           <div class="col-4">
-            <label>Group:</label>
+            <label for="falp_group_accounts">Group:</label>
             <select class="form-control" name="falp_group_accounts" id="falp_group_accounts"
               onchange="fetch_section_dropdown(1)">
               <option value="">Select Group</option>
@@ -70,7 +70,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <label>Section:</label>
+            <label for="section_accounts">Section:</label>
             <!-- <input type="text" name="section_accounts" id="section_accounts" class="form-control"> -->
             <select class="form-control" name="section_accounts" id="section_accounts">
               <option value="">Select Section</option>

@@ -145,8 +145,8 @@ function check_csv($file, $conn)
     $check_csv_row = 0;
 
     $first_line = preg_replace('/[\t\n\r]+/', '', $first_line);
-    $valid_first_line1 = '"Date Audited","Full Name","Employee ID",Provider,Position,Shift,"Shift Group","Car Maker","Car Model","Line No.",Process,"Audit Findings","Audited By","Criticality Level","Audit Type",Remarks,Section,Group';
-    $valid_first_line2 = "Date Audited,Full Name,Employee ID,Provider,Position,Shift,Shift Group,Car Maker,Car Model,Line No.,Process,Audit Findings,Audited By,Criticality Level,Audit Type,Remarks,Section,Group";
+    $valid_first_line1 = '"Date Audited","Full Name","Employee ID",Provider,Position,Shift,"Shift Group","Car Maker","Car Model","Line No.",Process,"Audit Findings","Audit Details","Audited By","Criticality Level","Audit Type",Remarks,Section,Group';
+    $valid_first_line2 = "Date Audited,Full Name,Employee ID,Provider,Position,Shift,Shift Group,Car Maker,Car Model,Line No.,Process,Audit Findings,Audit Details,Audited By,Criticality Level,Audit Type,Remarks,Section,Group";
     if ($first_line == $valid_first_line1 || $first_line == $valid_first_line2) {
         while (($line = fgetcsv($csv_file)) !== false) {
             // Check if the row is blank or consists only of whitespace
@@ -169,12 +169,13 @@ function check_csv($file, $conn)
             $line_n = $line[9];
             $emprocess = $line[10];
             $audit_findings = $line[11];
-            $audited_by = $line[12];
-            $criticality_level = strtolower($line[13]);
-            $audit_type = strtolower($line[14]);
-            $remark = $line[15];
-            $section = $line[16];
-            $falp_group = $line[17];
+            $audit_details = $line[12];
+            $audited_by = $line[13];
+            $criticality_level = strtolower($line[14]);
+            $audit_type = strtolower($line[15]);
+            $remark = $line[16];
+            $section = $line[17];
+            $falp_group = $line[18];
 
             // CHECK IF BLANK DATA
             if (
@@ -337,7 +338,7 @@ if (isset($_POST['upload'])) {
 
                     $sql_insert = "INSERT INTO ialert_audit 
                                     (batch, date_audited, full_name, employee_num, provider, position, shift, groups, 
-                                    car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, audit_type, 
+                                    car_maker, car_model, line_no, process, audit_findings, audit_details, audited_by, criticality_level, audit_type, 
                                     remarks, date_created, section_code, section, falp_group, dept) VALUES ";
                     $values = [];
                     $placeholders = [];
@@ -360,12 +361,13 @@ if (isset($_POST['upload'])) {
                         $line_n = $line[9];
                         $emprocess = $line[10];
                         $audit_findings = $line[11];
-                        $audited_by = $line[12];
-                        $criticality_level = strtolower($line[13]);
-                        $audit_type = strtolower($line[14]);
-                        $remark = $line[15];
-                        $section = $line[16];
-                        $falp_group = $line[17];
+                        $audit_details = $line[12];
+                        $audited_by = $line[13];
+                        $criticality_level = strtolower($line[14]);
+                        $audit_type = strtolower($line[15]);
+                        $remark = $line[16];
+                        $section = $line[17];
+                        $falp_group = $line[18];
     
                         $dates = new DateTime($date_audited);
                         $date_auditeds = date_format($dates, "Y-m-d");
@@ -400,6 +402,7 @@ if (isset($_POST['upload'])) {
                             $line_n,
                             $emprocess,
                             $audit_findings,
+                            $audit_details,
                             $audited_by,
                             $criticality_level,
                             $audit_type,
@@ -436,7 +439,7 @@ if (isset($_POST['upload'])) {
                             $values = [];
                             $sql_insert = "INSERT INTO ialert_audit 
                                             (batch, date_audited, full_name, employee_num, provider, position, shift, groups, 
-                                            car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, audit_type, 
+                                            car_maker, car_model, line_no, process, audit_findings, audit_details, audited_by, criticality_level, audit_type, 
                                             remarks, date_created, section_code, section, falp_group, dept) VALUES ";
                         }
                     }

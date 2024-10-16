@@ -21,11 +21,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="hrauditedlistcheckeddatefrom"
+                  <label for="hrauditedlistcheckeddatefrom">Audited Date From:</label> <input type="date" id="hrauditedlistcheckeddatefrom"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="hrauditedlistcheckeddateto"
+                  <label for="hrauditedlistcheckeddateto">Audited Date To:</label> <input type="date" id="hrauditedlistcheckeddateto"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -195,6 +195,7 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>

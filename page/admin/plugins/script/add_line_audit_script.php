@@ -48,6 +48,7 @@
         var emline = document.querySelector('#emline_line').value;
         var emprocess = document.querySelector('#process_line').value;
         var audit_findings = document.querySelector('#line_audit_findings').value;
+        var audit_details = document.querySelector('#line_audit_details').value;
         var audited_by = document.querySelector('#line_audited_by').value;
         var audit_type = document.querySelector('#line_audit_type').value;
         var remarks = document.querySelector('#remarks_line').value;
@@ -103,6 +104,7 @@
                     emline: emline,
                     emprocess: emprocess,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     audit_type: audit_type,
                     remarks: remarks,

@@ -26,16 +26,16 @@
         var dateFrom = document.getElementById('auditeddatefrom').value;
         var dateTo = document.getElementById('auditeddateto').value;
         var line = document.getElementById('linen').value;
-        var carmaker = document.getElementById('carmaker').value;
-        var carmodel = document.getElementById('carmodel').value;
-        var position = document.getElementById('position').value;
+        var carmaker = document.getElementById('carmaker_search').value;
+        var carmodel = document.getElementById('carmodel_search').value;
+        var position = document.getElementById('position_search').value;
         var criticality_level = document.getElementById('crit_level').value;
         var audit_type = document.getElementById('audit_typ').value;
         var section = document.getElementById('sect').value;
         var provider = document.getElementById('prov').value;
         var group = document.getElementById('groups').value;
         var shift = document.getElementById('shifts').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         $.ajax({
             url: '../../process/admin/list_of_audit_processor.php',
             type: 'POST',
@@ -185,11 +185,12 @@
         var line_no = data[11];
         var process = data[12];
         var audit_findings = data[13];
-        var audited_by = data[14];
-        var date_audited = data[15];
-        var remarks = data[16];
-        var section = data[17];
-        var falp_group = data[18];
+        var audit_details = data[14];
+        var audited_by = data[15];
+        var date_audited = data[16];
+        var remarks = data[17];
+        var section = data[18];
+        var falp_group = data[19];
 
         document.getElementById('id_update').value = id;
         document.getElementById('employee_num_update').value = employee_num;
@@ -205,6 +206,7 @@
         document.getElementById('emline_update').value = line_no;
         document.getElementById('process_update').value = process;
         document.getElementById('audit_findings_update').value = audit_findings;
+        document.getElementById('audit_details_update').value = audit_details;
         document.getElementById('audited_by_update').value = audited_by;
         document.getElementById('date_audited_update').value = date_audited;
         document.getElementById('remarks_update').value = remarks;
@@ -235,6 +237,7 @@
         var emline = document.getElementById('emline_update').value;
         var process = document.getElementById('process_update').value;
         var audit_findings = document.getElementById('audit_findings_update').value;
+        var audit_details = document.getElementById('audit_details_update').value;
         var audited_by = document.getElementById('audited_by_update').value;
         var date_audited = document.getElementById('date_audited_update').value;
         var remarks = document.getElementById('remarks_update').value;
@@ -264,6 +267,7 @@
                     emline: emline,
                     process: process,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     date_audited: date_audited,
                     remarks: remarks,

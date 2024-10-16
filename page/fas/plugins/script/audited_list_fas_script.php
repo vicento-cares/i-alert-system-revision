@@ -8,7 +8,7 @@
 
     // Revisions (Vince)
     const fetch_section_dropdown = () => {
-        let falp_group = document.getElementById('falp_group').value;
+        let falp_group = document.getElementById('falp_group_hidden').value;
 
         $.ajax({
             url: '../../process/admin/sections.php',
@@ -19,7 +19,7 @@
                 falp_group: falp_group
             },
             success: function (response) {
-                $('#section').html(response);
+                $('#section_search').html(response);
             }
         });
     }
@@ -28,8 +28,8 @@
         var server_date = document.getElementById('server_date').value;
         var car_maker = document.getElementById('carmakers').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
-        var section = document.getElementById('section').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var section = document.getElementById('section_search').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         var audit_type = document.getElementById('audit_type').value;
 
         console.log(audit_type);
@@ -62,16 +62,16 @@
         var dateFrom = document.getElementById('providerauditedlistfasdatefrom').value;
         var dateTo = document.getElementById('providerauditedlistfasdateto').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
-        var carmaker = document.getElementById('carmaker').value;
-        var carmodel = document.getElementById('carmodel').value;
-        var section = document.getElementById('section').value;
+        var carmaker = document.getElementById('carmaker_search').value;
+        var carmodel = document.getElementById('carmodel_search').value;
+        var section = document.getElementById('section_search').value;
         var falp_group = document.getElementById('falp_group').value;
         var audit_type = document.getElementById('audit_type').value;
-        var position = document.getElementById('position').value;
+        var position = document.getElementById('position_search').value;
         var criticality_level = document.getElementById('criticality_level').value;
         var group = document.getElementById('groups_fas').value;
         var shift = document.getElementById('shifts_fas').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         $.ajax({
             url: '../../process/fas/audited_list_fas_processor.php',
             type: 'POST',

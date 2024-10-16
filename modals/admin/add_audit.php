@@ -151,23 +151,16 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="audit_details" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="audited_by" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
-
           <div class="col-3">
             <span>Date Audited:</span>
             <input type="date" name="" id="date_audited" class="form-control">
-
-          </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <!-- <input type="text" name="" id="remarks" class="form-control-lg" autocomplete="OFF"> -->
-            <input list="remark" id="remarks" class="form-control-lg" autocomplete="OFF" maxlength="255">
-            <datalist id="remark">
-              <option value="N/A">
-              <option value="Support">
-            </datalist>
           </div>
         </div>
         <div class="row">
@@ -199,7 +192,15 @@
               ?>
             </select>
           </div>
-          <div class="col-4"></div>
+          <div class="col-3">
+            <span>Remarks</span>
+            <!-- <input type="text" name="" id="remarks" class="form-control-lg" autocomplete="OFF"> -->
+            <input list="remark" id="remarks" class="form-control-lg" autocomplete="OFF" maxlength="255">
+            <datalist id="remark">
+              <option value="N/A">
+              <option value="Support">
+            </datalist>
+          </div>
         </div>
         <br>
         <div class="row">
@@ -228,6 +229,7 @@
               <th>Line No.</th>
               <th>Process</th>
               <th>Audit Findings</th>
+              <th>Audit Details</th>
               <th>Audited By</th>
               <th>Criticality Level</th>
               <th>Remarks</th>

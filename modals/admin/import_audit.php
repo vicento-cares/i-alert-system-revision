@@ -11,8 +11,8 @@
       </div>
       <form action="../../process/import/import.php" enctype="multipart/form-data" method="POST"></form>
         <div class="modal-body">
-            <label>File:</label>
-            <input type="file" name="file" class="form-control-lg">
+            <label for="import_audit_file">File:</label>
+            <input type="file" name="file" id="import_audit_file" class="form-control-lg">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal"

@@ -97,8 +97,8 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<tr style="color:red;">';
                 echo '<td>';
                 echo '<p>
-			                        <label>
-			                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+			                        <label for="row_' . $x['id'] . '">
+			                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
 			                            <span></span>
 			                        </label>
 			                    </p>';
@@ -121,6 +121,7 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<td>' . $x['line_no'] . '</td>';
                 echo '<td>' . $x['process'] . '</td>';
                 echo '<td>' . $x['audit_findings'] . '</td>';
+                echo '<td>' . $x['audit_details'] . '</td>';
                 echo '<td>' . $x['audit_type'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
                 echo '<td>' . $x['criticality_level'] . '</td>';
@@ -133,8 +134,8 @@ if ($method == 'fetch_audited_list_fas') {
                 echo '<tr>';
                 echo '<td>';
                 echo '<p>
-			                        <label>
-			                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+			                        <label for="row_' . $x['id'] . '">
+			                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
 			                            <span></span>
 			                        </label>
 			                    </p>';

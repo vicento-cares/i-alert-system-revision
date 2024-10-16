@@ -109,16 +109,16 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="line_audit_details" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="line_audited_by" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
           <div class="col-3">
             <span>Audit Type:</span>
             <input type="text" name="" id="line_audit_type" class="form-control-lg" value="Line Audit" readonly>
-          </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_line" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
         </div>
         <div class="row">
@@ -151,6 +151,10 @@
               ?>
             </select>
           </div>
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_line" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
         </div>
         <br>
         <div class="row">
@@ -176,6 +180,7 @@
               <th>Line No</th>
               <th>Process</th>
               <th>Audit Findings</th>
+              <th>Audit Details</th>
               <th>Audited By</th>
               <th>Criticality Level</th>
               <th>Audit Type</th>

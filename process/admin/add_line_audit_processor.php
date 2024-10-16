@@ -19,6 +19,7 @@ if ($method == 'insert_line_audit') {
     $emline = addslashes($_POST['emline']);
     $emprocess = addslashes($_POST['emprocess']);
     $audit_findings = addslashes($_POST['audit_findings']);
+    $audit_details = addslashes($_POST['audit_details']);
     $audited_by = addslashes($_POST['audited_by']);
     $audit_type = addslashes($_POST['audit_type']);
     $criticality_level = addslashes($_POST['criticality_level']);
@@ -43,8 +44,8 @@ if ($method == 'insert_line_audit') {
     }
 
     $insert = "INSERT INTO ialert_line_audit 
-                (batch,date_audited,shift,groups,car_maker,car_model,line_no,process,audit_findings,audited_by,criticality_level,audit_type,remarks,date_created,section_code,section,falp_group,dept) 
-                VALUES ('$audit_code','$date_audited','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audited_by','$criticality_level','$audit_type','$remarks','$server_date_time','$section_code','$section','$falp_group','$dept')";
+                (batch,date_audited,shift,groups,car_maker,car_model,line_no,process,audit_findings,audit_details,audited_by,criticality_level,audit_type,remarks,date_created,section_code,section,falp_group,dept) 
+                VALUES ('$audit_code','$date_audited','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audit_details','$audited_by','$criticality_level','$audit_type','$remarks','$server_date_time','$section_code','$section','$falp_group','$dept')";
     $stmt = $conn->prepare($insert);
     if ($stmt->execute()) {
 
@@ -76,6 +77,7 @@ if ($method == 'prev_line_audit') {
         echo '<td>' . $x['line_no'] . '</td>';
         echo '<td>' . $x['process'] . '</td>';
         echo '<td>' . $x['audit_findings'] . '</td>';
+        echo '<td>' . $x['audit_details'] . '</td>';
         echo '<td>' . $x['audited_by'] . '</td>';
         echo '<td>' . $x['criticality_level'] . '</td>';
         echo '<td>' . $x['audit_type'] . '</td>';

@@ -21,11 +21,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="providerauditedlistdatefrom"
+                  <label for="providerauditedlistdatefrom">Audited Date From:</label> <input type="date" id="providerauditedlistdatefrom"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="providerauditedlistdateto"
+                  <label for="providerauditedlistdateto">Audited Date To:</label> <input type="date" id="providerauditedlistdateto"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-3">
                       <span>Car Maker: </span>
-                      <input type="text" list="list" name="carmaker" id="carmaker" class="form-control">
+                      <input type="text" list="list" name="carmaker" id="carmaker_search" class="form-control">
                       <datalist id="list">
                         <option value="Suzuki">
                         <option value="Toyota">
@@ -99,7 +99,7 @@
 
                     <div class="col-3">
                       <span>Car Model: </span>
-                      <input type="text" name="carmodel" id="carmodel" class="form-control">
+                      <input type="text" name="carmodel" id="carmodel_search" class="form-control">
                     </div>
                     <div class="col-3">
                       <span>Criticality Level:</span>
@@ -231,6 +231,7 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>

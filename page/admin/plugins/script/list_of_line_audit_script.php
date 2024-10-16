@@ -25,8 +25,8 @@
         var carmaker = document.getElementById('car_maker').value;
         var carmodel = document.getElementById('car_model').value;
         var criticality_level = document.getElementById('crit_level').value;
-        var section = document.getElementById('section').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var section = document.getElementById('section_search').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         $.ajax({
             url: '../../process/admin/list_of_line_audit_processor.php',
             type: 'POST',
@@ -153,12 +153,13 @@
         var line_no = data[6];
         var process = data[7];
         var audit_findings = data[8];
-        var audited_by = data[9];
-        var criticality_level = data[10];
-        var remarks = data[11];
-        var audit_type = data[12];
-        var section = data[13];
-        var falp_group = data[14];
+        var audit_details = data[9];
+        var audited_by = data[10];
+        var criticality_level = data[11];
+        var remarks = data[12];
+        var audit_type = data[13];
+        var section = data[14];
+        var falp_group = data[15];
 
         document.getElementById('id_line_update').value = id;
         document.getElementById('shift_line_update').value = shift;
@@ -169,6 +170,7 @@
         document.getElementById('emline_line_update').value = line_no;
         document.getElementById('process_line_update').value = process;
         document.getElementById('line_audit_findings_update').value = audit_findings;
+        document.getElementById('line_audit_details_update').value = audit_details;
         document.getElementById('line_audited_by_update').value = audited_by;
         document.getElementById('line_criticality_level_update').value = criticality_level;
         document.getElementById('remarks_line_update').value = remarks;
@@ -196,12 +198,13 @@
         var emline = document.getElementById('emline_line_update').value;
         var process = document.getElementById('process_line_update').value;
         var audit_findings = document.getElementById('line_audit_findings_update').value;
+        var audit_details = document.getElementById('line_audit_details_update').value;
         var audited_by = document.getElementById('line_audited_by_update').value;
         var audit_type = document.getElementById('line_audit_type_update').value;
         var date_audited = document.getElementById('date_line_audited_update').value;
         var remarks = document.getElementById('remarks_line_update').value;
         var section = document.getElementById('section_line_update').value;
-        var falp_group = document.getElementById('falp_group_update').value;
+        var falp_group = document.getElementById('falp_group_line_update').value;
 
         if (section == '') {
             swal("Notification", "Please select section.", "info");
@@ -222,13 +225,13 @@
                     emline: emline,
                     process: process,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     date_audited: date_audited,
                     remarks: remarks,
                     audit_type: audit_type,
                     section: section,
-                    group: falp_group
-
+                    falp_group: falp_group
                 },
                 success: function (response) {
                     console.log(response);

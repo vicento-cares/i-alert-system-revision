@@ -152,6 +152,7 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>

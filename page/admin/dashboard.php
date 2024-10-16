@@ -67,7 +67,7 @@
 
 
 
-                         echo' /  <label>Total: <label id="grand_total"></label>'.$j['grand_total'].'</label> </span>
+                         echo' /  <label for="">Total: <label id="grand_total"></label>'.$j['grand_total'].'</label> </span>
                     </div>
               </div>
         </div>
@@ -115,7 +115,7 @@ if ($stmt->rowCount() > 0) {
                     <div class="info-box-content">
                         <span class="info-box-text"><b>GC</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $gc_total . '</label></label></label>
-                        /  <label>Total: <label id="grand_total"></label>' . $gc_grand_total . '</label> </span>
+                        /  <label for="">Total: <label id="grand_total"></label>' . $gc_grand_total . '</label> </span>
                     </div>
               </div>
         </div>';
@@ -159,7 +159,7 @@ if ($stmt->rowCount() > 0) {
                   <div class="info-box-content">
                       <span class="info-box-text"><b>First Process</b></span>
                       <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $fp_total . '</label></label></label>
-                      /  <label>Total: <label id="grand_total"></label>' . $fp_grand_total . '</label> </span>
+                      /  <label for="">Total: <label id="grand_total"></label>' . $fp_grand_total . '</label> </span>
                   </div>
             </div>
       </div>';
@@ -203,7 +203,7 @@ if ($stmt->rowCount() > 0) {
                   <div class="info-box-content">
                       <span class="info-box-text"><b>Secondary 1 Process</b></span>
                       <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $sp1_total . '</label></label></label>
-                      /  <label>Total: <label id="grand_total"></label>' . $sp1_grand_total . '</label> </span>
+                      /  <label for="">Total: <label id="grand_total"></label>' . $sp1_grand_total . '</label> </span>
                   </div>
             </div>
       </div>';
@@ -247,7 +247,7 @@ if ($stmt->rowCount() > 0) {
                   <div class="info-box-content">
                       <span class="info-box-text"><b>Secondary 2 Process</b></span>
                       <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $fp_total . '</label></label></label>
-                      /  <label>Total: <label id="grand_total"></label>' . $fp_grand_total . '</label> </span>
+                      /  <label for="">Total: <label id="grand_total"></label>' . $fp_grand_total . '</label> </span>
                   </div>
             </div>
       </div>';
@@ -290,7 +290,7 @@ if ($stmt->rowCount() > 0) {
                     <div class="info-box-content">
                         <span class="info-box-text"><b>QA</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $qa_total . '</label></label></label>
-                        /  <label>Total: <label id="grand_total"></label>' . $qa_grand_total . '</label> </span>
+                        /  <label for="">Total: <label id="grand_total"></label>' . $qa_grand_total . '</label> </span>
                     </div>
               </div>
         </div>';
@@ -338,7 +338,7 @@ if ($stmt->rowCount() > 0) {
                     <div class="info-box-content">
                         <span class="info-box-text"><b>Other Group</b></span>
                         <span class="info-box-number"><label style="color:red;">Pending: <label id="count_sec1">' . $other_group_total . '</label></label></label>
-                        /  <label>Total: <label id="grand_total"></label>' . $other_group_grand_total . '</label> </span>
+                        /  <label for="">Total: <label id="grand_total"></label>' . $other_group_grand_total . '</label> </span>
                     </div>
               </div>
         </div>';
@@ -373,7 +373,7 @@ if ($stmt->rowCount() > 0) {
  $stmt = $conn->prepare($query);
  $stmt->execute();
  foreach($stmt->fetchALL() as $j){
-                         echo' /  <label>Total: <label id="grand_total"></label>'.$j['grand_total'].'</label> </span>
+                         echo' /  <label for="">Total: <label id="grand_total"></label>'.$j['grand_total'].'</label> </span>
                     </div>
               </div>
         </div>

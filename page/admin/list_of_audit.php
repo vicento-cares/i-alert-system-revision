@@ -21,11 +21,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-4">
-                  <label for="">Audited Date From:</label> <input type="date" id="auditeddatefrom" class="form-control"
+                  <label for="auditeddatefrom">Audited Date From:</label> <input type="date" id="auditeddatefrom" class="form-control"
                     value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-4">
-                  <label for="">Audited Date To:</label> <input type="date" id="auditeddateto" class="form-control"
+                  <label for="auditeddateto">Audited Date To:</label> <input type="date" id="auditeddateto" class="form-control"
                     value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -47,17 +47,17 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <label>Employee ID: </label>
+                    <label for="empid">Employee ID: </label>
                     <input type="text" name="empid" id="empid" class="form-control">
                   </div>
 
                   <div class="col-3">
-                    <label>Full Name: </label>
+                    <label for="fname">Full Name: </label>
                     <input type="text" name="fname" id="fname" class="form-control">
                   </div>
 
                   <div class="col-3">
-                    <label>Line No: </label>
+                    <label for="linen">Line No: </label>
                     <input list="lines" id="linen" name="linen" class="form-control">
                     <datalist id="lines" name="">
                       <option value="">Select Line</option>
@@ -73,8 +73,8 @@
                     </datalist>
                   </div>
                   <div class="col-3">
-                    <label>Car Maker:</label>
-                    <input type="text" list="list" name="carmaker" id="carmaker" class="form-control">
+                    <label for="carmaker_search">Car Maker:</label>
+                    <input type="text" list="list" name="carmaker" id="carmaker_search" class="form-control">
                     <datalist id="list">
                       <option value="Suzuki">
                       <option value="Toyota">
@@ -91,13 +91,13 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <label>Car Model: </label>
-                    <input type="text" name="carmodel" id="carmodel" class="form-control">
+                    <label for="carmodel_search">Car Model: </label>
+                    <input type="text" name="carmodel" id="carmodel_search" class="form-control">
                   </div>
 
                   <div class="col-3">
-                    <label>Position: </label>
-                    <select id="position" class="form-control" autocomplete=off>
+                    <label for="position_search">Position: </label>
+                    <select id="position_search" class="form-control" autocomplete=off>
                       <option value="">Select Position</option>
                       <option value="associate">Associate</option>
                       <option value="expert">Expert</option>
@@ -110,7 +110,7 @@
                   </div>
 
                   <div class="col-3">
-                    <label>Criticality Level:</label>
+                    <label for="crit_level">Criticality Level:</label>
                     <select id="crit_level" class="form-control">
                       <option value="">Select Criticality Level</option>
                       <option value="Low Impact">Low Impact</option>
@@ -119,7 +119,7 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Audit Type:</label>
+                    <label for="audit_typ">Audit Type:</label>
                     <select id="audit_typ" class="form-control">
                       <option value="">Select Audit Type </option>
                       <option value="initial">Initial</option>
@@ -129,7 +129,7 @@
                 </div>
                 <div class="row">
                   <div class="col-3">
-                    <label>Section:</label>
+                    <label for="sect">Section:</label>
                     <select class="form-control" name="sect" id="sect">
                       <option value="">Select Section</option>
                       <?php
@@ -143,11 +143,11 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Provider:</label>
+                    <label for="prov">Provider:</label>
                     <input type="text" name="prov" id="prov" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label>Shift Groups:</label>
+                    <label for="groups">Shift Groups:</label>
                     <select id="groups" class="form-control">
                       <option value="">Select Group</option>
                       <option value="a">A</option>
@@ -155,7 +155,7 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Shift:</label>
+                    <label for="shifts">Shift:</label>
                     <select class="form-control" id="shifts">
                       <option value="">Select Shift</option>
                       <option value="ds">DS</option>
@@ -163,8 +163,8 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Group:</label>
-                    <select class="form-control" name="falp_group" id="falp_group">
+                    <label for="falp_group_search">Group:</label>
+                    <select class="form-control" name="falp_group_search" id="falp_group_search">
                       <option value="">Select Group</option>
                       <?php
                       $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
@@ -232,6 +232,7 @@
 
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Audit Type</th>
