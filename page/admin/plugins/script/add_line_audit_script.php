@@ -43,6 +43,7 @@
         var group = document.querySelector('#group_line').value;
         var shift = document.querySelector('#shift_line').value;
         var criticality_level = document.querySelector('#line_criticality_level').value;
+        var problem_identification = document.querySelector('#line_problem_identification').value;
         var carmaker = document.querySelector('#carmaker_line').value;
         var carmodel = document.querySelector('#carmodel_line').value;
         var emline = document.querySelector('#emline_line').value;
@@ -82,6 +83,8 @@
             swal('Notification', 'Please Enter Audited By', 'info');
         } else if (criticality_level == '') {
             swal('Notification', 'Please Select Criticality Level', 'info');
+        } else if (problem_identification == '') {
+            swal('Notification', 'Please Select Problem Identification', 'info');
         } else if (remarks == '') {
             swal('Notification', 'Please Enter Remarks', 'info');
         } else if (falp_group == '') {
@@ -99,6 +102,7 @@
                     group: group,
                     shift: shift,
                     criticality_level: criticality_level,
+                    problem_identification: problem_identification,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,
@@ -121,6 +125,7 @@
                         $('#group_line').val('');
                         $('#shift_line').val('');
                         $('#line_criticality_level').val('');
+                        $('#line_problem_identification').val('');
                         $('#carmaker_line').val('');
                         $('#carmodel_line').val('');
                         $('#emline_line').val('');

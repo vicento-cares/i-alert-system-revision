@@ -93,79 +93,48 @@ if ($method == 'fetch_audited_list_fas') {
             $hr = $x['hr'];
             $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
+            $row_style = "";
             if ($pd == '' && $hr == '' && $server_date_only >= $days_notif) {
-                echo '<tr style="color:red;">';
-                echo '<td>';
-                echo '<p>
-			                        <label for="row_' . $x['id'] . '">
-			                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
-			                            <span></span>
-			                        </label>
-			                    </p>';
-                echo '</td>';
-                echo '<td>' . $c . '</td>';
-                echo '<td style="display: none;">' . $x['batch'] . '</td>';
-                echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td>' . $x['full_name'] . '</td>';
-                echo '<td>' . $x['employee_num'] . '</td>';
-                echo '<td>' . $x['position'] . '</td>';
-                echo '<td>' . $x['shift'] . '</td>';
-                echo '<td>' . $x['provider'] . '</td>';
-                echo '<td>' . $x['groups'] . '</td>';
-                echo '<td>' . $x['car_maker'] . '</td>';
-                echo '<td>' . $x['car_model'] . '</td>';
-                echo '<td>' . $x['dept'] . '</td>';
-                echo '<td>' . $x['falp_group'] . '</td>';
-                echo '<td>' . $x['section'] . '</td>';
-                echo '<td>' . $x['section_code'] . '</td>';
-                echo '<td>' . $x['line_no'] . '</td>';
-                echo '<td>' . $x['process'] . '</td>';
-                echo '<td>' . $x['audit_findings'] . '</td>';
-                echo '<td>' . $x['audit_details'] . '</td>';
-                echo '<td>' . $x['audit_type'] . '</td>';
-                echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['criticality_level'] . '</td>';
-                echo '<td>' . $x['remarks'] . '</td>';
-                echo '<td>' . $x['agency'] . '</td>';
-                echo '<td>' . $x['hr'] . '</td>';
-
-                echo '</tr>';
-            } else {
-                echo '<tr>';
-                echo '<td>';
-                echo '<p>
-			                        <label for="row_' . $x['id'] . '">
-			                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
-			                            <span></span>
-			                        </label>
-			                    </p>';
-                echo '</td>';
-                echo '<td>' . $c . '</td>';
-                echo '<td style="display: none;">' . $x['batch'] . '</td>';
-                echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td>' . $x['full_name'] . '</td>';
-                echo '<td>' . $x['employee_num'] . '</td>';
-                echo '<td>' . $x['position'] . '</td>';
-                echo '<td>' . $x['shift'] . '</td>';
-                echo '<td>' . $x['provider'] . '</td>';
-                echo '<td>' . $x['groups'] . '</td>';
-                echo '<td>' . $x['car_maker'] . '</td>';
-                echo '<td>' . $x['car_model'] . '</td>';
-                echo '<td>' . $x['section'] . '</td>';
-                echo '<td>' . $x['falp_group'] . '</td>';
-                echo '<td>' . $x['line_no'] . '</td>';
-                echo '<td>' . $x['process'] . '</td>';
-                echo '<td>' . $x['audit_findings'] . '</td>';
-                echo '<td>' . $x['audit_type'] . '</td>';
-                echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['criticality_level'] . '</td>';
-                echo '<td>' . $x['remarks'] . '</td>';
-                echo '<td>' . $x['agency'] . '</td>';
-                echo '<td>' . $x['hr'] . '</td>';
-                echo '</tr>';
+                $row_style = "color:red;";
             }
 
+            echo '<tr style="'.$row_style.'">';
+            echo '<td>';
+            echo '<p>
+                                <label for="row_' . $x['id'] . '">
+                                    <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
+                                    <span></span>
+                                </label>
+                            </p>';
+            echo '</td>';
+            echo '<td>' . $c . '</td>';
+            echo '<td style="display: none;">' . $x['batch'] . '</td>';
+            echo '<td>' . $x['date_audited'] . '</td>';
+            echo '<td>' . $x['full_name'] . '</td>';
+            echo '<td>' . $x['employee_num'] . '</td>';
+            echo '<td>' . $x['position'] . '</td>';
+            echo '<td>' . $x['shift'] . '</td>';
+            echo '<td>' . $x['provider'] . '</td>';
+            echo '<td>' . $x['groups'] . '</td>';
+            echo '<td>' . $x['car_maker'] . '</td>';
+            echo '<td>' . $x['car_model'] . '</td>';
+            echo '<td>' . $x['dept'] . '</td>';
+            echo '<td>' . $x['falp_group'] . '</td>';
+            echo '<td>' . $x['section'] . '</td>';
+            echo '<td>' . $x['section_code'] . '</td>';
+            echo '<td>' . $x['line_no'] . '</td>';
+            echo '<td>' . $x['process'] . '</td>';
+            echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
+            echo '<td>' . $x['audit_type'] . '</td>';
+            echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['remarks'] . '</td>';
+            echo '<td>' . $x['agency'] . '</td>';
+            echo '<td>' . $x['hr'] . '</td>';
 
+            echo '</tr>';
         }
     } else {
         echo '<tr>';

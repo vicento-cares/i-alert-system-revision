@@ -160,6 +160,7 @@
         var audit_type = data[13];
         var section = data[14];
         var falp_group = data[15];
+        var problem_identification = data[16];
 
         document.getElementById('id_line_update').value = id;
         document.getElementById('shift_line_update').value = shift;
@@ -177,6 +178,7 @@
         document.getElementById('line_audit_type_update').value = audit_type;
         //   document.getElementById('section_line_update').value = section;
         document.getElementById('falp_group_line_update').value = falp_group;
+        document.getElementById('line_problem_identification_update').value = problem_identification;
 
         fetch_section_dropdown();
 
@@ -193,6 +195,7 @@
         var groups = document.getElementById('group_line_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
         var criticality_level = document.getElementById('line_criticality_level_update').value;
+        var problem_identification = document.querySelector('#line_problem_identification_update').value;
         var carmaker = document.getElementById('carmaker_line_update').value;
         var carmodel = document.getElementById('carmodel_line_update').value;
         var emline = document.getElementById('emline_line_update').value;
@@ -220,6 +223,7 @@
                     groups: groups,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
+                    problem_identification: problem_identification,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,

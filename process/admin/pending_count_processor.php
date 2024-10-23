@@ -271,7 +271,8 @@ if ($method == 'fetch_pending_count') {
                     $row['audit_details'] . '~!~' . 
                     $row['audited_by'] . '~!~' . 
                     $row['date_audited'] . '~!~' . 
-                    $row['remarks'] . '&quot;)">' . $row['full_name'] . '</td>';
+                    $row['remarks'] . '~!~' . 
+                    $row['problem_identification'] . '&quot;)">' . $row['full_name'] . '</td>';
             echo '<td>' . $row['position'] . '</td>';
             echo '<td>' . $row['employee_num'] . '</td>';
             echo '<td>' . $row['provider'] . '</td>';
@@ -283,6 +284,7 @@ if ($method == 'fetch_pending_count') {
             echo '<td>' . $row['audit_findings'] . '</td>';
             echo '<td>' . $row['audit_details'] . '</td>';
             echo '<td>' . $row['audited_by'] . '</td>';
+            echo '<td>' . $row['problem_identification'] . '</td>';
             echo '<td>' . $row['criticality_level'] . '</td>';
             echo '<td>' . $row['remarks'] . '</td>';
             echo '<td>' . $row['pd'] . '</td>';

@@ -65,6 +65,7 @@ if ($method == 'insert_audit') {
     $audited_by = addslashes($_POST['audited_by']);
     $audit_type = addslashes($_POST['audit_type']);
     $criticality_level = addslashes($_POST['criticality_level']);
+    $problem_identification = addslashes($_POST['problem_identification']);
     $remarks = addslashes($_POST['remarks']);
     $esection = addslashes($_POST['esection']);
     $username = addslashes($_POST['username']);
@@ -86,8 +87,8 @@ if ($method == 'insert_audit') {
     }
 
     $insert = "INSERT INTO ialert_audit 
-                (batch,date_audited,full_name,employee_num,provider,position,shift,groups,car_maker,car_model,line_no,process,audit_findings,audit_details,audited_by,criticality_level,audit_type,remarks,pd,hr,agency,date_created,section_code,section,falp_group,dept) 
-                VALUES ('$audit_code','$date_audited','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audit_details','$audited_by','$criticality_level','$audit_type','$remarks',NULL,NULL,NULL,'$server_date_time','$section_code','$section','$falp_group','$dept')";
+                (batch,date_audited,full_name,employee_num,provider,position,shift,groups,car_maker,car_model,line_no,process,audit_findings,audit_details,audited_by,problem_identification,criticality_level,audit_type,remarks,pd,hr,agency,date_created,section_code,section,falp_group,dept) 
+                VALUES ('$audit_code','$date_audited','$full_name','$employee_num','$provider','$position','$shift','$group','$carmaker','$carmodel','$emline','$emprocess','$audit_findings','$audit_details','$audited_by','$problem_identification','$criticality_level','$audit_type','$remarks',NULL,NULL,NULL,'$server_date_time','$section_code','$section','$falp_group','$dept')";
     $stmt = $conn->prepare($insert);
     if ($stmt->execute()) {
         echo 'Successfully Saved';
@@ -121,6 +122,7 @@ if ($method == 'prev_audit') {
         echo '<td>' . $x['audit_findings'] . '</td>';
         echo '<td>' . $x['audit_details'] . '</td>';
         echo '<td>' . $x['audited_by'] . '</td>';
+        echo '<td>' . $x['problem_identification'] . '</td>';
         echo '<td>' . $x['criticality_level'] . '</td>';
         echo '<td>' . $x['remarks'] . '</td>';
         echo '<td>' . $x['dept'] . '</td>';

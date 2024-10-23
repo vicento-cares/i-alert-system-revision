@@ -39,9 +39,10 @@ if ($method == 'fetch_line_audit_list') {
             echo '<td>' . $x['car_model'] . '</td>';
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
-            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audit_details'] . '~!~' . $x['audited_by'] . '~!~' . $x['criticality_level'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '&quot;)">' . $x['audit_findings'] . '</td>';
+            echo '<td style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#updateline" onclick="get_set_line(&quot;' . $x['id'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['date_audited'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audit_details'] . '~!~' . $x['audited_by'] . '~!~' . $x['criticality_level'] . '~!~' . $x['remarks'] . '~!~' . $x['audit_type'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '~!~' . $x['problem_identification'] . '&quot;)">' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';

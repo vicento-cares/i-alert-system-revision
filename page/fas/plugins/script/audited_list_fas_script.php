@@ -65,7 +65,7 @@
         var carmaker = document.getElementById('carmaker_search').value;
         var carmodel = document.getElementById('carmodel_search').value;
         var section = document.getElementById('section_search').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         var audit_type = document.getElementById('audit_type').value;
         var position = document.getElementById('position_search').value;
         var criticality_level = document.getElementById('criticality_level').value;

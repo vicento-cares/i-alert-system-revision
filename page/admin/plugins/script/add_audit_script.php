@@ -74,6 +74,7 @@
                     $('#audit_details').val('');
                     $('#audited_by').val('');
                     $('#criticality_level').val('');
+                    $('#problem_identification').val('');
                     $('#remarks').val('');
                     $('#falp_group').val('').change();
                 }
@@ -99,6 +100,7 @@
         var audited_by = document.querySelector('#audited_by').value;
         var audit_type = document.querySelector('#audit_type').value;
         var criticality_level = document.querySelector('#criticality_level').value;
+        var problem_identification = document.querySelector('#problem_identification').value;
         var remarks = document.querySelector('#remarks').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var username = '<?= htmlspecialchars($_SESSION['username']); ?>';
@@ -137,6 +139,8 @@
             swal('Notification', 'Please Enter Audited By', 'info');
         } else if (criticality_level == '') {
             swal('Notification', 'Please Select Criticality Level', 'info');
+        } else if (problem_identification == '') {
+            swal('Notification', 'Please Select Problem Identification', 'info');
         } else if (remarks == '') {
             swal('Notification', 'Please Enter Remarks', 'info');
         } else if (falp_group == '') {
@@ -166,6 +170,7 @@
                     audited_by: audited_by,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
+                    problem_identification: problem_identification,
                     remarks: remarks,
                     esection: esection,
                     username: username,
@@ -192,6 +197,7 @@
                         $('#audited_by').val('');
                         $('#audit_type').val('');
                         $('#criticality_level').val('');
+                        $('#problem_identification').val('');
                         $('#remarks').val('');
                         $('#falp_group').val('');
                         $('#section').val('');

@@ -165,6 +165,19 @@
         </div>
         <div class="row">
           <div class="col-3">
+            <span>Problem Identification:</span>
+            <select class="form-control" name="problem_identification" id="problem_identification">
+              <option value="">Select Problem</option>
+              <option value="Process Design Problem">Process Design Problem</option>
+              <option value="Discipline/Behaviour">Discipline/Behaviour</option>
+              <option value="Parts Problem">Parts Problem</option>
+              <option value="Education Problem">Education Problem</option>
+              <option value="Management Problem">Management Problem</option>
+              <option value="Machine/Jigs/Accessories Problem">Machine/Jigs/Accessories Problem</option>
+              <option value="Method Problem">Method Problem</option>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
@@ -192,6 +205,8 @@
               ?>
             </select>
           </div>
+        </div>
+        <div class="row">
           <div class="col-3">
             <span>Remarks</span>
             <!-- <input type="text" name="" id="remarks" class="form-control-lg" autocomplete="OFF"> -->
@@ -231,6 +246,7 @@
               <th>Audit Findings</th>
               <th>Audit Details</th>
               <th>Audited By</th>
+              <th>Problem Identification</th>
               <th>Criticality Level</th>
               <th>Remarks</th>
               <th>Department</th>

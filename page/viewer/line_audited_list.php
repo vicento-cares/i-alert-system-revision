@@ -154,6 +154,7 @@
                   <th style="text-align:center;">Audit Findings</th>
                   <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
+                  <th style="text-align:center;">Problem Identification</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">Department</th>
