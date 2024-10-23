@@ -9,21 +9,9 @@
 //MODALS
 include '../../modals/logout.php';
 if ($_SERVER['REQUEST_URI'] == "/i-alert/page/admin/pending_count.php") {
-  include '../../modals/admin/sections/sec1.php';
-  include '../../modals/admin/sections/sec2.php';
-  include '../../modals/admin/sections/sec3.php';
-  include '../../modals/admin/sections/sec4.php';
-  include '../../modals/admin/sections/sec5.php';
-  include '../../modals/admin/sections/sec6.php';
-  include '../../modals/admin/sections/sec7.php';
-  include '../../modals/admin/sections/sec8.php';
-  include '../../modals/admin/sections/sec9.php';
-  include '../../modals/admin/sections/fp.php';
-  include '../../modals/admin/sections/sp1.php';
-  include '../../modals/admin/sections/sp2.php';
-  include '../../modals/admin/sections/qa.php';
-  include '../../modals/admin/sections/other.php';
-  include '../../modals/admin/sections/provider.php';
+  include '../../modals/admin/pending_count_modal.php';
+  include '../../modals/admin/update_audit.php';
+  include '../../modals/admin/count.php';
 } else {
   include '../../modals/admin/accounts/add_user.php';
   include '../../modals/admin/accounts/update_user.php';
@@ -35,7 +23,6 @@ if ($_SERVER['REQUEST_URI'] == "/i-alert/page/admin/pending_count.php") {
   include '../../modals/admin/update_lineaudit.php';
   include '../../modals/admin/import_audit.php';
   include '../../modals/admin/import_line_audit.php';
-  include '../../modals/admin/count.php';
 }
 ?>
 <!-- jQuery -->
