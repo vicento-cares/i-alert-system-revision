@@ -31,7 +31,31 @@ if ($method == 'fetch_closed_admin') {
             $c++;
 
             // Revisions (Vince)
-            echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update" onclick="get_set(&quot;' . $x['id'] . '~!~' . $x['employee_num'] . '~!~' . $x['full_name'] . '~!~' . $x['position'] . '~!~' . $x['provider'] . '~!~' . $x['shift'] . '~!~' . $x['groups'] . '~!~' . $x['audit_type'] . '~!~' . $x['criticality_level'] . '~!~' . $x['car_maker'] . '~!~' . $x['car_model'] . '~!~' . $x['line_no'] . '~!~' . $x['process'] . '~!~' . $x['audit_findings'] . '~!~' . $x['audit_details'] . '~!~' . $x['audited_by'] . '~!~' . $x['date_audited'] . '~!~' . $x['remarks'] . '~!~' . $x['section'] . '~!~' . $x['falp_group'] . '~!~' . $x['problem_identification'] . '&quot;)">';
+            echo '<tr style="cursor:pointer;" class="modal-trigger" 
+                        data-toggle="modal" data-target="#update" 
+                        onclick="get_set(&quot;' . 
+                        $x['id'] . '~!~' . 
+                        $x['employee_num'] . '~!~' . 
+                        $x['full_name'] . '~!~' . 
+                        $x['position'] . '~!~' . 
+                        $x['provider'] . '~!~' . 
+                        $x['shift'] . '~!~' . 
+                        $x['groups'] . '~!~' . 
+                        $x['audit_type'] . '~!~' . 
+                        $x['criticality_level'] . '~!~' . 
+                        $x['car_maker'] . '~!~' . 
+                        $x['car_model'] . '~!~' . 
+                        $x['line_no'] . '~!~' . 
+                        $x['process'] . '~!~' . 
+                        $x['audit_findings'] . '~!~' . 
+                        $x['audit_details'] . '~!~' . 
+                        $x['audited_by'] . '~!~' . 
+                        $x['date_audited'] . '~!~' . 
+                        $x['remarks'] . '~!~' . 
+                        $x['section'] . '~!~' . 
+                        $x['falp_group'] . '~!~' . 
+                        $x['problem_identification'] . '~!~' . 
+                        $x['sm_analysis'] . '&quot;)">';
             echo '<td>' . $c . '</td>';
             echo '<td style="display: none;">' . $x['batch'] . '</td>';
             echo '<td>' . $x['date_audited'] . '</td>';
@@ -51,6 +75,7 @@ if ($method == 'fetch_closed_admin') {
             echo '<td>' . $x['audited_by'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';
             echo '<td>' . $x['section'] . '</td>';

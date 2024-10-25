@@ -73,6 +73,7 @@ if ($method == 'fetch_audited_list') {
             echo '<td>' . $x['audited_by'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['dept'] . '</td>';
             echo '<td>' . $x['falp_group'] . '</td>';

@@ -108,6 +108,7 @@ if ($method == 'fetch_audited_list_fass_status') {
                 echo '<td>' . $x['audited_by'] . '</td>';
                 echo '<td>' . $x['problem_identification'] . '</td>';
                 echo '<td>' . $x['criticality_level'] . '</td>';
+                echo '<td>' . $x['sm_analysis'] . '</td>';
                 echo '<td>' . $x['remarks'] . '</td>';
                 echo '<td>' . $x['pd'] . '</td>';
                 echo '<td>' . $x['date_sent'] . '</td>';

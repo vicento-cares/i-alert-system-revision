@@ -174,6 +174,17 @@
             </select>
           </div>
           <div class="col-3">
+            <span>SM Analysis:</span>
+            <select class="form-control" name="sm_analysis_update" id="sm_analysis_update">
+              <option value="">Select SM Analysis</option>
+              <option value="Man">Man</option>
+              <option value="Machine">Machine</option>
+              <option value="Method">Method</option>
+              <option value="Material">Material</option>
+              <option value="Measurement">Measurement</option>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group_update" id="falp_group_update"
               onchange="fetch_section_dropdown()">

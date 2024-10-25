@@ -136,6 +136,17 @@
             </select>
           </div>
           <div class="col-3">
+            <span>SM Analysis:</span>
+            <select class="form-control" name="line_sm_analysis" id="line_sm_analysis">
+              <option value="">Select SM Analysis</option>
+              <option value="Man">Man</option>
+              <option value="Machine">Machine</option>
+              <option value="Method">Method</option>
+              <option value="Material">Material</option>
+              <option value="Measurement">Measurement</option>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group_line" id="falp_group_line"
               onchange="fetch_section_dropdown()">
@@ -199,6 +210,7 @@
               <th>Audited By</th>
               <th>Problem Identification</th>
               <th>Criticality Level</th>
+              <th>SM Analysis</th>
               <th>Audit Type</th>
               <th>Department</th>
               <th>Group</th>

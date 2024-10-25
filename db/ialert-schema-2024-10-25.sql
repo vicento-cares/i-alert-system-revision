@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2024 at 09:47 AM
+-- Generation Time: Oct 25, 2024 at 04:33 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -63,6 +63,7 @@ CREATE TABLE `ialert_audit` (
   `audited_by` varchar(255) DEFAULT NULL,
   `problem_identification` varchar(255) DEFAULT NULL,
   `criticality_level` varchar(255) DEFAULT NULL,
+  `sm_analysis` varchar(255) DEFAULT NULL,
   `audit_type` varchar(200) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `pd` varchar(255) DEFAULT NULL,
@@ -126,6 +127,7 @@ CREATE TABLE `ialert_history` (
   `audited_by` varchar(100) DEFAULT NULL,
   `problem_identification` varchar(255) DEFAULT NULL,
   `criticality_level` varchar(100) DEFAULT NULL,
+  `sm_analysis` varchar(255) DEFAULT NULL,
   `remarks` varchar(100) DEFAULT NULL,
   `pd` varchar(100) DEFAULT NULL,
   `agency` varchar(100) DEFAULT NULL,
@@ -169,6 +171,7 @@ CREATE TABLE `ialert_line_audit` (
   `audited_by` varchar(255) DEFAULT NULL,
   `problem_identification` varchar(255) DEFAULT NULL,
   `criticality_level` varchar(255) DEFAULT NULL,
+  `sm_analysis` varchar(255) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   `date_created` varchar(255) DEFAULT NULL,
   `batch` varchar(255) DEFAULT NULL,

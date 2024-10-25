@@ -195,6 +195,7 @@
         var date_audited = data[15];
         var remarks = data[16];
         var problem_identification = data[17];
+        var sm_analysis = data[18];
 
         document.getElementById('id_update').value = id;
         document.getElementById('employee_num_update').value = employee_num;
@@ -214,6 +215,7 @@
         document.getElementById('date_audited_update').value = date_audited;
         document.getElementById('remarks_update').value = remarks;
         document.getElementById('problem_identification_update').value = problem_identification;
+        document.getElementById('sm_analysis_update').value = sm_analysis;
     }
 
     const update_audit_data = () => {
@@ -227,6 +229,7 @@
         var audit_type = document.getElementById('audit_type_update').value;
         var criticality_level = document.getElementById('criticality_level_update').value;
         var problem_identification = document.querySelector('#problem_identification_update').value;
+        var sm_analysis = document.querySelector('#sm_analysis_update').value;
         var carmaker = document.getElementById('carmaker_update').value;
         var carmodel = document.getElementById('carmodel_update').value;
         var emline = document.getElementById('emline_update').value;
@@ -252,6 +255,7 @@
                 audit_type: audit_type,
                 criticality_level: criticality_level,
                 problem_identification: problem_identification,
+                sm_analysis: sm_analysis,
                 carmaker: carmaker,
                 carmodel: carmodel,
                 emline: emline,

@@ -161,6 +161,7 @@
                   <th style="text-align:center;">Audited By</th>
                   <th style="text-align:center;">Problem Identification</th>
                   <th style="text-align:center;">Criticality Level</th>
+                  <th style="text-align:center;">SM Analysis</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">Concerned Group</th>
                   <th style="text-align:center;">AGENCY Status</th>

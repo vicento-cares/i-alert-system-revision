@@ -178,6 +178,17 @@
             </select>
           </div>
           <div class="col-3">
+            <span>SM Analysis:</span>
+            <select class="form-control" name="sm_analysis" id="sm_analysis">
+              <option value="">Select SM Analysis</option>
+              <option value="Man">Man</option>
+              <option value="Machine">Machine</option>
+              <option value="Method">Method</option>
+              <option value="Material">Material</option>
+              <option value="Measurement">Measurement</option>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group" id="falp_group" onchange="fetch_section_dropdown()">
               <option value="">Select Group</option>
@@ -248,6 +259,7 @@
               <th>Audited By</th>
               <th>Problem Identification</th>
               <th>Criticality Level</th>
+              <th>SM Analysis</th>
               <th>Remarks</th>
               <th>Department</th>
               <th>Group</th>
