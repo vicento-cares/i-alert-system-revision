@@ -24,9 +24,9 @@
         var dateTo = document.getElementById('lineauditeddateto').value;
         var carmaker = document.getElementById('car_maker').value;
         var carmodel = document.getElementById('car_model').value;
-        var audit_categ = document.getElementById('audit_cat').value;
-        var section = document.getElementById('section').value;
-        var falp_group = document.getElementById('falp_group').value;
+        var criticality_level = document.getElementById('crit_level').value;
+        var section = document.getElementById('section_search').value;
+        var falp_group = document.getElementById('falp_group_search').value;
         $.ajax({
             url: '../../process/admin/list_of_line_audit_processor.php',
             type: 'POST',
@@ -38,7 +38,7 @@
                 line_n: line_n,
                 carmaker: carmaker,
                 carmodel: carmodel,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 section: section,
                 falp_group: falp_group
 
@@ -153,12 +153,15 @@
         var line_no = data[6];
         var process = data[7];
         var audit_findings = data[8];
-        var audited_by = data[9];
-        var audited_categ = data[10];
-        var remarks = data[11];
-        var audit_type = data[12];
-        var section = data[13];
-        var falp_group = data[14];
+        var audit_details = data[9];
+        var audited_by = data[10];
+        var criticality_level = data[11];
+        var remarks = data[12];
+        var audit_type = data[13];
+        var section = data[14];
+        var falp_group = data[15];
+        var problem_identification = data[16];
+        var sm_analysis = data[17];
 
         document.getElementById('id_line_update').value = id;
         document.getElementById('shift_line_update').value = shift;
@@ -169,12 +172,15 @@
         document.getElementById('emline_line_update').value = line_no;
         document.getElementById('process_line_update').value = process;
         document.getElementById('line_audit_findings_update').value = audit_findings;
+        document.getElementById('line_audit_details_update').value = audit_details;
         document.getElementById('line_audited_by_update').value = audited_by;
-        document.getElementById('line_audit_categ_update').value = audited_categ;
+        document.getElementById('line_criticality_level_update').value = criticality_level;
         document.getElementById('remarks_line_update').value = remarks;
         document.getElementById('line_audit_type_update').value = audit_type;
         //   document.getElementById('section_line_update').value = section;
         document.getElementById('falp_group_line_update').value = falp_group;
+        document.getElementById('line_problem_identification_update').value = problem_identification;
+        document.getElementById('line_sm_analysis_update').value = sm_analysis;
 
         fetch_section_dropdown();
 
@@ -190,18 +196,21 @@
         var shift = document.getElementById('shift_line_update').value;
         var groups = document.getElementById('group_line_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
-        var audit_categ = document.getElementById('line_audit_categ_update').value;
+        var criticality_level = document.getElementById('line_criticality_level_update').value;
+        var problem_identification = document.querySelector('#line_problem_identification_update').value;
+        var sm_analysis = document.querySelector('#line_sm_analysis_update').value;
         var carmaker = document.getElementById('carmaker_line_update').value;
         var carmodel = document.getElementById('carmodel_line_update').value;
         var emline = document.getElementById('emline_line_update').value;
         var process = document.getElementById('process_line_update').value;
         var audit_findings = document.getElementById('line_audit_findings_update').value;
+        var audit_details = document.getElementById('line_audit_details_update').value;
         var audited_by = document.getElementById('line_audited_by_update').value;
         var audit_type = document.getElementById('line_audit_type_update').value;
         var date_audited = document.getElementById('date_line_audited_update').value;
         var remarks = document.getElementById('remarks_line_update').value;
         var section = document.getElementById('section_line_update').value;
-        var falp_group = document.getElementById('falp_group_update').value;
+        var falp_group = document.getElementById('falp_group_line_update').value;
 
         if (section == '') {
             swal("Notification", "Please select section.", "info");
@@ -216,19 +225,21 @@
                     shift: shift,
                     groups: groups,
                     audit_type: audit_type,
-                    audit_categ: audit_categ,
+                    criticality_level: criticality_level,
+                    problem_identification: problem_identification,
+                    sm_analysis: sm_analysis,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,
                     process: process,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     date_audited: date_audited,
                     remarks: remarks,
                     audit_type: audit_type,
                     section: section,
-                    group: falp_group
-
+                    falp_group: falp_group
                 },
                 success: function (response) {
                     console.log(response);

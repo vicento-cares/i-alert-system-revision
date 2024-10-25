@@ -22,11 +22,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="recievedfrom_closed_admin"
+                  <label for="recievedfrom_closed_admin">Audited Date From:</label> <input type="date" id="recievedfrom_closed_admin"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="recievedto_closed_admin"
+                  <label for="recievedto_closed_admin">Audited Date To:</label> <input type="date" id="recievedto_closed_admin"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -109,11 +109,12 @@
                       </select>
                     </div>
                     <div class="col-3">
-                      <span>Audit Category: </span>
-                      <select class="form-control" id="audit_categ_admin">
-                        <option value="">Select Audit Category</option>
-                        <option value="minor">Minor</option>
-                        <option value="major">Major</option>
+                      <span>Criticality Level:</span>
+                      <select class="form-control" id="criticality_level_admin">
+                        <option value="">Select Criticality Level</option>
+                        <option value="Low Impact">Low Impact</option>
+                        <option value="Medium Impact">Medium Impact</option>
+                        <option value="High Impact">High Impact</option>
                       </select>
                     </div>
                   </div>
@@ -167,7 +168,7 @@
                     </div>
                     <div class="col-3">
                       <span> Group: </span>
-                      <select class="form-control" name="falp_group" id="falp_group">
+                      <select class="form-control" name="falp_group_search" id="falp_group_search">
                         <option value="">Select Group</option>
                         <?php
                         $get_curiculum = "SELECT DISTINCT falp_group FROM ialert_section ORDER BY falp_group ASC";
@@ -215,9 +216,12 @@
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
+                    <th style="text-align:center;">Audit Details</th>
                     <th style="text-align:center;">Audit Type</th>
                     <th style="text-align:center;">Audited By</th>
-                    <th style="text-align:center;">Audit Category</th>
+                    <th style="text-align:center;">Problem Identification</th>
+                    <th style="text-align:center;">Criticality Level</th>
+                    <th style="text-align:center;">SM Analysis</th>
                     <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>
                     <th style="text-align:center;">Section</th>

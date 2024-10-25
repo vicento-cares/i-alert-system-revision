@@ -28,8 +28,8 @@ if ($method == 'fetch_audited_list_hr') {
             echo '<tr">';
             echo '<td>';
             echo '<p>
-                        <label>
-                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+                        <label for="row_' . $x['id'] . '">
+                            <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
                             <span></span>
                         </label>
                         </p>';
@@ -47,9 +47,12 @@ if ($method == 'fetch_audited_list_hr') {
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['hr'] . '</td>';

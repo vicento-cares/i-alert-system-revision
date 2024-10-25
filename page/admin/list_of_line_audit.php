@@ -43,7 +43,7 @@
                 <h3 class="card-title">
                   <div class="row">
                     <div class="col-3">
-                      <label>Car Maker:</label>
+                      <label for="car_maker">Car Maker:</label>
                       <input type="text" list="list" name="car_maker" id="car_maker" class="form-control">
                       <datalist id="list">
                         <option value="Suzuki">
@@ -58,12 +58,12 @@
                     </div>
 
                     <div class="col-2">
-                      <label>Car Model:</label>
+                      <label for="car_model">Car Model:</label>
                       <input type="text" name="car_model" id="car_model" class="form-control">
                     </div>
 
                     <div class="col-2">
-                      <label>Line No:</label>
+                      <label for="line_n">Line No:</label>
                       <input list="lines" id="line_n" name="line_n" class="form-control">
                       <datalist id="lines" name="">
                         <option value="">Select Line</option>
@@ -79,16 +79,17 @@
                       </datalist>
                     </div>
                     <div class="col-3">
-                      <label>Audit Category</label>
-                      <select id="audit_cat" class="form-control">
-                        <option value="">Select Audit Category</option>
-                        <option value="minor">Minor </option>
-                        <option value="major">Major </option>
+                      <label for="crit_level">Criticality Level:</label>
+                      <select id="crit_level" class="form-control">
+                        <option value="">Select Criticality Level</option>
+                        <option value="Low Impact">Low Impact</option>
+                        <option value="Medium Impact">Medium Impact</option>
+                        <option value="High Impact">High Impact</option>
                       </select>
                     </div>
                     <div class="col-2">
-                      <label>Section:</label>
-                      <select class="form-control" name="section" id="section">
+                      <label for="section_search">Section:</label>
+                      <select class="form-control" name="section_search" id="section_search">
                         <option value="">Select Section</option>
                         <?php
                         $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
@@ -101,8 +102,8 @@
                       </select>
                     </div>
                     <div class="col-2">
-                      <label>Group:</label>
-                      <select class="form-control" name="falp_group" id="falp_group"
+                      <label for="falp_group_search">Group:</label>
+                      <select class="form-control" name="falp_group_search" id="falp_group_search"
                         onchange="fetch_section_dropdown()">
                         <option value="">Select Group</option>
                         <?php
@@ -171,8 +172,11 @@
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
+                    <th style="text-align:center;">Audit Details</th>
                     <th style="text-align:center;">Audited By</th>
-                    <th style="text-align:center;">Audit Category</th>
+                    <th style="text-align:center;">Problem Identification</th>
+                    <th style="text-align:center;">Criticality Level</th>
+                    <th style="text-align:center;">SM Analysis</th>
                     <th style="text-align:center;">Audit Type</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Department</th>

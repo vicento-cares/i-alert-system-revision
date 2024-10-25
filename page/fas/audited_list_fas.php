@@ -10,7 +10,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">List of Audited <input type="hidden" name="falp_group" id="falp_group"
+              <h1 class="m-0">List of Audited <input type="hidden" name="falp_group_hidden" id="falp_group_hidden"
                   value="<?= htmlspecialchars($_SESSION['falp_group']); ?>"></h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
@@ -22,11 +22,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="providerauditedlistfasdatefrom"
+                  <label for="providerauditedlistfasdatefrom">Audited Date From:</label> <input type="date" id="providerauditedlistfasdatefrom"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="providerauditedlistfasdateto"
+                  <label for="providerauditedlistfasdateto">Audited Date To:</label> <input type="date" id="providerauditedlistfasdateto"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                       </datalist>
                     </div>
                     <div class="col-3">
-                      <span for="">Position:</span> <select id="position" class="form-control" autocomplete=off>
+                      <span for="position_search">Position:</span> <select id="position_search" class="form-control" autocomplete=off>
                         <option value="">Select Position</option>
                         <option value="associate">Associate</option>
                         <option value="expert">Expert</option>
@@ -83,7 +83,7 @@
                   <div class="row">
                     <div class="col-3">
                       <span>Car Maker: </span>
-                      <input type="text" list="list" name="carmaker" id="carmaker" class="form-control">
+                      <input type="text" list="list" name="carmaker" id="carmaker_search" class="form-control">
                       <datalist id="list">
                         <option value="Suzuki">
                         <option value="Toyota">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-3">
                       <span>Car Model: </span>
-                      <input type="text" name="carmodel" id="carmodel" class="form-control">
+                      <input type="text" name="carmodel" id="carmodel_search" class="form-control">
                       <!-- <input type="hidden" name="count_section" id="count_section" value=""> -->
                     </div>
                     <div class="col-3">
@@ -110,11 +110,12 @@
                       </select>
                     </div>
                     <div class="col-3">
-                      <span>Audit Category: </span>
-                      <select class="form-control" id="audit_categ">
-                        <option value="">Select Audit Category</option>
-                        <option value="minor">Minor</option>
-                        <option value="major">Major</option>
+                      <span>Criticality Level:</span>
+                      <select class="form-control" id="criticality_level">
+                        <option value="">Select Criticality Level</optio>
+                        <option value="Low Impact">Low Impact</option>
+                        <option value="Medium Impact">Medium Impact</option>
+                        <option value="High Impact">High Impact</option>
                       </select>
                     </div>
                   </div>
@@ -122,12 +123,12 @@
                   <div class="row">
                     <div class="col-3">
                       <span>Section:</span>
-                      <select id="section" class="form-control"></select>
+                      <select id="section_search" class="form-control"></select>
                     </div>
                     <div class="col-3">
                       <span>Group:</span>
                       <input type="text" class="form-control" value="<?= htmlspecialchars($_SESSION['falp_group']); ?>"
-                        name="" id="falp_group" readonly>
+                        name="" id="falp_group_search" readonly>
                     </div>
                     <div class="col-3">
                       <span>Shift Groups:</span>
@@ -263,9 +264,12 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audit Type</th>
                   <th style="text-align:center;">Audited By</th>
-                  <th style="text-align:center;">Audit Category</th>
+                  <th style="text-align:center;">Problem Identification</th>
+                  <th style="text-align:center;">Criticality Level</th>
+                  <th style="text-align:center;">SM Analysis</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">Concerned Group</th>
                   <th style="text-align:center;">HR Status</th>

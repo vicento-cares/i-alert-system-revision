@@ -99,7 +99,17 @@ function check_csv($file, $conn)
     $carmaker_arr = array("Suzuki", "Toyota", "Mazda", "Daihatsu", "Marelli", "Subaru", "Honda", "Yamaha");
     $lines_arr = get_lines($conn);
     $processes_arr = get_processes($conn);
-    $audit_category_arr = array("major", "minor");
+    $problem_identification_arr = array(
+        "Process Design Problem", 
+        "Discipline/Behaviour", 
+        "Parts Problem", 
+        "Education Problem", 
+        "Management Problem", 
+        "Machine/Jigs/Accessories Problem", 
+        "Method Problem"
+    );
+    $criticality_level_arr = array("High Impact", "Medium Impact", "Low Impact");
+    $sm_analysis_arr = array("Man", "Machine", "Method", "Material", "Measurement");
     $audit_type_arr = array("initial", "final", "Line Audit");
     $sections_arr = get_sections($conn);
     $falp_groups_arr = get_falp_groups($conn);
@@ -112,13 +122,15 @@ function check_csv($file, $conn)
     $isDuplicateOnCsvArr = array();
     $dup_temp_arr = array();
 
-    $row_valid_arr = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    $row_valid_arr = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     $notExistsShiftArr = array();
     $notExistsShiftGroupArr = array();
     $notExistsCarMakerArr = array();
     $notExistsLineNoArr = array();
     $notExistsProcessArr = array();
+    $notExistsProblemIdentificationArr = array();
+    $notExistsSmAnalysisArr = array();
     $notExistsAuditCategoryArr = array();
     $notExistsAuditTypeArr = array();
     $notExistsSectionArr = array();
@@ -129,8 +141,8 @@ function check_csv($file, $conn)
     $check_csv_row = 0;
 
     $first_line = preg_replace('/[\t\n\r]+/', '', $first_line);
-    $valid_first_line1 = '"Date Audited",Shift,"Shift Group","Car Maker","Car Model","Line No",Process,"Audit Findings","Audited By","Audit Category","Audit Type",Remarks,Section,Group';
-    $valid_first_line2 = "Date Audited,Shift,Shift Group,Car Maker,Car Model,Line No,Process,Audit Findings,Audited By,Audit Category,Audit Type,Remarks,Section,Group";
+    $valid_first_line1 = '"Date Audited",Shift,"Shift Group","Car Maker","Car Model","Line No",Process,"Audit Findings","Audit Details","Audited By","Problem Identification","Criticality Level","SM Analysis","Audit Type",Remarks,Section,Group';
+    $valid_first_line2 = "Date Audited,Shift,Shift Group,Car Maker,Car Model,Line No,Process,Audit Findings,Audit Details,Audited By,Problem Identification,Criticality Level,SM Analysis,Audit Type,Remarks,Section,Group";
     if ($first_line == $valid_first_line1 || $first_line == $valid_first_line2) {
         while (($line = fgetcsv($csv_file)) !== false) {
             // Check if the row is blank or consists only of whitespace
@@ -149,18 +161,22 @@ function check_csv($file, $conn)
             $line_n = $line[5];
             $emprocess = $line[6];
             $audit_findings = $line[7];
-            $audited_by = $line[8];
-            $audited_categ = strtolower($line[9]);
-            $audit_type = $line[10];
-            $remark = $line[11];
-            $section = $line[12];
-            $falp_group = $line[13];
+            $audit_details = $line[8];
+            $audited_by = $line[9];
+            $problem_identification = $line[10];
+            $criticality_level = strtolower($line[11]);
+            $sm_analysis = $line[12];
+            $audit_type = $line[13];
+            $remark = $line[14];
+            $section = $line[15];
+            $falp_group = $line[16];
 
             // CHECK IF BLANK DATA
             if (
                 $date_audited == '' || $shift == '' || $group == '' || $carmaker == ''
                 || $carmodel == '' || $line_n == '' || $emprocess == '' || $audit_findings == ''
-                || $audited_by == '' || $audited_categ == '' || $audit_type == '' || $remark == ''
+                || $audited_by == '' || $problem_identification == '' || $criticality_level == '' || $sm_analysis == ''
+                || $audit_type == '' || $remark == ''
                 || $section == '' || $falp_group == ''
             ) {
                 // IF BLANK DETECTED ERROR += 1
@@ -195,29 +211,39 @@ function check_csv($file, $conn)
                 $row_valid_arr[4] = 1;
                 array_push($notExistsProcessArr, $check_csv_row);
             }
-            if (!in_array($audited_categ, $audit_category_arr)) {
+            if (!in_array($problem_identification, $problem_identification_arr)) {
                 $hasError = 1;
                 $row_valid_arr[5] = 1;
+                array_push($notExistsProblemIdentificationArr, $check_csv_row);
+            }
+            if (!in_array($criticality_level, $criticality_level_arr)) {
+                $hasError = 1;
+                $row_valid_arr[6] = 1;
                 array_push($notExistsAuditCategoryArr, $check_csv_row);
+            }
+            if (!in_array($sm_analysis, $sm_analysis_arr)) {
+                $hasError = 1;
+                $row_valid_arr[7] = 1;
+                array_push($notExistsSmAnalysisArr, $check_csv_row);
             }
             if (!in_array($audit_type, $audit_type_arr)) {
                 $hasError = 1;
-                $row_valid_arr[6] = 1;
+                $row_valid_arr[8] = 1;
                 array_push($notExistsAuditTypeArr, $check_csv_row);
             }
             if (!in_array($section, $sections_arr)) {
                 $hasError = 1;
-                $row_valid_arr[7] = 1;
+                $row_valid_arr[9] = 1;
                 array_push($notExistsSectionArr, $check_csv_row);
             }
             if (!in_array($falp_group, $falp_groups_arr)) {
                 $hasError = 1;
-                $row_valid_arr[8] = 1;
+                $row_valid_arr[10] = 1;
                 array_push($notExistsFalpGroupArr, $check_csv_row);
             }
             if (!in_array($audit_findings, $audit_findings_categ_arr)) {
                 $hasError = 1;
-                $row_valid_arr[9] = 1;
+                $row_valid_arr[11] = 1;
                 array_push($notExistsAuditFindingsCategArr, $check_csv_row);
             }
 
@@ -256,18 +282,24 @@ function check_csv($file, $conn)
             $message = $message . 'Process doesn\'t exists on row/s ' . implode(", ", $notExistsProcessArr) . '. ';
         }
         if ($row_valid_arr[5] == 1) {
-            $message = $message . 'Audit Category doesn\'t exists on row/s ' . implode(", ", $notExistsAuditCategoryArr) . '. ';
+            $message = $message . 'Problem Identification doesn\'t exists on row/s ' . implode(", ", $notExistsProblemIdentificationArr) . '. ';
         }
         if ($row_valid_arr[6] == 1) {
-            $message = $message . 'Audit Type doesn\'t exists on row/s ' . implode(", ", $notExistsAuditTypeArr) . '. ';
+            $message = $message . 'Criticality Level doesn\'t exists on row/s ' . implode(", ", $notExistsAuditCategoryArr) . '. ';
         }
         if ($row_valid_arr[7] == 1) {
-            $message = $message . 'Section doesn\'t exists on row/s ' . implode(", ", $notExistsSectionArr) . '. ';
+            $message = $message . 'SM Analysis doesn\'t exists on row/s ' . implode(", ", $notExistsSmAnalysisArr) . '. ';
         }
         if ($row_valid_arr[8] == 1) {
-            $message = $message . 'Group doesn\'t exists on row/s ' . implode(", ", $notExistsFalpGroupArr) . '. ';
+            $message = $message . 'Audit Type doesn\'t exists on row/s ' . implode(", ", $notExistsAuditTypeArr) . '. ';
         }
         if ($row_valid_arr[9] == 1) {
+            $message = $message . 'Section doesn\'t exists on row/s ' . implode(", ", $notExistsSectionArr) . '. ';
+        }
+        if ($row_valid_arr[10] == 1) {
+            $message = $message . 'Group doesn\'t exists on row/s ' . implode(", ", $notExistsFalpGroupArr) . '. ';
+        }
+        if ($row_valid_arr[11] == 1) {
             $message = $message . 'Audit Findings doesn\'t exists on row/s ' . implode(", ", $notExistsAuditFindingsCategArr) . '. ';
         }
 
@@ -297,55 +329,169 @@ if (isset($_POST['upload'])) {
                 fgetcsv($csvFile);
                 // PARSE
                 $error = 0;
-                while (($line = fgetcsv($csvFile)) !== false) {
 
-                    // $batch = addslashes($line[0]);
-                    $date_audited = addslashes($line[0]);
-                    $shift = addslashes(strtolower($line[1]));
-                    $group = addslashes(strtolower($line[2]));
-                    $carmaker = addslashes($line[3]);
-                    $carmodel = addslashes($line[4]);
-                    $line_n = addslashes($line[5]);
-                    $emprocess = addslashes($line[6]);
-                    $audit_findings = addslashes($line[7]);
-                    $audited_by = addslashes($line[8]);
-                    $audited_categ = addslashes(strtolower($line[9]));
-                    $audit_type = addslashes($line[10]);
-                    $remark = addslashes($line[11]);
-                    $section = addslashes($line[12]);
-                    $falp_group = addslashes($line[13]);
+                $isTransactionActive = false;
+                $chunkSize = 250; // Set your desired chunk size
 
-                    $dates = new DateTime($date_audited);
-                    $date_auditeds = date_format($dates, "Y-m-d");
-
-                    $dept = "";
-                    $section_code = "";
-
-                    $sql = "SELECT dept, section_code FROM ialert_section WHERE falp_group = '$falp_group' AND section = '$section'";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
-
-                    $row = $stmt -> fetch(PDO::FETCH_ASSOC);
-
-                    if ($row) {
-                        $dept = $row['dept'];
-                        $section_code = $row['section_code'];
+                try {
+                    if (!$isTransactionActive) {
+                        $conn->beginTransaction();
+                        $isTransactionActive = true;
                     }
 
-                    $insert = "INSERT INTO ialert_line_audit (batch,date_audited,shift,groups,car_maker,car_model,line_no,process,audit_findings,audited_by,audited_categ,audit_type,remarks,date_created,section_code,section,falp_group,dept) 
-                                VALUES ('$lc','$date_auditeds','$shift','$group','$carmaker','$carmodel','$line_n','$emprocess','$audit_findings','$audited_by','$audited_categ','$audit_type','$remark','$server_date_only','$section_code','$section','$falp_group','$dept')";
-                    $stmt = $conn->prepare($insert);
-                    if ($stmt->execute()) {
-                        $error = 0;
-                    } else {
-                        $error = $error + 1;
+                    $sql_insert = "INSERT INTO ialert_line_audit 
+                                    (batch, date_audited, shift, groups, car_maker, car_model, line_no, process, 
+                                    audit_findings, audit_details, audited_by, 
+                                    problem_identification, criticality_level, sm_analysis, audit_type, remarks, date_created, 
+                                    section_code, section, falp_group, dept) VALUES ";
+                    $values = [];
+                    $placeholders = [];
+
+                    while (($line = fgetcsv($csvFile)) !== false) {
+                        // Check if the row is blank or consists only of whitespace
+                        if (empty(implode('', $line))) {
+                            continue; // Skip blank lines
+                        }
+    
+                        // $batch = $line[0];
+                        $date_audited = $line[0];
+                        $shift = strtolower($line[1]);
+                        $group = strtolower($line[2]);
+                        $carmaker = $line[3];
+                        $carmodel = $line[4];
+                        $line_n = $line[5];
+                        $emprocess = $line[6];
+                        $audit_findings = $line[7];
+                        $audit_details = $line[8];
+                        $audited_by = $line[9];
+                        $problem_identification = $line[10];
+                        $criticality_level = strtolower($line[11]);
+                        $sm_analysis = $line[12];
+                        $audit_type = $line[13];
+                        $remark = $line[14];
+                        $section = $line[15];
+                        $falp_group = $line[16];
+    
+                        $dates = new DateTime($date_audited);
+                        $date_auditeds = date_format($dates, "Y-m-d");
+    
+                        $dept = "";
+                        $section_code = "";
+    
+                        $sql = "SELECT dept, section_code FROM ialert_section WHERE falp_group = ? AND section = ?";
+                        $stmt = $conn->prepare($sql);
+                        $params = array($falp_group, $section);
+                        $stmt->execute($params);
+    
+                        $row = $stmt -> fetch(PDO::FETCH_ASSOC);
+    
+                        if ($row) {
+                            $dept = $row['dept'];
+                            $section_code = $row['section_code'];
+                        }
+
+                        // Create a temporary array for the current row
+                        $currentValues = [
+                            $lc,
+                            $date_auditeds,
+                            $shift,
+                            $group,
+                            $carmaker,
+                            $carmodel,
+                            $line_n,
+                            $emprocess,
+                            $audit_findings,
+                            $audit_details,
+                            $audited_by,
+                            $problem_identification,
+                            $criticality_level,
+                            $sm_analysis,
+                            $audit_type,
+                            $remark,
+                            $server_date_only,
+                            $section_code,
+                            $section,
+                            $falp_group,
+                            $dept
+                        ];
+
+                        // Create placeholders for each row
+                        $generated_placeholders = implode(',', array_fill(0, count($currentValues), '?'));
+                        $placeholders[] = "($generated_placeholders)";
+
+                        // Add current values to the main values array
+                        $values = array_merge($values, $currentValues);
+
+                        // Check if we reached the chunk size
+                        if (count($placeholders) === $chunkSize) {
+                            // Combine the SQL statement with the placeholders
+                            $sql_insert .= implode(', ', $placeholders);
+                            
+                            // Prepare the statement
+                            $stmt = $conn->prepare($sql_insert);
+                            
+                            // Execute the statement with the values
+                            if (!$stmt->execute($values)) {
+                                $error++;
+                            }
+
+                            // Reset for the next chunk
+                            $placeholders = [];
+                            $values = [];
+                            $sql_insert = "INSERT INTO ialert_line_audit 
+                                            (batch, date_audited, shift, groups, car_maker, car_model, line_no, process, 
+                                            audit_findings, audit_details, audited_by, 
+                                            problem_identification, criticality_level, sm_analysis, audit_type, remarks, date_created, 
+                                            section_code, section, falp_group, dept) VALUES ";
+                        }
                     }
+
+                    // Insert any remaining rows that didn't fill a complete chunk
+                    if (!empty($placeholders)) {
+                        $sql_insert .= implode(', ', $placeholders);
+                        $stmt = $conn->prepare($sql_insert);
+                        if (!$stmt->execute($values)) {
+                            $error++;
+                        }
+                    }
+    
+                    if ($error > 0) {
+                        if ($isTransactionActive) {
+                            $conn->rollBack();
+                            $isTransactionActive = false;
+                        }
+                        echo '<script>
+                                var x = confirm("WITH ERROR! # OF ERRORS ' . $error . ' ");
+                                if(x == true){
+                                    location.replace("../../page/admin/add_line_audit.php");
+                                }else{
+                                    location.replace("../../page/admin/add_line_audit.php");
+                                }
+                            </script>';
+                        exit();
+                    }
+
+                    $conn->commit();
+                    $isTransactionActive = false;
+                } catch (Exception $e) {
+                    if ($isTransactionActive) {
+                        $conn->rollBack();
+                        $isTransactionActive = false;
+                    }
+                    echo '<script>
+                                var x = confirm("Failed. Please Try Again or Call IT Personnel Immediately!: ' . $e->getMessage() . ' ");
+                                if(x == true){
+                                    location.replace("../../page/admin/add_line_audit.php");
+                                }else{
+                                    location.replace("../../page/admin/add_line_audit.php");
+                                }
+                            </script>';
+                    exit();
                 }
 
                 fclose($csvFile);
 
-                if ($error == 0) {
-                    echo '<script>
+                echo '<script>
                             var x = confirm("SUCCESS! # OF ERRORS ' . $error . ' ");
                             if(x == true){
                                 location.replace("../../page/admin/add_line_audit.php");
@@ -353,16 +499,6 @@ if (isset($_POST['upload'])) {
                                 location.replace("../../page/admin/add_line_audit.php");
                             }
                         </script>';
-                } else {
-                    echo '<script>
-                            var x = confirm("WITH ERROR! # OF ERRORS ' . $error . ' ");
-                            if(x == true){
-                                location.replace("../../page/admin/add_line_audit.php");
-                            }else{
-                                location.replace("../../page/admin/add_line_audit.php");
-                            }
-                        </script>';
-                }
             } else {
                 echo '<script>
                     var x = confirm("WITH ERROR! ' . $chkCsvMsg . ' ");

@@ -30,9 +30,9 @@
         var dateFrom = document.getElementById('providerauditedlistdatefrom').value;
         var dateTo = document.getElementById('providerauditedlistdateto').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
-        var carmaker = document.getElementById('carmaker').value;
-        var carmodel = document.getElementById('carmodel').value;
-        var audit_categ = document.getElementById('audit_categ').value;
+        var carmaker = document.getElementById('carmaker_search').value;
+        var carmodel = document.getElementById('carmodel_search').value;
+        var criticality_level = document.getElementById('criticality_level').value;
         var group = document.getElementById('groups_provider').value;
         var shift = document.getElementById('shifts_provider').value;
 
@@ -51,7 +51,7 @@
                 lname: lname,
                 carmaker: carmaker,
                 carmodel: carmodel,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 group: group,
                 shift: shift
             }, success: function (response) {

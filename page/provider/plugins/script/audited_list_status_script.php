@@ -10,7 +10,7 @@
         var line_no = document.getElementById('lname_audited_provider_status').value;
         var carmaker = document.getElementById('carmaker_provider_status').value;
         var carmodel = document.getElementById('carmodel_provider_status').value;
-        var audit_categ = document.getElementById('audit_categ_provider_status').value;
+        var criticality_level = document.getElementById('criticality_level_provider_status').value;
         var group = document.getElementById('groups_provider_status').value;
         var shift = document.getElementById('shifts_provider_status').value;
 
@@ -28,7 +28,7 @@
                 line_no: line_no,
                 carmaker: carmaker,
                 carmodel: carmodel,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 group: group,
                 shift: shift
 

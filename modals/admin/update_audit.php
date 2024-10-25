@@ -72,12 +72,13 @@
             </datalist>
           </div>
           <div class="col-3">
-            <span>Audit Category:</span>
-            <input list="audit_categ" id="audit_categ_update" name="audit_categ_update" class="form-control-lg" maxlength="255">
-            <datalist id="audit_categ" name="">
-              <option value="Minor">
-              <option value="Major">
-            </datalist>
+            <span>Criticality Level:</span>
+            <select class="form-control" id="criticality_level_update">
+              <option value="">Select Criticality Level</option>
+              <option value="Low Impact">Low Impact</option>
+              <option value="Medium Impact">Medium Impact</option>
+              <option value="High Impact">High Impact</option>
+            </select>
           </div>
         </div>
         <div class="row">
@@ -146,6 +147,10 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="audit_details_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="audited_by_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
@@ -153,12 +158,32 @@
             <span>Date Audited:</span>
             <input type="date" name="" id="date_audited_update" class="form-control">
           </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
-          </div>
         </div>
         <div class="row">
+          <div class="col-3">
+            <span>Problem Identification:</span>
+            <select class="form-control" name="problem_identification_update" id="problem_identification_update">
+              <option value="">Select Problem</option>
+              <option value="Process Design Problem">Process Design Problem</option>
+              <option value="Discipline/Behaviour">Discipline/Behaviour</option>
+              <option value="Parts Problem">Parts Problem</option>
+              <option value="Education Problem">Education Problem</option>
+              <option value="Management Problem">Management Problem</option>
+              <option value="Machine/Jigs/Accessories Problem">Machine/Jigs/Accessories Problem</option>
+              <option value="Method Problem">Method Problem</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <span>SM Analysis:</span>
+            <select class="form-control" name="sm_analysis_update" id="sm_analysis_update">
+              <option value="">Select SM Analysis</option>
+              <option value="Man">Man</option>
+              <option value="Machine">Machine</option>
+              <option value="Method">Method</option>
+              <option value="Material">Material</option>
+              <option value="Measurement">Measurement</option>
+            </select>
+          </div>
           <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group_update" id="falp_group_update"
@@ -187,18 +212,19 @@
               }
               ?>
             </select>
-
-            <div class="col-3"></div>
-            <div class="col-4"></div>
           </div>
-          <br>
-          <div class="row">
-            <div class="col-3 my-4 mx-3">
-              <p style="text-align:right;">
-                <button type="button" class="btn btn-primary" onclick="update_audit_data()"
-                  id="planBtnCreate">Update</button>
-              </p>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_update" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-3 offset-9">
+            <button type="button" class="btn btn-primary btn-block" onclick="update_audit_data()"
+                id="planBtnCreate">Update</button>
           </div>
         </div>
       </div>

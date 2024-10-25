@@ -22,11 +22,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="recievedfrom_closed"
+                  <label for="recievedfrom_closed">Audited Date From:</label> <input type="date" id="recievedfrom_closed"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="recievedto_closed" class="form-control"
+                  <label for="recievedto_closed">Audited Date To:</label> <input type="date" id="recievedto_closed" class="form-control"
                     value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -110,11 +110,12 @@
                       </select>
                     </div>
                     <div class="col-3">
-                      <span>Audit Category: </span>
-                      <select class="form-control" id="audit_categ_closed">
-                        <option value="">Select Audit Category</option>
-                        <option value="minor">Minor</option>
-                        <option value="major">Major</option>
+                      <span>Criticality Level:</span>
+                      <select class="form-control" id="criticality_level_closed">
+                        <option value="">Select Criticality Level</optio>
+                        <option value="Low Impact">Low Impact</option>
+                        <option value="Medium Impact">Medium Impact</option>
+                        <option value="High Impact">High Impact</option>
                       </select>
                     </div>
                   </div>
@@ -186,9 +187,12 @@
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
+                    <th style="text-align:center;">Audit Details</th>
                     <th style="text-align:center;">Audit Type</th>
                     <th style="text-align:center;">Audited By</th>
-                    <th style="text-align:center;">Audit Category</th>
+                    <th style="text-align:center;">Problem Identification</th>
+                    <th style="text-align:center;">Criticality Level</th>
+                    <th style="text-align:center;">SM Analysis</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Concerned Group</th>
                     <th style="text-align:center;">Updated By</th>

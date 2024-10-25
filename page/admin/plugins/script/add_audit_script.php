@@ -71,8 +71,11 @@
                     $('#emline').val('');
                     $('#process').val('');
                     $('#audit_findings').val('');
+                    $('#audit_details').val('');
                     $('#audited_by').val('');
-                    $('#audit_categ').val('');
+                    $('#criticality_level').val('');
+                    $('#problem_identification').val('');
+                    $('#sm_analysis').val('');
                     $('#remarks').val('');
                     $('#falp_group').val('').change();
                 }
@@ -94,9 +97,12 @@
         var emline = document.querySelector('#emline').value;
         var emprocess = document.querySelector('#process').value;
         var audit_findings = document.querySelector('#audit_findings').value;
+        var audit_details = document.querySelector('#audit_details').value;
         var audited_by = document.querySelector('#audited_by').value;
         var audit_type = document.querySelector('#audit_type').value;
-        var audit_categ = document.querySelector('#audit_categ').value;
+        var criticality_level = document.querySelector('#criticality_level').value;
+        var problem_identification = document.querySelector('#problem_identification').value;
+        var sm_analysis = document.querySelector('#sm_analysis').value;
         var remarks = document.querySelector('#remarks').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
         var username = '<?= htmlspecialchars($_SESSION['username']); ?>';
@@ -133,8 +139,12 @@
             swal('Notification', 'Please Enter Audit Findings', 'info');
         } else if (audited_by == '') {
             swal('Notification', 'Please Enter Audited By', 'info');
-        } else if (audit_categ == '') {
-            swal('Notification', 'Please Select Audit Category', 'info');
+        } else if (criticality_level == '') {
+            swal('Notification', 'Please Select Criticality Level', 'info');
+        } else if (problem_identification == '') {
+            swal('Notification', 'Please Select Problem Identification', 'info');
+        } else if (sm_analysis == '') {
+            swal('Notification', 'Please Select SM Analysis', 'info');
         } else if (remarks == '') {
             swal('Notification', 'Please Enter Remarks', 'info');
         } else if (falp_group == '') {
@@ -160,9 +170,12 @@
                     emline: emline,
                     emprocess: emprocess,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     audit_type: audit_type,
-                    audit_categ: audit_categ,
+                    criticality_level: criticality_level,
+                    sm_analysis: sm_analysis,
+                    problem_identification: problem_identification,
                     remarks: remarks,
                     esection: esection,
                     username: username,
@@ -185,9 +198,12 @@
                         $('#emline').val('');
                         $('#emprocess').val('');
                         $('#audit_findings').val('');
+                        $('#audit_details').val('');
                         $('#audited_by').val('');
                         $('#audit_type').val('');
-                        $('#audit_categ').val('');
+                        $('#criticality_level').val('');
+                        $('#problem_identification').val('');
+                        $('#sm_analysis').val('');
                         $('#remarks').val('');
                         $('#falp_group').val('');
                         $('#section').val('');

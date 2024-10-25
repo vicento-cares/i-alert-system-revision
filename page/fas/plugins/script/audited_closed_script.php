@@ -36,7 +36,7 @@
         var falp_group = document.getElementById('falp_group_closed').value;
         var audit_type = document.getElementById('audit_type_closed').value;
         var position = document.getElementById('position_closed').value;
-        var audit_categ = document.getElementById('audit_categ_closed').value;
+        var criticality_level = document.getElementById('criticality_level_closed').value;
         var group = document.getElementById('groups_fas_closed').value;
         var shift = document.getElementById('shifts_fas_closed').value;
 
@@ -58,7 +58,7 @@
                 falp_group: falp_group,
                 audit_type: audit_type,
                 position: position,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 group: group,
                 shift: shift
             }, success: function (response) {

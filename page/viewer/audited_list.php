@@ -20,11 +20,11 @@
             </div><!-- /.col -->
             <div class="row">
               <div class="col-6">
-                <label for="">Audited Date From:</label> <input type="date" id="auditedlistdatefrom"
+                <label for="auditedlistdatefrom">Audited Date From:</label> <input type="date" id="auditedlistdatefrom"
                   class="form-control" value="<?= $server_month; ?>" autocomplete=off>
               </div>
               <div class="col-6">
-                <label for="">Audited Date To:</label> <input type="date" id="auditedlistdateto" class="form-control"
+                <label for="auditedlistdateto">Audited Date To:</label> <input type="date" id="auditedlistdateto" class="form-control"
                   value="<?= $server_date_only; ?>" autocomplete=off>
               </div>
             </div>
@@ -40,15 +40,15 @@
               <h3 class="card-title">
                 <div class="row">
                   <div class="col-3">
-                    <label>Employee ID: </label>
+                    <label for="empid_audited">Employee ID: </label>
                     <input type="text" name="empid" id="empid_audited" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label>Full Name: </label>
+                    <label for="fname_audited">Full Name: </label>
                     <input type="text" name="fname" id="fname_audited" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label for="">Line no:</label>
+                    <label for="lname_audited">Line no:</label>
                     <input list="lines" id="lname_audited" name="lname_audited" class="form-control">
                     <datalist id="lines" name="">
                       <option value="">Select Line</option>
@@ -64,7 +64,7 @@
                     </datalist>
                   </div>
                   <div class="col-3">
-                    <label for="">Position:</label> <select id="position_audited" class="form-control" autocomplete=off>
+                    <label for="position_audited">Position:</label> <select id="position_audited" class="form-control" autocomplete=off>
                       <option value="">Select Position</option>
                       <option value="associate">Associate</option>
                       <option value="expert">Expert</option>
@@ -79,7 +79,7 @@
 
                 <div class="row">
                   <div class="col-3">
-                    <label>Car Maker: </label>
+                    <label for="carmaker_audited">Car Maker: </label>
                     <input type="text" list="list" name="carmaker" id="carmaker_audited" class="form-control">
                     <datalist id="list">
                       <option value="Suzuki">
@@ -93,13 +93,13 @@
                     </datalist>
                   </div>
                   <div class="col-3">
-                    <label>Car Model: </label>
+                    <label for="carmodel_audited">Car Model: </label>
                     <input type="text" name="carmodel" id="carmodel_audited" class="form-control">
                     <input type="hidden" name="count_section" id="count_section"
                       value="<?= htmlspecialchars($_SESSION['sections']); ?>">
                   </div>
                   <div class="col-3">
-                    <label>Audit Type: </label>
+                    <label for="audit_type_audited">Audit Type: </label>
                     <select class="form-control" id="audit_type_audited">
                       <option value="">Select Audit Type</option>
                       <option value="initial">Initial</option>
@@ -107,17 +107,18 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Audit Category:</label>
-                    <select class="form-control" id="audit_categ_audited">
-                      <option value="">Select Audit Category</option>
-                      <option value="minor">Minor</option>
-                      <option value="major">Major</option>
+                    <label for="criticality_level_audited">Criticality Level:</label>
+                    <select class="form-control" id="criticality_level_audited">
+                      <option value="">Select Criticality Level</optio>
+                      <option value="Low Impact">Low Impact</option>
+                      <option value="Medium Impact">Medium Impact</option>
+                      <option value="High Impact">High Impact</option>
                     </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-3">
-                    <label>Section:</label>
+                    <label for="section_audited">Section:</label>
                     <select class="form-control" name="section_audited" id="section_audited">
                       <option value="">Select Section</option>
                       <?php
@@ -131,15 +132,15 @@
                     </select>
                   </div>
                   <div class="col-3">
-                    <label>Provider:</label>
+                    <label for="provider_audited">Provider:</label>
                     <input type="text" name="provider" id="provider_audited" class="form-control">
                   </div>
                   <div class="col-3">
-                    <label>Process:</label>
+                    <label for="process_audited">Process:</label>
                     <select class="form-control" name="process_audited" id="process_audited"></select>
                   </div>
                   <div class="col-3">
-                    <label>Group:</label>
+                    <label for="falp_group_audited">Group:</label>
                     <select class="form-control" name="falp_group_audited" id="falp_group_audited"></select>
                   </div>
                 </div>
@@ -189,8 +190,11 @@
                     <th style="text-align:center;">Line No.</th>
                     <th style="text-align:center;">Process</th>
                     <th style="text-align:center;">Audit Findings</th>
+                    <th style="text-align:center;">Audit Details</th>
                     <th style="text-align:center;">Audited By</th>
-                    <th style="text-align:center;">Audit Category</th>
+                    <th style="text-align:center;">Problem Identification</th>
+                    <th style="text-align:center;">Criticality Level</th>
+                    <th style="text-align:center;">SM Analysis</th>
                     <th style="text-align:center;">Remarks</th>
                     <th style="text-align:center;">Department</th>
                     <th style="text-align:center;">Group</th>

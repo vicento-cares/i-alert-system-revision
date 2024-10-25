@@ -13,16 +13,16 @@
         <div class="row">
           <input type="hidden" name="id_update_accounts" id="id_update_accounts">
           <div class="col-4">
-            <label>Username:</label> <input type="text" name="username_update_accounts" id="username_update_accounts"
+            <label for="username_update_accounts">Username:</label> <input type="text" name="username_update_accounts" id="username_update_accounts"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-4">
-            <label>Password:</label> <input type="password" name="password_update_accounts"
+            <label for="password_update_accounts">Password:</label> <input type="password" name="password_update_accounts"
               id="password_update_accounts" class="form-control" autocomplete="off" maxlength="255">
           </div>
 
           <div class="col-4">
-            <label>Role:</label>
+            <label for="role_update_accounts">Role:</label>
             <select id="role_update_accounts" class="form-control">
               <option value="">Select Role</option>
               <option value="viewer">Viewer</option>
@@ -35,7 +35,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <label>Type:</label>
+            <label for="esection_update_accounts">Type:</label>
             <select id="esection_update_accounts" class="form-control">
               <option value="">Select Type</option>
               <option value="viewer">Viewer</option>
@@ -51,11 +51,11 @@
             </select>
           </div>
           <div class="col-4">
-            <label>Carmaker:</label>
+            <label for="carmaker_update_accounts">Carmaker:</label>
             <input type="text" name="carmaker_update_accounts" id="carmaker_update_accounts" class="form-control" maxlength="255">
           </div>
           <div class="col-4">
-            <label>Group:</label>
+            <label for="falp_group_update_accounts">Group:</label>
             <select class="form-control" name="falp_group_update_accounts" id="falp_group_update_accounts"
               onchange="fetch_section_dropdown(2)">
               <option value="">Select Group</option>
@@ -72,7 +72,7 @@
         </div>
         <div class="row">
           <div class="col-4">
-            <label>Section:</label>
+            <label for="section_update_accounts">Section:</label>
             <!-- <input type="text" name="section_update_accounts" id="section_update_accounts" class="form-control"> -->
             <select class="form-control" name="section_update_accounts" id="section_update_accounts">
               <option value="">Select Section</option>

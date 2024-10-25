@@ -39,13 +39,13 @@ if ($method == 'fetch_audited_list_provider') {
     $lname = $_POST['lname'];
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND agency IS NULL AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
+    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND agency IS NULL AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
      GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
@@ -58,66 +58,43 @@ if ($method == 'fetch_audited_list_provider') {
             $agency = $x['agency'];
             $days_notif = date("Y-m-d", strtotime('+4 day', strtotime($date_audited)));
 
-            if ($agency == '' && $server_date_only >= $days_notif) {
-                echo '<tr style="color:red;">';
-                echo '<td>';
-                echo '<p>
-                        <label>
-                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
-                            <span></span>
-                        </label>
-                        </p>';
-                echo '</td>';
-                echo '<td>' . $c . '</td>';
-                echo '<td style="display: none;">' . $x['batch'] . '</td>';
-                echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td>' . $x['full_name'] . '</td>';
-                echo '<td>' . $x['position'] . '</td>';
-                echo '<td>' . $x['shift'] . '</td>';
-                echo '<td>' . $x['employee_num'] . '</td>';
-                echo '<td>' . $x['provider'] . '</td>';
-                echo '<td>' . $x['groups'] . '</td>';
-                echo '<td>' . $x['car_maker'] . '</td>';
-                echo '<td>' . $x['car_model'] . '</td>';
-                echo '<td>' . $x['line_no'] . '</td>';
-                echo '<td>' . $x['process'] . '</td>';
-                echo '<td>' . $x['audit_findings'] . '</td>';
-                echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
-                echo '<td>' . $x['remarks'] . '</td>';
-                echo '<td>' . $x['agency'] . '</td>';
-                echo '</tr>';
-            } else {
+            $row_style = "";
 
-                echo '<tr>';
-                echo '<td>';
-                echo '<p>
-                        <label>
-                            <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
-                            <span></span>
-                        </label>
-                        </p>';
-                echo '</td>';
-                echo '<td>' . $c . '</td>';
-                echo '<td style="display: none;">' . $x['batch'] . '</td>';
-                echo '<td>' . $x['date_audited'] . '</td>';
-                echo '<td>' . $x['full_name'] . '</td>';
-                echo '<td>' . $x['position'] . '</td>';
-                echo '<td>' . $x['shift'] . '</td>';
-                echo '<td>' . $x['employee_num'] . '</td>';
-                echo '<td>' . $x['provider'] . '</td>';
-                echo '<td>' . $x['groups'] . '</td>';
-                echo '<td>' . $x['car_maker'] . '</td>';
-                echo '<td>' . $x['car_model'] . '</td>';
-                echo '<td>' . $x['line_no'] . '</td>';
-                echo '<td>' . $x['process'] . '</td>';
-                echo '<td>' . $x['audit_findings'] . '</td>';
-                echo '<td>' . $x['audited_by'] . '</td>';
-                echo '<td>' . $x['audited_categ'] . '</td>';
-                echo '<td>' . $x['remarks'] . '</td>';
-                echo '<td>' . $x['agency'] . '</td>';
-                echo '</tr>';
+            if ($agency == '' && $server_date_only >= $days_notif) {
+                $row_style = "color:red;";
             }
+
+            echo '<tr style="' . $row_style . '">';
+            echo '<td>';
+            echo '<p>
+                    <label for="row_' . $x['id'] . '">
+                        <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
+                        <span></span>
+                    </label>
+                    </p>';
+            echo '</td>';
+            echo '<td>' . $c . '</td>';
+            echo '<td style="display: none;">' . $x['batch'] . '</td>';
+            echo '<td>' . $x['date_audited'] . '</td>';
+            echo '<td>' . $x['full_name'] . '</td>';
+            echo '<td>' . $x['position'] . '</td>';
+            echo '<td>' . $x['shift'] . '</td>';
+            echo '<td>' . $x['employee_num'] . '</td>';
+            echo '<td>' . $x['provider'] . '</td>';
+            echo '<td>' . $x['groups'] . '</td>';
+            echo '<td>' . $x['car_maker'] . '</td>';
+            echo '<td>' . $x['car_model'] . '</td>';
+            echo '<td>' . $x['line_no'] . '</td>';
+            echo '<td>' . $x['process'] . '</td>';
+            echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
+            echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
+            echo '<td>' . $x['remarks'] . '</td>';
+            echo '<td>' . $x['agency'] . '</td>';
+            echo '</tr>';
         }
     } else {
         echo '<tr>';
@@ -226,13 +203,13 @@ if ($method == 'fetch_audited_list_provider_status') {
     $line_no = $_POST['line_no'];
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND agency != '' AND edit_count != '0' AND line_no LIKE '$line_no%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audited_categ LIKE '$audit_categ%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
+    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND agency != '' AND edit_count != '0' AND line_no LIKE '$line_no%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
      GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
@@ -245,8 +222,8 @@ if ($method == 'fetch_audited_list_provider_status') {
             echo '<tr>';
             echo '<td>';
             echo '<p>
-                            <label>
-                                <input type="checkbox" name="" id="" class="singleCheck" value="' . $x['id'] . '">
+                            <label for="row_' . $x['id'] . '">
+                                <input type="checkbox" class="singleCheck" id="row_' . $x['id'] . '" value="' . $x['id'] . '">
                                 <span></span>
                             </label>
                         </p>';
@@ -266,8 +243,11 @@ if ($method == 'fetch_audited_list_provider_status') {
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
             echo '<td>' . $x['agency'] . '</td>';
             echo '</tr>';
@@ -313,8 +293,8 @@ if ($method == 'update') {
 
     foreach ($id as $x) {
         $history = "INSERT INTO ialert_history 
-                    (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,audit_category,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) 
-                    SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audited_categ, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id 
+                    (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) 
+                    SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id 
                     FROM ialert_audit WHERE id = '$x'";
         $stmt2 = $conn->prepare($history);
 
@@ -372,7 +352,7 @@ if ($method == 'update') {
 //                              }else if ($status != 'Written IR' && $audit_findings == 'Using of prohibited tool on prohibited act') {
 //                                         echo 'invalid';
 //                              }else{
-//                                      $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,audit_category,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audited_categ, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id FROM ialert_audit WHERE id = '$x'";
+//                                      $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id FROM ialert_audit WHERE id = '$x'";
 //                                        $stmt3 = $conn->prepare($history);
 //                                        if ($stmt3->execute()) {
 //                                             $update = "UPDATE ialert_audit SET agency = '$status', edit_count = edit_count - 1 WHERE id = '$x'";
@@ -409,7 +389,7 @@ if ($method == 'close') {
     //COUNT OF ITEM TO BE UPDATED
     $count = count($id);
     foreach ($id as $x) {
-        $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,audit_category,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audited_categ, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time' FROM ialert_audit WHERE id = '$x'";
+        $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time' FROM ialert_audit WHERE id = '$x'";
         $stmt2 = $conn->prepare($history);
         if ($stmt2->execute()) {
             $update = "UPDATE ialert_audit SET edit_count = 0 WHERE id = '$x'";
@@ -441,14 +421,14 @@ if ($method == 'fetch_closed_provider') {
     $esection = $_POST['esection'];
     $carmaker = $_POST['carmaker'];
     $carmodel = $_POST['carmodel'];
-    $audit_categ = $_POST['audit_categ'];
+    $criticality_level = $_POST['criticality_level'];
     $audit_type = $_POST['audit_type'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $c = 0;
 
     $query = "SELECT * FROM ialert_audit
-    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND edit_count = '0' AND line_no LIKE '$lname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audited_categ LIKE '$audit_categ%' AND audit_type LIKE '$audit_type%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
+    WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND edit_count = '0' AND line_no LIKE '$lname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND criticality_level LIKE '$criticality_level%' AND audit_type LIKE '$audit_type%' AND groups LIKE '$group%' AND shift LIKE '$shift%'
      GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
@@ -476,9 +456,12 @@ if ($method == 'fetch_closed_provider') {
             echo '<td>' . $x['line_no'] . '</td>';
             echo '<td>' . $x['process'] . '</td>';
             echo '<td>' . $x['audit_findings'] . '</td>';
+            echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
-            echo '<td>' . $x['audited_categ'] . '</td>';
+            echo '<td>' . $x['problem_identification'] . '</td>';
+            echo '<td>' . $x['criticality_level'] . '</td>';
+            echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['agency'] . '</td>';
             echo '<td>' . $x['updated_by'] . '</td>';
             echo '</tr>';

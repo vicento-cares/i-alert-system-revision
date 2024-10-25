@@ -21,11 +21,11 @@
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-6">
-                  <label for="">Audited Date From:</label> <input type="date" id="hrauditedlistdatefrom"
+                  <label for="hrauditedlistdatefrom">Audited Date From:</label> <input type="date" id="hrauditedlistdatefrom"
                     class="form-control" value="<?= $server_month; ?>" autocomplete=off>
                 </div>
                 <div class="col-6">
-                  <label for="">Audited Date To:</label> <input type="date" id="hrauditedlistdateto"
+                  <label for="hrauditedlistdateto">Audited Date To:</label> <input type="date" id="hrauditedlistdateto"
                     class="form-control" value="<?= $server_date_only; ?>" autocomplete=off>
                 </div>
               </div>
@@ -199,9 +199,12 @@
                   <th style="text-align:center;">Line No.</th>
                   <th style="text-align:center;">Process</th>
                   <th style="text-align:center;">Audit Findings</th>
+                  <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audit Type</th>
                   <th style="text-align:center;">Audited By</th>
-                  <th style="text-align:center;">Audit Category</th>
+                  <th style="text-align:center;">Problem Identification</th>
+                  <th style="text-align:center;">Criticality Level</th>
+                  <th style="text-align:center;">SM Analysis</th>
                   <th style="text-align:center;">Remarks</th>
                   <th style="text-align:center;">PD Status</th>
                   <!-- <th style="text-align:center;">AGENCY Status</th>  -->

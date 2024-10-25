@@ -34,7 +34,7 @@
         var carmodel = document.getElementById('carmodel_status').value;
         var audit_type = document.getElementById('audit_type_status').value;
         var esection = '<?= htmlspecialchars($_SESSION['esection']); ?>';
-        var audit_categ = document.getElementById('audit_categ_status').value;
+        var criticality_level = document.getElementById('criticality_level_status').value;
         var section = document.getElementById('section_status').value;
         var falp_group = '<?= htmlspecialchars($_SESSION['falp_group']); ?>';
         var group = document.getElementById('groups_fas_status').value;
@@ -56,7 +56,7 @@
                 carmaker: carmaker,
                 carmodel: carmodel,
                 audit_type: audit_type,
-                audit_categ: audit_categ,
+                criticality_level: criticality_level,
                 section: section,
                 falp_group: falp_group,
                 group: group,

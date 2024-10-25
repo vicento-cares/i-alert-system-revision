@@ -42,12 +42,15 @@
         var date_audited = document.querySelector('#date_line_audited').value;
         var group = document.querySelector('#group_line').value;
         var shift = document.querySelector('#shift_line').value;
-        var audit_categ = document.querySelector('#line_audit_categ').value;
+        var criticality_level = document.querySelector('#line_criticality_level').value;
+        var problem_identification = document.querySelector('#line_problem_identification').value;
+        var sm_analysis = document.querySelector('#line_sm_analysis').value;
         var carmaker = document.querySelector('#carmaker_line').value;
         var carmodel = document.querySelector('#carmodel_line').value;
         var emline = document.querySelector('#emline_line').value;
         var emprocess = document.querySelector('#process_line').value;
         var audit_findings = document.querySelector('#line_audit_findings').value;
+        var audit_details = document.querySelector('#line_audit_details').value;
         var audited_by = document.querySelector('#line_audited_by').value;
         var audit_type = document.querySelector('#line_audit_type').value;
         var remarks = document.querySelector('#remarks_line').value;
@@ -79,8 +82,12 @@
             swal('Notification', 'Please Enter Audit Findings', 'info');
         } else if (audited_by == '') {
             swal('Notification', 'Please Enter Audited By', 'info');
-        } else if (audit_categ == '') {
-            swal('Notification', 'Please Select Audit Category', 'info');
+        } else if (criticality_level == '') {
+            swal('Notification', 'Please Select Criticality Level', 'info');
+        } else if (problem_identification == '') {
+            swal('Notification', 'Please Select Problem Identification', 'info');
+        } else if (sm_analysis == '') {
+            swal('Notification', 'Please Select SM Analysis', 'info');
         } else if (remarks == '') {
             swal('Notification', 'Please Enter Remarks', 'info');
         } else if (falp_group == '') {
@@ -97,12 +104,15 @@
                     date_audited: date_audited,
                     group: group,
                     shift: shift,
-                    audit_categ: audit_categ,
+                    criticality_level: criticality_level,
+                    problem_identification: problem_identification,
+                    sm_analysis: sm_analysis,
                     carmaker: carmaker,
                     carmodel: carmodel,
                     emline: emline,
                     emprocess: emprocess,
                     audit_findings: audit_findings,
+                    audit_details: audit_details,
                     audited_by: audited_by,
                     audit_type: audit_type,
                     remarks: remarks,
@@ -118,7 +128,9 @@
                         $('#date_line_audited').val('');
                         $('#group_line').val('');
                         $('#shift_line').val('');
-                        $('#line_audit_categ').val('');
+                        $('#line_criticality_level').val('');
+                        $('#line_problem_identification').val('');
+                        $('#line_sm_analysis').val('');
                         $('#carmaker_line').val('');
                         $('#carmodel_line').val('');
                         $('#emline_line').val('');

@@ -46,18 +46,18 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <label>Section Name:</label>
+                    <label for="section_name">Section Name:</label>
                     <input type="text" name="section_name" id="section_name" class="form-control">
                   </div>
                   <div class="col-1">
-                    <label>&nbsp;</label>
-                    <button class="btn btn-primary btn-block" onclick="load_sections()">Search
+                    <label for="btnLoadSectionsSearch">&nbsp;</label>
+                    <button class="btn btn-primary btn-block" id="btnLoadSectionsSearch" onclick="load_sections()">Search
                       <i class="fa fa-search"></i>
                     </button>
                   </div>
                   <div class="col-1">
-                    <label>&nbsp;</label>
-                    <button class="btn btn-secondary btn-block" onclick="export_sections('sections_table')">Export <i class="fa fa-download"></i></button>
+                    <label for="btnExportSectionsSearch">&nbsp;</label>
+                    <button class="btn btn-secondary btn-block" id="btnExportSectionsSearch" onclick="export_sections('sections_table')">Export <i class="fa fa-download"></i></button>
                   </div>
                 </div>
                 <br>

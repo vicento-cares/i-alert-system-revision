@@ -13,19 +13,19 @@
         <div class="row">
           <input type="hidden" name="id_update_sec" id="id_update_sec">
           <div class="col-3">
-            <label>Section Code:</label> <input type="text" name="sec_code_update" id="sec_code_update"
+            <label for="sec_code_update">Section Code:</label> <input type="text" name="sec_code_update" id="sec_code_update"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-3">
-            <label>Department:</label> <input type="text" name="sec_dept_update" id="sec_dept_update" class="form-control"
+            <label for="sec_dept_update">Department:</label> <input type="text" name="sec_dept_update" id="sec_dept_update" class="form-control"
               autocomplete="off" maxlength="255">
           </div>
           <div class="col-3">
-            <label>Group:</label> <input type="text" name="sec_falp_group_update" id="sec_falp_group_update"
+            <label for="sec_falp_group_update">Group:</label> <input type="text" name="sec_falp_group_update" id="sec_falp_group_update"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
           <div class="col-3">
-            <label>Section Name:</label> <input type="text" name="sec_name_update" id="sec_name_update"
+            <label for="sec_name_update">Section Name:</label> <input type="text" name="sec_name_update" id="sec_name_update"
               class="form-control" autocomplete="off" maxlength="255">
           </div>
         </div>

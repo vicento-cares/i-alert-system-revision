@@ -34,11 +34,12 @@
             </select>
           </div>
           <div class="col-3">
-            <span>Audit Category:</span>
-            <select class="form-control" id="line_audit_categ">
-              <option value="">Select Audit Category</option>
-              <option value="minor">Minor</option>
-              <option value="major">Major</option>
+            <span>Criticality Level:</span>
+            <select class="form-control" id="line_criticality_level">
+              <option value="">Select Criticality Level</option>
+              <option value="Low Impact">Low Impact</option>
+              <option value="Medium Impact">Medium Impact</option>
+              <option value="High Impact">High Impact</option>
             </select>
           </div>
         </div>
@@ -108,6 +109,10 @@
             </select>
           </div>
           <div class="col-3">
+            <span>Audit Details:</span>
+            <input type="text" name="" id="line_audit_details" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+          <div class="col-3">
             <span>Audited By:</span>
             <input type="text" name="" id="line_audited_by" class="form-control-lg" autocomplete="OFF" maxlength="255">
           </div>
@@ -115,12 +120,32 @@
             <span>Audit Type:</span>
             <input type="text" name="" id="line_audit_type" class="form-control-lg" value="Line Audit" readonly>
           </div>
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_line" class="form-control-lg" autocomplete="OFF" maxlength="255">
-          </div>
         </div>
         <div class="row">
+          <div class="col-3">
+            <span>Problem Identification:</span>
+            <select class="form-control" name="line_problem_identification" id="line_problem_identification">
+              <option value="">Select Problem</option>
+              <option value="Process Design Problem">Process Design Problem</option>
+              <option value="Discipline/Behaviour">Discipline/Behaviour</option>
+              <option value="Parts Problem">Parts Problem</option>
+              <option value="Education Problem">Education Problem</option>
+              <option value="Management Problem">Management Problem</option>
+              <option value="Machine/Jigs/Accessories Problem">Machine/Jigs/Accessories Problem</option>
+              <option value="Method Problem">Method Problem</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <span>SM Analysis:</span>
+            <select class="form-control" name="line_sm_analysis" id="line_sm_analysis">
+              <option value="">Select SM Analysis</option>
+              <option value="Man">Man</option>
+              <option value="Machine">Machine</option>
+              <option value="Method">Method</option>
+              <option value="Material">Material</option>
+              <option value="Measurement">Measurement</option>
+            </select>
+          </div>
           <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group_line" id="falp_group_line"
@@ -151,6 +176,12 @@
             </select>
           </div>
         </div>
+        <div class="row">
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_line" class="form-control-lg" autocomplete="OFF" maxlength="255">
+          </div>
+        </div>
         <br>
         <div class="row">
           <div class="col-12">
@@ -175,8 +206,11 @@
               <th>Line No</th>
               <th>Process</th>
               <th>Audit Findings</th>
+              <th>Audit Details</th>
               <th>Audited By</th>
-              <th>Audit Category</th>
+              <th>Problem Identification</th>
+              <th>Criticality Level</th>
+              <th>SM Analysis</th>
               <th>Audit Type</th>
               <th>Department</th>
               <th>Group</th>
