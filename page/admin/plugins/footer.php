@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_URI'] == "/i-alert/page/admin/pending_count.php") {
   include '../../modals/admin/accounts/update_user.php';
   include '../../modals/admin/sections/add_section.php';
   include '../../modals/admin/sections/update_section.php';
+  include '../../modals/admin/add_daily_report.php';
+  include '../../modals/admin/update_daily_report.php';
   include '../../modals/admin/add_audit.php';
   include '../../modals/admin/add_line_audit.php';
   include '../../modals/admin/update_audit.php';

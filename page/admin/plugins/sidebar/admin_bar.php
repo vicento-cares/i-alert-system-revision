@@ -135,6 +135,18 @@
           </a>
         </li>
         <li class="nav-item">
+          <?php if ($_SERVER['REQUEST_URI'] == "/i-alert/page/admin/daily_report.php") { ?>
+          <a href="daily_report.php" class="nav-link active">
+          <?php } else { ?>
+          <a href="daily_report.php" class="nav-link">
+          <?php } ?>
+            <i class="fas fa-file"></i>
+            <p>
+              Daily Report
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <?php if ($_SERVER['REQUEST_URI'] == "/i-alert/page/admin/history.php") { ?>
           <a href="history.php" class="nav-link active">
           <?php } else { ?>
