@@ -144,6 +144,9 @@
         } else if (button.id === 'btnDeleteDailyReport') {
             // Call the function for the first submit button
             delete_daily_report();
+        } else if (button.id === 'btnDownloadDailyReport') {
+            // Call the function for the first submit button
+            download_daily_report();
         }
     });
 
@@ -212,5 +215,10 @@
                 }
             }
         });
+    }
+
+    const download_daily_report = () => {
+        var file_url = document.getElementById("daily_report_file_url_update").value;
+        window.open(file_url,'_blank');
     }
 </script>

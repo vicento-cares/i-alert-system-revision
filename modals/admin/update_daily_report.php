@@ -31,18 +31,15 @@
           <br>
           <hr>
           <div class="row">
-            <div class="col-8">
+            <div class="col-6">
               <div class="float-left">
                 <button class="btn btn-danger" id="btnDeleteDailyReport" name="btn_delete_daily_report">Delete</button>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-6">
               <div class="float-right">
-                <button class="btn btn-primary" id="btnUpdateDailyReportDate" name="btn_update_daily_report_date">Update Date</button>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="float-right">
+                <button class="btn btn-secondary mr-2" id="btnDownloadDailyReport" name="btn_download_daily_report">Download</button>
+                <button class="btn btn-primary mr-2" id="btnUpdateDailyReportDate" name="btn_update_daily_report_date">Update Date</button>
                 <button class="btn btn-primary" id="btnUpdateDailyReportFile" name="btn_update_daily_report_file">Update File</button>
               </div>
             </div>
