@@ -200,8 +200,8 @@
                     <th style="text-align:center;">Group</th>
                     <th style="text-align:center;">Section</th>
                     <th style="text-align:center;">Section Code</th>
-                    <!--  <th style="text-align:center;">PD Status</th>              
-                    <th style="text-align:center;">AGENCY Status</th> 
+                    <!--  <th style="text-align:center;">FAS Penalty</th>              
+                    <th style="text-align:center;">Agency Penalty</th> 
                     <th style="text-align:center;">HR Status</th>  -->
                   </thead>
                   <tbody id="audited_data" style="text-align:center;"></tbody>

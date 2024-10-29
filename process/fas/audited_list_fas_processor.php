@@ -132,7 +132,7 @@ if ($method == 'fetch_audited_list_fas') {
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';
             echo '<td>' . $x['remarks'] . '</td>';
-            echo '<td>' . $x['agency'] . '</td>';
+            echo '<td>' . $x['pd'] . '</td>';
             echo '<td>' . $x['hr'] . '</td>';
 
             echo '</tr>';

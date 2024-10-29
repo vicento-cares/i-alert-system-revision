@@ -239,8 +239,8 @@
                   <th style="text-align:center;">SM Analysis</th>
                   <th style="text-align:center;">Audit Type</th>
                   <th style="text-align:center;">Remarks</th>
-                  <th style="text-align:center;">Concerned Group</th>
-                  <th style="text-align:center;">AGENCY Status</th>
+                  <th style="text-align:center;">FAS Penalty</th>
+                  <th style="text-align:center;">Agency Penalty</th>
                   <th style="text-align:center;">HR Status</th>
                   <th style="text-align:center;">Department</th>
                   <th style="text-align:center;">Group</th>
