@@ -227,7 +227,7 @@
                     <th style="text-align:center;">Section</th>
                     <th style="text-align:center;">Section Code</th>
                     <th style="text-align:center;">Remarks</th>
-                    <th style="text-align:center;">Concerned Group</th>
+                    <th style="text-align:center;">FAS & Agency Penalty</th>
                     <th style="text-align:center;">Updated By</th>
 
                   </thead>

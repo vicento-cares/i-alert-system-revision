@@ -175,7 +175,7 @@
                   <div class="col-12">
 
                     <select class="form-control" id="status_status">
-                      <option value="">Select Status</option>
+                      <option value="">Select Penalty</option>
                       <option value="Suspension 60 days">Suspension 60 days</option>
                       <option value="Suspension 30 days">Suspension 30 days</option>
                       <option value="Suspension 15 days">Suspension 15 days</option>
@@ -237,7 +237,7 @@
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">SM Analysis</th>
                   <th style="text-align:center;">Remarks</th>
-                  <th style="text-align:center;">AGENCY Status</th>
+                  <th style="text-align:center;">Agency Penalty</th>
 
                 </thead>
                 <tbody id="audited_data_provider" style="text-align:center;"></tbody>
