@@ -175,7 +175,8 @@ if ($method == 'get_daily_report') {
 
     $sql = "SELECT id, daily_report_date, file_name, file_url, date_updated
             FROM ialert_daily_report
-            WHERE daily_report_date BETWEEN ? AND ?";
+            WHERE daily_report_date BETWEEN ? AND ?
+            ORDER BY daily_report_date ASC";
     $stmt = $conn->prepare($sql);
     $params = array($daily_report_date_from, $daily_report_date_to);
 	$stmt->execute($params);
