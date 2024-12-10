@@ -39,6 +39,7 @@
         var falp_group = '<?= htmlspecialchars($_SESSION['falp_group']); ?>';
         var group = document.getElementById('groups_fas_sent').value;
         var shift = document.getElementById('shifts_fas_sent').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/fas/audited_send_processor.php',
@@ -60,7 +61,8 @@
                 section: section,
                 falp_group: falp_group,
                 group: group,
-                shift: shift
+                shift: shift,
+                audit_category: audit_category
 
             }, success: function (response) {
                 document.getElementById('audited_data_send').innerHTML = response;

@@ -20,16 +20,32 @@ if ($method == 'fetch_closed_fas') {
     $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit
-    WHERE pd IN ('Written IR','Verbal warning','AWOL','Resigned') AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%'  AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND falp_group = '$falp_group'";
+    $query = "SELECT * FROM ialert_audit 
+                WHERE pd IN ('Written IR','Verbal warning','AWOL','Resigned') 
+                AND employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND line_no LIKE '$lname%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                AND provider = '$esection' 
+                AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
     }
 
-    $query .= " AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND edit_count = 0 AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
+    $query .= " AND audit_type LIKE '$audit_type%' 
+                AND position LIKE '$position%' 
+                AND edit_count = 0 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND groups LIKE '$group%' 
+                AND shift LIKE '$shift%' 
+                GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -59,6 +75,7 @@ if ($method == 'fetch_closed_fas') {
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audit_category'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';

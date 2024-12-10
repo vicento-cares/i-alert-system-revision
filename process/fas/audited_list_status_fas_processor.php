@@ -19,15 +19,33 @@ if ($method == 'fetch_audited_list_fass_status') {
     $falp_group = $_POST['falp_group'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%'  AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND pd IS NOT NULL AND line_no LIKE '$lname%' AND date_sent IS NULL AND position LIKE '$position%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND criticality_level LIKE '$criticality_level%' AND falp_group = '$falp_group'";
+    $query = "SELECT *, date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit 
+                WHERE employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                AND provider = '$esection' 
+                AND pd IS NOT NULL 
+                AND line_no LIKE '$lname%' 
+                AND date_sent IS NULL 
+                AND position LIKE '$position%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND audit_type LIKE '$audit_type%' 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
     }
 
-    $query .= " AND groups LIKE '$group%' AND shift LIKE '$shift%' AND hr IS NULL GROUP BY id ORDER BY date_audited ASC";
+    $query .= " AND groups LIKE '$group%' 
+                AND shift LIKE '$shift%' 
+                AND hr IS NULL 
+                GROUP BY id ORDER BY date_audited ASC";
 
     //        $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE section = 'esection' AND edit_count != 0 AND provider = 'esection' AND date_recieved IS NULL 
 // AND PD IS NOT NULL AND date_sent IS NULL
@@ -106,6 +124,7 @@ if ($method == 'fetch_audited_list_fass_status') {
                 echo '<td>' . $x['audit_findings'] . '</td>';
                 echo '<td>' . $x['audit_details'] . '</td>';
                 echo '<td>' . $x['audited_by'] . '</td>';
+                echo '<td>' . $x['audit_category'] . '</td>';
                 echo '<td>' . $x['problem_identification'] . '</td>';
                 echo '<td>' . $x['criticality_level'] . '</td>';
                 echo '<td>' . $x['sm_analysis'] . '</td>';
@@ -217,8 +236,8 @@ if ($method == 'update_fass') {
                                 //     echo 'invalid';
                             } else {
                                 $history = "INSERT INTO ialert_history 
-                                            (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) 
-                                            SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id 
+                                            (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,audit_category,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited,indicator_id) 
+                                            SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audit_category, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time',id 
                                             FROM ialert_audit WHERE id = '$x'";
                                 $stmt3 = $conn->prepare($history);
 
@@ -279,7 +298,7 @@ if ($method == 'closed') {
     $count = count($id);
     foreach ($id as $x) {
 
-        $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time' FROM ialert_audit WHERE id = '$x'";
+        $history = "INSERT INTO ialert_history (audit_id,batch,date_audited,full_name,employee_id,provider,groups,carmaker,carmodel,line_no,process,audit_findings,audited_by,audit_category,criticality_level,remarks,pd,agency,hr,updated_by,edit_count,position,date_edited) SELECT id, batch, date_audited, full_name, employee_num, provider, groups, car_maker, car_model, line_no, process, audit_findings, audited_by, audit_category, criticality_level, remarks, pd, agency, hr, updated_by, edit_count, position, '$server_date_time' FROM ialert_audit WHERE id = '$x'";
         $stmt2 = $conn->prepare($history);
         if ($stmt2->execute()) {
 

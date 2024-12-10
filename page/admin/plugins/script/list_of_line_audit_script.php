@@ -27,6 +27,8 @@
         var criticality_level = document.getElementById('crit_level').value;
         var section = document.getElementById('section_search').value;
         var falp_group = document.getElementById('falp_group_search').value;
+        var audit_category = document.getElementById('audit_category_search').value;
+
         $.ajax({
             url: '../../process/admin/list_of_line_audit_processor.php',
             type: 'POST',
@@ -40,7 +42,8 @@
                 carmodel: carmodel,
                 criticality_level: criticality_level,
                 section: section,
-                falp_group: falp_group
+                falp_group: falp_group,
+                audit_category: audit_category
 
             },
             success: function (response) {
@@ -197,6 +200,7 @@
         var groups = document.getElementById('group_line_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
         var criticality_level = document.getElementById('line_criticality_level_update').value;
+        var audit_category = document.getElementById('line_audit_category_update').value;
         var problem_identification = document.querySelector('#line_problem_identification_update').value;
         var sm_analysis = document.querySelector('#line_sm_analysis_update').value;
         var carmaker = document.getElementById('carmaker_line_update').value;
@@ -226,6 +230,7 @@
                     groups: groups,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
+                    audit_category: audit_category,
                     problem_identification: problem_identification,
                     sm_analysis: sm_analysis,
                     carmaker: carmaker,

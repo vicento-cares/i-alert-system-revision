@@ -46,6 +46,7 @@
         var section = document.getElementById('section_lineaudited').value;
         var process = document.getElementById('process_lineaudited').value;
         var falp_group = document.getElementById('falp_group_lineaudited').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/viewer/list_of_line_audited_processor.php',
@@ -63,6 +64,7 @@
                 section: section,
                 process: process,
                 falp_group: falp_group,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('line_audited_data').innerHTML = response;
                 $('#spinner_line_audited').fadeOut(function () {

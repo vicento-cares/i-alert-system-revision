@@ -15,6 +15,7 @@
         var audit_type = document.getElementById('audit_type_closed').value;
         var group = document.getElementById('groups_provider_closed').value;
         var shift = document.getElementById('shifts_provider_closed').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/provider/provider_processor.php',
@@ -34,7 +35,8 @@
                 criticality_level: criticality_level,
                 audit_type: audit_type,
                 group: group,
-                shift: shift
+                shift: shift,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_closed_provdier').innerHTML = response;
                 $('#spinner').fadeOut(function () {

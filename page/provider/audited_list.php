@@ -125,9 +125,15 @@
                         <option value="a">A</option>
                         <option value="b">B</option>
                       </select>
-
                     </div>
-
+                    <div class="col-3">
+                      <span>Audit Category:</span>
+                      <select class="form-control" id="audit_category_search">
+                        <option value="">Select Audit Category</option>
+                        <option value="Major">Major</option>
+                        <option value="Minor">Minor</option>
+                      </select>
+                    </div>
                   </div>
 
 
@@ -233,6 +239,7 @@
                   <th style="text-align:center;">Audit Findings</th>
                   <th style="text-align:center;">Audit Details</th>
                   <th style="text-align:center;">Audited By</th>
+                  <th style="text-align:center;">Audit Category</th>
                   <th style="text-align:center;">Problem Identification</th>
                   <th style="text-align:center;">Criticality Level</th>
                   <th style="text-align:center;">SM Analysis</th>

@@ -19,9 +19,27 @@ if ($method == 'fetch_audit_list') {
     $group = $_POST['group'];
     $shift = $_POST['shift'];
     $falp_group = $_POST['falp_group'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND line_no LIKE '$line%' AND position LIKE '$position%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND criticality_level LIKE '$criticality_level%' AND audit_type LIKE '$audit_type%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND edit_count != '0' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group LIKE '$falp_group%' GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT * FROM ialert_audit 
+                WHERE employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND line_no LIKE '$line%' 
+                AND position LIKE '$position%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND audit_type LIKE '$audit_type%' 
+                AND section LIKE '$section%' 
+                AND provider LIKE '$provider%' 
+                AND edit_count != '0' 
+                AND groups LIKE '$group%' 
+                AND shift LIKE '$shift%' 
+                AND falp_group LIKE '$falp_group%' 
+                GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -74,7 +92,8 @@ if ($method == 'fetch_audit_list') {
                         $x['section'] . '~!~' . 
                         $x['falp_group'] . '~!~' . 
                         $x['problem_identification'] . '~!~' . 
-                        $x['sm_analysis'] . '&quot;)">' . $x['full_name'] . '</td>';
+                        $x['sm_analysis'] . '~!~' . 
+                        $x['audit_category'] . '&quot;)">' . $x['full_name'] . '</td>';
             echo '<td>' . $x['position'] . '</td>';
 
             echo '<td>' . $x['employee_num'] . '</td>';
@@ -89,6 +108,7 @@ if ($method == 'fetch_audit_list') {
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audit_category'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';

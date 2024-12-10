@@ -13,6 +13,7 @@
         var criticality_level = document.getElementById('criticality_level_provider_status').value;
         var group = document.getElementById('groups_provider_status').value;
         var shift = document.getElementById('shifts_provider_status').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/provider/provider_processor.php',
@@ -30,8 +31,8 @@
                 carmodel: carmodel,
                 criticality_level: criticality_level,
                 group: group,
-                shift: shift
-
+                shift: shift,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_data_provider_status').innerHTML = response;
                 $('#spinner').fadeOut(function () {

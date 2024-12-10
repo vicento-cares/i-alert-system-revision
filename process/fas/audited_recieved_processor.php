@@ -19,9 +19,24 @@ if ($method == 'fetch_recieve_fas') {
     $criticality_level = $_POST['criticality_level'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit WHERE date_sent != '' AND hr != '' AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo')  AND provider = '$esection' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND criticality_level LIKE '$criticality_level%' AND groups LIKE '$group%' AND shift LIKE '$shift%' AND falp_group = '$falp_group'";
+    $query = "SELECT * FROM ialert_audit 
+                WHERE date_sent != '' 
+                AND hr != '' 
+                AND employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND line_no LIKE '$lname%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                AND provider = '$esection' 
+                AND audit_type LIKE '$audit_type%' 
+                AND position LIKE '$position%' 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND groups LIKE '$group%' 
+                AND shift LIKE '$shift%' 
+                AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
@@ -57,6 +72,7 @@ if ($method == 'fetch_recieve_fas') {
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audit_category'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';

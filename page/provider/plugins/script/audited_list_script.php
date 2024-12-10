@@ -35,6 +35,7 @@
         var criticality_level = document.getElementById('criticality_level').value;
         var group = document.getElementById('groups_provider').value;
         var shift = document.getElementById('shifts_provider').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
 
         $.ajax({
@@ -53,7 +54,8 @@
                 carmodel: carmodel,
                 criticality_level: criticality_level,
                 group: group,
-                shift: shift
+                shift: shift,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_data_provider').innerHTML = response;
                 $('#spinner').fadeOut(function () {

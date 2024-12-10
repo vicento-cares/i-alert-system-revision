@@ -39,6 +39,7 @@
         var criticality_level = document.getElementById('criticality_level_closed').value;
         var group = document.getElementById('groups_fas_closed').value;
         var shift = document.getElementById('shifts_fas_closed').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/fas/audited_closed_processor.php',
@@ -60,7 +61,8 @@
                 position: position,
                 criticality_level: criticality_level,
                 group: group,
-                shift: shift
+                shift: shift,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_closed_fas').innerHTML = response;
                 $('#spinner').fadeOut(function () {

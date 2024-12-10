@@ -36,6 +36,7 @@
         var group = document.getElementById('groups').value;
         var shift = document.getElementById('shifts').value;
         var falp_group = document.getElementById('falp_group_search').value;
+        var audit_category = document.getElementById('audit_category_search').value;
         $.ajax({
             url: '../../process/admin/list_of_audit_processor.php',
             type: 'POST',
@@ -57,6 +58,7 @@
                 group: group,
                 shift: shift,
                 falp_group: falp_group,
+                audit_category: audit_category
             },
             success: function (response) {
                 document.getElementById('audit_data').innerHTML = response;
@@ -193,6 +195,7 @@
         var falp_group = data[19];
         var problem_identification = data[20];
         var sm_analysis = data[21];
+        var audit_category = data[22];
 
         document.getElementById('id_update').value = id;
         document.getElementById('employee_num_update').value = employee_num;
@@ -216,6 +219,7 @@
         document.getElementById('falp_group_update').value = falp_group;
         document.getElementById('problem_identification_update').value = problem_identification;
         document.getElementById('sm_analysis_update').value = sm_analysis;
+        document.getElementById('audit_category_update').value = audit_category;
 
         fetch_section_dropdown();
 
@@ -236,6 +240,7 @@
         var groups = document.getElementById('group_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
         var criticality_level = document.getElementById('criticality_level_update').value;
+        var audit_category = document.getElementById('audit_category_update').value;
         var problem_identification = document.querySelector('#problem_identification_update').value;
         var sm_analysis = document.querySelector('#sm_analysis_update').value;
         var carmaker = document.getElementById('carmaker_update').value;
@@ -268,6 +273,7 @@
                     groups: groups,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
+                    audit_category: audit_category,
                     problem_identification: problem_identification,
                     sm_analysis: sm_analysis,
                     carmaker: carmaker,
