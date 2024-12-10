@@ -137,19 +137,12 @@
                         <option value="ns">NS</option>
                       </select>
                     </div>
-
                     <div class="col-3">
-                      <span>Section:</span>
-                      <select class="form-control" name="section_admin" id="section_admin">
-                        <option value="">Select Section</option>
-                        <?php
-                        $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
-                        $stmt = $conn->prepare($get_curiculum);
-                        $stmt->execute();
-                        foreach ($stmt->fetchALL() as $x) {
-                          echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
-                        }
-                        ?>
+                      <span>Audit Category:</span>
+                      <select class="form-control" id="audit_category_search">
+                        <option value="">Select Audit Category</option>
+                        <option value="Major">Major</option>
+                        <option value="Minor">Minor</option>
                       </select>
                     </div>
                     <div class="col-3">
@@ -162,6 +155,20 @@
                         $stmt->execute();
                         foreach ($stmt->fetchALL() as $x) {
                           echo '<option value="' . $x['esection'] . '">' . $x['esection'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="col-3">
+                      <span>Section:</span>
+                      <select class="form-control" name="section_admin" id="section_admin">
+                        <option value="">Select Section</option>
+                        <?php
+                        $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
+                        $stmt = $conn->prepare($get_curiculum);
+                        $stmt->execute();
+                        foreach ($stmt->fetchALL() as $x) {
+                          echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
                         }
                         ?>
                       </select>

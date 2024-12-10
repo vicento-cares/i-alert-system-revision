@@ -88,6 +88,14 @@
                       </select>
                     </div>
                     <div class="col-2">
+                      <label for="audit_category_search">Audit Category:</label>
+                      <select class="form-control" id="audit_category_search">
+                        <option value="">Select Audit Category</option>
+                        <option value="Major">Major</option>
+                        <option value="Minor">Minor</option>
+                      </select>
+                    </div>
+                    <div class="col-2">
                       <label for="section_search">Section:</label>
                       <select class="form-control" name="section_search" id="section_search">
                         <option value="">Select Section</option>
@@ -111,7 +119,6 @@
                         $stmt = $conn->prepare($get_curiculum);
                         $stmt->execute();
                         foreach ($stmt->fetchALL() as $x) {
-
                           echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
                         }
                         ?>

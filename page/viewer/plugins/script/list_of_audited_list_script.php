@@ -50,6 +50,7 @@
         var provider = document.getElementById('provider_audited').value;
         var process = document.getElementById('process_audited').value;
         var falp_group = document.getElementById('falp_group_audited').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/viewer/list_of_audited_processor.php',
@@ -71,7 +72,7 @@
                 provider: provider,
                 process: process,
                 falp_group: falp_group,
-
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_data').innerHTML = response;
                 $('#spinner').fadeOut(function () {

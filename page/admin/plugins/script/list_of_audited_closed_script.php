@@ -34,6 +34,7 @@
         var section = document.getElementById('section_admin').value;
         var falp_group = document.getElementById('falp_group_search').value;
         var provider = document.getElementById('provider_closed').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/admin/list_of_audit_closed_processor.php',
@@ -55,7 +56,8 @@
                 shift: shift,
                 section: section,
                 falp_group: falp_group,
-                provider: provider
+                provider: provider,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_closed_admin').innerHTML = response;
                 $('#spinner').fadeOut(function () {

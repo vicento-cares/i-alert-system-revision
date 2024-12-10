@@ -129,20 +129,6 @@
                 </div>
                 <div class="row">
                   <div class="col-3">
-                    <label for="sect">Section:</label>
-                    <select class="form-control" name="sect" id="sect">
-                      <option value="">Select Section</option>
-                      <?php
-                      $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
-                      $stmt = $conn->prepare($get_curiculum);
-                      $stmt->execute();
-                      foreach ($stmt->fetchALL() as $x) {
-                        echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
-                      }
-                      ?>
-                    </select>
-                  </div>
-                  <div class="col-3">
                     <label for="prov">Provider:</label>
                     <input type="text" name="prov" id="prov" class="form-control">
                   </div>
@@ -163,6 +149,28 @@
                     </select>
                   </div>
                   <div class="col-3">
+                    <label for="audit_category_search">Audit Category:</label>
+                    <select class="form-control" id="audit_category_search">
+                      <option value="">Select Audit Category</option>
+                      <option value="Major">Major</option>
+                      <option value="Minor">Minor</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="sect">Section:</label>
+                    <select class="form-control" name="sect" id="sect">
+                      <option value="">Select Section</option>
+                      <?php
+                      $get_curiculum = "SELECT DISTINCT section FROM ialert_section ORDER BY section ASC";
+                      $stmt = $conn->prepare($get_curiculum);
+                      $stmt->execute();
+                      foreach ($stmt->fetchALL() as $x) {
+                        echo '<option value="' . $x['section'] . '">' . $x['section'] . '</option>';
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="col-3">
                     <label for="falp_group_search">Group:</label>
                     <select class="form-control" name="falp_group_search" id="falp_group_search">
                       <option value="">Select Group</option>
@@ -171,7 +179,6 @@
                       $stmt = $conn->prepare($get_curiculum);
                       $stmt->execute();
                       foreach ($stmt->fetchALL() as $x) {
-
                         echo '<option value="' . $x['falp_group'] . '">' . $x['falp_group'] . '</option>';
                       }
                       ?>

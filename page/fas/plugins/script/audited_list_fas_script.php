@@ -72,6 +72,8 @@
         var group = document.getElementById('groups_fas').value;
         var shift = document.getElementById('shifts_fas').value;
         var falp_group = document.getElementById('falp_group_search').value;
+        var audit_category = document.getElementById('audit_category_search').value;
+
         $.ajax({
             url: '../../process/fas/audited_list_fas_processor.php',
             type: 'POST',
@@ -93,7 +95,8 @@
                 criticality_level: criticality_level,
                 group: group,
                 shift: shift,
-                falp_group: falp_group
+                falp_group: falp_group,
+                audit_category: audit_category
 
             }, success: function (response) {
                 // console.log(response);

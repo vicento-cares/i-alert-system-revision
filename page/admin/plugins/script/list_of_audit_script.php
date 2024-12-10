@@ -36,6 +36,7 @@
         var group = document.getElementById('groups').value;
         var shift = document.getElementById('shifts').value;
         var falp_group = document.getElementById('falp_group_search').value;
+        var audit_category = document.getElementById('audit_category_search').value;
         $.ajax({
             url: '../../process/admin/list_of_audit_processor.php',
             type: 'POST',
@@ -57,6 +58,7 @@
                 group: group,
                 shift: shift,
                 falp_group: falp_group,
+                audit_category: audit_category
             },
             success: function (response) {
                 document.getElementById('audit_data').innerHTML = response;

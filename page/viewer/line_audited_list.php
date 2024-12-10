@@ -118,6 +118,14 @@
                     <span>Group:</span>
                     <select class="form-control" name="falp_group_lineaudited" id="falp_group_lineaudited"></select>
                   </div>
+                  <div class="col-4 mb-2">
+                    <span>Audit Category:</span>
+                    <select class="form-control" id="audit_category_search">
+                      <option value="">Select Audit Category</option>
+                      <option value="Major">Major</option>
+                      <option value="Minor">Minor</option>
+                    </select>
+                  </div>
                 </div>
 
 

@@ -39,6 +39,7 @@
         var criticality_level = document.getElementById('criticality_level_recieved').value;
         var group = document.getElementById('groups_fas_received').value;
         var shift = document.getElementById('shifts_fas_received').value;
+        var audit_category = document.getElementById('audit_category_search').value;
 
         $.ajax({
             url: '../../process/fas/audited_recieved_processor.php',
@@ -61,7 +62,8 @@
                 criticality_level: criticality_level,
                 group: group,
                 shift: shift,
-                section: section
+                section: section,
+                audit_category: audit_category
             }, success: function (response) {
                 document.getElementById('audited_recieved_fas').innerHTML = response;
                 $('#spinner').fadeOut(function () {

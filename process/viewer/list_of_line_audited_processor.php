@@ -43,10 +43,21 @@ if ($method == 'fetch_line_audited_list') {
     $section = $_POST['section'];
     $process = $_POST['process'];
     $falp_group = $_POST['falp_group'];
+    $audit_category = $_POST['audit_category'];
 
     $c = 0;
     // AND audit_type LIKE '$audit_type%'
-    $query = "SELECT * FROM ialert_line_audit WHERE line_no LIKE '$line_n%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND criticality_level LIKE '$criticality_level%' AND section LIKE '$section%' AND process LIKE '$process%' AND falp_group LIKE '$falp_group%' AND  (date_audited >='$dateFrom' AND date_audited <= '$dateTo') GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT * FROM ialert_line_audit 
+                WHERE line_no LIKE '$line_n%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND section LIKE '$section%' 
+                AND process LIKE '$process%' 
+                AND falp_group LIKE '$falp_group%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();

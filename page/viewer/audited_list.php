@@ -144,6 +144,16 @@
                     <select class="form-control" name="falp_group_audited" id="falp_group_audited"></select>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label for="audit_category_search">Audit Category:</label>
+                    <select class="form-control" id="audit_category_search">
+                      <option value="">Select Audit Category</option>
+                      <option value="Major">Major</option>
+                      <option value="Minor">Minor</option>
+                    </select>
+                  </div>
+                </div>
               </h3>
 
               <div class="card-tools">

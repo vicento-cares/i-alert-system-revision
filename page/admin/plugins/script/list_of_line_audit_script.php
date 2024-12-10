@@ -27,6 +27,8 @@
         var criticality_level = document.getElementById('crit_level').value;
         var section = document.getElementById('section_search').value;
         var falp_group = document.getElementById('falp_group_search').value;
+        var audit_category = document.getElementById('audit_category_search').value;
+
         $.ajax({
             url: '../../process/admin/list_of_line_audit_processor.php',
             type: 'POST',
@@ -40,7 +42,8 @@
                 carmodel: carmodel,
                 criticality_level: criticality_level,
                 section: section,
-                falp_group: falp_group
+                falp_group: falp_group,
+                audit_category: audit_category
 
             },
             success: function (response) {

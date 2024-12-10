@@ -19,15 +19,33 @@ if ($method == 'fetch_audited_list_send') {
     $falp_group = $_POST['falp_group'];
     $group = $_POST['group'];
     $shift = $_POST['shift'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT *,date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit WHERE pd = 'Written IR' AND date_sent IS NOT NULL AND hr IS NULL AND employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') AND provider = '$esection' AND line_no LIKE '$lname%' AND position LIKE '$position%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND criticality_level LIKE '$criticality_level%' AND falp_group = '$falp_group'";
+    $query = "SELECT *, date_format(date_sent, '%Y-%m-%d %H:%i:%s') as date_sent FROM ialert_audit 
+                WHERE pd = 'Written IR' 
+                AND date_sent IS NOT NULL 
+                AND hr IS NULL 
+                AND employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                AND provider = '$esection' 
+                AND line_no LIKE '$lname%' 
+                AND position LIKE '$position%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND audit_type LIKE '$audit_type%' 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND falp_group = '$falp_group'";
 
     if (!empty($section)) {
         $query .= " AND section = '$section'";
     }
 
-    $query .= " AND groups LIKE '$group%' AND shift LIKE '$shift%' GROUP BY id ORDER BY date_audited ASC";
+    $query .= " AND groups LIKE '$group%' 
+                AND shift LIKE '$shift%' 
+                GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();

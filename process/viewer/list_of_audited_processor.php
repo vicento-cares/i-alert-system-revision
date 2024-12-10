@@ -46,9 +46,25 @@ if ($method == 'fetch_audited_list') {
     $provider = $_POST['provider'];
     $process = $_POST['process'];
     $falp_group = $_POST['falp_group'];
+    $audit_category = $_POST['audit_category'];
     $c = 0;
 
-    $query = "SELECT * FROM ialert_audit WHERE  employee_num LIKE '$empid%' AND full_name LIKE '$fname%' AND line_no LIKE '$lname%' AND car_maker LIKE '$carmaker%' AND car_model LIKE '$carmodel%' AND audit_type LIKE '$audit_type%' AND position LIKE '$position%' AND criticality_level LIKE '$criticality_level%' AND section LIKE '$section%' AND provider LIKE '$provider%' AND process LIKE '$process%' AND falp_group LIKE '$falp_group%' AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') GROUP BY id ORDER BY date_audited ASC";
+    $query = "SELECT * FROM ialert_audit 
+                WHERE employee_num LIKE '$empid%' 
+                AND full_name LIKE '$fname%' 
+                AND line_no LIKE '$lname%' 
+                AND car_maker LIKE '$carmaker%' 
+                AND car_model LIKE '$carmodel%' 
+                AND audit_type LIKE '$audit_type%' 
+                AND position LIKE '$position%' 
+                AND criticality_level LIKE '$criticality_level%' 
+                AND audit_category LIKE '$audit_category%' 
+                AND section LIKE '$section%' 
+                AND provider LIKE '$provider%' 
+                AND process LIKE '$process%' 
+                AND falp_group LIKE '$falp_group%' 
+                AND (date_audited >='$dateFrom' AND date_audited <= '$dateTo') 
+                GROUP BY id ORDER BY date_audited ASC";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();

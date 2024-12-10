@@ -133,9 +133,15 @@
                         <option value="a">A</option>
                         <option value="b">B</option>
                       </select>
-
                     </div>
-
+                    <div class="col-3">
+                      <span>Audit Category:</span>
+                      <select class="form-control" id="audit_category_search">
+                        <option value="">Select Audit Category</option>
+                        <option value="Major">Major</option>
+                        <option value="Minor">Minor</option>
+                      </select>
+                    </div>
                   </div>
                 </h3>
 
