@@ -115,6 +115,14 @@
         </div>
         <div class="row">
           <div class="col-3">
+            <span>Audit Category:</span>
+            <select class="form-control" id="line_audit_category_update">
+              <option value="">Select Audit Category</option>
+              <option value="Major">Major</option>
+              <option value="Minor">Minor</option>
+            </select>
+          </div>
+          <div class="col-3">
             <span>Problem Identification:</span>
             <select class="form-control" name="line_problem_identification_update" id="line_problem_identification_update">
               <option value="">Select Problem</option>
@@ -138,6 +146,12 @@
               <option value="Measurement">Measurement</option>
             </select>
           </div>
+          <div class="col-3">
+            <span>Remarks</span>
+            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF" maxlength="255">
+          </div>
+        </div>
+        <div class="row">
           <div class="col-3">
             <span>Group:</span>
             <select class="form-control" name="falp_group_line_update" id="falp_group_line_update"
@@ -166,12 +180,6 @@
               }
               ?>
             </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-3">
-            <span>Remarks</span>
-            <input type="text" name="" id="remarks_line_update" class="form-control" autocomplete="OFF" maxlength="255">
           </div>
         </div>
         <hr>

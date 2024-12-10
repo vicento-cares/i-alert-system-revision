@@ -66,6 +66,7 @@ if ($method == 'fetch_line_audited_list') {
             echo '<td>' . $x['audit_findings'] . '</td>';
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audit_category'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';

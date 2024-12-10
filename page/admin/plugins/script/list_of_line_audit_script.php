@@ -197,6 +197,7 @@
         var groups = document.getElementById('group_line_update').value;
         var audit_type = document.getElementById('audit_type_update').value;
         var criticality_level = document.getElementById('line_criticality_level_update').value;
+        var audit_category = document.getElementById('line_audit_category_update').value;
         var problem_identification = document.querySelector('#line_problem_identification_update').value;
         var sm_analysis = document.querySelector('#line_sm_analysis_update').value;
         var carmaker = document.getElementById('carmaker_line_update').value;
@@ -226,6 +227,7 @@
                     groups: groups,
                     audit_type: audit_type,
                     criticality_level: criticality_level,
+                    audit_category: audit_category,
                     problem_identification: problem_identification,
                     sm_analysis: sm_analysis,
                     carmaker: carmaker,

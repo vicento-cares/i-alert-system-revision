@@ -55,7 +55,8 @@ if ($method == 'fetch_closed_admin') {
                         $x['section'] . '~!~' . 
                         $x['falp_group'] . '~!~' . 
                         $x['problem_identification'] . '~!~' . 
-                        $x['sm_analysis'] . '&quot;)">';
+                        $x['sm_analysis'] . '~!~' . 
+                        $x['audit_category'] . '&quot;)">';
             echo '<td>' . $c . '</td>';
             echo '<td style="display: none;">' . $x['batch'] . '</td>';
             echo '<td>' . $x['date_audited'] . '</td>';
@@ -73,6 +74,7 @@ if ($method == 'fetch_closed_admin') {
             echo '<td>' . $x['audit_details'] . '</td>';
             echo '<td>' . $x['audit_type'] . '</td>';
             echo '<td>' . $x['audited_by'] . '</td>';
+            echo '<td>' . $x['audit_category'] . '</td>';
             echo '<td>' . $x['problem_identification'] . '</td>';
             echo '<td>' . $x['criticality_level'] . '</td>';
             echo '<td>' . $x['sm_analysis'] . '</td>';
